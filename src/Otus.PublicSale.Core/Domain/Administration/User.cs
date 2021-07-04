@@ -1,0 +1,60 @@
+﻿using Otus.PublicSale.Core.Domain.AuctionManagement;
+using System.Collections.Generic;
+
+namespace Otus.PublicSale.Core.Domain.Administration
+{
+    /// <summary>
+    /// User
+    /// </summary>
+    public partial class User: BaseEntity
+    {
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public User()
+        {
+            AuctionBets = new HashSet<AuctionBet>();
+            AuctionUsers = new HashSet<AuctionUser>();
+        }
+        
+        /// <summary>
+        /// First Name
+        /// </summary>
+        public string FirstName { get; set; }
+        
+        /// <summary>
+        /// Last Name
+        /// </summary>
+        public string LastName { get; set; }
+        
+        /// <summary>
+        /// Email
+        /// </summary>
+        public string Email { get; set; }
+        
+        /// <summary>
+        /// Password
+        /// </summary>
+        public string Password { get; set; }
+        
+        /// <summary>
+        /// Role Id
+        /// </summary>
+        public int RoleId { get; set; }
+
+        /// <summary>
+        /// Role
+        /// </summary>
+        public virtual Role Role { get; set; }
+        
+        /// <summary>
+        /// Auction Bets
+        /// </summary>
+        public virtual ICollection<AuctionBet> AuctionBets { get; set; }
+
+        /// <summary>
+        /// Auction Users
+        /// </summary>
+        public virtual ICollection<AuctionUser> AuctionUsers { get; set; }
+    }
+}

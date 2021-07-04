@@ -1,0 +1,9 @@
+/.vs
+/MegaProjectTest.Core/obj
+/MegaProjectTest.Core/bin
+/MegaProjectTest.DataAccess/obj
+/MegaProjectTest.DataAccess/bin
+/MegaProjectTest.Database/obj
+/MegaProjectTest.Database/bin
+/MegaProjectTest.WebApi/bin
+/MegaProjectTest.WebApi/obj
