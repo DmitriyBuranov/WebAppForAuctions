@@ -4,7 +4,6 @@
     {
         public const int AdminRoleId = 1;
         public const int UserRoleId = 2;
-
-        public const int DefaultAdminUserId = 1;        
+        public const int DefaultAdminUserId = 1;
     }
 }
