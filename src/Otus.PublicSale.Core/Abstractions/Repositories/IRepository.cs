@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Otus.PublicSale.Core.Domain;
 
@@ -43,5 +45,11 @@ namespace Otus.PublicSale.Core.Abstractions.Repositories
         /// <param name="entity"></param>
         /// <returns></returns>
         Task RemoveAsync(T entity);
+
+        /// <summary>
+        /// Get All Entities with condition
+        /// </summary>
+        /// <returns></returns>
+        Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> predicate);
     }
 }

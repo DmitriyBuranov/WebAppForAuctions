@@ -4,6 +4,9 @@ using Otus.PublicSale.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq.Expressions;
+using System;
+using System.Linq;
 
 namespace Otus.PublicSale.DataAccess.Repositories
 {
@@ -39,9 +42,7 @@ namespace Otus.PublicSale.DataAccess.Repositories
         /// <returns></returns>
         public async Task<IEnumerable<T>> GetAllAsync()
         {
-            var entities = await _dbSet.ToListAsync();
-
-            return entities;
+            return await _dbSet.ToListAsync(); 
         }
 
         /// <summary>
@@ -85,6 +86,16 @@ namespace Otus.PublicSale.DataAccess.Repositories
         {
             _dbSet.Remove(entity);
             await _dbContext.SaveChangesAsync();
+        }
+
+        /// <summary>
+        /// Get All Entities with condition
+        /// </summary>
+        /// <param name="predicate">Condition</param>
+        /// <returns></returns>
+        public async Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> predicate)
+        {
+            return await _dbSet.AsNoTracking().Where(predicate).ToListAsync();
         }
     }
 }

@@ -47,7 +47,7 @@ namespace Otus.PublicSale.DataAccess.Data
             : base(options)
         {     
             //Database.EnsureDeleted(); - Please uncommit this line to re-create DB with default values
-            Database.EnsureCreated();
+            //Database.EnsureCreated();
         }        
 
         /// <summary>
