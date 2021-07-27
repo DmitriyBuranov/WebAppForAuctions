@@ -14,7 +14,7 @@ before_script:
 Build:
   stage: build
   only:
-    - master
+    - main
 
   script:
     - docker build ./ -t $CI_REGISTRY_IMAGE:latest
