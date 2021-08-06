@@ -21,12 +21,9 @@ Build:
     - docker push $CI_REGISTRY_IMAGE:latest
 
 Test:  
-  stage: test
-  variables:
-    test_path: "src/Otus.PublicSale.UnitTests"
-  script: 
-    - "cd $test_path"
-    - "dotnet test"
+  stage: test  
+  script:     
+    - "dotnet test Otus.PublicSale.UnitTests.dll"
 
 Deploy:
     stage: deploy
