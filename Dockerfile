@@ -14,5 +14,6 @@ RUN dotnet publish "Otus.PublicSale.WebApi/Otus.PublicSale.WebApi.csproj" -c Rel
 
 FROM base AS final
 WORKDIR /app
+COPY --from=build /app/build ./
 COPY --from=publish /app/publish ./
 CMD dotnet Otus.PublicSale.WebApi.dll
