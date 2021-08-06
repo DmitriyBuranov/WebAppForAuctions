@@ -23,7 +23,7 @@ Build:
 Test:  
   stage: test  
   script:     
-    - "dotnet test Otus.PublicSale.UnitTests.dll"
+    - dotnet test
 
 Deploy:
     stage: deploy
