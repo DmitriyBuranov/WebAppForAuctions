@@ -22,8 +22,11 @@ Build:
 
 Test:  
   stage: test
+  variables:
+    test_path: "src/Otus.PublicSale.UnitTests"
   script: 
-      - echo "TODO dotnet test"
+    - "cd $test_path"
+    - "dotnet test"
 
 Deploy:
     stage: deploy

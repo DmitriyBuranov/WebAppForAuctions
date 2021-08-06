@@ -5,6 +5,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Otus.PublicSale.Core.Domain.AuctionManagement;
+using System.Collections.Generic;
 
 namespace Otus.PublicSale.WebApi.Controllers
 {
@@ -30,7 +31,9 @@ namespace Otus.PublicSale.WebApi.Controllers
         /// </summary>
         /// <param name="repositoryAuctionBets">AuctionBets repository</param>        
         /// <param name="repositoryAuctions">Auctions repository</param>        
-        public AuctionBetsController(IRepository<AuctionBet> repositoryAuctionBets, IRepository<Auction> repositoryAuctions)
+        public AuctionBetsController(
+            IRepository<AuctionBet> repositoryAuctionBets, 
+            IRepository<Auction> repositoryAuctions)
         {
             _repositoryAuctionBets = repositoryAuctionBets;
             _repositoryAuctions = repositoryAuctions;
@@ -42,8 +45,11 @@ namespace Otus.PublicSale.WebApi.Controllers
         /// <param name="auctionId">Auction Id</param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<ActionResult<AuctionBetDto>> GetAuctionBetsAsync(int auctionId)
+        public async Task<ActionResult<List<AuctionBetDto>>> GetAllAsync(int auctionId)
         {
+            if (auctionId <= 0)
+                return BadRequest();
+
             var entities = await _repositoryAuctionBets.GetAllAsync(x => x.AuctionId == auctionId);
 
             var list = entities.Select(entity => CreateDto(entity)).ToList();
@@ -57,8 +63,11 @@ namespace Otus.PublicSale.WebApi.Controllers
         /// <param name="id">AuctionBet Id</param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public async Task<ActionResult<AuctionBetDto>> GettAuctionBetAsync(int id)
+        public async Task<ActionResult<AuctionBetDto>> GetOneAsync(int id)
         {
+            if (id <= 0)
+                return BadRequest();
+
             var entity = await _repositoryAuctionBets.GetByIdAsync(id);
 
             if (entity == null)
@@ -75,7 +84,7 @@ namespace Otus.PublicSale.WebApi.Controllers
         /// <param name="request">AuctionBet Dto</param>
         /// <returns>AuctionBet Id</returns>
         [HttpPost]
-        public async Task<ActionResult<Guid>> CreatetAuctionBetAsync(AuctionBetDto request)
+        public async Task<ActionResult<Guid>> CreateAsync(AuctionBetDto request)
         {
             var auction = await _repositoryAuctions.GetByIdAsync(request.AuctionId);
 
@@ -102,7 +111,7 @@ namespace Otus.PublicSale.WebApi.Controllers
         /// <param name="request">AuctionBet Dto</param> 
         /// <returns></returns>
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdatetAuctionBetAsync(int id, AuctionBetDto request)
+        public async Task<IActionResult> UpdateAsync(int id, AuctionBetDto request)
         {
             var entity = await _repositoryAuctionBets.GetByIdAsync(id);
 
@@ -125,7 +134,7 @@ namespace Otus.PublicSale.WebApi.Controllers
         /// <param name="id">AuctionBet Id</param>
         /// <returns></returns>
         [HttpDelete]
-        public async Task<IActionResult> DeletetAuctionBet(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             var entity = await _repositoryAuctionBets.GetByIdAsync(id);
 
@@ -142,7 +151,7 @@ namespace Otus.PublicSale.WebApi.Controllers
         /// </summary>
         /// <param name="entity">Auction Bet</param>
         /// <returns>AuctionBet Dto</returns>
-        private AuctionBetDto CreateDto(AuctionBet entity)
+        public AuctionBetDto CreateDto(AuctionBet entity)
         {
             return new AuctionBetDto()
             {

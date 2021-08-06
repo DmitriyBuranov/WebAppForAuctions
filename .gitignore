@@ -6,3 +6,5 @@
 /src/Otus.PublicSale.Database/bin
 /src/Otus.PublicSale.WebApi/obj
 /src/Otus.PublicSale.WebApi/bin
+/src/Otus.PublicSale.UnitTests/obj
+/src/Otus.PublicSale.UnitTests/bin

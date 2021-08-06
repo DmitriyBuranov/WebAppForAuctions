@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Otus.PublicSale.DataAccess"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Otus.PublicSale.WebApi", "Otus.PublicSale.WebApi\Otus.PublicSale.WebApi.csproj", "{6DCAEDBD-4607-4AFC-B110-BCA7771633B0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus.PublicSale.UnitTests", "Otus.PublicSale.UnitTests\Otus.PublicSale.UnitTests.csproj", "{DDBE3202-8F22-4A5E-B533-87A37251A1E5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{6DCAEDBD-4607-4AFC-B110-BCA7771633B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6DCAEDBD-4607-4AFC-B110-BCA7771633B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6DCAEDBD-4607-4AFC-B110-BCA7771633B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDBE3202-8F22-4A5E-B533-87A37251A1E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDBE3202-8F22-4A5E-B533-87A37251A1E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDBE3202-8F22-4A5E-B533-87A37251A1E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDBE3202-8F22-4A5E-B533-87A37251A1E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
