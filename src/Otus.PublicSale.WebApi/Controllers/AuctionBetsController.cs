@@ -44,7 +44,7 @@ namespace Otus.PublicSale.WebApi.Controllers
         /// </summary>
         /// <param name="auctionId">Auction Id</param>
         /// <returns></returns>
-        [HttpGet]
+        [HttpGet("GetAll/{auctionId}")]
         public async Task<ActionResult<List<AuctionBetDto>>> GetAllAsync(int auctionId)
         {
             if (auctionId <= 0)
@@ -151,6 +151,7 @@ namespace Otus.PublicSale.WebApi.Controllers
         /// </summary>
         /// <param name="entity">Auction Bet</param>
         /// <returns>AuctionBet Dto</returns>
+        [ApiExplorerSettings(IgnoreApi = true)]
         public AuctionBetDto CreateDto(AuctionBet entity)
         {
             return new AuctionBetDto()
