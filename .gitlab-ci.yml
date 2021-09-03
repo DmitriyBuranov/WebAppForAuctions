@@ -2,9 +2,6 @@ variables:
   PROJECT_NAME: Otus.PublicSale.WebApi
   TEST_PROJECT_NAME: Otus.PublicSale.UnitTests
 
-before_script:
-  - echo $CI_TOKEN | docker login registry.gitlab.com -u deploy-token --password-stdin
-
 stages:
     - build
     - test
@@ -28,6 +25,9 @@ tests:
       - main
     script:
         - dotnet test src/$TEST_PROJECT_NAME/$TEST_PROJECT_NAME.csproj    
+
+before_script:
+  - echo $CI_TOKEN | docker login registry.gitlab.com -u deploy-token --password-stdin
 
 docker:
     stage: docker
