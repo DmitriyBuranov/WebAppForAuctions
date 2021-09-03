@@ -7,6 +7,7 @@ variables:
 stages:
     - build
     - test
+    - docker
 
 build:
     stage: build
@@ -20,5 +21,21 @@ build:
 
 tests:
     stage: test
+    only:
+      - main
     script:
-        - dotnet test src/$TEST_PROJECT_NAME/$TEST_PROJECT_NAME.csproj
+        - dotnet test src/$TEST_PROJECT_NAME/$TEST_PROJECT_NAME.csproj    
+
+before_script:
+  - echo $CI_TOKEN | docker login registry.gitlab.com -u deploy-token --password-stdin
+
+docker:
+    stage: docker
+    image: docker:19.03.12
+    services:
+      - docker:19.03.12-dind
+    only:
+      - main
+    script:
+      - docker build ./ -t $CI_REGISTRY_IMAGE:latest
+      - docker push $CI_REGISTRY_IMAGE:latest
