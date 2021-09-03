@@ -1,8 +1,9 @@
-image: mcr.microsoft.com/dotnet/core/sdk:3.1
-
 variables:
   PROJECT_NAME: Otus.PublicSale.WebApi
   TEST_PROJECT_NAME: Otus.PublicSale.UnitTests
+
+before_script:
+  - echo $CI_TOKEN | docker login registry.gitlab.com -u deploy-token --password-stdin
 
 stages:
     - build
@@ -11,6 +12,7 @@ stages:
 
 build:
     stage: build
+    image: mcr.microsoft.com/dotnet/core/sdk:3.1    
     script:
         - dotnet build src/$PROJECT_NAME/$PROJECT_NAME.csproj -c Release -o content
     only:
@@ -21,13 +23,11 @@ build:
 
 tests:
     stage: test
+    image: mcr.microsoft.com/dotnet/core/sdk:3.1    
     only:
       - main
     script:
         - dotnet test src/$TEST_PROJECT_NAME/$TEST_PROJECT_NAME.csproj    
-
-before_script:
-  - echo $CI_TOKEN | docker login registry.gitlab.com -u deploy-token --password-stdin
 
 docker:
     stage: docker
