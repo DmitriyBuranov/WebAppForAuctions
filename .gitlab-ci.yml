@@ -1,31 +1,24 @@
-image: docker:19.03.12
+image: mcr.microsoft.com/dotnet/core/sdk:3.1
 
-services:
-  - docker:19.03.12-dind
+variables:
+  PROJECT_NAME: Otus.PublicSale.WebApi
+  TEST_PROJECT_NAME: Otus.PublicSale.UnitTests
 
 stages:
-  - build
-  - test
-  - deploy
+    - build
+    - test
 
-before_script:
-  - echo $CI_TOKEN | docker login registry.gitlab.com -u deploy-token --password-stdin
-
-Build:
-  stage: build
-  only:
-    - main
-
-  script:
-    - docker build ./ -t $CI_REGISTRY_IMAGE:latest
-    - docker push $CI_REGISTRY_IMAGE:latest
-
-Test:  
-  stage: test  
-  script:     
-    - dotnet test
-
-Deploy:
-    stage: deploy
+build:
+    stage: build
     script:
-      - echo "TODO deploy"
+        - dotnet build $PROJECT_NAME/$PROJECT_NAME.csproj -c Release -o content
+    only:
+      - master
+    artifacts:
+      paths:
+        - content
+
+tests:
+    stage: test
+    script:
+        - dotnet test $TEST_PROJECT_NAME/$TEST_PROJECT_NAME.csproj
