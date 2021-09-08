@@ -89,5 +89,9 @@ namespace Otus.PublicSale.Core.Domain.AuctionManagement
         public decimal LowestPrice { get; set; }
 
 
+        /// <summary>
+        /// Category
+        /// </summary>
+        public virtual Category Category { get; set; }
     }
 }
