@@ -1,4 +1,5 @@
 ﻿using Otus.PublicSale.Core.Domain.AuctionManagement;
+using System;
 using System.Collections.Generic;
 
 namespace Otus.PublicSale.Core.Domain.Administration
@@ -6,7 +7,7 @@ namespace Otus.PublicSale.Core.Domain.Administration
     /// <summary>
     /// User
     /// </summary>
-    public partial class User: BaseEntity
+    public partial class User : BaseEntity
     {
         /// <summary>
         /// Constructor
@@ -16,27 +17,27 @@ namespace Otus.PublicSale.Core.Domain.Administration
             AuctionBets = new HashSet<AuctionBet>();
             AuctionUsers = new HashSet<AuctionUser>();
         }
-        
+
         /// <summary>
         /// First Name
         /// </summary>
         public string FirstName { get; set; }
-        
+
         /// <summary>
         /// Last Name
         /// </summary>
         public string LastName { get; set; }
-        
+
         /// <summary>
         /// Email
         /// </summary>
         public string Email { get; set; }
-        
+
         /// <summary>
         /// Password
         /// </summary>
         public string Password { get; set; }
-        
+
         /// <summary>
         /// Role Id
         /// </summary>
@@ -46,7 +47,7 @@ namespace Otus.PublicSale.Core.Domain.Administration
         /// Role
         /// </summary>
         public virtual Role Role { get; set; }
-        
+
         /// <summary>
         /// Auction Bets
         /// </summary>
@@ -56,5 +57,31 @@ namespace Otus.PublicSale.Core.Domain.Administration
         /// Auction Users
         /// </summary>
         public virtual ICollection<AuctionUser> AuctionUsers { get; set; }
+
+
+        /// <summary>
+        /// Users BirthDay
+        /// </summary>
+        public DateTime BirthDay { get; set; }
+
+        /// <summary>
+        /// Address
+        /// </summary>
+        public string Address { get; set; }
+
+        /// <summary>
+        /// Language
+        /// </summary>
+        public string Language { get; set; }
+
+        /// <summary>
+        /// Status
+        /// </summary>
+        public string Status { get; set; }
+
+        /// <summary>
+        /// Phone
+        /// </summary>
+        public string Phone { get; set; }
     }
 }

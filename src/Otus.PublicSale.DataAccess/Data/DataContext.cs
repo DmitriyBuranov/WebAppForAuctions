@@ -147,11 +147,17 @@ namespace Otus.PublicSale.DataAccess.Data
 
                 entity.Property(e => e.Password).IsRequired();
 
+                entity.Property(e => e.BirthDay).IsRequired();
+
+                entity.Property(e => e.Phone).HasMaxLength(12);
+
+                entity.Property(e => e.Address).HasMaxLength(100);
+
                 entity.HasOne(d => d.Role)
                     .WithMany(p => p.Users)
                     .HasForeignKey(d => d.RoleId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Users_Roles");
+                    .HasConstraintName("FK_Users_Roles");           
             });
 
             // Default DB values

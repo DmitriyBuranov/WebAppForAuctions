@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\src"
+    "\\src",
+    "\\src\\Otus.PublicSale.WebApi"
   ],
-  "SelectedNode": "\\src\\Otus.PublicSale.sln",
+  "SelectedNode": "\\src\\Otus.PublicSale.WebApi\\Otus.PublicSale.WebApi.csproj",
   "PreviewInSolutionExplorer": false
 }

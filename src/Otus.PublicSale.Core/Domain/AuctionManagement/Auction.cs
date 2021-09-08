@@ -72,5 +72,22 @@ namespace Otus.PublicSale.Core.Domain.AuctionManagement
         /// Auction Users
         /// </summary>
         public virtual ICollection<AuctionUser> AuctionUsers { get; set; }
+
+        /// <summary>
+        /// SellPrice
+        /// </summary>
+        public decimal SellPrice { get; set; }
+
+        /// <summary>
+        /// CurrentPrice
+        /// </summary>
+        public decimal CurrentPrice { get; set; }
+
+        /// <summary>
+        /// LowestPrice
+        /// </summary>
+        public decimal LowestPrice { get; set; }
+
+
     }
 }
