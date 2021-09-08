@@ -160,6 +160,14 @@ namespace Otus.PublicSale.DataAccess.Data
                     .HasConstraintName("FK_Users_Roles");           
             });
 
+
+            modelBuilder.Entity<Category>(entity =>
+            {
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(50);
+            });
+
             // Default DB values
             modelBuilder.Entity<Role>().HasData(new Role { Id = Constants.AdminRoleId, Name = "Admin" });
             modelBuilder.Entity<Role>().HasData(new Role { Id = Constants.UserRoleId, Name = "User" });
