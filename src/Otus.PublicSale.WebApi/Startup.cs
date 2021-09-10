@@ -8,6 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using MassTransit;
+using System;
 
 namespace Otus.PublicSale.WebApi
 {
@@ -43,6 +45,19 @@ namespace Otus.PublicSale.WebApi
             services.AddControllers();
 
             services.AddScoped(typeof(IRepository<>), typeof(EntityFrameworkRepository<>));
+
+            services.AddMassTransit(x =>
+            {
+                x.UsingRabbitMq((context, cfg) =>
+                {
+                    cfg.Host(new Uri(Configuration["RabbitMQ:Url"]), c =>
+                    {
+                        c.Username(Configuration["RabbitMQ:Username"]);
+                        c.Password(Configuration["RabbitMQ:Password"]);
+                    });
+                });
+            });
+            services.AddMassTransitHostedService();
 
             services.AddOpenApiDocument(options =>
             {
