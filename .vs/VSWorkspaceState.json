@@ -1,8 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\src\\Otus.PublicSale.DataAccess"
+    ""
   ],
-  "SelectedNode": "\\.gitlab-ci.yml",
+  "SelectedNode": "\\PublicSale.NotificationService.sln",
   "PreviewInSolutionExplorer": false
 }
