@@ -15,7 +15,7 @@ services:
   #RabbitMq
   rabbitmq:
     image: masstransit/rabbitmq:3
-    container_name: 'promocode-factory-rabbitmq'
+    container_name: 'rabbitmq'
     restart: always 
     environment:
       - RABBITMQ_DEFAULT_USER=user
