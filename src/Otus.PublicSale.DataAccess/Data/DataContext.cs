@@ -40,6 +40,12 @@ namespace Otus.PublicSale.DataAccess.Data
         /// </summary>
         public virtual DbSet<User> Users { get; set; }
 
+        public virtual DbSet<Category> Categories { get; set; }
+
+        public virtual DbSet<Favorites> Favorites { get; set; }
+
+        public virtual DbSet<Subscriber> Subscribers { get; set; }
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -164,6 +170,13 @@ namespace Otus.PublicSale.DataAccess.Data
             modelBuilder.Entity<Category>(entity =>
             {
                 entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(50);
+            });
+
+            modelBuilder.Entity<Subscriber>(entity =>
+            {
+                entity.Property(e => e.Email)
                     .IsRequired()
                     .HasMaxLength(50);
             });
