@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Drown\\source\\repos\\mega-project-migrations\\src\\PublicSale.NotificationService\\PublicSale.NotificationService.DataAccess\\PublicSale.NotificationService.DataAccess.csproj": {}
+    "C:\\Users\\Drown\\source\\repos\\mega-project\\src\\PublicSale.NotificationService\\PublicSale.NotificationService.DataAccess\\PublicSale.NotificationService.DataAccess.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Drown\\source\\repos\\mega-project-migrations\\src\\PublicSale.NotificationService\\PublicSale.NotificationService.Core\\PublicSale.NotificationService.Core.csproj": {
+    "C:\\Users\\Drown\\source\\repos\\mega-project\\src\\PublicSale.NotificationService\\PublicSale.NotificationService.Core\\PublicSale.NotificationService.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Drown\\source\\repos\\mega-project-migrations\\src\\PublicSale.NotificationService\\PublicSale.NotificationService.Core\\PublicSale.NotificationService.Core.csproj",
+        "projectUniqueName": "C:\\Users\\Drown\\source\\repos\\mega-project\\src\\PublicSale.NotificationService\\PublicSale.NotificationService.Core\\PublicSale.NotificationService.Core.csproj",
         "projectName": "PublicSale.NotificationService.Core",
-        "projectPath": "C:\\Users\\Drown\\source\\repos\\mega-project-migrations\\src\\PublicSale.NotificationService\\PublicSale.NotificationService.Core\\PublicSale.NotificationService.Core.csproj",
+        "projectPath": "C:\\Users\\Drown\\source\\repos\\mega-project\\src\\PublicSale.NotificationService\\PublicSale.NotificationService.Core\\PublicSale.NotificationService.Core.csproj",
         "packagesPath": "C:\\Users\\Drown\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Drown\\source\\repos\\mega-project-migrations\\src\\PublicSale.NotificationService\\PublicSale.NotificationService.Core\\obj\\",
+        "outputPath": "C:\\Users\\Drown\\source\\repos\\mega-project\\src\\PublicSale.NotificationService\\PublicSale.NotificationService.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Drown\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -58,14 +58,14 @@
         }
       }
     },
-    "C:\\Users\\Drown\\source\\repos\\mega-project-migrations\\src\\PublicSale.NotificationService\\PublicSale.NotificationService.DataAccess\\PublicSale.NotificationService.DataAccess.csproj": {
+    "C:\\Users\\Drown\\source\\repos\\mega-project\\src\\PublicSale.NotificationService\\PublicSale.NotificationService.DataAccess\\PublicSale.NotificationService.DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Drown\\source\\repos\\mega-project-migrations\\src\\PublicSale.NotificationService\\PublicSale.NotificationService.DataAccess\\PublicSale.NotificationService.DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\Drown\\source\\repos\\mega-project\\src\\PublicSale.NotificationService\\PublicSale.NotificationService.DataAccess\\PublicSale.NotificationService.DataAccess.csproj",
         "projectName": "PublicSale.NotificationService.DataAccess",
-        "projectPath": "C:\\Users\\Drown\\source\\repos\\mega-project-migrations\\src\\PublicSale.NotificationService\\PublicSale.NotificationService.DataAccess\\PublicSale.NotificationService.DataAccess.csproj",
+        "projectPath": "C:\\Users\\Drown\\source\\repos\\mega-project\\src\\PublicSale.NotificationService\\PublicSale.NotificationService.DataAccess\\PublicSale.NotificationService.DataAccess.csproj",
         "packagesPath": "C:\\Users\\Drown\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Drown\\source\\repos\\mega-project-migrations\\src\\PublicSale.NotificationService\\PublicSale.NotificationService.DataAccess\\obj\\",
+        "outputPath": "C:\\Users\\Drown\\source\\repos\\mega-project\\src\\PublicSale.NotificationService\\PublicSale.NotificationService.DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Drown\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -82,8 +82,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\Drown\\source\\repos\\mega-project-migrations\\src\\PublicSale.NotificationService\\PublicSale.NotificationService.Core\\PublicSale.NotificationService.Core.csproj": {
-                "projectPath": "C:\\Users\\Drown\\source\\repos\\mega-project-migrations\\src\\PublicSale.NotificationService\\PublicSale.NotificationService.Core\\PublicSale.NotificationService.Core.csproj"
+              "C:\\Users\\Drown\\source\\repos\\mega-project\\src\\PublicSale.NotificationService\\PublicSale.NotificationService.Core\\PublicSale.NotificationService.Core.csproj": {
+                "projectPath": "C:\\Users\\Drown\\source\\repos\\mega-project\\src\\PublicSale.NotificationService\\PublicSale.NotificationService.Core\\PublicSale.NotificationService.Core.csproj"
               }
             }
           }

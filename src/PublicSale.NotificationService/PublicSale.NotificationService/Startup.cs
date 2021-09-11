@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using PublicSale.NotificationService.Core.Abstractions;
 using PublicSale.NotificationService.DataAccess;
+using PublicSale.NotificationService.DataAccess.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +35,7 @@ namespace PublicSale.NotificationService
             services.AddSingleton<IMongoOptions>(x => x.GetRequiredService<IOptions<MongoOptions>>().Value);
 
             services.AddScoped<IDataContext, DataContext>();
-            //services.AddScoped<IDbInitializer, EfDbInitializer>();
+            services.AddScoped<IDbInitializer, DbInitializer>();
 
             //services.AddScoped(typeof(IRepository<>), typeof(MongoRepository<>));
 

@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Drown\\source\\repos\\mega-project-migrations\\src\\PublicSale.NotificationService\\PublicSale.NotificationService.Core\\PublicSale.NotificationService.Core.csproj",
+      "projectUniqueName": "C:\\Users\\Drown\\source\\repos\\mega-project\\src\\PublicSale.NotificationService\\PublicSale.NotificationService.Core\\PublicSale.NotificationService.Core.csproj",
       "projectName": "PublicSale.NotificationService.Core",
-      "projectPath": "C:\\Users\\Drown\\source\\repos\\mega-project-migrations\\src\\PublicSale.NotificationService\\PublicSale.NotificationService.Core\\PublicSale.NotificationService.Core.csproj",
+      "projectPath": "C:\\Users\\Drown\\source\\repos\\mega-project\\src\\PublicSale.NotificationService\\PublicSale.NotificationService.Core\\PublicSale.NotificationService.Core.csproj",
       "packagesPath": "C:\\Users\\Drown\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Drown\\source\\repos\\mega-project-migrations\\src\\PublicSale.NotificationService\\PublicSale.NotificationService.Core\\obj\\",
+      "outputPath": "C:\\Users\\Drown\\source\\repos\\mega-project\\src\\PublicSale.NotificationService\\PublicSale.NotificationService.Core\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Drown\\AppData\\Roaming\\NuGet\\NuGet.Config",

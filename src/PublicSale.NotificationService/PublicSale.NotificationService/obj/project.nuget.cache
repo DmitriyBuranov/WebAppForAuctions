@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "y0gSQLdsLSrPbqmuq2XYLzCm0RNY0H1nMOfltMdhN/h0fQqEEnT5FfLmu4JsuTstwFFS7lFtHoNt7XWgRZjSYg==",
+  "dgSpecHash": "mNHhnZXY2P5o42vlt6o5XVuna8KTtaudyfuUxEp+1fIPewp6unUXBWJuOOGPfUaboKMAJdbYAzKzW4Hc9q124w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Drown\\source\\repos\\mega-project-migrations\\src\\PublicSale.NotificationService\\PublicSale.NotificationService\\PublicSale.NotificationService.WebHost.csproj",
+  "projectFilePath": "C:\\Users\\Drown\\source\\repos\\mega-project\\src\\PublicSale.NotificationService\\PublicSale.NotificationService\\PublicSale.NotificationService.WebHost.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Drown\\.nuget\\packages\\dnsclient\\1.4.0\\dnsclient.1.4.0.nupkg.sha512",
     "C:\\Users\\Drown\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
