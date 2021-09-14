@@ -7,6 +7,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Otus.PublicSale.Core.Domain.AuctionManagement;
+using Otus.PublicSale.WebApi.Mappers;
 
 namespace Otus.PublicSale.WebApi.Controllers
 {
@@ -41,7 +42,7 @@ namespace Otus.PublicSale.WebApi.Controllers
         {
             var entities = await _repositoryAuctions.GetAllAsync();
 
-            var list = entities.Select(entity => CreateDto(entity)).ToList();
+            var list = entities.Select(entity => new AuctionDto(entity)).ToList();
 
             return Ok(list);
         }
@@ -59,7 +60,7 @@ namespace Otus.PublicSale.WebApi.Controllers
             if (entity == null)
                 return NotFound();
 
-            var model = CreateDto(entity);
+            var model = new AuctionDto(entity);
 
             return Ok(model);
         }
@@ -72,19 +73,9 @@ namespace Otus.PublicSale.WebApi.Controllers
         [HttpPost]
         public async Task<ActionResult<Guid>> CreatetAuctionAsync(AuctionDto request)
         {
-            var entity = new Auction()
-            {
-                Name = request.Name,
-                Descition = request.Descition,
-                CreateDate = request.CreateDate,
-                Status = request.Status,
-                StartDate = request.StartDate,
-                Duration = request.Duration,
-                PriceStart = request.PriceStart,
-                PriceStep = request.PriceStep
-            };
 
-
+            var entity = AuctionMapper.MapFromModel(request);
+            
             await _repositoryAuctions.AddAsync(entity);
 
             return Ok(entity.Id);
@@ -105,16 +96,8 @@ namespace Otus.PublicSale.WebApi.Controllers
             if (entity == null)
                 return NotFound();
 
-            entity.Name = request.Name;
-            entity.Descition = request.Descition;
-            entity.CreateDate = request.CreateDate;
-            entity.Status = request.Status;
-            entity.StartDate = request.StartDate;
-            entity.Duration = request.Duration;
-            entity.PriceStart = request.PriceStart;
-            entity.PriceStep = request.PriceStep;
-
-
+            AuctionMapper.MapFromModel(request, entity);
+            
             await _repositoryAuctions.UpdateAsync(entity);
 
             return Ok();
@@ -136,27 +119,6 @@ namespace Otus.PublicSale.WebApi.Controllers
             await _repositoryAuctions.RemoveAsync(entity);
 
             return Ok();
-        }
-
-        /// <summary>
-        /// Creates Auction Dto from Entity
-        /// </summary>
-        /// <param name="entity">Auction</param>
-        /// <returns>Auction Dto</returns>
-        private AuctionDto CreateDto(Auction entity)
-        {
-            return new AuctionDto()
-            {
-                Id = entity.Id,
-                Name = entity.Name,
-                Descition = entity.Descition,
-                CreateDate = entity.CreateDate,
-                Status = entity.Status,
-                StartDate = entity.StartDate,
-                Duration = entity.Duration,
-                PriceStart = entity.PriceStart,
-                PriceStep = entity.PriceStep
-            };
         }
     }
 }

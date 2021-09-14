@@ -2,6 +2,7 @@
 using Otus.PublicSale.Core.Abstractions.Repositories;
 using Otus.PublicSale.Core.Domain.Administration;
 using Otus.PublicSale.WebApi.Models;
+using Otus.PublicSale.WebApi.Mappers;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
@@ -46,7 +47,7 @@ namespace Otus.PublicSale.WebApi.Controllers
         {
             var entities = await _repositoryUsers.GetAllAsync();
 
-            var list = entities.Select(entity => CreateDto(entity)).ToList();
+            var list = entities.Select(entity => new UserDto(entity)).ToList();
 
             return Ok(list);
         }
@@ -64,7 +65,7 @@ namespace Otus.PublicSale.WebApi.Controllers
             if (entity == null)
                 return NotFound();
 
-            var model = CreateDto(entity);
+            var model = new UserDto(entity);
 
             return Ok(model);
         }
@@ -77,13 +78,7 @@ namespace Otus.PublicSale.WebApi.Controllers
         [HttpPost]
         public async Task<ActionResult<Guid>> CreatetUserAsync(UserDto request)
         {
-            var entity = new User()
-            {
-                FirstName = request.FirstName,
-                Email = request.Email,
-                LastName = request.LastName,
-                Password = request.Password
-            };
+            var entity = UserMapper.MapFromModel(request);
 
             var role = await GetOrCreateRole(request);
 
@@ -109,12 +104,7 @@ namespace Otus.PublicSale.WebApi.Controllers
             if (entity == null)
                 return NotFound();
 
-            entity.FirstName = request.FirstName;
-            entity.Email = request.Email;
-            entity.LastName = request.LastName;
-
-            if (!string.IsNullOrWhiteSpace(request.Password))
-                entity.Password = request.Password;
+            UserMapper.MapFromModel(request, entity);
 
             var role = await GetOrCreateRole(request);
             entity.RoleId = role.Id;
@@ -143,28 +133,6 @@ namespace Otus.PublicSale.WebApi.Controllers
             await _repositoryUsers.RemoveAsync(entity);
 
             return Ok();
-        }
-
-        /// <summary>
-        /// Creates User Dto from Entity
-        /// </summary>
-        /// <param name="entity">User</param>
-        /// <returns>User Dto</returns>
-        private UserDto CreateDto(User entity)
-        {
-            return new UserDto()
-            {
-                Id = entity.Id,
-                FirstName = entity.FirstName,
-                Email = entity.Email,
-                LastName = entity.LastName,
-                Password = "*****************",
-                Role = new RoleDto()
-                {
-                    Id = entity.Role?.Id ?? entity.RoleId,
-                    Name = entity.Role?.Name
-                }
-            };
         }
 
         /// <summary>

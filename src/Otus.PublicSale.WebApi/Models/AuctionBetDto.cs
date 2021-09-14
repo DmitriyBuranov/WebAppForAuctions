@@ -1,5 +1,6 @@
 ﻿using Otus.PublicSale.Core.Domain;
 using System;
+using Otus.PublicSale.Core.Domain.AuctionManagement;
 
 namespace Otus.PublicSale.WebApi.Models
 {
@@ -27,6 +28,27 @@ namespace Otus.PublicSale.WebApi.Models
         /// Amount
         /// </summary>
         public decimal Amount { get; set; }
+
+        /// <summary>
+        /// Constuctor
+        /// </summary>
+        public AuctionBetDto()
+        {
+
+        }
+
+        /// <summary>
+        /// Constuctor
+        /// </summary>
+        /// <param name="auctionBet">Auction Bet</param>
+        public AuctionBetDto(AuctionBet auctionBet)
+        {
+            Id = auctionBet.Id;
+            Amount = auctionBet.Amount;
+            AuctionId = auctionBet.AuctionId;
+            Date = auctionBet.Date;
+            UserId = auctionBet.UserId;
+        }
 
         /// <summary>
         /// Equals

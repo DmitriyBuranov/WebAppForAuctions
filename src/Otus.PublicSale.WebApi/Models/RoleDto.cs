@@ -1,4 +1,5 @@
 ﻿using Otus.PublicSale.Core.Domain;
+using Otus.PublicSale.Core.Domain.Administration;
 
 namespace Otus.PublicSale.WebApi.Models
 {
@@ -11,5 +12,23 @@ namespace Otus.PublicSale.WebApi.Models
         /// Name
         /// </summary>
         public string Name { get; set; }
+
+        /// <summary>
+        /// Constuctor
+        /// </summary>
+        public RoleDto()
+        {
+            
+        }
+
+        /// <summary>
+        /// Constuctor
+        /// </summary>
+        /// <param name="role">Role</param>
+        public RoleDto(Role role)
+        {
+            Id = role.Id;
+            Name = role.Name;
+        }
     }
 }

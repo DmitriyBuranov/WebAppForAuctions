@@ -3,6 +3,7 @@ using Moq;
 using Otus.PublicSale.Core.Abstractions.Repositories;
 using Otus.PublicSale.Core.Domain.AuctionManagement;
 using Otus.PublicSale.WebApi.Controllers;
+using Otus.PublicSale.WebApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -74,7 +75,7 @@ namespace Otus.PublicSale.UnitTests
                     new AuctionBet() { AuctionId = auctionId, Id = 2, Amount = 2, UserId = 2, Date = DateTime.UtcNow },
             };
 
-            var auctionBetsDtos = auctionBets.Select(entity => _auctionBetsController.CreateDto(entity)).ToList();
+            var auctionBetsDtos = auctionBets.Select(entity => new AuctionBetDto(entity)).ToList();
 
             _repositoryAuctionBetsMock.Setup(m => 
                 m.GetAllAsync(It.IsAny<Expression<Func<AuctionBet, bool>>>()))
@@ -142,7 +143,7 @@ namespace Otus.PublicSale.UnitTests
             //Arrange
             var id = 1;
             var auctionBet = new AuctionBet() { AuctionId = 1, Id = id, Amount = 1, UserId = 1, Date = DateTime.UtcNow };
-            var auctionBetDto = _auctionBetsController.CreateDto(auctionBet);
+            var auctionBetDto = new AuctionBetDto(auctionBet);
 
             _repositoryAuctionBetsMock.Setup(m =>
                 m.GetByIdAsync(It.IsAny<int>()))
