@@ -12,6 +12,8 @@ namespace PublicSale.NotificationService.Core.Domain
 
         public string Message {  get; set; }
 
+        public string Subject { get; set; }
+
         public string Status {  get; set; }
 
     }

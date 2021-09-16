@@ -5,11 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\PublicSale.NotificationService.DataAccess\PublicSale.NotificationService.DataAccess.csproj" />
   </ItemGroup>
 
