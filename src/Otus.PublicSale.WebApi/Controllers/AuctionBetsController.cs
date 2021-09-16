@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Otus.PublicSale.Core.Domain.AuctionManagement;
 using System.Collections.Generic;
+using Otus.PublicSale.WebApi.Mappers;
 
 namespace Otus.PublicSale.WebApi.Controllers
 {
@@ -52,7 +53,7 @@ namespace Otus.PublicSale.WebApi.Controllers
 
             var entities = await _repositoryAuctionBets.GetAllAsync(x => x.AuctionId == auctionId);
 
-            var list = entities.Select(entity => CreateDto(entity)).ToList();
+            var list = entities.Select(entity => new AuctionBetDto(entity)).ToList();
 
             return Ok(list);
         }
@@ -73,7 +74,7 @@ namespace Otus.PublicSale.WebApi.Controllers
             if (entity == null)
                 return NotFound();
 
-            var model = CreateDto(entity);
+            var model = new AuctionBetDto(entity);
 
             return Ok(model);
         }
@@ -91,13 +92,7 @@ namespace Otus.PublicSale.WebApi.Controllers
             if (auction == null)
                 return NotFound();
 
-            var entity = new AuctionBet()
-            {
-                Amount = request.Amount,
-                AuctionId = auction.Id,
-                Date = DateTime.UtcNow,
-                UserId = request.UserId
-            };           
+            var entity = AuctionBetMapper.MapFromModel(request, auction);     
 
             await _repositoryAuctionBets.AddAsync(entity);
 
@@ -118,10 +113,7 @@ namespace Otus.PublicSale.WebApi.Controllers
             if (entity == null)
                 return NotFound();
 
-            entity.Amount = request.Amount;
-            entity.AuctionId = request.AuctionId;
-            entity.Date = request.Date;
-            entity.UserId = request.UserId;
+            AuctionBetMapper.MapFromModel(request: request, auctionBet: entity);
             
             await _repositoryAuctionBets.UpdateAsync(entity);
 
@@ -144,24 +136,6 @@ namespace Otus.PublicSale.WebApi.Controllers
             await _repositoryAuctionBets.RemoveAsync(entity);
 
             return Ok();
-        }
-
-        /// <summary>
-        /// Creates Auction Bet Dto from Entity
-        /// </summary>
-        /// <param name="entity">Auction Bet</param>
-        /// <returns>AuctionBet Dto</returns>
-        [ApiExplorerSettings(IgnoreApi = true)]
-        public AuctionBetDto CreateDto(AuctionBet entity)
-        {
-            return new AuctionBetDto()
-            {
-                Id = entity.Id,
-               Amount = entity.Amount,
-               AuctionId = entity.AuctionId,
-               Date = entity.Date,
-               UserId = entity.UserId               
-            };
         }
     }
 }

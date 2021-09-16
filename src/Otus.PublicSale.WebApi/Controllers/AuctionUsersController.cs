@@ -7,6 +7,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Otus.PublicSale.Core.Domain.AuctionManagement;
+using Otus.PublicSale.WebApi.Mappers;
 
 namespace Otus.PublicSale.WebApi.Controllers
 {
@@ -46,7 +47,7 @@ namespace Otus.PublicSale.WebApi.Controllers
         {
             var entities = await _repositoryAuctionUsers.GetAllAsync();
 
-            var list = entities.Select(entity => CreateDto(entity)).ToList();
+            var list = entities.Select(entity => new AuctionUserDto(entity)).ToList();
 
             return Ok(list);
         }
@@ -64,7 +65,7 @@ namespace Otus.PublicSale.WebApi.Controllers
             if (entity == null)
                 return NotFound();
 
-            var model = CreateDto(entity);
+            var model = new AuctionUserDto(entity);
 
             return Ok(model);
         }
@@ -87,12 +88,7 @@ namespace Otus.PublicSale.WebApi.Controllers
             if (auction == null)
                 return NotFound();
 
-            var entity = new AuctionUser()
-            {
-                Date = request.Date,
-                UserId = request.UserId,
-                AuctionId = request.AuctionId,
-            };
+            var entity = AuctionUserMapper.MapFromModel(request);
 
             await _repositoryAuctionUsers.AddAsync(entity);
 
@@ -124,9 +120,7 @@ namespace Otus.PublicSale.WebApi.Controllers
             if (auction == null)
                 return NotFound();
 
-            entity.Date = request.Date;
-            entity.UserId = request.UserId;
-            entity.AuctionId = request.AuctionId;
+            AuctionUserMapper.MapFromModel(request, entity);
 
             await _repositoryAuctionUsers.UpdateAsync(entity);
 
@@ -149,22 +143,6 @@ namespace Otus.PublicSale.WebApi.Controllers
             await _repositoryAuctionUsers.RemoveAsync(entity);
 
             return Ok();
-        }
-        
-        /// <summary>
-        /// Creates Auction User Dto from Entity
-        /// </summary>
-        /// <param name="entity">Auction User</param>
-        /// <returns>Auction User Dto</returns>
-        private AuctionUserDto CreateDto(AuctionUser entity)
-        {
-            return new AuctionUserDto()
-            {
-                Id = entity.Id,
-                Date = entity.Date,
-                UserId = entity.UserId,
-                AuctionId = entity.AuctionId
-            };
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Otus.PublicSale.Core.Domain;
 using System;
+using Otus.PublicSale.Core.Domain.AuctionManagement;
 
 namespace Otus.PublicSale.WebApi.Models
 {
@@ -47,5 +48,30 @@ namespace Otus.PublicSale.WebApi.Models
         /// Price Step
         /// </summary>
         public decimal PriceStep { get; set; }
+
+        /// <summary>
+        /// Constuctor
+        /// </summary>
+        public AuctionDto()
+        {
+            
+        }
+
+        /// <summary>
+        /// Constuctor
+        /// </summary>
+        /// <param name="auction">Auction</param>
+        public AuctionDto(Auction auction)
+        {
+            Id = auction.Id;
+            Name = auction.Name;
+            Descition = auction.Descition;
+            CreateDate = auction.CreateDate;
+            Status = auction.Status;
+            StartDate = auction.StartDate;
+            Duration = auction.Duration;
+            PriceStart = auction.PriceStart;
+            PriceStep = auction.PriceStep;
+        }
     }
 }

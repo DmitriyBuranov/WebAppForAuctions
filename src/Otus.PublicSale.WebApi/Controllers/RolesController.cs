@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Otus.PublicSale.WebApi.Mappers;
 
 namespace Otus.PublicSale.WebApi.Controllers
 {
@@ -39,7 +40,7 @@ namespace Otus.PublicSale.WebApi.Controllers
         {
             var entities = await _repositoryRoles.GetAllAsync();
 
-            var list = entities.Select(entity => CreateDto(entity)).ToList();
+            var list = entities.Select(entity => new RoleDto(entity)).ToList();
 
             return Ok(list);
         }
@@ -57,7 +58,7 @@ namespace Otus.PublicSale.WebApi.Controllers
             if (entity == null)
                 return NotFound();
 
-            var Dto = CreateDto(entity);
+            var Dto = new RoleDto(entity);
 
             return Ok(Dto);
         }
@@ -70,10 +71,7 @@ namespace Otus.PublicSale.WebApi.Controllers
         [HttpPost]
         public async Task<ActionResult<Guid>> CreatetRoleAsync(RoleDto request)
         {            
-            var entity = new Role()
-            {
-                Name = request.Name
-            };
+            var entity = RoleMapper.MapFromModel(request);
 
             await _repositoryRoles.AddAsync(entity);
 
@@ -95,7 +93,7 @@ namespace Otus.PublicSale.WebApi.Controllers
             if (entity == null)
                 return NotFound();
 
-            entity.Name = request.Name;
+            RoleMapper.MapFromModel(request, entity);
 
             await _repositoryRoles.UpdateAsync(entity);
 
@@ -114,7 +112,7 @@ namespace Otus.PublicSale.WebApi.Controllers
                 return BadRequest($"Can't delete Admin Role");
 
             if (id == Constants.UserRoleId)
-                return BadRequest($"Can't delete User Reole");
+                return BadRequest($"Can't delete User Role");
 
             var entity = await _repositoryRoles.GetByIdAsync(id);
 
@@ -127,20 +125,6 @@ namespace Otus.PublicSale.WebApi.Controllers
             await _repositoryRoles.RemoveAsync(entity);
 
             return Ok();
-        }
-
-        /// <summary>
-        /// Creates Role Dto from Entity
-        /// </summary>
-        /// <param name="entity">Role</param>
-        /// <returns>Role Dto</returns>
-        private RoleDto CreateDto(Role entity)
-        {
-            return new RoleDto()
-            {
-                Id = entity.Id,
-                Name = entity.Name
-            };
         }
     }
 }

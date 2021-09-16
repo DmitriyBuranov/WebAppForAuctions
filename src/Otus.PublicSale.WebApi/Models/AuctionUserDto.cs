@@ -1,5 +1,6 @@
 ﻿using Otus.PublicSale.Core.Domain;
 using System;
+using Otus.PublicSale.Core.Domain.AuctionManagement;
 
 namespace Otus.PublicSale.WebApi.Models
 {
@@ -22,5 +23,25 @@ namespace Otus.PublicSale.WebApi.Models
         /// UserId
         /// </summary>
         public int UserId { get; set; }
+
+        /// <summary>
+        /// Constuctor
+        /// </summary>
+        public AuctionUserDto()
+        {
+            
+        }
+
+        /// <summary>
+        /// Constuctor
+        /// </summary>
+        /// <param name="auctionUser">Auction User</param>
+        public AuctionUserDto(AuctionUser auctionUser)
+        {
+            Id = auctionUser.Id;
+            Date = auctionUser.Date;
+            UserId = auctionUser.UserId;
+            AuctionId = auctionUser.AuctionId;
+        }
     }
 }
