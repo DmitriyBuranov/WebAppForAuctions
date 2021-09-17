@@ -8,3 +8,5 @@
 /src/Otus.PublicSale.WebApi/bin
 /src/Otus.PublicSale.UnitTests/obj
 /src/Otus.PublicSale.UnitTests/bin
+/src/Otus.PublicSale.IdentityServer/obj
+/src/Otus.PublicSale.IdentityServer/bin

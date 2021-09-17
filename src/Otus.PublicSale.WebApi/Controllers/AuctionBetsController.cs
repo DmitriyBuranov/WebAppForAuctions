@@ -7,12 +7,14 @@ using System.Threading.Tasks;
 using Otus.PublicSale.Core.Domain.AuctionManagement;
 using System.Collections.Generic;
 using Otus.PublicSale.WebApi.Mappers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Otus.PublicSale.WebApi.Controllers
 {
     /// <summary>
     /// AuctionBets Controller
     /// </summary>
+    [Authorize]
     [ApiController]
     [Route("api/v1/[controller]")]
     public class AuctionBetsController : ControllerBase
