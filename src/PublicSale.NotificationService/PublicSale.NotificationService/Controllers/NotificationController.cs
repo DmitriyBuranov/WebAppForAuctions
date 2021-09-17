@@ -29,6 +29,7 @@ namespace PublicSale.NotificationService.WebHost.Controllers
                 Email = request.Email,
                 Message = request.Message,
                 Subject = request.Subject,
+                EmailFrom = request.EmailFrom
             };
 
             await _notificationRepository.AddAsync(entity);

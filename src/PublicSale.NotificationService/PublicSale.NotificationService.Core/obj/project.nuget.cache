@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "kNJG8EoCuvyolO5uyNSpx9VLM5NjRX8jU2cE9jnv4Jvn8Q3Hf06LeDAdRGI4mXuIcW4Rq5/aANRlZw2iehom4g==",
+  "dgSpecHash": "KbJiHZ3/2Rd2V8uFT6IHhoT6Fd921LSJgIc59FuhOMIqdBciUCDylrRT0umiIJwww4HN9JLWT380BniYUqgQzQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Drown\\source\\repos\\mega-project\\src\\PublicSale.NotificationService\\PublicSale.NotificationService.Core\\PublicSale.NotificationService.Core.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Drown\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0\\microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

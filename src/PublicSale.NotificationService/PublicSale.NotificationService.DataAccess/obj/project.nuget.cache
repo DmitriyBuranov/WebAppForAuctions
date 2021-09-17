@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "cQtNAeXAETHMZ2lczI3+1BuNWsvRwABhr0glF1uMzB7Vju4NjvjyBBNABOkXDB0rC436OUOCTVhrflSBeY85uw==",
+  "dgSpecHash": "YrGlvXNeJ3/iXtKShKoHe8/6rdP9sA+bOE5+9kwWNEVKXIk7X65zLKuXdEWhV/eFfwoP+PwFR1QpKqf2Z2Fmyg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Drown\\source\\repos\\mega-project\\src\\PublicSale.NotificationService\\PublicSale.NotificationService.DataAccess\\PublicSale.NotificationService.DataAccess.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Drown\\.nuget\\packages\\dnsclient\\1.4.0\\dnsclient.1.4.0.nupkg.sha512",
     "C:\\Users\\Drown\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\Drown\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0\\microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\Drown\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",
     "C:\\Users\\Drown\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
     "C:\\Users\\Drown\\.nuget\\packages\\microsoft.netcore.platforms\\2.1.2\\microsoft.netcore.platforms.2.1.2.nupkg.sha512",
