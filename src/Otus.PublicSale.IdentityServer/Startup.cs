@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Otus.PublicSale.IdentityServer.Data;
 using Otus.PublicSale.IdentityServer.Models;
+using Otus.PublicSale.IdentityServer.Quickstart;
 
 namespace Otus.PublicSale.IdentityServer
 {
@@ -86,6 +87,8 @@ namespace Otus.PublicSale.IdentityServer
 
             app.UseIdentityServer();
             app.UseAuthorization();
+
+            app.UseMiddleware<AddJwtMiddleware>();
 
             app.UseEndpoints(endpoints => endpoints.MapDefaultControllerRoute());
         }

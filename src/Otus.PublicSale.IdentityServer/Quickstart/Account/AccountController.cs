@@ -17,6 +17,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Otus.PublicSale.IdentityServer.Models;
+using System.Security.Claims;
 
 namespace Otus.PublicSale.IdentityServer.Quickstart.UI
 {
@@ -109,6 +110,10 @@ namespace Otus.PublicSale.IdentityServer.Quickstart.UI
                 {
                     var user = await _userManager.FindByNameAsync(model.Username);
                     await _events.RaiseAsync(new UserLoginSuccessEvent(user.UserName, user.Id, user.UserName, clientId: context?.Client.ClientId));
+
+                    //await _userManager.AddClaimAsync(user, new Claim("test", "Hello"));
+                    //await _signInManager.CreateUserPrincipalAsync(user);
+                    //await _signInManager.RefreshSignInAsync(user);
 
                     if (context != null)
                     {
