@@ -25,8 +25,6 @@ namespace PublicSale.NotificationService.Core.Services
 
         public async Task<bool> AddNotificationAsync(Notification notification)
         {
-
-
             await _notificationRepository.AddAsync(notification);
 
             return true;

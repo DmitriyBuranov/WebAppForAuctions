@@ -45,5 +45,6 @@ namespace PublicSale.NotificationService.DataAccess.Repositories
         {
             await _collection.DeleteOneAsync(x => x.Id == entity.Id);
         }
+
     }
 }
