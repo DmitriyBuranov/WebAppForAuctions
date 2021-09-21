@@ -1,4 +1,5 @@
 ﻿using Otus.PublicSale.Core.Domain;
+using System;
 
 namespace Otus.PublicSale.WebApi.Models
 {
@@ -21,6 +22,13 @@ namespace Otus.PublicSale.WebApi.Models
         /// Message
         /// </summary>
         public string Message { get; set; }
-        
+
+        /// <summary>
+        /// quick
+        /// </summary>
+        public Boolean Quick { get; set; }
+
+
+
     }
 }

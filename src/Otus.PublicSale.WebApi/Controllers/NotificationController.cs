@@ -47,10 +47,10 @@ namespace Otus.PublicSale.WebApi.Controllers
                     EmailFrom = request.EmailFrom,
                     EmailTo = user.Email,
                     Subject = request.Subject,
-                    Message = request.Message
+                    Message = request.Message,
+                    Quick = request.Quick
     
                 });
-
 
             return Ok();
 

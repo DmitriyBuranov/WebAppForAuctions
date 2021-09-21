@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PublicSale.NotificationService.Core.Services
 {
-    internal class TimedHostedService : IHostedService, IDisposable
+    public class TimedHostedService : IHostedService, IDisposable
     {
         private static Logger _logger = LogManager.GetCurrentClassLogger();
         private readonly IServiceProvider _services;
@@ -20,37 +20,33 @@ namespace PublicSale.NotificationService.Core.Services
 
         public Task StartAsync(CancellationToken cancellationToken)
         {
-            TimeSpan startForEveryDayTimer = DateTime.Today.TimeOfDay - DateTime.Now.TimeOfDay;
-            if (startForEveryDayTimer < TimeSpan.Zero)
-                startForEveryDayTimer = TimeSpan.FromHours(31) + startForEveryDayTimer;
+            _logger.Info("Timed Hosted Service running.");
+
+            TimeSpan startForEveryDayTimer = TimeSpan.Zero;
 
             _timer = new Timer(DoEveryDayWork, null, startForEveryDayTimer, TimeSpan.FromMinutes(5));
-
-            TimeSpan start = DateTime.Today.TimeOfDay - DateTime.Now.TimeOfDay;
-            if (start < TimeSpan.Zero)
-                start = TimeSpan.FromMinutes(5) + start;
 
             return Task.CompletedTask;
         }
 
-        private async void DoEveryDayWork(object state)
+        private  void DoEveryDayWork(object state)
         {
-            using var scope = _services.CreateScope();
-            var sendRegistryInfoService = scope.ServiceProvider
-                .GetRequiredService<SendNotificationService>();
-
-            try
+            using (var scope = _services.CreateScope())
             {
-                _logger.Info("Start sending notification");
-                sendRegistryInfoService.SendMessageAsync();
-            }
-            catch (Exception ex)
-            {
-                _logger.Error($"Error: {ex}");
-            }
+                var sendNotificationService = scope.ServiceProvider
+                                .GetRequiredService<SendNotificationService>();
 
+                try
+                {
+                    _logger.Info("Start sending notification");
+                    sendNotificationService.SendMessageAsync();
+                }
+                catch (Exception ex)
+                {
+                    _logger.Error($"Error: {ex}");
+                }
+            }
         }
-
 
         public Task StopAsync(CancellationToken cancellationToken)
         {
@@ -62,7 +58,6 @@ namespace PublicSale.NotificationService.Core.Services
         public void Dispose()
         {
             _timer?.Dispose();
-
         }
     }
 }

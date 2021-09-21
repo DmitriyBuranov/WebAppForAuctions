@@ -13,5 +13,7 @@ namespace Otus.PublicSale.Core.Abstractions.Services
         public string Subject { get; }
 
         public string Message { get; }
+
+        public Boolean Quick {  get; }
     }
 }

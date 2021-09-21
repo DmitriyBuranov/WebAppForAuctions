@@ -10,14 +10,14 @@ using System.Threading.Tasks;
 
 namespace PublicSale.NotificationService.Core.Services
 {
-    public class NotificationService : INotificationService
+    public class NotificationSaveService : INotificationSaveService
     {
         private readonly IRepository<Notification> _notificationRepository;
-        private readonly ILogger<NotificationService> _logger;
+        private readonly ILogger<NotificationSaveService> _logger;
 
-        public NotificationService(
+        public NotificationSaveService(
             IRepository<Notification> notificationRepository,
-            ILogger<NotificationService> logger)
+            ILogger<NotificationSaveService> logger)
         {
             _notificationRepository = notificationRepository;
             _logger = logger;

@@ -18,5 +18,11 @@ namespace PublicSale.NotificationService.Core.Domain
 
         public string Status {  get; set; }
 
+        public Boolean Quick { get; set; }
+
+        public short ErrorsСount { get; set; }
+
+        public Boolean IsSend{ get; set; }
+
     }
 }

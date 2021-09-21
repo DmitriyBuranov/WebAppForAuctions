@@ -46,5 +46,10 @@ namespace PublicSale.NotificationService.DataAccess.Repositories
             await _collection.DeleteOneAsync(x => x.Id == entity.Id);
         }
 
+        public async Task DeleteAllAsync()
+        {
+            await _collection.DeleteManyAsync(x => true);
+        }
+
     }
 }

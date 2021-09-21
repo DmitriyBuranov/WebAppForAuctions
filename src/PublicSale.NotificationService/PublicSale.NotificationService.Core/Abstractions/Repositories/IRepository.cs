@@ -20,5 +20,7 @@ namespace PublicSale.NotificationService.Core.Abstractions.Repositories
         Task UpdateAsync(T entity);
 
         Task DeleteAsync(T entity);
+
+        Task DeleteAllAsync();
     }
 }

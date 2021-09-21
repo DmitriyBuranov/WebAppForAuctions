@@ -5,8 +5,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
+using Microsoft.OpenApi.Models;
 using PublicSale.NotificationService.Core.Abstractions;
 using PublicSale.NotificationService.Core.Abstractions.Repositories;
+using PublicSale.NotificationService.Core.Abstractions.Services;
+using PublicSale.NotificationService.Core.Services;
 using PublicSale.NotificationService.DataAccess;
 using PublicSale.NotificationService.DataAccess.Data;
 using PublicSale.NotificationService.DataAccess.Repositories;
@@ -40,6 +43,7 @@ namespace PublicSale.NotificationService
 
             services.AddScoped<IDataContext, DataContext>();
             services.AddScoped<IDbInitializer, DbInitializer>();
+            services.AddTransient<INotificationSaveService, NotificationSaveService>();
 
             services.AddScoped(typeof(IRepository<>), typeof(MongoRepository<>));
 
@@ -63,7 +67,14 @@ namespace PublicSale.NotificationService
 
             services.AddMassTransitHostedService();
 
+            services.AddHostedService<TimedHostedService>();
 
+            services.AddTransient<SendNotificationService>();
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "PSNotificationAPI", Version = "v1" });
+            });
 
         }
 
@@ -75,16 +86,16 @@ namespace PublicSale.NotificationService
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PSNotificationAPI v1"));
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
+                endpoints.MapControllers();
             });
         }
     }

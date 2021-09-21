@@ -2,9 +2,9 @@ version: '3'
 services:
 
   #Notification Db
-  publicSale-Notification-db:
+  publicsale-notification-db:
     image: "mongo:4.2.3"
-    container_name: 'publicSale-Notification-db'
+    container_name: 'publicsale-notification-db'
     restart: always 
     ports:
       - 27017:27017
@@ -28,4 +28,4 @@ services:
 
 volumes:
   rabbitmq-data:
-  publicSale-Notification-db-data:
+  publicsale-notification-db-data:

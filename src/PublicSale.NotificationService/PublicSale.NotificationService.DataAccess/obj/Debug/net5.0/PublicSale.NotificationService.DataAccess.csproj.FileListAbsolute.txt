@@ -27,3 +27,4 @@ C:\Users\Drown\source\repos\mega-project\src\PublicSale.NotificationService\Publ
 C:\Users\Drown\source\repos\mega-project\src\PublicSale.NotificationService\PublicSale.NotificationService.DataAccess\obj\Debug\net5.0\PublicSale.NotificationService.DataAccess.dll
 C:\Users\Drown\source\repos\mega-project\src\PublicSale.NotificationService\PublicSale.NotificationService.DataAccess\obj\Debug\net5.0\ref\PublicSale.NotificationService.DataAccess.dll
 C:\Users\Drown\source\repos\mega-project\src\PublicSale.NotificationService\PublicSale.NotificationService.DataAccess\obj\Debug\net5.0\PublicSale.NotificationService.DataAccess.pdb
+C:\Users\Drown\source\repos\mega-project\src\PublicSale.NotificationService\PublicSale.NotificationService.DataAccess\obj\Debug\net5.0\PublicSale.NotificationService.DataAccess.csproj.CopyComplete

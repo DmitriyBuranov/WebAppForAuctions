@@ -13,11 +13,11 @@ namespace PublicSale.NotificationService.WebHost.EventConsumers
 
     public class AddNotifiactionEventConsumer : IConsumer<IReceiveNotification>
     {
-        private readonly INotificationService _notificationService;
+        private readonly INotificationSaveService _notificationService;
         private readonly ILogger<AddNotifiactionEventConsumer> _logger;
 
         public AddNotifiactionEventConsumer(
-            INotificationService notificationService,
+            INotificationSaveService notificationService,
             ILogger<AddNotifiactionEventConsumer> logger)
         {
             _notificationService = notificationService;
@@ -31,7 +31,8 @@ namespace PublicSale.NotificationService.WebHost.EventConsumers
                 Email = context.Message.Email,
                 Message = context.Message.Message,
                 Subject = context.Message.Subject,
-                EmailFrom = context.Message.EmailFrom
+                EmailFrom = context.Message.EmailFrom,
+                Quick = context.Message.Quick
             };
 
             await _notificationService.AddNotificationAsync(notification);

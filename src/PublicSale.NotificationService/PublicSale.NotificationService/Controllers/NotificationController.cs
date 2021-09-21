@@ -35,9 +35,36 @@ namespace PublicSale.NotificationService.WebHost.Controllers
             await _notificationRepository.AddAsync(entity);
 
             return Ok(entity.Id);
-
         }
 
+        [HttpGet]
+        public async Task<List<Notification>> GetNotificationAsync()
+        {
+            var employees = await _notificationRepository.GetAllAsync();
+
+            var employeesModelList = employees.Select(x =>
+                new Notification()
+                {
+                    Email = x.Email,
+                    Message = x.Message,
+                    Subject = x.Subject,
+                    EmailFrom = x.EmailFrom,
+                    Status = x.Status,
+                    Quick = x.Quick,
+                    ErrorsСount = x.ErrorsСount,
+                    IsSend = x.IsSend
+                }).ToList();
+
+            return employeesModelList;
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> DeleteAll()
+        {
+            await _notificationRepository.DeleteAllAsync();
+
+            return Ok();
+        }
 
 
     }

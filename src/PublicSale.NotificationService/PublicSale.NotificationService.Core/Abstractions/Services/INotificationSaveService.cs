@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PublicSale.NotificationService.Core.Abstractions.Services
 {
-    public interface INotificationService
+    public interface INotificationSaveService
     {
         Task<bool> AddNotificationAsync(Notification notification);
     }

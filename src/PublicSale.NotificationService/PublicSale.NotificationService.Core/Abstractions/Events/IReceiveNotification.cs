@@ -13,6 +13,6 @@ namespace PublicSale.NotificationService.Core.Abstractions
 
         string Subject { get; }
 
-        string Status { get; }
+        Boolean Quick { get; }
     }
 }

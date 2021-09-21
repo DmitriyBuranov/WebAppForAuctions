@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using MailKit.Net.Smtp;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Abstractions;
 using Microsoft.AspNetCore.Routing;
+using MimeKit;
 using NLog;
 using PublicSale.NotificationService.Core.Abstractions.Repositories;
 using PublicSale.NotificationService.Core.Domain;
@@ -13,13 +15,13 @@ using System.Threading.Tasks;
 
 namespace PublicSale.NotificationService.Core.Services
 {
-    public class SendNotoficationService
+    public class SendNotificationService
     {
         private static Logger _logger = LogManager.GetCurrentClassLogger();
         private readonly IRepository<Notification> _notificationRepository;
         private readonly IServiceProvider _serviceProvider;
 
-        public SendNotoficationService( IRepository<Notification> notificationRepository, IServiceProvider serviceProvider)
+        public SendNotificationService(IRepository<Notification> notificationRepository, IServiceProvider serviceProvider)
         {
             _notificationRepository = notificationRepository;
             _serviceProvider = serviceProvider;
@@ -27,11 +29,9 @@ namespace PublicSale.NotificationService.Core.Services
 
         public async void SendMessageAsync()
         {
-            var currentDay = DateTime.Now.Date;
-            var notificationForSent =await _notificationRepository.GetAllAsync();
-
-            var notificationForSentlList = notificationForSent.Select(x =>
-                new NotificationDto()
+            var notificationForSent = (await _notificationRepository.GetAllAsync())
+                .Select(x =>
+                new Notification()
                 {
                     Email = x.Email,
                     Message = x.Message,
@@ -39,38 +39,35 @@ namespace PublicSale.NotificationService.Core.Services
                     EmailFrom = x.EmailFrom
                 }).ToList();
 
-
             foreach (var notification in notificationForSent)
-            {
-                 async Task SendEmailAsync(string email, string subject, string message)
-                {
-                    var emailMessage = new MimeMessage();
-
-                    emailMessage.From.Add(new MailboxAddress("Администрация сайта", "login@yandex.ru"));
-                    emailMessage.To.Add(new MailboxAddress("", email));
-                    emailMessage.Subject = subject;
-                    emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Html)
-                    {
-                        Text = message
-                    };
-
-                    using (var client = new SmtpClient())
-                    {
-                        await client.ConnectAsync("smtp.yandex.ru", 25, false);
-                        await client.AuthenticateAsync("login@yandex.ru", "password");
-                        await client.SendAsync(emailMessage);
-
-                        await client.DisconnectAsync(true);
-                    }
-                }
-
-            }
-
-            //if (isSended)
-            //    _logger.Info($"Send");
-            //else
-            //    _logger.Error($"Error");
+                await SendEmailAsync(notification);
         }
 
+        private async Task SendEmailAsync(Notification notification)
+        {
+            try
+            {
+                var emailMessage = new MimeMessage();
+
+                emailMessage.From.Add(new MailboxAddress("Администрация сайта", notification.EmailFrom));
+                emailMessage.To.Add(new MailboxAddress("", notification.Email));
+                emailMessage.Subject = notification.Subject;
+                emailMessage.Body = new TextPart("Plain")
+                {
+                    Text = notification.Message
+                };
+
+                using var client = new SmtpClient();
+                await client.ConnectAsync("smtp.yandex.ru", 25, false);
+                await client.AuthenticateAsync("team1.publicsale@yandex.com", "dsfpZjZ7gUT@cyz");
+                await client.SendAsync(emailMessage);
+
+                await client.DisconnectAsync(true);
+            }
+            catch (Exception ex)
+            {
+                _logger.Error($"Error in SendEmailAsync: {ex}");
+            }
+        }
     }
 }
