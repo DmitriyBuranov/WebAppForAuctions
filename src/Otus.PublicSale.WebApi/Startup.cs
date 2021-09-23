@@ -13,6 +13,8 @@ using System.Collections.Generic;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Microsoft.AspNetCore.Authorization;
 using System.Linq;
+using System.Reflection;
+using System.IO;
 
 namespace Otus.PublicSale.WebApi
 {
@@ -90,6 +92,9 @@ namespace Otus.PublicSale.WebApi
                         }
                     }
                 });
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                options.IncludeXmlComments(xmlPath);
 
                 options.OperationFilter<AuthorizeCheckOperationFilter>();
             });

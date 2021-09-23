@@ -59,7 +59,7 @@ namespace PublicSale.NotificationService.Core.Services
 
                 using var client = new SmtpClient();
                 await client.ConnectAsync("smtp.yandex.ru", 25, false);
-                await client.AuthenticateAsync("team1.publicsale@yandex.com", "dsfpZjZ7gUT@cyz");
+                await client.AuthenticateAsync("team1.publicsale@yandex.com", "chvG9#LgBpDywm3");
                 await client.SendAsync(emailMessage);
 
                 await client.DisconnectAsync(true);
