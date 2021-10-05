@@ -24,7 +24,7 @@ tests:
     only:
       - main
     script:
-        - dotnet test src/$TEST_PROJECT_NAME/$TEST_PROJECT_NAME.csproj --logger:"junit;LogFilePath=test-result.xml"
+        - dotnet test src/$TEST_PROJECT_NAME/$TEST_PROJECT_NAME.csproj --logger:"junit;LogFilePath=src/$TEST_PROJECT_NAME/test-result.xml"
 
  
 
