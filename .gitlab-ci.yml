@@ -24,14 +24,8 @@ tests:
     only:
       - main
     script:
-        - dotnet test src/$TEST_PROJECT_NAME/$TEST_PROJECT_NAME.csproj --test-adapter-path:. --logger:"junit;LogFilePath=..\artifacts\{assembly}-test-result.xml;MethodFormat=Class;FailureBodyFormat=Verbose"'  
-    artifacts:
-     when: always
-     paths: 
-     - ./**/*test-result.xml
-     reports:
-      junit: 
-       - ./**/*test-result.xml
+        - dotnet test src/$TEST_PROJECT_NAME/$TEST_PROJECT_NAME.csproj --logger:"junit;LogFilePath=test-result.xml"
+
  
 
 docker:
