@@ -28,8 +28,7 @@ namespace Otus.PublicSale.WebApi.Controllers
         /// <summary>
         /// Constuctor
         /// </summary>
-        /// <param name="repositoryAuctions">Auctions repository</param>        
-        /// <param name="repositoryRoles">Roles repository</param>        
+        /// <param name="repositoryAuctions">Auctions repository</param>            
         public AuctionsController(IRepository<Auction> repositoryAuctions)
         {
             _repositoryAuctions = repositoryAuctions;
@@ -55,8 +54,11 @@ namespace Otus.PublicSale.WebApi.Controllers
         /// <param name="id">Auction Id</param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public async Task<ActionResult<AuctionDto>> GettAuctionAsync(int id)
+        public async Task<ActionResult<AuctionDto>> GetAuctionAsync(int id)
         {
+            if (id <= 0)
+                return BadRequest();
+
             var entity = await _repositoryAuctions.GetByIdAsync(id);
 
             if (entity == null)

@@ -73,5 +73,29 @@ namespace Otus.PublicSale.WebApi.Models
             PriceStart = auction.PriceStart;
             PriceStep = auction.PriceStep;
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is null)
+            {
+                return false;
+            }
+
+            // Optimization for a common success case.
+            if (Object.ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            // If run-time types are not exactly the same, return false.
+            if (this.GetType() != obj.GetType())
+            {
+                return false;
+            }
+
+            var data = obj as AuctionDto;
+
+            return this.Id == data.Id && this.Name == data.Name && this.Duration == data.Duration && this.Descition == data.Descition && this.CreateDate == data.CreateDate && this.PriceStart == data.PriceStart && this.PriceStep == data.PriceStep && this.StartDate == data.StartDate && this.Status == data.Status;
+        }
     }
 }
