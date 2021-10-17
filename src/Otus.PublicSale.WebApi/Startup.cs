@@ -7,6 +7,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using MassTransit;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using System;
 using Microsoft.OpenApi.Models;
 using System.Collections.Generic;
@@ -15,6 +17,8 @@ using Microsoft.AspNetCore.Authorization;
 using System.Linq;
 using System.Reflection;
 using System.IO;
+using Otus.PublicSale.WebApi.Models;
+using Otus.PublicSale.WebApi.Infostructure;
 
 namespace Otus.PublicSale.WebApi
 {
@@ -71,6 +75,9 @@ namespace Otus.PublicSale.WebApi
                 });
             });
             services.AddMassTransitHostedService();
+            services.AddFluentValidation();
+            services.AddTransient<IValidator<AuctionUserDto>, AuctionUserValidator>();
+            services.AddTransient<IValidator<AuctionDto>, AuctionValidator>();
 
             services.AddSwaggerGen(options =>
             {
@@ -98,6 +105,7 @@ namespace Otus.PublicSale.WebApi
 
                 options.OperationFilter<AuthorizeCheckOperationFilter>();
             });
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

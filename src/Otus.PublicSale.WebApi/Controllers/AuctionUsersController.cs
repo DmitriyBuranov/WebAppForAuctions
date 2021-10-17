@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Otus.PublicSale.Core.Domain.AuctionManagement;
 using Otus.PublicSale.WebApi.Mappers;
 using Microsoft.AspNetCore.Authorization;
+using Otus.PublicSale.WebApi.Infostructure;
 
 namespace Otus.PublicSale.WebApi.Controllers
 {

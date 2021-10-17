@@ -41,6 +41,9 @@ namespace Otus.PublicSale.WebApi.Controllers
         {
             var user = await _repositoryUsers.GetByIdAsync(id);
 
+            if (user == null)
+                return NotFound();
+
             await _publishEndpoint.Publish<ISendNotification>(
                 new
                 {
