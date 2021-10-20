@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace Otus.PublicSale.WebApi
 {
@@ -24,6 +25,13 @@ namespace Otus.PublicSale.WebApi
         /// <returns></returns>
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .ConfigureLogging(logging =>
+                {
+                    logging.AddEventLog(eventLogSettings =>
+                    {
+                        eventLogSettings.SourceName = "MyLogs";
+                    });
+                })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();

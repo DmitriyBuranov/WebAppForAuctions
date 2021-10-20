@@ -19,6 +19,7 @@ using System.Reflection;
 using System.IO;
 using Otus.PublicSale.WebApi.Models;
 using Otus.PublicSale.WebApi.Infostructure;
+using Otus.PublicSale.Core.Middlewares;
 
 namespace Otus.PublicSale.WebApi
 {
@@ -129,6 +130,8 @@ namespace Otus.PublicSale.WebApi
                 options.OAuthScopes(new[] { "otus.publicsale.webapi" });
                 options.OAuthUsePkce();
             });
+
+            app.UseRequestResponseLogging();
 
             app.UseEndpoints(endpoints => endpoints.MapDefaultControllerRoute());
         }
