@@ -29,7 +29,7 @@ namespace Otus.PublicSale.WebApi
                 {
                     logging.AddEventLog(eventLogSettings =>
                     {
-                        eventLogSettings.SourceName = "MyLogs";
+                        eventLogSettings.SourceName = "Otus.PublicSale.WebApi";
                     });
                 })
                 .ConfigureWebHostDefaults(webBuilder =>

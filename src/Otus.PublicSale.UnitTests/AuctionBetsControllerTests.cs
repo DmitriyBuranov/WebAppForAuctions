@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Distributed;
 using Moq;
 using Otus.PublicSale.Core.Abstractions.Repositories;
 using Otus.PublicSale.Core.Domain.AuctionManagement;
@@ -27,6 +28,7 @@ namespace Otus.PublicSale.UnitTests
         /// Mocks
         /// </summary>
         private Mock<IRepository<AuctionBet>> _repositoryAuctionBetsMock = new Mock<IRepository<AuctionBet>>();
+        private Mock<IDistributedCache> _cache = new Mock<IDistributedCache>();
 
         /// <summary>
         /// Constructor
@@ -38,7 +40,7 @@ namespace Otus.PublicSale.UnitTests
 
             var repositoryAuctions = provider.GetService(typeof(IRepository<Auction>)) as IRepository<Auction>;
 
-            _auctionBetsController = new AuctionBetsController(_repositoryAuctionBetsMock.Object, repositoryAuctions);
+            _auctionBetsController = new AuctionBetsController(_repositoryAuctionBetsMock.Object, repositoryAuctions, _cache.Object);
         }
 
         #region GetAllAsync

@@ -10,6 +10,9 @@ using Otus.PublicSale.Core.Domain.AuctionManagement;
 using Otus.PublicSale.WebApi.Mappers;
 using Microsoft.AspNetCore.Authorization;
 using Otus.PublicSale.WebApi.Infostructure;
+using Microsoft.Extensions.Caching.Distributed;
+using Otus.PublicSale.WebApi.Extensions;
+using System.Collections.Generic;
 
 namespace Otus.PublicSale.WebApi.Controllers
 {
@@ -21,6 +24,17 @@ namespace Otus.PublicSale.WebApi.Controllers
     [Route("api/v1/[controller]")]
     public class AuctionUsersController : ControllerBase
     {
+        /// <summary>
+        /// Constants
+        /// </summary>
+        private const string _cacheOneKey = "AuctionBet_{0}";
+        private const string _cacheAllKey = "AuctionBets_{0}";
+
+        /// <summary>
+        /// Cache
+        /// </summary>
+        private readonly IDistributedCache _cache;
+
         /// <summary>
         /// Auctions repository
         /// </summary>
@@ -34,23 +48,38 @@ namespace Otus.PublicSale.WebApi.Controllers
         /// <param name="repositoryAuctionUsers">Auction users repository</param>
         /// <param name="repositoryUsers">Users repository</param>
         /// <param name="repositoryAuctions">Auctions repository</param>
-        public AuctionUsersController(IRepository<AuctionUser> repositoryAuctionUsers, IRepository<User> repositoryUsers, IRepository<Auction> repositoryAuctions)
+        /// <param name="cache">Distributed Cache</param>
+        public AuctionUsersController(
+            IRepository<AuctionUser> repositoryAuctionUsers, 
+            IRepository<User> repositoryUsers, 
+            IRepository<Auction> repositoryAuctions,
+            IDistributedCache cache)
         {
             _repositoryAuctionUsers = repositoryAuctionUsers;
             _repositoryUsers = repositoryUsers;
             _repositoryAuctions = repositoryAuctions;
+
+            _cache = cache;
         }
 
         /// <summary>
         /// Gets List of Auction Users
         /// </summary>
+        /// <param name="auctionId">Auction Id</param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<ActionResult<AuctionDto>> GetAuctionUsersAsync()
+        public async Task<ActionResult<AuctionUserDto>> GetAuctionUsersAsync(int auctionId)
         {
-            var entities = await _repositoryAuctionUsers.GetAllAsync();
+            if (auctionId <= 0)
+                return BadRequest();
 
-            var list = entities.Select(entity => new AuctionUserDto(entity)).ToList();
+            var list = await _cache.GetRecordAsync<List<AuctionUserDto>>(string.Format(_cacheAllKey, auctionId));
+            if (list is null)
+            {
+                var entities = await _repositoryAuctionUsers.GetAllAsync(x => x.AuctionId == auctionId);
+                list = entities.Select(entity => new AuctionUserDto(entity)).ToList();
+                await _cache.SetRecordAsync(string.Format(_cacheAllKey, auctionId), list);
+            }
 
             return Ok(list);
         }
@@ -63,12 +92,20 @@ namespace Otus.PublicSale.WebApi.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<AuctionUserDto>> GettAuctionUserAsync(int id)
         {
-            var entity = await _repositoryAuctionUsers.GetByIdAsync(id);
+            if (id <= 0)
+                return BadRequest();
 
-            if (entity == null)
-                return NotFound();
+            var model = await _cache.GetRecordAsync<AuctionUserDto>(string.Format(_cacheOneKey, id));
+            if (model is null)
+            {
+                var entity = await _repositoryAuctionUsers.GetByIdAsync(id);
 
-            var model = new AuctionUserDto(entity);
+                if (entity == null)
+                    return NotFound();
+
+                model = new AuctionUserDto(entity);
+                await _cache.SetRecordAsync(string.Format(_cacheOneKey, id), model);
+            }
 
             return Ok(model);
         }
@@ -95,8 +132,9 @@ namespace Otus.PublicSale.WebApi.Controllers
 
             await _repositoryAuctionUsers.AddAsync(entity);
 
-            return Ok(entity.Id);
+            ClearCacheRecord(entity.Id, auction.Id);
 
+            return Ok(entity.Id);
         }
         
         /// <summary>
@@ -127,6 +165,8 @@ namespace Otus.PublicSale.WebApi.Controllers
 
             await _repositoryAuctionUsers.UpdateAsync(entity);
 
+            ClearCacheRecord(entity.Id, auction.Id);
+
             return Ok();
         }
         
@@ -145,7 +185,20 @@ namespace Otus.PublicSale.WebApi.Controllers
 
             await _repositoryAuctionUsers.RemoveAsync(entity);
 
+            ClearCacheRecord(entity.Id, entity.AuctionId);
+
             return Ok();
+        }
+
+        /// <summary>
+        /// Clears Cache Record
+        /// </summary>
+        /// <param name="id">Entity Id</param>
+        /// <param name="auctionId">Auction Id</param>
+        private void ClearCacheRecord(int id, int auctionId)
+        {
+            _cache.RemoveRecordAsync(string.Format(_cacheOneKey, id));
+            _cache.RemoveRecordAsync(string.Format(_cacheAllKey, auctionId));
         }
     }
 }

@@ -58,17 +58,19 @@ namespace Otus.PublicSale.Core.Middlewares
         /// <returns></returns>
         private async Task LogRequest(HttpContext context)
         {
-            //context.Request.EnableBuffering();
+            context.Request.EnableBuffering();
 
             await using var requestStream = _recyclableMemoryStreamManager.GetStream();
             await context.Request.Body.CopyToAsync(requestStream);
             _requestLog = $"Http Request Information:{Environment.NewLine}" +
                                    $"Schema:{context.Request.Scheme}{Environment.NewLine}" +
+                                   $"Method:{context.Request.Method}{Environment.NewLine}" +
                                    $"Host: {context.Request.Host}{Environment.NewLine}" +
                                    $"Path: {context.Request.Path}{Environment.NewLine}" +
                                    $"QueryString: {context.Request.QueryString}{Environment.NewLine}" +
                                    $"Request Body: {ReadStreamInChunks(requestStream)}{Environment.NewLine}";
-            //context.Request.Body.Position = 0;
+
+            context.Request.Body.Position = 0;
         }
 
         /// <summary>
@@ -91,6 +93,7 @@ namespace Otus.PublicSale.Core.Middlewares
 
             _responseLog =  $"Http Response Information:{Environment.NewLine}" +
                                    $"Schema:{context.Request.Scheme}{Environment.NewLine}" +
+                                   $"Method:{context.Request.Method}{Environment.NewLine}" +
                                    $"Host: {context.Request.Host}{Environment.NewLine}" +
                                    $"Path: {context.Request.Path}{Environment.NewLine}" +
                                    $"QueryString: {context.Request.QueryString}{Environment.NewLine}" +
@@ -125,5 +128,4 @@ namespace Otus.PublicSale.Core.Middlewares
             return textWriter.ToString();
         }
     }
-
 }

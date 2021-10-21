@@ -1,5 +1,6 @@
 ﻿using AutoFixture;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Distributed;
 using Moq;
 using Otus.PublicSale.Core.Abstractions.Repositories;
 using Otus.PublicSale.Core.Domain.AuctionManagement;
@@ -27,7 +28,8 @@ namespace Otus.PublicSale.UnitTests
         /// <summary>
         /// Mocks
         /// </summary>
-        private Mock<IRepository<Auction>> _repositoryauctionMock = new Mock<IRepository<Auction>>();
+        private Mock<IRepository<Auction>> _repositoryauctionMock = new Mock<IRepository<Auction>>();        
+        private Mock<IDistributedCache> _cache = new Mock<IDistributedCache>();
 
         /// <summary>
         /// Constructor
@@ -37,7 +39,7 @@ namespace Otus.PublicSale.UnitTests
         {
             var provider = controllerFixture.ServiceProvider;
 
-            _auctionController = new AuctionsController(_repositoryauctionMock.Object);
+            _auctionController = new AuctionsController(_repositoryauctionMock.Object, _cache.Object);
         }
 
         #region GetAuctionsAsync

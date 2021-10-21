@@ -1,5 +1,6 @@
 ﻿using AutoFixture;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Distributed;
 using Moq;
 using Otus.PublicSale.Core.Abstractions.Repositories;
 using Otus.PublicSale.Core.Domain.Administration;
@@ -23,7 +24,7 @@ namespace Otus.PublicSale.UnitTests
         /// <summary>
         /// Controller
         /// </summary>
-        private AuctionUsersController _AuctionUserController;
+        private AuctionUsersController _auctionUserController;
 
         /// <summary>
         /// Mocks
@@ -31,6 +32,7 @@ namespace Otus.PublicSale.UnitTests
         private readonly Mock<IRepository<AuctionUser>> _repositoryAuctionUserMock = new Mock<IRepository<AuctionUser>>();
         private readonly Mock<IRepository<Auction>> _repositoryAuctionMock = new Mock<IRepository<Auction>>();
         private readonly Mock<IRepository<User>> _repositoryUserMock = new Mock<IRepository<User>>();
+        private Mock<IDistributedCache> _cache = new Mock<IDistributedCache>();
 
         /// <summary>
         /// Constructor
@@ -40,7 +42,7 @@ namespace Otus.PublicSale.UnitTests
         {
             var provider = controllerFixture.ServiceProvider;
 
-            _AuctionUserController = new AuctionUsersController(_repositoryAuctionUserMock.Object, _repositoryUserMock.Object,_repositoryAuctionMock.Object);
+            _auctionUserController = new AuctionUsersController(_repositoryAuctionUserMock.Object, _repositoryUserMock.Object,_repositoryAuctionMock.Object, _cache.Object);
         }
 
         #region GetAuctionUsersAsync
@@ -58,22 +60,24 @@ namespace Otus.PublicSale.UnitTests
             fixture.Behaviors.Remove(new ThrowingRecursionBehavior());
             fixture.Behaviors.Add(new OmitOnRecursionBehavior());
 
-            var AuctionUser = new List<AuctionUser>();
-            fixture.AddManyTo(AuctionUser);
+            var actionId = 1;
+            var auctionUsers = new List<AuctionUser>();
+            fixture.AddManyTo(auctionUsers);
+            auctionUsers.ForEach(x => x.AuctionId = actionId);
 
-            var AuctionUserDtos = AuctionUser.Select(entity => new AuctionUserDto(entity)).ToList();
+            var auctionUserDtos = auctionUsers.Select(entity => new AuctionUserDto(entity)).ToList();
 
-            _repositoryAuctionUserMock.Setup(m => 
-                m.GetAllAsync())
-                .ReturnsAsync(AuctionUser);
+            _repositoryAuctionUserMock.Setup(m =>
+                m.GetAllAsync(It.IsAny<Expression<Func<AuctionUser, bool>>>()))
+                .ReturnsAsync(auctionUsers);
 
             //Act
-            var result = await _AuctionUserController.GetAuctionUsersAsync();
+            var result = await _auctionUserController.GetAuctionUsersAsync(actionId);
 
             //Assert
             Assert.IsType<OkObjectResult>(result.Result);
             var resultData = (result.Result as OkObjectResult).Value;
-            Assert.Equal(AuctionUserDtos, resultData);
+            Assert.Equal(auctionUserDtos, resultData);
         }
 
         #endregion
@@ -92,10 +96,10 @@ namespace Otus.PublicSale.UnitTests
             //Arrange
 
             //Act
-            var result = await _AuctionUserController.GettAuctionUserAsync(id);
+            var result = await _auctionUserController.GettAuctionUserAsync(id);
 
             //Assert
-            Assert.IsType<NotFoundResult>(result.Result);
+            Assert.IsType<BadRequestResult>(result.Result);
         }
 
         /// <summary>
@@ -107,13 +111,13 @@ namespace Otus.PublicSale.UnitTests
         {
             //Arrange
             int id = 1;
-            AuctionUser AuctionUser = null;
+            AuctionUser auctionUser = null;
             _repositoryAuctionUserMock.Setup(m =>
                 m.GetByIdAsync(It.IsAny<int>()))
-                .ReturnsAsync(AuctionUser);
+                .ReturnsAsync(auctionUser);
 
             //Act
-            var result = await _AuctionUserController.GettAuctionUserAsync(id);
+            var result = await _auctionUserController.GettAuctionUserAsync(id);
 
             //Assert
             Assert.IsType<NotFoundResult>(result.Result);
@@ -133,19 +137,19 @@ namespace Otus.PublicSale.UnitTests
             fixture.Behaviors.Remove(new ThrowingRecursionBehavior());
             fixture.Behaviors.Add(new OmitOnRecursionBehavior());
 
-            var AuctionUser = fixture.Create<AuctionUser>();
-            var AuctionUserDto = new AuctionUserDto(AuctionUser);
+            var auctionUser = fixture.Create<AuctionUser>();
+            var auctionUserDto = new AuctionUserDto(auctionUser);
             _repositoryAuctionUserMock.Setup(m =>
                 m.GetByIdAsync(It.IsAny<int>()))
-                .ReturnsAsync(AuctionUser);
+                .ReturnsAsync(auctionUser);
 
             //Act
-            var result = await _AuctionUserController.GettAuctionUserAsync(id);
+            var result = await _auctionUserController.GettAuctionUserAsync(id);
 
             //Assert
             Assert.IsType<OkObjectResult>(result.Result);
             var resultData = (result.Result as OkObjectResult).Value;
-            Assert.Equal(AuctionUserDto, resultData);
+            Assert.Equal(auctionUserDto, resultData);
         }
 
         #endregion

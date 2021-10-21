@@ -8,6 +8,8 @@ using Otus.PublicSale.Core.Domain.AuctionManagement;
 using System.Collections.Generic;
 using Otus.PublicSale.WebApi.Mappers;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Caching.Distributed;
+using Otus.PublicSale.WebApi.Extensions;
 
 namespace Otus.PublicSale.WebApi.Controllers
 {
@@ -19,6 +21,17 @@ namespace Otus.PublicSale.WebApi.Controllers
     [Route("api/v1/[controller]")]
     public class AuctionBetsController : ControllerBase
     {
+        /// <summary>
+        /// Constants
+        /// </summary>
+        private const string _cacheOneKey = "AuctionBet_{0}";
+        private const string _cacheAllKey = "AuctionBets_{0}";
+
+        /// <summary>
+        /// Cache
+        /// </summary>
+        private readonly IDistributedCache _cache;
+
         /// <summary>
         /// AuctionBets repository
         /// </summary>
@@ -34,12 +47,16 @@ namespace Otus.PublicSale.WebApi.Controllers
         /// </summary>
         /// <param name="repositoryAuctionBets">AuctionBets repository</param>        
         /// <param name="repositoryAuctions">Auctions repository</param>        
+        /// <param name="cache">Cache</param>     
         public AuctionBetsController(
             IRepository<AuctionBet> repositoryAuctionBets, 
-            IRepository<Auction> repositoryAuctions)
+            IRepository<Auction> repositoryAuctions, 
+            IDistributedCache cache)
         {
             _repositoryAuctionBets = repositoryAuctionBets;
             _repositoryAuctions = repositoryAuctions;
+
+            _cache = cache;
         }
 
         /// <summary>
@@ -53,9 +70,13 @@ namespace Otus.PublicSale.WebApi.Controllers
             if (auctionId <= 0)
                 return BadRequest();
 
-            var entities = await _repositoryAuctionBets.GetAllAsync(x => x.AuctionId == auctionId);
-
-            var list = entities.Select(entity => new AuctionBetDto(entity)).ToList();
+            var list = await _cache.GetRecordAsync<List<AuctionBetDto>>(string.Format(_cacheAllKey, auctionId));
+            if (list is null)
+            {
+                var entities = await _repositoryAuctionBets.GetAllAsync(x => x.AuctionId == auctionId);
+                list = entities.Select(entity => new AuctionBetDto(entity)).ToList();
+                await _cache.SetRecordAsync(string.Format(_cacheAllKey, auctionId), list);
+            }            
 
             return Ok(list);
         }
@@ -71,12 +92,17 @@ namespace Otus.PublicSale.WebApi.Controllers
             if (id <= 0)
                 return BadRequest();
 
-            var entity = await _repositoryAuctionBets.GetByIdAsync(id);
+            var model = await _cache.GetRecordAsync<AuctionBetDto>(string.Format(_cacheOneKey, id));
+            if (model is null)
+            {
+                var entity = await _repositoryAuctionBets.GetByIdAsync(id);
 
-            if (entity == null)
-                return NotFound();
+                if (entity == null)
+                    return NotFound();
 
-            var model = new AuctionBetDto(entity);
+                model = new AuctionBetDto(entity);
+                await _cache.SetRecordAsync(string.Format(_cacheOneKey, id), model);
+            }
 
             return Ok(model);
         }
@@ -97,6 +123,8 @@ namespace Otus.PublicSale.WebApi.Controllers
             var entity = AuctionBetMapper.MapFromModel(request, auction);     
 
             await _repositoryAuctionBets.AddAsync(entity);
+
+            ClearCacheRecord(entity.Id, auction.Id);
 
             return Ok(entity.Id);
         }
@@ -119,6 +147,8 @@ namespace Otus.PublicSale.WebApi.Controllers
             
             await _repositoryAuctionBets.UpdateAsync(entity);
 
+            ClearCacheRecord(entity.Id, entity.AuctionId);
+
             return Ok();
         }
 
@@ -137,7 +167,20 @@ namespace Otus.PublicSale.WebApi.Controllers
 
             await _repositoryAuctionBets.RemoveAsync(entity);
 
+            ClearCacheRecord(entity.Id, entity.AuctionId);
+
             return Ok();
+        }
+
+        /// <summary>
+        /// Clears Cache Record
+        /// </summary>
+        /// <param name="id">Entity Id</param>
+        /// <param name="auctionId">Auction Id</param>
+        private void ClearCacheRecord(int id, int auctionId)
+        {
+            _cache.RemoveRecordAsync(string.Format(_cacheOneKey, id));
+            _cache.RemoveRecordAsync(string.Format(_cacheAllKey, auctionId));
         }
     }
 }

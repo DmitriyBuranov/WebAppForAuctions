@@ -106,7 +106,12 @@ namespace Otus.PublicSale.WebApi
 
                 options.OperationFilter<AuthorizeCheckOperationFilter>();
             });
-            
+
+            // Redis
+            services.AddStackExchangeRedisCache(options => {
+                options.Configuration = Configuration.GetConnectionString("Redis");
+                options.InstanceName = "localRedis_";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

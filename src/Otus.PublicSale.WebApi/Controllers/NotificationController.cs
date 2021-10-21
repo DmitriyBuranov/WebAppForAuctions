@@ -1,14 +1,10 @@
 ﻿using MassTransit;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Otus.PublicSale.Core.Abstractions.Repositories;
 using Otus.PublicSale.Core.Abstractions.Services;
 using Otus.PublicSale.Core.Domain.Administration;
 using Otus.PublicSale.WebApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Otus.PublicSale.WebApi.Controllers
