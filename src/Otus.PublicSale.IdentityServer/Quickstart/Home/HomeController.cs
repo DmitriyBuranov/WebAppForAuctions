@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Otus.PublicSale.IdentityServer.Models;
 using System.Threading.Tasks;
 
 namespace Otus.PublicSale.IdentityServer.Quickstart.UI
@@ -29,14 +30,16 @@ namespace Otus.PublicSale.IdentityServer.Quickstart.UI
 
         public IActionResult Index()
         {
-            if (_environment.IsDevelopment())
-            {
-                // only show in development
-                return View();
-            }
+            //if (_environment.IsDevelopment())
+            //{
+            //    // only show in development
+            //    return View();
+            //}
 
-            _logger.LogInformation("Homepage is disabled in production. Returning 404.");
-            return NotFound();
+            //_logger.LogInformation("Homepage is disabled in production. Returning 404.");
+            //return NotFound();
+
+            return RedirectToAction("Index", "Diagnostics");
         }
 
         /// <summary>

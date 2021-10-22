@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using IdentityServer4.Events;
 using IdentityServer4.Extensions;
+using Otus.PublicSale.IdentityServer.Models;
 
 namespace Otus.PublicSale.IdentityServer.Quickstart.UI
 {

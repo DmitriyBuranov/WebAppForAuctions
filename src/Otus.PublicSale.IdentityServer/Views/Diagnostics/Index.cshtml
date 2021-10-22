@@ -1,34 +1,63 @@
+@using IdentityServer4.Extensions
 @model DiagnosticsViewModel
 
-<div class="diagnostics-page">
-    <div class="lead">
-        <h1>Authentication Cookie</h1>
-    </div>
+@{
+    string name = null;
+    if (!true.Equals(ViewData["signed-out"]))
+    {
+        name = Context.User?.GetDisplayName();
+    }
+}
 
-    <div class="row">
-        <div class="col">
-            <div class="card">
-                <div class="card-header">
+<!--============= Hero Section Starts Here =============-->
+<div class="hero-section">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li>
+                <a asp-area="" asp-controller="Account" asp-action="Login">Home</a>
+            </li>
+            <li>
+                <a asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
+            </li>
+            <li>
+                <span>User Details</span>
+            </li>
+        </ul>
+    </div>
+    <div class="bg_img hero-bg bottom_center" data-background="/assets/images/banner/hero-bg.png"></div>
+</div>
+<!--============= Hero Section Ends Here =============-->
+<!--============= Account Section Starts Here =============-->
+<section class="contact-section padding-bottom">
+    <div class="container">
+        <div class="contact-wrapper padding-top padding-bottom mt--100 mt-lg--440">
+            <div class="section-header">
+                <h2 class="title">Hi @name</h2>
+            </div>
+            <div class="row">
+                <div class="col-xl-11 col-lg-7">
                     <h2>Claims</h2>
-                </div>
-                <div class="card-body">
                     <dl>
                         @foreach (var claim in Model.AuthenticateResult.Principal.Claims)
                         {
-                            <dt>@claim.Type</dt>
-                            <dd>@claim.Value</dd>
+                            @if (claim.Type != "JWT")
+                            {
+                                <dt>@claim.Type</dt>
+                                <dd>@claim.Value</dd>
+                            }
+                            else
+                            {
+                                <dt>@claim.Type</dt>
+                                <dd>
+                                    <textarea>
+                                        @claim.Value
+                                    </textarea>
+                                </dd>
+                            }
                         }
                     </dl>
-                </div>
-            </div>
-        </div>
-        
-        <div class="col">
-            <div class="card">
-                <div class="card-header">
+
                     <h2>Properties</h2>
-                </div>
-                <div class="card-body">
                     <dl>
                         @foreach (var prop in Model.AuthenticateResult.Properties.Items)
                         {
@@ -39,17 +68,17 @@
                         {
                             <dt>Clients</dt>
                             <dd>
-                            @{
-                                var clients = Model.Clients.ToArray();
-                                for(var i = 0; i < clients.Length; i++)
-                                {
-                                    <text>@clients[i]</text>
-                                    if (i < clients.Length - 1)
+                                @{
+                                    var clients = Model.Clients.ToArray();
+                                    for (var i = 0; i < clients.Length; i++)
                                     {
-                                        <text>, </text>
+                                        <text>@clients[i]</text>
+                                        if (i < clients.Length - 1)
+                                        {
+                                            <text>, </text>
+                                        }
                                     }
                                 }
-                            }
                             </dd>
                         }
                     </dl>
@@ -57,8 +86,4 @@
             </div>
         </div>
     </div>
-</div>
-
-
-
-
+</section>

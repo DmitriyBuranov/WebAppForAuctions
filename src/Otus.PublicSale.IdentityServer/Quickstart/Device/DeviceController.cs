@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Otus.PublicSale.IdentityServer.Models;
 
 namespace Otus.PublicSale.IdentityServer.Quickstart.UI
 {

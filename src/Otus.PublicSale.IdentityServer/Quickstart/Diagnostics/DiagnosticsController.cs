@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Otus.PublicSale.IdentityServer.Models;
 
 namespace Otus.PublicSale.IdentityServer.Quickstart.UI
 {

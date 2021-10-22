@@ -76,6 +76,8 @@ namespace Otus.PublicSale.IdentityServer
                     options.ClientId = "ClientId:Facebook"; //Configuration["ClientId:Facebook"];
                     options.ClientSecret = "ClientSecret:Facebook"; //Configuration["ClientSecret:Facebook"];
                 });
+
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
         }
 
         public void Configure(IApplicationBuilder app)

@@ -1,6 +1,7 @@
 using System;
 using IdentityServer4.Models;
 using Microsoft.AspNetCore.Mvc;
+using Otus.PublicSale.IdentityServer.Models;
 
 namespace Otus.PublicSale.IdentityServer.Quickstart.UI
 {

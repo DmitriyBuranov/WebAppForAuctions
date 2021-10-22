@@ -1,28 +1,63 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>IdentityServer4</title>
-    
-    <link rel="icon" type="image/x-icon" href="~/favicon.ico" />
-    <link rel="shortcut icon" type="image/x-icon" href="~/favicon.ico" />
-    
-    <link rel="stylesheet" href="~/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.min.css" />
+    <title>Sbidu - Bid And Auction HTML Template</title>
+
+    <link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/css/all.min.css">
+    <link rel="stylesheet" href="~/assets/css/animate.css">
+    <link rel="stylesheet" href="~/assets/css/nice-select.css">
+    <link rel="stylesheet" href="~/assets/css/owl.min.css">
+    <link rel="stylesheet" href="~/assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/assets/css/flaticon.css">
+    <link rel="stylesheet" href="~/assets/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="~/assets/css/main.css">
+
+    <link rel="shortcut icon" href="~/assets/images/favicon.png" type="image/x-icon">
 </head>
-<body>
-    <partial name="_Nav" />
-   
-    <div class="container body-container">
-        @RenderBody()
-    </div>
 
-    <script src="~/js/jquery.slim.min.js"></script>
-    <script src="~/js/bootstrap.bundle.min.js"></script>
+<body>
+
+    <!--============= ScrollToTop Section Starts Here =============-->
+    <partial name="_Scroll" />
+    <!--============= ScrollToTop Section Ends Here =============-->
+    
+    <!--============= Header Section Starts Here =============-->
+    <partial name="_Nav" />
+    <!--============= Header Section Ends Here =============-->
+    
+    <!--============= Cart Section Starts Here =============-->
+    <partial name="_Cart" />
+    <!--============= Cart Section Ends Here =============-->
+    
+    <!--============= Account Section Starts Here =============-->
+    @RenderBody()
+    <!--============= Account Section Ends Here =============-->
+    
+    <!--============= Footer Section Starts Here =============-->
+    <partial name="_Footer" />
+    <!--============= Footer Section Ends Here =============-->
+
+    <script src="~/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="~/assets/js/modernizr-3.6.0.min.js"></script>
+    <script src="~/assets/js/plugins.js"></script>
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    <script src="~/assets/js/isotope.pkgd.min.js"></script>
+    <script src="~/assets/js/wow.min.js"></script>
+    <script src="~/assets/js/waypoints.js"></script>
+    <script src="~/assets/js/nice-select.js"></script>
+    <script src="~/assets/js/counterup.min.js"></script>
+    <script src="~/assets/js/owl.min.js"></script>
+    <script src="~/assets/js/magnific-popup.min.js"></script>
+    <script src="~/assets/js/yscountdown.min.js"></script>
+    <script src="~/assets/js/jquery-ui.min.js"></script>
+    <script src="~/assets/js/main.js"></script>
 
     @RenderSection("scripts", required: false)
+
 </body>
 </html>

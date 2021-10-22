@@ -247,7 +247,8 @@ namespace Otus.PublicSale.IdentityServer.Quickstart.UI
                 .Select(x => new ExternalProvider
                 {
                     DisplayName = x.DisplayName ?? x.Name,
-                    AuthenticationScheme = x.Name
+                    AuthenticationScheme = x.Name,
+                    Icon = x.DisplayName == "Google" ? "fa-google-plus" : "fa-facebook"
                 }).ToList();
 
             var allowLocal = true;
@@ -343,6 +344,58 @@ namespace Otus.PublicSale.IdentityServer.Quickstart.UI
             }
 
             return vm;
+        }
+
+
+        [HttpGet]
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(RegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new ApplicationUser
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    EmailConfirmed = true,
+                };
+
+                var result = await _userManager.CreateAsync(user, model.Password);
+
+                if (!result.Succeeded)
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
+
+                    return View("Register");
+                }
+
+                result = await _userManager.AddClaimsAsync(user, new Claim[]{
+                            new Claim(JwtClaimTypes.Email, model.Email)
+                        });
+
+                if (!result.Succeeded)
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
+
+                    return View("Register");
+                }
+
+                return View("RegistrationSuccess");
+            }
+
+            return View("Register");
         }
     }
 }
