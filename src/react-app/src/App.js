@@ -1,18 +1,7 @@
-
-import "./assets/css/all.min.css"
-import "./assets/css/animate.css"
-import "./assets/css/bootstrap.min.css"
-import "./assets/css/flaticon.css"
-import "./assets/css/jquery-ui.min.css"
-import "./assets/css/magnific-popup.css"
-import "./assets/css/main.css"
-import "./assets/css/nice-select.css"
-import "./assets/css/owl.min.css"
-
 function App() {
   return (
     <div>
-        {/* ============= ScrollToTop Section Starts Here ============= 
+        {/* ============= ScrollToTop Section Starts Here ============= */}
         <div className="overlayer" id="overlayer">
             <div className="loader">
                 <div className="loader-inner"></div>
@@ -20,7 +9,7 @@ function App() {
         </div>
         <a href="#0" className="scrollToTop"><i className="fas fa-angle-up"></i></a>
         <div className="overlay"></div>
-        ============= ScrollToTop Section Ends Here =============*/}
+        {/* ============= ScrollToTop Section Ends Here =============*/}
     
     
         {/*============= Header Section Starts Here =============*/}
