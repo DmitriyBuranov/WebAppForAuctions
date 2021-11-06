@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src",
+    "\\src\\Html\\assets"
   ],
-  "SelectedNode": "\\PublicSale.NotificationService.sln",
+  "SelectedNode": "\\src\\Otus.PublicSale.sln",
   "PreviewInSolutionExplorer": false
 }
