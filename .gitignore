@@ -10,3 +10,14 @@
 /src/Otus.PublicSale.UnitTests/bin
 /src/Otus.PublicSale.IdentityServer/obj
 /src/Otus.PublicSale.IdentityServer/bin
+/src/Otus.PublicSale.Gateway/obj
+/src/Otus.PublicSale.Gateway/bin
+/src/Otus.PublicSale.Users/Otus.PublicSale.Users.Core/bin
+/src/Otus.PublicSale.Users/Otus.PublicSale.Users.Core/obj
+/src/Otus.PublicSale.Users/Otus.PublicSale.Users.DataAccess/obj
+/src/Otus.PublicSale.Users/Otus.PublicSale.Users.DataAccess/bin
+/src/Otus.PublicSale.Users/Otus.PublicSale.Users.UnitTests/obj
+/src/Otus.PublicSale.Users/Otus.PublicSale.Users.UnitTests/bin
+/src/Otus.PublicSale.Users/Otus.PublicSale.Users.WebApi/obj
+/src/Otus.PublicSale.Users/Otus.PublicSale.Users.WebApi/bin
+/src/Otus.PublicSale.Users/.vs

@@ -1,6 +1,4 @@
-﻿using Otus.PublicSale.Core;
-using Otus.PublicSale.Core.Abstractions.Repositories;
-using Otus.PublicSale.Core.Domain.Administration;
+﻿using Otus.PublicSale.Core.Abstractions.Repositories;
 using Otus.PublicSale.WebApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -55,6 +53,7 @@ namespace Otus.PublicSale.WebApi.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
+        [AllowAnonymous]
         public async Task<ActionResult<AuctionDto>> GetAuctionsAsync()
         {
             var list = await _cache.GetRecordAsync<List<AuctionDto>>(_cacheAllKey);
@@ -74,6 +73,7 @@ namespace Otus.PublicSale.WebApi.Controllers
         /// <param name="id">Auction Id</param>
         /// <returns></returns>
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public async Task<ActionResult<AuctionDto>> GetAuctionAsync(int id)
         {
             if (id <= 0)
