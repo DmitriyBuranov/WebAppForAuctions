@@ -5,56 +5,56 @@ function Footer() {
 
     return (
         <div>
-            <footer class="bg_img padding-top oh" data-background="assets/images/footer/footer-bg.jpg">
-                <div class="footer-top-shape">
+            <footer className="bg_img padding-top oh" style={ { backgroundImage: "url('assets/images/footer/footer-bg.jpg')" } }>
+                <div className="footer-top-shape">
                     <img src="assets/css/img/footer-top-shape.png" alt="css"></img>
                 </div>
-                <div class="anime-wrapper">
-                    <div class="anime-1 plus-anime">
+                <div className="anime-wrapper">
+                    <div className="anime-1 plus-anime">
                         <img src="assets/images/footer/p1.png" alt="footer"></img>
                     </div>
-                    <div class="anime-2 plus-anime">
+                    <div className="anime-2 plus-anime">
                         <img src="assets/images/footer/p2.png" alt="footer"></img>
                     </div>
-                    <div class="anime-3 plus-anime">
+                    <div className="anime-3 plus-anime">
                         <img src="assets/images/footer/p3.png" alt="footer"></img>
                     </div>
-                    <div class="anime-5 zigzag">
+                    <div className="anime-5 zigzag">
                         <img src="assets/images/footer/c2.png" alt="footer"></img>
                     </div>
-                    <div class="anime-6 zigzag">
+                    <div className="anime-6 zigzag">
                         <img src="assets/images/footer/c3.png" alt="footer"></img>
                     </div>
-                    <div class="anime-7 zigzag">
+                    <div className="anime-7 zigzag">
                         <img src="assets/images/footer/c4.png" alt="footer"></img>
                     </div>
                 </div>
-                <div class="newslater-wrapper">
-                    <div class="container">
-                        <div class="newslater-area">
-                            <div class="newslater-thumb">
+                <div className="newslater-wrapper">
+                    <div className="container">
+                        <div className="newslater-area">
+                            <div className="newslater-thumb">
                                 <img src="assets/images/footer/newslater.png" alt="footer"></img>
                             </div>
-                            <div class="newslater-content">
-                                <div class="section-header left-style mb-low">
-                                    <h5 class="cate">Subscribe to Sbidu</h5>
-                                    <h3 class="title">To Get Exclusive Benefits</h3>
+                            <div className="newslater-content">
+                                <div className="section-header left-style mb-low">
+                                    <h5 className="cate">Subscribe to Sbidu</h5>
+                                    <h3 className="title">To Get Exclusive Benefits</h3>
                                 </div>
-                                <form class="subscribe-form">
+                                <form className="subscribe-form">
                                     <input type="text" placeholder="Enter Your Email" name="email"></input>
-                                    <button type="submit" class="custom-button">Subscribe</button>
+                                    <button type="submit" className="custom-button">Subscribe</button>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="footer-top padding-bottom padding-top">
-                    <div class="container">
-                        <div class="row mb--60">
-                            <div class="col-sm-6 col-lg-3">
-                                <div class="footer-widget widget-links">
-                                    <h5 class="title">Auction Categories</h5>
-                                    <ul class="links-list">
+                <div className="footer-top padding-bottom padding-top">
+                    <div className="container">
+                        <div className="row mb--60">
+                            <div className="col-sm-6 col-lg-3">
+                                <div className="footer-widget widget-links">
+                                    <h5 className="title">Auction Categories</h5>
+                                    <ul className="links-list">
                                         <li>
                                             <a href="#0">Ending Now</a>
                                         </li>
@@ -82,10 +82,10 @@ function Footer() {
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-lg-3">
-                                <div class="footer-widget widget-links">
-                                    <h5 class="title">About Us</h5>
-                                    <ul class="links-list">
+                            <div className="col-sm-6 col-lg-3">
+                                <div className="footer-widget widget-links">
+                                    <h5 className="title">About Us</h5>
+                                    <ul className="links-list">
                                         <li>
                                             <a href="#0">About Sbidu</a>
                                         </li>
@@ -110,10 +110,10 @@ function Footer() {
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-lg-3">
-                                <div class="footer-widget widget-links">
-                                    <h5 class="title">We're Here to Help</h5>
-                                    <ul class="links-list">
+                            <div className="col-sm-6 col-lg-3">
+                                <div className="footer-widget widget-links">
+                                    <h5 className="title">We're Here to Help</h5>
+                                    <ul className="links-list">
                                         <li>
                                             <a href="#0">Your Account</a>
                                         </li>
@@ -132,35 +132,35 @@ function Footer() {
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-lg-3">
-                                <div class="footer-widget widget-follow">
-                                    <h5 class="title">Follow Us</h5>
-                                    <ul class="links-list">
+                            <div className="col-sm-6 col-lg-3">
+                                <div className="footer-widget widget-follow">
+                                    <h5 className="title">Follow Us</h5>
+                                    <ul className="links-list">
                                         <li>
-                                            <a href="#0"><i class="fas fa-phone-alt"></i>(646) 663-4575</a>
+                                            <a href="#0"><i className="fas fa-phone-alt"></i>(646) 663-4575</a>
                                         </li>
                                         <li>
-                                            <a href="#0"><i class="fas fa-blender-phone"></i>(646) 968-0608</a>
+                                            <a href="#0"><i className="fas fa-blender-phone"></i>(646) 968-0608</a>
                                         </li>
                                         <li>
-                                            <a href="#0"><i class="fas fa-envelope-open-text"></i><span class="__cf_email__" data-cfemail="2a424f465a6a4f444d455e424f474f04494547">[email&#160;protected]</span></a>
+                                            <a href="#0"><i className="fas fa-envelope-open-text"></i><span className="__cf_email__" data-cfemail="2a424f465a6a4f444d455e424f474f04494547">[email&#160;protected]</span></a>
                                         </li>
                                         <li>
-                                            <a href="#0"><i class="fas fa-location-arrow"></i>1201 Broadway Suite</a>
+                                            <a href="#0"><i className="fas fa-location-arrow"></i>1201 Broadway Suite</a>
                                         </li>
                                     </ul>
-                                    <ul class="social-icons">
+                                    <ul className="social-icons">
                                         <li>
-                                            <a href="#0" class="active"><i class="fab fa-facebook-f"></i></a>
+                                            <a href="#0" className="active"><i className="fab fa-facebook-f"></i></a>
                                         </li>
                                         <li>
-                                            <a href="#0"><i class="fab fa-twitter"></i></a>
+                                            <a href="#0"><i className="fab fa-twitter"></i></a>
                                         </li>
                                         <li>
-                                            <a href="#0"><i class="fab fa-instagram"></i></a>
+                                            <a href="#0"><i className="fab fa-instagram"></i></a>
                                         </li>
                                         <li>
-                                            <a href="#0"><i class="fab fa-linkedin-in"></i></a>
+                                            <a href="#0"><i className="fab fa-linkedin-in"></i></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -168,14 +168,14 @@ function Footer() {
                         </div>
                     </div>
                 </div>
-                <div class="footer-bottom">
-                    <div class="container">
-                        <div class="copyright-area">
-                            <div class="footer-bottom-wrapper">
-                                <div class="logo">
+                <div className="footer-bottom">
+                    <div className="container">
+                        <div className="copyright-area">
+                            <div className="footer-bottom-wrapper">
+                                <div className="logo">
                                     <a href="index.html"><img src="assets/images/logo/footer-logo.png" alt="logo"></img></a>
                                 </div>
-                                <ul class="gateway-area">
+                                <ul className="gateway-area">
                                     <li>
                                         <a href="#0"><img src="assets/images/footer/paypal.png" alt="footer"></img></a>
                                     </li>
@@ -189,7 +189,7 @@ function Footer() {
                                         <a href="#0"><img src="assets/images/footer/mastercard.png" alt="footer"></img></a>
                                     </li>
                                 </ul>
-                                <div class="copyright"><p>&copy; Copyright 2021 | <a href="#0">Sbidu</a> By <a href="#0">Uiaxis</a></p></div>
+                                <div className="copyright"><p>&copy; Copyright 2021 | <a href="#0">Sbidu</a> By <a href="#0">Uiaxis</a></p></div>
                             </div>
                         </div>
                     </div>

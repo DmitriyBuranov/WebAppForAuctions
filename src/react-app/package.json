@@ -3,19 +3,23 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@reduxjs/toolkit": "^1.6.2",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "js-cookie": "^2.2.0",
+    "axios": "^0.24.0",
     "history": "^5.1.0",
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.1",
     "react-dom": "^17.0.2",
+    "react-redux": "^7.2.6",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "react-scripts  start",
+    "start": "react-scripts --openssl-legacy-provider start",        
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -40,5 +44,6 @@
   },
   "devDependencies": {
     "html-loader": "^3.0.0"
-  }
+  },
+  "proxy": "https://localhost:5021"
 }

@@ -22,7 +22,7 @@
           "Port": 5011
         }
       ],
-      "UpstreamPathTemplate": "/api/v1/sign-up",
+      "UpstreamPathTemplate": "/api/users/sign-up",
       "UpstreamHttpMethod": [ "Post" ]
     },
     {

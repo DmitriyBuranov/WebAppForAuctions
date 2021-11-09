@@ -5,13 +5,13 @@ function Loader() {
 
     return (
         <div>
-            <div class="overlayer" id="overlayer">
-                <div class="loader">
-                    <div class="loader-inner"></div>
+            <div className="overlayer" id="overlayer">
+                <div className="loader">
+                    <div className="loader-inner"></div>
                 </div>
             </div>
-            <a href="#0" class="scrollToTop"><i class="fas fa-angle-up"></i></a>
-            <div class="overlay"></div>
+            <a href="#0" className="scrollToTop"><i className="fas fa-angle-up"></i></a>
+            <div className="overlay"></div>
         </div>);
 }
 
