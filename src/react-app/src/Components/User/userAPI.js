@@ -24,6 +24,9 @@ export function doLogin(data) {
         else if (error.response.data.message) {
           errors = [error.response.data.message];
         }
+        else if (error.response.data) {
+          errors = [error.response.data];
+        }
 
         resolve({ data: null, errors: errors });
       })
@@ -49,6 +52,9 @@ export function doRegister(data) {
         }
         else if (error.response.data.message) {
           errors = [error.response.data.message];
+        }
+        else if (error.response.data) {
+          errors = [error.response.data];
         }
 
         resolve({ data: null, errors: errors });
