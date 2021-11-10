@@ -49,12 +49,7 @@ export const registerAsync = createAsyncThunk(
 export const userSlice = createSlice({
   name: 'user',
   initialState,
-  reducers: {
-    login: (state, action) => {
-      state.logged = true;
-      state.current = action.payload;
-      state.errors = null;
-    },
+  reducers: {    
     logout: (state) => {
       state.logged = false;
       state.errors = null;

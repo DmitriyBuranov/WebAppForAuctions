@@ -9,7 +9,7 @@ import ProfileLeftMenu from '../CommonComponents/ProfileLeftMenu';
 import ProfileTopMenu from '../CommonComponents/ProfileTopMenu';
 
 function Dashboard() {
-    const logged = useSelector(selectLogged);    
+    const logged = useSelector(selectLogged);
     const loading = useSelector(selectLoading);
 
     if (logged !== true)
@@ -19,7 +19,7 @@ function Dashboard() {
         <div>
             {loading ? <Loader /> : ""}
 
-            <ProfileTopMenu/>
+            <ProfileTopMenu />
 
             <section className="dashboard-section padding-bottom mt--240 mt-lg--440 pos-rel">
                 <div className="container">
@@ -36,7 +36,7 @@ function Dashboard() {
                                     <div className="col-md-4 col-sm-6">
                                         <div className="dashboard-item">
                                             <div className="thumb">
-                                                <img src="assets/images/dashboard/01.png" alt="dashboard"/>
+                                                <img src="assets/images/dashboard/01.png" alt="dashboard" />
                                             </div>
                                             <div className="content">
                                                 <h2 className="title"><span className="counter">80</span></h2>
@@ -47,7 +47,7 @@ function Dashboard() {
                                     <div className="col-md-4 col-sm-6">
                                         <div className="dashboard-item">
                                             <div className="thumb">
-                                                <img src="assets/images/dashboard/02.png" alt="dashboard"/>
+                                                <img src="assets/images/dashboard/02.png" alt="dashboard" />
                                             </div>
                                             <div className="content">
                                                 <h2 className="title"><span className="counter">15</span></h2>
@@ -58,7 +58,7 @@ function Dashboard() {
                                     <div className="col-md-4 col-sm-6">
                                         <div className="dashboard-item">
                                             <div className="thumb">
-                                                <img src="assets/images/dashboard/03.png" alt="dashboard"/>
+                                                <img src="assets/images/dashboard/03.png" alt="dashboard" />
                                             </div>
                                             <div className="content">
                                                 <h2 className="title"><span className="counter">115</span></h2>
@@ -86,11 +86,13 @@ function Dashboard() {
                                         <div className="tab-pane show active fade" id="current">
                                             <table className="purchasing-table">
                                                 <thead>
-                                                    <th>Item</th>
-                                                    <th>Bid Price</th>
-                                                    <th>Highest Bid</th>
-                                                    <th>Lowest Bid</th>
-                                                    <th>Expires</th>
+                                                    <tr>
+                                                        <th>Item</th>
+                                                        <th>Bid Price</th>
+                                                        <th>Highest Bid</th>
+                                                        <th>Lowest Bid</th>
+                                                        <th>Expires</th>
+                                                    </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr>
@@ -162,11 +164,13 @@ function Dashboard() {
                                         <div className="tab-pane show fade" id="pending">
                                             <table className="purchasing-table">
                                                 <thead>
-                                                    <th>Item</th>
-                                                    <th>Bid Price</th>
-                                                    <th>Highest Bid</th>
-                                                    <th>Lowest Bid</th>
-                                                    <th>Expires</th>
+                                                    <tr>
+                                                        <th>Item</th>
+                                                        <th>Bid Price</th>
+                                                        <th>Highest Bid</th>
+                                                        <th>Lowest Bid</th>
+                                                        <th>Expires</th>
+                                                    </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr>
@@ -231,11 +235,13 @@ function Dashboard() {
                                         <div className="tab-pane show fade" id="history">
                                             <table className="purchasing-table">
                                                 <thead>
-                                                    <th>Item</th>
-                                                    <th>Bid Price</th>
-                                                    <th>Highest Bid</th>
-                                                    <th>Lowest Bid</th>
-                                                    <th>Expires</th>
+                                                    <tr>
+                                                        <th>Item</th>
+                                                        <th>Bid Price</th>
+                                                        <th>Highest Bid</th>
+                                                        <th>Lowest Bid</th>
+                                                        <th>Expires</th>
+                                                    </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr>

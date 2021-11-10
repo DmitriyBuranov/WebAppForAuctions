@@ -1,8 +1,25 @@
 import React from 'react';
-import { NavLink } from "react-router-dom";
-
+import { NavLink, Link } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
+import { selectCurrent, logout } from '../../features/userSlice';
+import Cookies from 'js-cookie'
+import { cookieName } from '../User/userAPI';
 
 function ProfileLeftMenu() {
+    const user = useSelector(selectCurrent);
+    const dispatch = useDispatch();
+
+    let fullName = "";
+
+    if (user != null)
+        fullName = user.firstName + " " + user.lastName;
+
+    function doLogout(e) {
+        e.preventDefault();
+        Cookies.remove(cookieName);
+        dispatch(logout());
+        return false;
+    }
 
     return (
         <div className="col-sm-10 col-md-7 col-lg-4">
@@ -15,7 +32,9 @@ function ProfileLeftMenu() {
                         <input type="file" id="profile-pic" className="d-none" />
                     </div>
                     <div className="content">
-                        <h5 className="title"><a href="#0">Percy Reed</a></h5>
+                        <h5 className="title">
+                            <Link activeClassName='active' to='/profile'>{fullName}</Link>
+                        </h5>
                     </div>
                 </div>
                 <ul className="dashboard-menu">
@@ -30,6 +49,9 @@ function ProfileLeftMenu() {
                     </li>
                     <li>
                         <NavLink exact activeClassName='active' to='/winnings'><i className="flaticon-best-seller"></i>Winning Bids</NavLink>
+                    </li>
+                    <li>
+                        <a href="#" onClick={doLogout}><i className="flaticon-alarm"></i>Log out</a>
                     </li>
                 </ul>
             </div>

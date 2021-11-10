@@ -6,40 +6,40 @@ import { loginAsync, selectErrors, selectLogged, selectLoading } from '../../fea
 import { Alert } from 'react-bootstrap';
 import Loader from '../CommonComponents/Loader';
 
-function Login() {        
+function Login() {
     const logged = useSelector(selectLogged);
-    const errors = useSelector(selectErrors);       
+    const errors = useSelector(selectErrors);
     const loading = useSelector(selectLoading);
     const dispatch = useDispatch();
 
     const [email, setEmail] = useState('');
     const emailValue = email;
-  
+
     const [password, setPassword] = useState('');
-    const passwordValue = password; 
+    const passwordValue = password;
 
     function doLogin(e) {
-        e.preventDefault();    
-        
+        e.preventDefault();
+
         const data = {
             username: emailValue,
             password: passwordValue
-          };
+        };
 
-        dispatch(loginAsync(data));                
+        dispatch(loginAsync(data));
         return false;
-      }
-     
+    }
+
     if (logged === true)
-        return <Redirect to="/dashboard" />    
+        return <Redirect to="/dashboard" />
 
     return (
         <div>
 
-            {loading ? <Loader/> : ""}
+            {loading ? <Loader /> : ""}
 
             <div className="hero-section">
-                <div className="bg_img hero-bg bottom_center"  style={ { backgroundImage: "url('assets/images/banner/hero-bg.png')" } } ></div>
+                <div className="bg_img hero-bg bottom_center" style={{ backgroundImage: "url('assets/images/banner/hero-bg.png')" }} ></div>
             </div>
 
             <section className="account-section padding-bottom">
@@ -51,7 +51,7 @@ function Login() {
                                 <p>You can log in to your Sbidu account here.</p>
                             </div>
 
-                            {errors ?<Alert variant="danger">{errors.map(line => (<p key="{line}">{line}</p>))}</Alert> : ''}
+                            {errors ? <Alert variant="danger">{errors.map(line => (<p key="{line}">{line}</p>))}</Alert> : ''}
 
                             <form className="login-form" onSubmit={doLogin}>
                                 <div className="form-group mb-30">
@@ -60,8 +60,8 @@ function Login() {
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="login-pass"><i className="fas fa-lock"></i></label>
-                                    <input type="password" id="login-pass" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />                                    
-                                </div>                                
+                                    <input type="password" id="login-pass" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
+                                </div>
                                 <div className="form-group mb-0">
                                     <button type="submit" className="custom-button">LOG IN</button>
                                 </div>
