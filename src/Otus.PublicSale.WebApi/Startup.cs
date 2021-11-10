@@ -94,6 +94,7 @@ namespace Otus.PublicSale.WebApi
             //    });
 
             services.AddScoped(typeof(IRepository<>), typeof(EntityFrameworkRepository<>));
+            services.AddScoped<IDbInitializer, DbInitializer>();
 
             services.AddMassTransit(x =>
             {
@@ -150,7 +151,7 @@ namespace Otus.PublicSale.WebApi
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app)
+        public void Configure(IApplicationBuilder app,IDbInitializer dbInitializer)
         {
             app.UseDeveloperExceptionPage();
             app.UseHttpsRedirection();
@@ -177,6 +178,9 @@ namespace Otus.PublicSale.WebApi
             app.UseRequestResponseLogging();
 
             app.UseEndpoints(endpoints => endpoints.MapDefaultControllerRoute());
+
+            dbInitializer.InitializeDb();
+
         }
     }
 
