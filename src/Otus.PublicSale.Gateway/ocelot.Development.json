@@ -32,7 +32,7 @@
         {
           "Host": "localhost",
           "Port": 5011
-        } 
+        }
       ],
       "UpstreamPathTemplate": "/api/users",
       "UpstreamHttpMethod": [ "Get" ],
@@ -40,8 +40,39 @@
         "AuthenticationProviderKey": "Bearer",
         "AllowedScopes": []
       }
-    }
+    },
     /*User API ends*/
+
+    {
+      "DownstreamPathTemplate": "/api/v1/Auctions",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5001
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Auctions",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/v1/Auctions",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5001
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Auctions",
+      "UpstreamHttpMethod": [ "Post" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    }
+
   ],
   "GlobalConfiguration": {
     "BaseUrl": "https://localhost:5021" // comes from Properties/launchSettings.json
