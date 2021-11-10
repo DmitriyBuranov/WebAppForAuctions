@@ -25,6 +25,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Otus.PublicSale.Core;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
+using Otus.PublicSale.Core.Domain.AuctionManagement;
 
 namespace Otus.PublicSale.WebApi
 {
@@ -94,6 +95,7 @@ namespace Otus.PublicSale.WebApi
             //    });
 
             services.AddScoped(typeof(IRepository<>), typeof(EntityFrameworkRepository<>));
+            services.AddScoped(typeof(IAuctionRepository<>), typeof(AuctionRepository<>));
             services.AddScoped<IDbInitializer, DbInitializer>();
 
             services.AddMassTransit(x =>

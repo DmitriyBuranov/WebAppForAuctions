@@ -36,15 +36,19 @@ namespace Otus.PublicSale.WebApi.Controllers
         /// </summary>
         private readonly IRepository<Auction> _repositoryAuctions;
 
+        private readonly IAuctionRepository<Auction> _specialRepositoryAuctions;
+
         /// <summary>
         /// Constuctor
         /// </summary>
-        /// <param name="repositoryAuctions">Auctions repository</param>            
+        /// <param name="repositoryAuctions">Auctions repository</param>
+        /// <param name="specialRepositoryAuctions">Auctions special repository</param> 
         /// <param name="cache">Cache</param>     
-        public AuctionsController(IRepository<Auction> repositoryAuctions, IDistributedCache cache)
+        public AuctionsController(IRepository<Auction> repositoryAuctions, IDistributedCache cache, IAuctionRepository<Auction> specialRepositoryAuctions)
         {
             _repositoryAuctions = repositoryAuctions;
             _cache = cache;
+            _specialRepositoryAuctions= specialRepositoryAuctions;
         }
 
         /// <summary>
@@ -62,6 +66,36 @@ namespace Otus.PublicSale.WebApi.Controllers
                 list = entities.Select(entity => new AuctionDto(entity)).ToList();                                
                 await _cache.SetRecordAsync(_cacheAllKey, list);
             }
+
+            return Ok(list);
+        }
+
+        /// <summary>
+        /// Get Amount Near To Start
+        /// </summary>
+        /// <param name="num">Number of auctions</param>
+        /// <returns></returns>
+        [HttpGet("NearToStart{num}")]
+        [AllowAnonymous]
+        public  ActionResult<AuctionDto> GetAmountNearToStart(int num)
+        {
+            var entities =  _specialRepositoryAuctions.GetAmountNearToStart(num);
+            var list = entities.Select(entity => new AuctionDto(entity)).ToList();
+ 
+            return Ok(list);
+        }
+
+        /// <summary>
+        /// Get Amount near to end
+        /// </summary>
+        /// <param name="num">Number of auctions</param>
+        /// <returns></returns>
+        [HttpGet("NearToEnd{num}")]
+        [AllowAnonymous]
+        public ActionResult<AuctionDto> GetAmountNearToEnd(int num)
+        {
+            var entities = _specialRepositoryAuctions.GetAmountNearToEnd(num);
+            var list = entities.Select(entity => new AuctionDto(entity)).ToList();
 
             return Ok(list);
         }

@@ -57,6 +57,31 @@
     },
 
     {
+      "DownstreamPathTemplate": "/api/v1/Auctions/NearToStart{num}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5001
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Auctions/NearToStart{num}",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/v1/Auctions/NearToEnd{num}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5001
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Auctions/NearToEnd{num}",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+
+    {
       "DownstreamPathTemplate": "/api/v1/Auctions",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [

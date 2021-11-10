@@ -28,7 +28,8 @@ namespace Otus.PublicSale.UnitTests
         /// <summary>
         /// Mocks
         /// </summary>
-        private Mock<IRepository<Auction>> _repositoryauctionMock = new Mock<IRepository<Auction>>();        
+        private Mock<IRepository<Auction>> _repositoryauctionMock = new Mock<IRepository<Auction>>();
+        private Mock<IAuctionRepository<Auction>> _specialRepositoryauctionMock = new Mock<IAuctionRepository<Auction>>();
         private Mock<IDistributedCache> _cache = new Mock<IDistributedCache>();
 
         /// <summary>
@@ -39,7 +40,7 @@ namespace Otus.PublicSale.UnitTests
         {
             var provider = controllerFixture.ServiceProvider;
 
-            _auctionController = new AuctionsController(_repositoryauctionMock.Object, _cache.Object);
+            _auctionController = new AuctionsController(_repositoryauctionMock.Object, _cache.Object, _specialRepositoryauctionMock.Object);
         }
 
         #region GetAuctionsAsync

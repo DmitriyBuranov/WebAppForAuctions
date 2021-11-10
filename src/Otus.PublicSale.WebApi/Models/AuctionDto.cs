@@ -49,6 +49,9 @@ namespace Otus.PublicSale.WebApi.Models
         /// </summary>
         public decimal PriceStep { get; set; }
 
+        public decimal SellPrice {  get; set;}
+
+
         /// <summary>
         /// Constuctor
         /// </summary>
@@ -72,6 +75,7 @@ namespace Otus.PublicSale.WebApi.Models
             Duration = auction.Duration;
             PriceStart = auction.PriceStart;
             PriceStep = auction.PriceStep;
+            SellPrice = auction.SellPrice;
         }
 
         public override bool Equals(object obj)
@@ -95,7 +99,7 @@ namespace Otus.PublicSale.WebApi.Models
 
             var data = obj as AuctionDto;
 
-            return this.Id == data.Id && this.Name == data.Name && this.Duration == data.Duration && this.Descition == data.Descition && this.CreateDate == data.CreateDate && this.PriceStart == data.PriceStart && this.PriceStep == data.PriceStep && this.StartDate == data.StartDate && this.Status == data.Status;
+            return this.Id == data.Id && this.Name == data.Name && this.Duration == data.Duration && this.Descition == data.Descition && this.CreateDate == data.CreateDate && this.PriceStart == data.PriceStart && this.PriceStep == data.PriceStep && this.StartDate == data.StartDate && this.Status == data.Status && this.SellPrice == data.SellPrice;
         }
     }
 }
