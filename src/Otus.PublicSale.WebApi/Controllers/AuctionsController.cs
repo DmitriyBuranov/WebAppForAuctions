@@ -16,7 +16,6 @@ namespace Otus.PublicSale.WebApi.Controllers
     /// <summary>
     /// Auctions Controller
     /// </summary>
-    [Authorize]
     [ApiController]
     [Route("api/v1/[controller]")]
     public class AuctionsController : ControllerBase
@@ -99,6 +98,7 @@ namespace Otus.PublicSale.WebApi.Controllers
         /// </summary>        
         /// <param name="request">Auction Dto</param>
         /// <returns>Auction Id</returns>
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<Guid>> CreatetAuctionAsync(AuctionDto request)
         {
@@ -116,6 +116,7 @@ namespace Otus.PublicSale.WebApi.Controllers
         /// <param name="id">Auction Id</param>
         /// <param name="request">Auction Dto</param> 
         /// <returns></returns>
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdatetAuctionAsync(int id, AuctionDto request)
         {
@@ -138,6 +139,7 @@ namespace Otus.PublicSale.WebApi.Controllers
         /// </summary>
         /// <param name="id">Auction Id</param>
         /// <returns></returns>
+        [Authorize]
         [HttpDelete]
         public async Task<IActionResult> DeletetAuction(int id)
         {
