@@ -6,29 +6,29 @@ function Header() {
     return (
         <div>
             <header>
-                <div class="header-top">
-                    <div class="container">
-                        <div class="header-top-wrapper">
-                            <ul class="customer-support">
+                <div className="header-top">
+                    <div className="container">
+                        <div className="header-top-wrapper">
+                            <ul className="customer-support">
 
                             </ul>
-                            <ul class="cart-button-area">
+                            <ul className="cart-button-area">
                                 <li>
-                                    <a href="sign-in.html" class="user-button"><i class="flaticon-user"></i></a>
+                                    <a href="sign-in.html" className="user-button"><i className="flaticon-user"></i></a>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                <div class="header-bottom">
-                    <div class="container">
-                        <div class="header-wrapper">
-                            <div class="logo">
+                <div className="header-bottom">
+                    <div className="container">
+                        <div className="header-wrapper">
+                            <div className="logo">
                                 <a href="index.html">
                                     <img src="assets/images/logo/logo.png" alt="logo"></img>
                                 </a>
                             </div>
-                            <ul class="menu ml-auto">
+                            <ul className="menu ml-auto">
                                 <li>
                                     <Link to="/home">Home</Link>
                                 </li>
@@ -37,10 +37,10 @@ function Header() {
                                 </li>
                                 <li>
                                     <a href="#0">Pages</a>
-                                    <ul class="submenu">
+                                    <ul className="submenu">
                                         <li>
                                             <a href="#0">Product</a>
-                                            <ul class="submenu">
+                                            <ul className="submenu">
                                                 <li>
                                                     <a href="product.html">Product Page 1</a>
                                                 </li>
@@ -54,7 +54,7 @@ function Header() {
                                         </li>
                                         <li>
                                             <a href="#0">My Account</a>
-                                            <ul class="submenu">
+                                            <ul className="submenu">
                                                 <li>
                                                     <a href="sign-up.html">Sign Up</a>
                                                 </li>
@@ -65,7 +65,7 @@ function Header() {
                                         </li>
                                         <li>
                                             <a href="#0">Dashboard</a>
-                                            <ul class="submenu">
+                                            <ul className="submenu">
                                                 <li>
                                                     <a href="dashboard.html">Dashboard</a>
                                                 </li>
@@ -104,7 +104,7 @@ function Header() {
                                     <a href="contact.html">Contact</a>
                                 </li>
                             </ul>
-                            <div class="header-bar d-lg-none">
+                            <div className="header-bar d-lg-none">
                                 <span></span>
                                 <span></span>
                                 <span></span>

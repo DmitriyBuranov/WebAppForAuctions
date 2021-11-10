@@ -4,45 +4,45 @@ import { Link } from 'react-router-dom';
 function AuctionItem(props) {
 
     return (
-        <div class="col-sm-10 col-md-6 col-lg-4">
-            <div class="auction-item-2">
-                <div class="auction-thumb">
+        <div className="col-sm-10 col-md-6 col-lg-4">
+            <div className="auction-item-2">
+                <div className="auction-thumb">
                     <a href="product-details.html"><img src="assets/images/auction/car/auction-2.jpg" alt="car"></img></a>
-                    <a href="#0" class="rating"><i class="far fa-star"></i></a>
-                    <a href="#0" class="bid"><i class="flaticon-auction"></i></a>
+                    <a href="#0" className="rating"><i className="far fa-star"></i></a>
+                    <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                 </div>
-                <div class="auction-content">
-                    <h6 class="title">
+                <div className="auction-content">
+                    <h6 className="title">
                         <a href="product-details.html">{props.auctionItem.name}</a>
                     </h6>
-                    <div class="bid-area">
-                        <div class="bid-amount">
-                            <div class="icon">
-                                <i class="flaticon-auction"></i>
+                    <div className="bid-area">
+                        <div className="bid-amount">
+                            <div className="icon">
+                                <i className="flaticon-auction"></i>
                             </div>
-                            <div class="amount-content">
-                                <div class="current">Current Bid</div>
-                                <div class="amount">{props.auctionItem.currentBid}</div>
+                            <div className="amount-content">
+                                <div className="current">Current Bid</div>
+                                <div className="amount">{props.auctionItem.currentBid}</div>
                             </div>
                         </div>
-                        <div class="bid-amount">
-                            <div class="icon">
-                                <i class="flaticon-money"></i>
+                        <div className="bid-amount">
+                            <div className="icon">
+                                <i className="flaticon-money"></i>
                             </div>
-                            <div class="amount-content">
-                                <div class="current">Buy Now</div>
-                                <div class="amount">{props.auctionItem.byingPrice}</div>
+                            <div className="amount-content">
+                                <div className="current">Buy Now</div>
+                                <div className="amount">{props.auctionItem.byingPrice}</div>
                             </div>
                         </div>
                     </div>
-                    <div class="countdown-area">
-                        <div class="countdown">
+                    <div className="countdown-area">
+                        <div className="countdown">
                             <div id="bid_counter27"></div>
                         </div>
-                        <span class="total-bids">{props.auctionItem.totalBids}</span>
+                        <span className="total-bids">{props.auctionItem.totalBids}</span>
                     </div>
-                    <div class="text-center">
-                        <a href="#0" class="custom-button">Submit a bid</a>
+                    <div className="text-center">
+                        <a href="#0" className="custom-button">Submit a bid</a>
                     </div>
                 </div>
             </div>

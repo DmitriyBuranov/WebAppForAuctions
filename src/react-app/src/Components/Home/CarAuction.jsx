@@ -27,18 +27,18 @@ function CarAuction() {
 
     return (
         <div>
-            <section class="car-auction-section padding-bottom pos-rel oh">
-                <div class="car-bg"><img src="assets/images/auction/car/car-bg.png" alt="car"></img></div>
-                <div class="container">
-                    <div class="section-header-3">
-                        <div class="left d-block">
-                            <h2 class="title mb-3">Featured Items</h2>
+            <section className="car-auction-section padding-bottom pos-rel oh">
+                <div className="car-bg"><img src="assets/images/auction/car/car-bg.png" alt="car"></img></div>
+                <div className="container">
+                    <div className="section-header-3">
+                        <div className="left d-block">
+                            <h2 className="title mb-3">Featured Items</h2>
                             <p>Start winning cars with comfort</p>
                         </div>
                         {/*Вставить ссылку на страницу продуктов*/}
-                        <a href="#0" class="normal-button">View All</a>
+                        <a href="#0" className="normal-button">View All</a>
                     </div>
-                    <div class="row justify-content-center mb-30-none">                        
+                    <div className="row justify-content-center mb-30-none">                        
                             <AuctionItem auctionItem = {auctionItem}></AuctionItem>
                             <AuctionItem auctionItem = {auctionItem}></AuctionItem> 
                             <AuctionItem auctionItem = {auctionItem}></AuctionItem>                      
