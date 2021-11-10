@@ -1,7 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation  } from 'react-router-dom';
 
 function Header() {
+    const location = useLocation();
+
+    if (location.pathname === "/404")
+        return '';
 
     return (
         <div>
@@ -14,7 +18,7 @@ function Header() {
                             </ul>
                             <ul className="cart-button-area">
                                 <li>
-                                    <a href="sign-in.html" className="user-button"><i className="flaticon-user"></i></a>
+                                    <Link to="/dashboard" className="user-button"><i className="flaticon-user"></i></Link>
                                 </li>
                             </ul>
                         </div>
