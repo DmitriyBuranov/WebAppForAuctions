@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Footer from '../CommonComponents/Footer';
-import Header from '../CommonComponents/Header';
-import Loader from '../CommonComponents/Loader';
-import CarAuction from './CarAuction';
+import CarAuctionNearToStart from './CarAuctionNearTostart';
+import CarAuctionNearToEnd from './CarAuctionNearToEnd';
 import { useSelector } from 'react-redux';
 import { selectLogged, selectJWT } from '../../features/userSlice';
 
@@ -26,7 +24,7 @@ function Home() {
                                 <p className="mw-500">
                                     Thousands of Vehicles for Sale Every Day, We havejust the right one for you.
                                 </p>
-                                <a href="#0" className="custom-button yellow btn-large">Get Started</a>
+                                <a href="/product" className="custom-button yellow btn-large">Get Started</a>
                             </div>
                         </div>
                         <div className="col-lg-5 col-xl-4">
@@ -89,186 +87,10 @@ function Home() {
                 </div>
                 <div className="car-2 d-none d-lg-block"><img src="assets/images/how/car2.png" alt="how"></img></div>
             </section>
-            {/*============= How Section Starts Here =============*/}
+            {/*============= How Section Ends Here =============*/}
 
-            <CarAuction></CarAuction>
-
-            {/*============= Ending Auction Section Starts Here =============*/}
-            <section className="ending-auction padding-top pos-rel">
-                <div className="popular-bg bg_img" style={ { backgroundImage: "url('assets/images/popular/popular-bg.png')" } }></div>
-                <div className="container">
-                    <div className="section-header cl-white">
-                        <span className="cate">Closing Within 24 Hours</span>
-                        <h2 className="title">Auctions Ending soon</h2>
-                        <p>Bid and win great deals,Our auction process is simple, efficient, and transparent.</p>
-                    </div>
-                    <div className="popular-auction-wrapper">
-                        <div className="row justify-content-center mb-40-none">
-                            <div className="col-lg-6">
-                                <div className="auction-item-3">
-                                    <div className="auction-thumb">
-                                        <a href="product-details.html"><img src="assets/images/auction/ending/auction01.png" alt="ending"></img></a>
-                                        <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
-                                    </div>
-                                    <div className="auction-content">
-                                        <h6 className="title">
-                                            <a href="product-details.html">2021 Honda Insight,
-                                                Touring</a>
-                                        </h6>
-                                        <div className="bid-amount">
-                                            <div className="icon">
-                                                <i className="flaticon-auction"></i>
-                                            </div>
-                                            <div className="amount-content">
-                                                <div className="current">Current Bid</div>
-                                                <div className="amount">$876.00</div>
-                                            </div>
-                                        </div>
-                                        <div className="bids-area">
-                                            Total Bids : <span className="total-bids">130 Bids</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-lg-6">
-                                <div className="auction-item-3">
-                                    <div className="auction-thumb">
-                                        <a href="product-details.html"><img src="assets/images/auction/ending/auction02.png" alt="ending"></img></a>
-                                        <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
-                                    </div>
-                                    <div className="auction-content">
-                                        <h6 className="title">
-                                            <a href="product-details.html">2011 Hyundai Sonata,
-                                                Se/Limited</a>
-                                        </h6>
-                                        <div className="bid-amount">
-                                            <div className="icon">
-                                                <i className="flaticon-auction"></i>
-                                            </div>
-                                            <div className="amount-content">
-                                                <div className="current">Current Bid</div>
-                                                <div className="amount">$876.00</div>
-                                            </div>
-                                        </div>
-                                        <div className="bids-area">
-                                            Total Bids : <span className="total-bids">130 Bids</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-lg-6">
-                                <div className="auction-item-3">
-                                    <div className="auction-thumb">
-                                        <a href="product-details.html"><img src="assets/images/auction/ending/auction03.png" alt="ending"></img></a>
-                                        <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
-                                    </div>
-                                    <div className="auction-content">
-                                        <h6 className="title">
-                                            <a href="product-details.html">2016 Dodge Grand
-                                                Caravan, Sxt</a>
-                                        </h6>
-                                        <div className="bid-amount">
-                                            <div className="icon">
-                                                <i className="flaticon-auction"></i>
-                                            </div>
-                                            <div className="amount-content">
-                                                <div className="current">Current Bid</div>
-                                                <div className="amount">$876.00</div>
-                                            </div>
-                                        </div>
-                                        <div className="bids-area">
-                                            Total Bids : <span className="total-bids">130 Bids</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-lg-6">
-                                <div className="auction-item-3">
-                                    <div className="auction-thumb">
-                                        <a href="product-details.html"><img src="assets/images/auction/ending/auction04.png" alt="ending"></img></a>
-                                        <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
-                                    </div>
-                                    <div className="auction-content">
-                                        <h6 className="title">
-                                            <a href="product-details.html">2009 Jeep Wrangler
-                                                Unlimite, Sahara</a>
-                                        </h6>
-                                        <div className="bid-amount">
-                                            <div className="icon">
-                                                <i className="flaticon-auction"></i>
-                                            </div>
-                                            <div className="amount-content">
-                                                <div className="current">Current Bid</div>
-                                                <div className="amount">$876.00</div>
-                                            </div>
-                                        </div>
-                                        <div className="bids-area">
-                                            Total Bids : <span className="total-bids">130 Bids</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-lg-6">
-                                <div className="auction-item-3">
-                                    <div className="auction-thumb">
-                                        <a href="product-details.html"><img src="assets/images/auction/ending/auction05.png" alt="ending"></img></a>
-                                        <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
-                                    </div>
-                                    <div className="auction-content">
-                                        <h6 className="title">
-                                            <a href="product-details.html">2009 Toyota Prius
-                                                (Medford, NY 11763)</a>
-                                        </h6>
-                                        <div className="bid-amount">
-                                            <div className="icon">
-                                                <i className="flaticon-auction"></i>
-                                            </div>
-                                            <div className="amount-content">
-                                                <div className="current">Current Bid</div>
-                                                <div className="amount">$876.00</div>
-                                            </div>
-                                        </div>
-                                        <div className="bids-area">
-                                            Total Bids : <span className="total-bids">130 Bids</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-lg-6">
-                                <div className="auction-item-3">
-                                    <div className="auction-thumb">
-                                        <a href="product-details.html"><img src="assets/images/auction/ending/auction06.png" alt="ending"></img></a>
-                                        <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
-                                    </div>
-                                    <div className="auction-content">
-                                        <h6 className="title">
-                                            <a href="product-details.html">2019 Indian Motorcycle
-                                                Co. Scout, Bobber</a>
-                                        </h6>
-                                        <div className="bid-amount">
-                                            <div className="icon">
-                                                <i className="flaticon-auction"></i>
-                                            </div>
-                                            <div className="amount-content">
-                                                <div className="current">Current Bid</div>
-                                                <div className="amount">$876.00</div>
-                                            </div>
-                                        </div>
-                                        <div className="bids-area">
-                                            Total Bids : <span className="total-bids">130 Bids</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="load-wrapper">
-                            <a href="#0" className="normal-button">See All Auction</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            {/*============= Ending Auction Section Ends Here =============*/}
-
+            <CarAuctionNearToStart/>
+            <CarAuctionNearToEnd/>
 
             {/*============= Call In Section Starts Here =============*/}
             <section className="call-in-section padding-top">

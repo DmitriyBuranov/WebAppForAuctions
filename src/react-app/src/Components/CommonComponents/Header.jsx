@@ -37,25 +37,11 @@ function Header() {
                                     <Link to="/home">Home</Link>
                                 </li>
                                 <li>
-                                    <a href="product.html">Auction</a>
+                                    <Link to="/product">Auction</Link>
                                 </li>
                                 <li>
                                     <a href="#0">Pages</a>
                                     <ul className="submenu">
-                                        <li>
-                                            <a href="#0">Product</a>
-                                            <ul className="submenu">
-                                                <li>
-                                                    <a href="product.html">Product Page 1</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product-2.html">Product Page 2</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product-details.html">Product Details</a>
-                                                </li>
-                                            </ul>
-                                        </li>
                                         <li>
                                             <a href="#0">My Account</a>
                                             <ul className="submenu">
@@ -100,7 +86,7 @@ function Header() {
                                             <a href="faqs.html">Faqs</a>
                                         </li>
                                         <li>
-                                            <a href="error.html">404 Error</a>
+                                        <Link to="/404">404 page</Link>
                                         </li>
                                     </ul>
                                 </li>

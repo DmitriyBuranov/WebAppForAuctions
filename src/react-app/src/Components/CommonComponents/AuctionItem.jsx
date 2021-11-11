@@ -22,7 +22,7 @@ function AuctionItem(props) {
                             </div>
                             <div className="amount-content">
                                 <div className="current">Current Bid</div>
-                                <div className="amount">{props.auctionItem.currentBid}</div>
+                                <div className="amount">{props.auctionItem.priceStart}</div>
                             </div>
                         </div>
                         <div className="bid-amount">
@@ -31,7 +31,7 @@ function AuctionItem(props) {
                             </div>
                             <div className="amount-content">
                                 <div className="current">Buy Now</div>
-                                <div className="amount">{props.auctionItem.byingPrice}</div>
+                                <div className="amount">{props.auctionItem.sellPrice}</div>
                             </div>
                         </div>
                     </div>
@@ -39,7 +39,6 @@ function AuctionItem(props) {
                         <div className="countdown">
                             <div id="bid_counter27"></div>
                         </div>
-                        <span className="total-bids">{props.auctionItem.totalBids}</span>
                     </div>
                     <div className="text-center">
                         <a href="#0" className="custom-button">Submit a bid</a>

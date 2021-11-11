@@ -1,29 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import AuctionItem from '../CommonComponents/AuctionItem';
+import { auctionService } from '../../Services/auctionsService';
 
-function CarAuction() {
+function CarAuctionNearToStart() {
 
     const [auctions, setAuctions] = useState([]);
 
-    fetch('api/v1/Auctions')
-    .then(response => response.json())
-    .then((data) => {
-        console.log(data);
-        setAuctions(data);
-    })
-    .catch(error => console.error('Unable to get Auctions.', error));
+    const num = 3;
 
-    const auctionItem =   {
-        name: '2021 Lada 6',
-        currentBid: '$651.00',
-        byingPrice: '$3568.00',
-        totalBids: '99 Bids'
-        /*img: ,*/
-        /*timer: ,*/
-        /*id: ,*/
-      };
-
+    useEffect(() => {
+        fetch('api/v1/Auctions/NearToStart' + num)
+            .then(response => response.json())
+            .then((data) => {
+                console.log(data);
+                setAuctions(data);
+            })
+            .catch(error => console.error('Unable to get AuctionsNearToStart.', error));
+    }, []);
 
     return (
         <div>
@@ -38,10 +32,10 @@ function CarAuction() {
                         {/*Вставить ссылку на страницу продуктов*/}
                         <a href="#0" className="normal-button">View All</a>
                     </div>
-                    <div className="row justify-content-center mb-30-none">                        
-                            <AuctionItem auctionItem = {auctionItem}></AuctionItem>
-                            <AuctionItem auctionItem = {auctionItem}></AuctionItem> 
-                            <AuctionItem auctionItem = {auctionItem}></AuctionItem>                      
+                    <div className="row justify-content-center mb-30-none">
+                        {auctions.map((auction) => (
+                            <AuctionItem auctionItem={auction}></AuctionItem>
+                        ))}
                     </div>
                 </div>
             </section>
@@ -49,4 +43,4 @@ function CarAuction() {
     );
 }
 
-export default CarAuction;
+export default CarAuctionNearToStart;

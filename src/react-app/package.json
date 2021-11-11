@@ -18,9 +18,9 @@
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.2"
   },
-  "proxy": "https://localhost:5001/",
+  "proxy": "https://localhost:5001",
   "scripts": {
-    "start": "react-scripts --openssl-legacy-provider start",        
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -45,6 +45,5 @@
   },
   "devDependencies": {
     "html-loader": "^3.0.0"
-  },
-  "proxy": "https://localhost:5021"
+  }
 }

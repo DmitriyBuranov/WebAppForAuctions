@@ -17,7 +17,7 @@ namespace Otus.PublicSale.UnitTests
         /// </summary>
         public ControllerFixture()
         {
-            var builder = new ConfigurationBuilder();
+            var builder = new ConfigurationBuilder();     
             builder.AddJsonFile("appsettings.json", false, true);
             var configuration = builder.Build();
             var serviceCollection = new ServiceCollection();
