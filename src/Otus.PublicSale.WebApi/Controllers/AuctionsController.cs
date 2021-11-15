@@ -92,10 +92,9 @@ namespace Otus.PublicSale.WebApi.Controllers
         /// <returns></returns>
         [HttpGet("NearToEnd{num}")]
         [AllowAnonymous]
-        public ActionResult<AuctionDto> GetAmountNearToEnd(int num)
+        public ActionResult<AuctionDto> GetAmountNearToEndWithBets(int num)
         {
-            var entities = _specialRepositoryAuctions.GetAmountNearToEnd(num);
-            var list = entities.Select(entity => new AuctionDto(entity)).ToList();
+            var list = _specialRepositoryAuctions.GetAmountNearToEndWithBets(num);
 
             return Ok(list);
         }

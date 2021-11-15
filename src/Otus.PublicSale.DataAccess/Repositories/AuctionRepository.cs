@@ -27,9 +27,18 @@ namespace Otus.PublicSale.DataAccess.Repositories
             return  _dbSet.Where(x => x.StartDate > DateTime.UtcNow).OrderBy(x => x.StartDate).Take(num);
         }
 
-        public  IEnumerable<T> GetAmountNearToEnd(int num)
+        public IEnumerable<AuctionWithBets> GetAmountNearToEndWithBets(int num)
         {
-            return  _dbSet.Where(x=> x.StartDate < DateTime.UtcNow).OrderBy(x => x.StartDate.AddDays(x.Duration)).Take(num);
+            var auctions = _dbSet.Where(x => x.StartDate < DateTime.UtcNow).OrderBy(x => x.StartDate.AddDays(x.Duration)).Take(num);
+            var list =   auctions.Select(x=> new AuctionWithBets
+                {
+                    Name = x.Name,
+                    Id = x.Id,
+                    Count = x.AuctionBets.Count(),
+                    CurrentMaxBet = x.AuctionBets.Max(x => x.Amount)
+                }).ToList();
+
+            return list;
         }
     }
 }

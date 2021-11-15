@@ -19,11 +19,11 @@ function AuctionWithBids(props) {
                     </div>
                     <div className="amount-content">
                         <div className="current">Current Bid</div>
-                        <div className="amount">$876.00</div>
+                        <div className="amount">{props.auctionItem.currentMaxBet}</div>
                     </div>
                 </div>
                 <div className="bids-area">
-                    Total Bids : <span className="total-bids">130 Bids</span>
+                    Total Bids : <span className="total-bids">{props.auctionItem.count}</span>
                 </div>
             </div>
         </div>

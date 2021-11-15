@@ -12,6 +12,6 @@ namespace Otus.PublicSale.Core.Abstractions.Repositories
     {
         IEnumerable<T> GetAmountNearToStart(int num);
 
-        IEnumerable<T> GetAmountNearToEnd(int num);
+        IEnumerable<AuctionWithBets> GetAmountNearToEndWithBets(int num);
     }
 }
