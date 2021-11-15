@@ -13,6 +13,10 @@ namespace Otus.PublicSale.Core.Domain.AuctionManagement
 
         public int Count {  get; set; }
 
+        public decimal PriceStart { get; set; }
+
         public decimal? CurrentMaxBet {  get; set; }
+
+        public decimal SellPrice { get; set; }
     }
 }

@@ -100,6 +100,48 @@ namespace Otus.PublicSale.WebApi.Controllers
         }
 
         /// <summary>
+        /// Get Amount With Bets Ordered By Name then Start Date
+        /// </summary>
+        /// <param name="num">Number of auctions</param>
+        /// <returns></returns>
+        [HttpGet("WithBetsOrderedByAll{num}")]
+        [AllowAnonymous]
+        public ActionResult<AuctionDto> GetAmountWithBetsOrderedByAll(int num)
+        {
+            var list = _specialRepositoryAuctions.GetAmountWithBetsOrderedByAll(num);
+
+            return Ok(list);
+        }
+
+        /// <summary>
+        /// Get Amount With Bets Ordered By Name
+        /// </summary>
+        /// <param name="num">Number of auctions</param>
+        /// <returns></returns>
+        [HttpGet("WithBetsOrderedByName{num}")]
+        [AllowAnonymous]
+        public ActionResult<AuctionDto> GetAmountWithBetsOrderedByName(int num)
+        {
+            var list = _specialRepositoryAuctions.GetAmountWithBetsOrderedByName(num);
+
+            return Ok(list);
+        }
+
+        /// <summary>
+        /// Get Amount Wit hBets Ordered By Start Date
+        /// </summary>
+        /// <param name="num">Number of auctions</param>
+        /// <returns></returns>
+        [HttpGet("WithBetsOrderedByDate{num}")]
+        [AllowAnonymous]
+        public ActionResult<AuctionDto> GetAmountWithBetsOrderedByDate(int num)
+        {
+            var list = _specialRepositoryAuctions.GetAmountWithBetsOrderedByDate(num);
+
+            return Ok(list);
+        }
+
+        /// <summary>
         /// Gets Auction By Id
         /// </summary>
         /// <param name="id">Auction Id</param>
