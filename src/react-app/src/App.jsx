@@ -18,6 +18,7 @@ import Profile from "./Components/Profile/Profile"
 import Dashboard from "./Components/Profile/Dashboard"
 import MyBids from "./Components/Profile/MyBids"
 import MyWinnings from './Components/Profile/MyWinnings';
+import CreateAuction from './Components/AdminPanel/CreateAuction';
 
 const App=() => {
   return (
@@ -38,6 +39,7 @@ const App=() => {
             <Route path="/product" component={Product} />
             <Route path="/productDetails" component={ProductDetails} />
             <Route path="/404" component={Page404} />
+            <Route path="/createAuction" component={CreateAuction}/>
             <Redirect from="*" to="/home" />
         </Switch>
 

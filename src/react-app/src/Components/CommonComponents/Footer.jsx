@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 function Footer() {
     const location = useLocation();
 
-    if (location.pathname === "/404")
+    if (location.pathname === "/404" || location.pathname === "/createAuction" )
         return '';
 
     return (
