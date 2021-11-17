@@ -17,14 +17,13 @@ namespace Otus.PublicSale.UnitTests
         /// </summary>
         public ControllerFixture()
         {
-            //TODO - errors here
-            //var builder = new ConfigurationBuilder();
-            //builder.AddJsonFile("appsettings.json", false, true);
-            //var configuration = builder.Build();
-            //var serviceCollection = new ServiceCollection();
-            //new Startup(configuration).ConfigureServices(serviceCollection);
-            //var serviceProvider = serviceCollection.BuildServiceProvider();
-            //ServiceProvider = serviceProvider;
+            var builder = new ConfigurationBuilder();
+            builder.AddJsonFile("appsettings.json", false, true);
+            var configuration = builder.Build();
+            var serviceCollection = new ServiceCollection();
+            new Startup(configuration).ConfigureServices(serviceCollection);
+            var serviceProvider = serviceCollection.BuildServiceProvider();
+            ServiceProvider = serviceProvider;
         }
 
         /// <summary>
