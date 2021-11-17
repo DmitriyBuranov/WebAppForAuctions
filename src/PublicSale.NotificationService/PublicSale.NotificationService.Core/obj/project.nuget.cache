@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Ap+B4/FEgGH4kA4rKudqQUj58lOaoU4visoaobUMmqf/k9oykVa1gZSnHARdKcHV3K0du79he/aJHoq/nbqw5g==",
+  "dgSpecHash": "q1hqn17NXhBCO10ktLNqurmyIUFSMBWZtYmTbAhqnwM2iLAkEN/aWiyNixwjcVBa0gEA8zve8mm695DRN2URYw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Drown\\source\\repos\\mega-project\\src\\PublicSale.NotificationService\\PublicSale.NotificationService.Core\\PublicSale.NotificationService.Core.csproj",
+  "projectFilePath": "C:\\Users\\Drown\\Source\\Repos\\mega-project\\src\\PublicSale.NotificationService\\PublicSale.NotificationService.Core\\PublicSale.NotificationService.Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Drown\\.nuget\\packages\\mailkit\\2.15.0\\mailkit.2.15.0.nupkg.sha512",
     "C:\\Users\\Drown\\.nuget\\packages\\microsoft.aspnetcore.http\\2.2.2\\microsoft.aspnetcore.http.2.2.2.nupkg.sha512",

@@ -15,7 +15,6 @@ namespace Otus.PublicSale.Core.Abstractions.Repositories
         IEnumerable<AuctionWithBets> GetAmountWithBetsOrderedByAll(int num);
         IEnumerable<AuctionWithBets> GetAmountWithBetsOrderedByName(int num);
         IEnumerable<AuctionWithBets> GetAmountWithBetsOrderedByDate(int num);
-
-
+        Task<List<T>> GetJustHaveFinnishedAsync(DateTime endTime);
     }
 }

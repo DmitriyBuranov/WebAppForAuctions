@@ -26,6 +26,7 @@ using Otus.PublicSale.Core;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using Otus.PublicSale.Core.Domain.AuctionManagement;
+using Otus.PublicSale.Core.Domain.Services;
 
 namespace Otus.PublicSale.WebApi
 {
@@ -150,6 +151,10 @@ namespace Otus.PublicSale.WebApi
                 options.Configuration = Configuration.GetConnectionString("Redis");
                 options.InstanceName = "localRedis_";
             });
+
+            services.AddHostedService<TimedHostedService>();
+
+            services.AddTransient<AuctionWorker>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

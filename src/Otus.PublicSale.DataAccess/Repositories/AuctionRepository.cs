@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace Otus.PublicSale.DataAccess.Repositories
 {
@@ -85,6 +86,11 @@ namespace Otus.PublicSale.DataAccess.Repositories
                     CurrentMaxBet = x.AuctionBets.Max(x => x.Amount),
                     PriceStart = x.PriceStart
                 }).ToList();
+        }
+
+        public async Task<List<T>> GetJustHaveFinnishedAsync(DateTime endTime)
+        {
+            return await _dbSet.Where(x => x.StartDate.AddSeconds(x.Duration) == endTime).ToListAsync();
         }
     }
 }

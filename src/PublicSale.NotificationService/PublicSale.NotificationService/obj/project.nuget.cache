@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9YyS3MmKPCTfT9w1oC3A2ZcIuy5zXOKdJYYZz+oUKZ+xI9PNLMdRfyHPYWiVY6xoa7moa8wqNhcg68Rhj+/7Sw==",
+  "dgSpecHash": "A8re/8JFYpDE6S0nzzcXpZLiY3N0pa44I2SKckh/yODl30obLMR9j5SJW6eARQS8jUIUddaDU5AxsqgU5moPhA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Drown\\source\\repos\\mega-project\\src\\PublicSale.NotificationService\\PublicSale.NotificationService\\PublicSale.NotificationService.WebHost.csproj",
+  "projectFilePath": "C:\\Users\\Drown\\Source\\Repos\\mega-project\\src\\PublicSale.NotificationService\\PublicSale.NotificationService\\PublicSale.NotificationService.WebHost.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Drown\\.nuget\\packages\\automatonymous\\5.1.2\\automatonymous.5.1.2.nupkg.sha512",
     "C:\\Users\\Drown\\.nuget\\packages\\dnsclient\\1.4.0\\dnsclient.1.4.0.nupkg.sha512",
@@ -130,7 +130,7 @@
     "C:\\Users\\Drown\\.nuget\\packages\\system.valuetuple\\4.5.0\\system.valuetuple.4.5.0.nupkg.sha512",
     "C:\\Users\\Drown\\.nuget\\packages\\system.xml.readerwriter\\4.3.1\\system.xml.readerwriter.4.3.1.nupkg.sha512",
     "C:\\Users\\Drown\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\Drown\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.8\\microsoft.netcore.app.host.win-x64.5.0.8.nupkg.sha512"
+    "C:\\Users\\Drown\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.12\\microsoft.netcore.app.host.win-x64.5.0.12.nupkg.sha512"
   ],
   "logs": []
 }
