@@ -114,21 +114,21 @@ namespace Otus.PublicSale.WebApi
 
             services.AddScoped(typeof(IRepository<>), typeof(EntityFrameworkRepository<>));
             services.AddScoped(typeof(IAuctionRepository<>), typeof(AuctionRepository<>));
+            services.AddScoped(typeof(IAuctionBetRepository<>), typeof(AuctionBetRepository<>));
             services.AddScoped<IDbInitializer, DbInitializer>();
 
-            //TODO - errors here
-            //services.AddMassTransit(x =>
-            //{
-            //    x.UsingRabbitMq((context, cfg) =>
-            //    {
-            //        cfg.Host(new Uri(Configuration["RabbitMQ:Url"]), c =>
-            //        {
-            //            c.Username(Configuration["RabbitMQ:Username"]);
-            //            c.Password(Configuration["RabbitMQ:Password"]);
-            //        });
-            //    });
-            //});
-            //services.AddMassTransitHostedService();
+            services.AddMassTransit(x =>
+            {
+                x.UsingRabbitMq((context, cfg) =>
+                {
+                    cfg.Host(new Uri(Configuration["RabbitMQ:Url"]), c =>
+                    {
+                        c.Username(Configuration["RabbitMQ:Username"]);
+                        c.Password(Configuration["RabbitMQ:Password"]);
+                    });
+                });
+            });
+            services.AddMassTransitHostedService();
             services.AddFluentValidation();
             services.AddTransient<IValidator<AuctionUserDto>, AuctionUserValidator>();
             services.AddTransient<IValidator<AuctionDto>, AuctionValidator>();
@@ -170,11 +170,9 @@ namespace Otus.PublicSale.WebApi
                 options.InstanceName = "localRedis_";
             });
 
-            //TODO - errors here
+            services.AddHostedService<TimedHostedService>();
 
-            //services.AddHostedService<TimedHostedService>();
-
-            //services.AddTransient<AuctionWorker>();
+            services.AddTransient<AuctionWorker>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.        
