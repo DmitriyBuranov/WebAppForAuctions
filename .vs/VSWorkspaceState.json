@@ -1,12 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\src",
-    "\\src\\Otus.PublicSale.DataAccess",
-    "\\src\\Otus.PublicSale.DataAccess\\Data",
-    "\\src\\Otus.PublicSale.DataAccess\\Migrations",
-    "\\src\\Otus.PublicSale.DataAccess\\Repositories"
+    ""
   ],
-  "SelectedNode": "\\src\\Otus.PublicSale.sln",
+  "SelectedNode": "\\PublicSale.NotificationService.sln",
   "PreviewInSolutionExplorer": false
 }
