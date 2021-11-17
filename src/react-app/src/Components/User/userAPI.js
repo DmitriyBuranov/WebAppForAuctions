@@ -61,3 +61,34 @@ export function doRegister(data) {
       })
   });
 }
+
+export function doUpdate(data, jwt, id) {
+  return new Promise((resolve) => {
+    debugger;
+    const config = {
+      headers: { Authorization: `Bearer ${jwt}` }
+    };
+    axios.put('/api/users/update/' + id, data, config)
+      .then((result) => {
+        resolve({ data: data, errors: null });
+      })
+      .catch((error) => {
+        debugger;
+        let errors = null;
+        if (error.response.data.errors) {
+          errors = [];
+          for (const [value] of Object.entries(error.response.data.errors)) {
+            errors.push(value[0]);
+          }
+        }
+        else if (error.response.data.message) {
+          errors = [error.response.data.message];
+        }
+        else if (error.response.data) {
+          errors = [error.response.data];
+        }
+
+        resolve({ data: null, errors: errors });
+      })
+  });
+}

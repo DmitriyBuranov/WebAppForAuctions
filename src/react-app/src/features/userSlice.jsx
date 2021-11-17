@@ -1,26 +1,29 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { doLogin, doRegister, cookieName } from '../Components/User/userAPI';
+import {
+  doLogin,
+  doRegister,
+  doUpdate,
+  cookieName
+} from '../Components/User/userAPI';
 import Cookies from 'js-cookie'
 
 const initialState = loadInitialState();
 
-function loadInitialState(){  
+function loadInitialState() {
   const cookieLogged = Cookies.getJSON(cookieName);
-  if (cookieLogged)
-  {
+  if (cookieLogged) {
     return {
-      logged: true,  
+      logged: true,
       current: cookieLogged,
-      errors: null,  
-      loading: false,
+      errors: null,
+      loading: false,      
     }
   }
-  else
-  {
+  else {
     return {
-      logged: false,  
+      logged: false,
       current: null,
-      errors: null,  
+      errors: null,
       loading: false,
     }
   }
@@ -28,15 +31,15 @@ function loadInitialState(){
 
 export const loginAsync = createAsyncThunk(
   'user/doLogin',
-  async (data) => {    
+  async (data) => {
     return await doLogin(data);
   }
 );
 
 export const registerAsync = createAsyncThunk(
   'user/doRegister',
-  async (data) => {    
-    let result = await doRegister(data);    
+  async (data) => {
+    let result = await doRegister(data);
     if (result.data !== null)
       result = doLogin({
         username: data.username,
@@ -46,31 +49,35 @@ export const registerAsync = createAsyncThunk(
   }
 );
 
+export const updateAsync = createAsyncThunk(
+  'user/doUpdate',
+  async (data, { getState }) => {
+    debugger;
+    const state = getState();
+    return await doUpdate(data, state.user.current.token, state.user.current.id);
+  }
+);
+
 export const userSlice = createSlice({
   name: 'user',
   initialState,
-  reducers: {    
+  reducers: {
     logout: (state) => {
       state.logged = false;
       state.errors = null;
     },
-    register: (state, action) => {
-      state.logged = true;
-      state.current = action.payload;
-    },
-    error: (state, action) => {      
+    error: (state, action) => {
       state.errors = action.payload;
     },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(loginAsync.pending, (state) => {        
+      .addCase(loginAsync.pending, (state) => {
         state.loading = true;
       })
-      .addCase(loginAsync.fulfilled, (state, action) => {                        
+      .addCase(loginAsync.fulfilled, (state, action) => {
         state.loading = false;
-        if (action.payload.data === null)
-        {
+        if (action.payload.data === null) {
           state.logged = false;
           state.current = null;
           state.errors = action.payload.errors;
@@ -81,13 +88,12 @@ export const userSlice = createSlice({
           state.errors = null;
         }
       })
-      .addCase(registerAsync.pending, (state) => {        
+      .addCase(registerAsync.pending, (state) => {
         state.loading = true;
       })
-      .addCase(registerAsync.fulfilled, (state, action) => {                        
+      .addCase(registerAsync.fulfilled, (state, action) => {
         state.loading = false;
-        if (action.payload.data === null)
-        {
+        if (action.payload.data === null) {
           state.logged = false;
           state.current = null;
           state.errors = action.payload.errors;
@@ -96,6 +102,23 @@ export const userSlice = createSlice({
           state.logged = true;
           state.current = action.payload.data;
           state.errors = null;
+        }
+      })
+      .addCase(updateAsync.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(updateAsync.fulfilled, (state, action) => {
+        state.loading = false;
+        if (action.payload.data === null) {        
+          state.errors = action.payload.errors;
+        }
+        else {
+          state.current.firstName = action.payload.data.firstName;
+          state.current.lastName = action.payload.data.lastName;
+          state.current.username = action.payload.data.username;
+          state.errors = null;
+
+          Cookies.set(cookieName, state.current, { expires: 7, path: '' })
         }
       })
       ;

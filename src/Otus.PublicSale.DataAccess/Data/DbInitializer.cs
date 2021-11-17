@@ -15,6 +15,7 @@ namespace Otus.PublicSale.DataAccess.Data
 
         public void InitializeDb()
         {
+            //context.Database.EnsureDeleted();
             //context.Database.EnsureCreated();
 
            

@@ -26,6 +26,7 @@ using Otus.PublicSale.Core;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using Otus.PublicSale.Core.Domain.AuctionManagement;
+using Otus.PublicSale.WebApi.Hubs;
 
 namespace Otus.PublicSale.WebApi
 {
@@ -51,6 +52,30 @@ namespace Otus.PublicSale.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllCors", builder =>
+                {
+                    builder
+
+                    .WithOrigins("https://localhost:3000")
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowCredentials()
+                    .SetIsOriginAllowedToAllowWildcardSubdomains()
+                    .SetIsOriginAllowed(delegate (string requestingOrigin)
+                    {
+                        return true;
+                    }).Build();
+                });
+            });
+
+            services.AddSignalR(opt =>
+            {
+                opt.EnableDetailedErrors = true;
+                opt.KeepAliveInterval = TimeSpan.FromSeconds(4);
+            });
+
             services.AddDbContext<DataContext>(options => options
                .UseSqlServer(Configuration.GetConnectionString("DBConnection"))
                .UseLazyLoadingProxies()
@@ -153,8 +178,8 @@ namespace Otus.PublicSale.WebApi
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app,IDbInitializer dbInitializer)
-        {
+        public void Configure(IApplicationBuilder app, IDbInitializer dbInitializer)
+        {            
             app.UseDeveloperExceptionPage();
             app.UseHttpsRedirection();
 
@@ -179,7 +204,12 @@ namespace Otus.PublicSale.WebApi
 
             app.UseRequestResponseLogging();
 
-            app.UseEndpoints(endpoints => endpoints.MapDefaultControllerRoute());
+            app.UseCors("AllowAllCors");
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapHub<AuctionBetsHub>("/hubs/bet");
+                endpoints.MapDefaultControllerRoute();
+            });             
 
             dbInitializer.InitializeDb();
 

@@ -10,6 +10,8 @@ using Otus.PublicSale.WebApi.Mappers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Caching.Distributed;
 using Otus.PublicSale.WebApi.Extensions;
+using Microsoft.AspNetCore.SignalR;
+using Otus.PublicSale.WebApi.Hubs;
 
 namespace Otus.PublicSale.WebApi.Controllers
 {
@@ -43,20 +45,28 @@ namespace Otus.PublicSale.WebApi.Controllers
         private readonly IRepository<Auction> _repositoryAuctions;
 
         /// <summary>
+        /// Auction Bets Hub
+        /// </summary>
+        private readonly IHubContext<AuctionBetsHub> _hubContext;
+
+        /// <summary>
         /// Constuctor
         /// </summary>
         /// <param name="repositoryAuctionBets">AuctionBets repository</param>        
         /// <param name="repositoryAuctions">Auctions repository</param>        
         /// <param name="cache">Cache</param>     
+        /// <param name="hubContext">Hub Context</param>     
         public AuctionBetsController(
             IRepository<AuctionBet> repositoryAuctionBets, 
             IRepository<Auction> repositoryAuctions, 
-            IDistributedCache cache)
+            IDistributedCache cache,
+            IHubContext<AuctionBetsHub> hubContext)
         {
             _repositoryAuctionBets = repositoryAuctionBets;
             _repositoryAuctions = repositoryAuctions;
 
             _cache = cache;
+            _hubContext = hubContext;
         }
 
         /// <summary>
@@ -113,8 +123,11 @@ namespace Otus.PublicSale.WebApi.Controllers
         /// <param name="request">AuctionBet Dto</param>
         /// <returns>AuctionBet Id</returns>
         [HttpPost]
+        [AllowAnonymous]
         public async Task<ActionResult<Guid>> CreateAsync(AuctionBetDto request)
         {
+            request.UserId = 1;
+
             var auction = await _repositoryAuctions.GetByIdAsync(request.AuctionId);
 
             if (auction == null)
@@ -125,6 +138,8 @@ namespace Otus.PublicSale.WebApi.Controllers
             await _repositoryAuctionBets.AddAsync(entity);
 
             ClearCacheRecord(entity.Id, auction.Id);
+
+            await _hubContext.Clients.Group($"Auction_{auction.Id}").SendAsync("NewBet", $"{DateTime.UtcNow} - new bet added");
 
             return Ok(entity.Id);
         }

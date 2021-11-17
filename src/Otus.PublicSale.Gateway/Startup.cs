@@ -73,6 +73,7 @@ namespace Otus.PublicSale.Gateway
                 });
             });
 
+            app.UseWebSockets();
             app.UseOcelot().Wait();
         }
     }

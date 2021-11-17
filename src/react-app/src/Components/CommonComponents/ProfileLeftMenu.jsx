@@ -5,7 +5,7 @@ import { selectCurrent, logout } from '../../features/userSlice';
 import Cookies from 'js-cookie'
 import { cookieName } from '../User/userAPI';
 
-function ProfileLeftMenu() {
+function ProfileLeftMenu() {    
     const user = useSelector(selectCurrent);
     const dispatch = useDispatch();
 
@@ -33,7 +33,7 @@ function ProfileLeftMenu() {
                     </div>
                     <div className="content">
                         <h5 className="title">
-                            <Link activeClassName='active' to='/profile'>{fullName}</Link>
+                            <Link to='/profile'>{fullName}</Link>
                         </h5>
                     </div>
                 </div>
