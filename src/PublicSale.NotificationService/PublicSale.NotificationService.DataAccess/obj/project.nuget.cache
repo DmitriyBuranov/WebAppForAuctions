@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "h0o3fXuIgZ1++OxOd6RUCug/U4y8MiycMLeHWoRRbAr+w8aE+wpkX5WKLO3QNnqnkVZ35G7LB0Gs/nIHShR0eQ==",
+  "dgSpecHash": "9Qrj3rNHEMBxXWo5tBbBpmn6GPuWO7hMhymVlY3ErLzaEza4nWZSmSHknNhrWV+VovzCLx5kM1GYz9f4eE2bgA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Drown\\Source\\Repos\\mega-project\\src\\PublicSale.NotificationService\\PublicSale.NotificationService.DataAccess\\PublicSale.NotificationService.DataAccess.csproj",
+  "projectFilePath": "C:\\Users\\Drown\\source\\repos\\mega-project\\src\\PublicSale.NotificationService\\PublicSale.NotificationService.DataAccess\\PublicSale.NotificationService.DataAccess.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Drown\\.nuget\\packages\\dnsclient\\1.4.0\\dnsclient.1.4.0.nupkg.sha512",
     "C:\\Users\\Drown\\.nuget\\packages\\mailkit\\2.15.0\\mailkit.2.15.0.nupkg.sha512",
