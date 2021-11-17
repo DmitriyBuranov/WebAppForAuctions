@@ -22,7 +22,7 @@ function AuctionItem(props) {
                             </div>
                             <div className="amount-content">
                                 <div className="current">Current Bid</div>
-                                <div className="amount">{props.auctionItem.priceStart}</div>
+                                <div className="amount">{(props.auctionItem.count=0)? props.auctionItem.priceStart : props.auctionItem.currentMaxBet}</div>
                             </div>
                         </div>
                         <div className="bid-amount">
@@ -37,8 +37,9 @@ function AuctionItem(props) {
                     </div>
                     <div className="countdown-area">
                         <div className="countdown">
-                            <div id="bid_counter27"></div>
+                            <div id="bid_counter1"></div>
                         </div>
+                        <span className="total-bids">{props.auctionItem.count} Bids</span>
                     </div>
                     <div className="text-center">
                         <a href="#0" className="custom-button">Submit a bid</a>

@@ -10,13 +10,6 @@ using MassTransit;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using System;
-using Microsoft.OpenApi.Models;
-using System.Collections.Generic;
-using Swashbuckle.AspNetCore.SwaggerGen;
-using Microsoft.AspNetCore.Authorization;
-using System.Linq;
-using System.Reflection;
-using System.IO;
 using Otus.PublicSale.WebApi.Models;
 using Otus.PublicSale.WebApi.Infostructure;
 using Otus.PublicSale.Core.Middlewares;
@@ -25,8 +18,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Otus.PublicSale.Core;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
-using Otus.PublicSale.Core.Domain.AuctionManagement;
 using Otus.PublicSale.WebApi.Hubs;
+using Otus.PublicSale.Core.Domain.Services;
 
 namespace Otus.PublicSale.WebApi
 {
@@ -123,18 +116,19 @@ namespace Otus.PublicSale.WebApi
             services.AddScoped(typeof(IAuctionRepository<>), typeof(AuctionRepository<>));
             services.AddScoped<IDbInitializer, DbInitializer>();
 
-            services.AddMassTransit(x =>
-            {
-                x.UsingRabbitMq((context, cfg) =>
-                {
-                    cfg.Host(new Uri(Configuration["RabbitMQ:Url"]), c =>
-                    {
-                        c.Username(Configuration["RabbitMQ:Username"]);
-                        c.Password(Configuration["RabbitMQ:Password"]);
-                    });
-                });
-            });
-            services.AddMassTransitHostedService();
+            //TODO - errors here
+            //services.AddMassTransit(x =>
+            //{
+            //    x.UsingRabbitMq((context, cfg) =>
+            //    {
+            //        cfg.Host(new Uri(Configuration["RabbitMQ:Url"]), c =>
+            //        {
+            //            c.Username(Configuration["RabbitMQ:Username"]);
+            //            c.Password(Configuration["RabbitMQ:Password"]);
+            //        });
+            //    });
+            //});
+            //services.AddMassTransitHostedService();
             services.AddFluentValidation();
             services.AddTransient<IValidator<AuctionUserDto>, AuctionUserValidator>();
             services.AddTransient<IValidator<AuctionDto>, AuctionValidator>();
@@ -175,9 +169,15 @@ namespace Otus.PublicSale.WebApi
                 options.Configuration = Configuration.GetConnectionString("Redis");
                 options.InstanceName = "localRedis_";
             });
+
+            //TODO - errors here
+
+            //services.AddHostedService<TimedHostedService>();
+
+            //services.AddTransient<AuctionWorker>();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.        
         public void Configure(IApplicationBuilder app, IDbInitializer dbInitializer)
         {            
             app.UseDeveloperExceptionPage();
@@ -203,7 +203,7 @@ namespace Otus.PublicSale.WebApi
             app.UseSwaggerDocumentation();
 
             app.UseRequestResponseLogging();
-
+            
             app.UseCors("AllowAllCors");
             app.UseEndpoints(endpoints =>
             {

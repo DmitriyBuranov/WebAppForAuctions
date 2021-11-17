@@ -52,7 +52,7 @@ namespace Otus.PublicSale.DataAccess.Data
         public DataContext(DbContextOptions<DataContext> options)
             : base(options)
         {     
-            //Database.EnsureDeleted(); - Please uncommit this line to re-create DB with default values
+            //Database.EnsureDeleted(); 
             //Database.EnsureCreated();
         }        
 
@@ -79,6 +79,7 @@ namespace Otus.PublicSale.DataAccess.Data
                 entity.Property(e => e.PriceStep).HasColumnType("decimal(18, 2)");
 
                 entity.Property(e => e.StartDate).HasColumnType("datetime");
+
             });
 
             modelBuilder.Entity<AuctionBet>(entity =>

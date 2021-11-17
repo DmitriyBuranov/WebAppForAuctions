@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 
 export const auctionService = {
-    getNearToSart,
-    getNearToEnd,
+    GetNearToSart,
+    GetNearToEnd,
+    postCreateAuction
 };
 
-function getNearToSart(num) {
+function GetNearToSart(num) {
 
-    const [auctions, setAuctions] = [];
+    const [auctions, setAuctions] = useState([]);
 
     fetch('api/v1/Auctions/NearToStart' + num)
         .then(response => response.json())
@@ -20,9 +21,9 @@ function getNearToSart(num) {
     return auctions
 }
 
-function getNearToEnd(num) {
+function GetNearToEnd(num) {
 
-    const [auctions, setAuctions] = [];
+    const [auctions, setAuctions] = useState([]);
 
     fetch('api/v1/Auctions/NearToEnd' + num)
         .then(response => response.json())
@@ -34,3 +35,32 @@ function getNearToEnd(num) {
 
     return auctions
 }
+
+
+async function postCreateAuction( data = {}, token) {
+
+    const dataForRequest = {
+        name: data.name,
+        duration: Number(data.duration),
+        priceStart: Number(data.startPrice),
+        sellPrice: Number(data.sellPrice),
+        priceStep: Number(data.priceStep),
+        startDate: new Date(data.startDate).toISOString()
+    }
+
+    const response = await fetch("/api/v1/Auctions", {
+      method: 'POST', 
+      mode: 'cors', 
+      cache: 'no-cache', 
+      credentials: 'same-origin', 
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization' : 'Bearer ' + token
+      },
+      redirect: 'follow', 
+      referrerPolicy: 'no-referrer', 
+      body: JSON.stringify(dataForRequest) 
+    });
+    return response.statusText; 
+  }
+  

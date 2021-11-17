@@ -34,7 +34,7 @@ function CarAuctionNearToEnd() {
                     ))}      
                 </div>
                 <div className="load-wrapper">
-                    <a href="#0" className="normal-button">See All Auction</a>
+                    <a href="/product" className="normal-button">See All Auction</a>
                 </div>
             </div>
         </div>

@@ -29,8 +29,7 @@ function CarAuctionNearToStart() {
                             <h2 className="title mb-3">Featured Items</h2>
                             <p>Start winning cars with comfort</p>
                         </div>
-                        {/*Вставить ссылку на страницу продуктов*/}
-                        <a href="#0" className="normal-button">View All</a>
+                        <a href="/product" className="normal-button">View All</a>
                     </div>
                     <div className="row justify-content-center mb-30-none">
                         {auctions.map((auction) => (

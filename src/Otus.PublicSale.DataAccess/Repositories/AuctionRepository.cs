@@ -5,6 +5,8 @@ using Otus.PublicSale.DataAccess.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace Otus.PublicSale.DataAccess.Repositories
 {
@@ -27,9 +29,68 @@ namespace Otus.PublicSale.DataAccess.Repositories
             return  _dbSet.Where(x => x.StartDate > DateTime.UtcNow).OrderBy(x => x.StartDate).Take(num);
         }
 
-        public  IEnumerable<T> GetAmountNearToEnd(int num)
+        public IEnumerable<AuctionWithBets> GetAmountNearToEndWithBets(int num)
         {
-            return  _dbSet.Where(x=> x.StartDate < DateTime.UtcNow).OrderBy(x => x.StartDate.AddDays(x.Duration)).Take(num);
+            return _dbSet.Where(x => x.StartDate < DateTime.UtcNow)
+                .OrderBy(x => x.StartDate.AddDays(x.Duration)).Take(num)
+                .Select(x=> new AuctionWithBets
+                {
+                    Name = x.Name,
+                    Id = x.Id,
+                    Count = x.AuctionBets.Count(),
+                    CurrentMaxBet = x.AuctionBets.Max(x => x.Amount)
+                }).ToList();
+        }
+
+
+        public IEnumerable<AuctionWithBets> GetAmountWithBetsOrderedByAll(int num)
+        {
+            return _dbSet
+                .OrderBy(x => x.Name).ThenBy(x=> x.StartDate).Take(num)
+                .Select(x => new AuctionWithBets
+                {
+                    Name = x.Name,
+                    Id = x.Id,
+                    SellPrice = x.SellPrice,
+                    Count = x.AuctionBets.Count(),
+                    CurrentMaxBet = x.AuctionBets.Max(x => x.Amount),
+                    PriceStart = x.PriceStart
+                }).ToList();
+        }
+
+        public IEnumerable<AuctionWithBets> GetAmountWithBetsOrderedByName(int num)
+        {
+            return _dbSet
+                .OrderBy(x => x.Name).Take(num)
+                .Select(x => new AuctionWithBets
+                {
+                    Name = x.Name,
+                    Id = x.Id,
+                    SellPrice = x.SellPrice,
+                    Count = x.AuctionBets.Count(),
+                    CurrentMaxBet = x.AuctionBets.Max(x => x.Amount),
+                    PriceStart = x.PriceStart
+                }).ToList();
+        }
+
+        public IEnumerable<AuctionWithBets> GetAmountWithBetsOrderedByDate(int num)
+        {
+            return _dbSet
+                .OrderBy(x => x.StartDate).Take(num)
+                .Select(x => new AuctionWithBets
+                {
+                    Name = x.Name,
+                    Id = x.Id,
+                    SellPrice = x.SellPrice,
+                    Count = x.AuctionBets.Count(),
+                    CurrentMaxBet = x.AuctionBets.Max(x => x.Amount),
+                    PriceStart = x.PriceStart
+                }).ToList();
+        }
+
+        public async Task<List<T>> GetJustHaveFinnishedAsync(DateTime endTime)
+        {
+            return await _dbSet.Where(x => x.StartDate.AddSeconds(x.Duration) == endTime).ToListAsync();
         }
     }
 }
