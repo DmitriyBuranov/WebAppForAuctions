@@ -18,7 +18,7 @@ namespace PublicSale.NotificationService.DataAccess.Data
 
         public void InitializeDb()
         {
-            _database.Client.DropDatabase(_database.DatabaseNamespace.DatabaseName);
+            //_database.Client.DropDatabase(_database.DatabaseNamespace.DatabaseName);
 
         }
     }

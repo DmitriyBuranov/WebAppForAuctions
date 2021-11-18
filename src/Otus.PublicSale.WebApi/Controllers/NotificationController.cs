@@ -1,9 +1,10 @@
-﻿using MassTransit;
+﻿using Core.Domain.NotificationManagement;
+using MassTransit;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Otus.PublicSale.Core.Abstractions.Repositories;
-using Otus.PublicSale.Core.Abstractions.Services;
 using Otus.PublicSale.Core.Domain.Administration;
+using Otus.PublicSale.Core.Domain.AuctionManagement;
 using Otus.PublicSale.WebApi.Models;
 using System.Threading.Tasks;
 
@@ -32,6 +33,7 @@ namespace Otus.PublicSale.WebApi.Controllers
         /// <param name="id">User Id</param>
         /// <param name="request">Notification Dto</param> 
         /// <returns></returns>
+        [AllowAnonymous]
         [HttpPut("{id}")]
         public async Task<IActionResult> SendNotification (int id, NotificationDto request)
         {
@@ -40,7 +42,7 @@ namespace Otus.PublicSale.WebApi.Controllers
             if (user == null)
                 return NotFound();
 
-            await _publishEndpoint.Publish<ISendNotification>(
+            await _publishEndpoint.Publish<INotificationMaket>(
                 new
                 {
                     EmailFrom = request.EmailFrom,

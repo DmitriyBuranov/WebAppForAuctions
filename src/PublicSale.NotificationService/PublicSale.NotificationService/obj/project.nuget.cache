@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9YyS3MmKPCTfT9w1oC3A2ZcIuy5zXOKdJYYZz+oUKZ+xI9PNLMdRfyHPYWiVY6xoa7moa8wqNhcg68Rhj+/7Sw==",
+  "dgSpecHash": "3yER/MwA9WvXDcL0wJNSMLrmTYMg6CZlqf6yD4KbOl8lGfctxgulIUKif6UPg8qb1IfUQZpCD5C9U0PMVgZR8A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Drown\\source\\repos\\mega-project\\src\\PublicSale.NotificationService\\PublicSale.NotificationService\\PublicSale.NotificationService.WebHost.csproj",
+  "projectFilePath": "C:\\Users\\Drown\\Source\\Repos\\mega-project\\src\\PublicSale.NotificationService\\PublicSale.NotificationService\\PublicSale.NotificationService.WebHost.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Drown\\.nuget\\packages\\automatonymous\\5.1.2\\automatonymous.5.1.2.nupkg.sha512",
     "C:\\Users\\Drown\\.nuget\\packages\\dnsclient\\1.4.0\\dnsclient.1.4.0.nupkg.sha512",
@@ -36,7 +36,7 @@
     "C:\\Users\\Drown\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\Drown\\.nuget\\packages\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\Drown\\.nuget\\packages\\mimekit\\2.15.0\\mimekit.2.15.0.nupkg.sha512",
-    "C:\\Users\\Drown\\.nuget\\packages\\mongodb.bson\\2.13.1\\mongodb.bson.2.13.1.nupkg.sha512",
+    "C:\\Users\\Drown\\.nuget\\packages\\mongodb.bson\\2.13.2\\mongodb.bson.2.13.2.nupkg.sha512",
     "C:\\Users\\Drown\\.nuget\\packages\\mongodb.driver\\2.13.1\\mongodb.driver.2.13.1.nupkg.sha512",
     "C:\\Users\\Drown\\.nuget\\packages\\mongodb.driver.core\\2.13.1\\mongodb.driver.core.2.13.1.nupkg.sha512",
     "C:\\Users\\Drown\\.nuget\\packages\\mongodb.libmongocrypt\\1.2.2\\mongodb.libmongocrypt.1.2.2.nupkg.sha512",
@@ -130,7 +130,7 @@
     "C:\\Users\\Drown\\.nuget\\packages\\system.valuetuple\\4.5.0\\system.valuetuple.4.5.0.nupkg.sha512",
     "C:\\Users\\Drown\\.nuget\\packages\\system.xml.readerwriter\\4.3.1\\system.xml.readerwriter.4.3.1.nupkg.sha512",
     "C:\\Users\\Drown\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\Drown\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.8\\microsoft.netcore.app.host.win-x64.5.0.8.nupkg.sha512"
+    "C:\\Users\\Drown\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.12\\microsoft.netcore.app.host.win-x64.5.0.12.nupkg.sha512"
   ],
   "logs": []
 }

@@ -9,7 +9,9 @@ using PublicSale.NotificationService.Core.Abstractions.Repositories;
 using PublicSale.NotificationService.Core.Domain;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -30,14 +32,7 @@ namespace PublicSale.NotificationService.Core.Services
         public async void SendMessageAsync()
         {
             var notificationForSent = (await _notificationRepository.GetAllAsync())
-                .Select(x =>
-                new Notification()
-                {
-                    Email = x.Email,
-                    Message = x.Message,
-                    Subject = x.Subject,
-                    EmailFrom = x.EmailFrom
-                }).ToList();
+                .Where(x => x.IsSend == false).ToList();
 
             foreach (var notification in notificationForSent)
                 await SendEmailAsync(notification);
@@ -47,27 +42,32 @@ namespace PublicSale.NotificationService.Core.Services
         {
             try
             {
-                var emailMessage = new MimeMessage();
-
-                emailMessage.From.Add(new MailboxAddress("Администрация сайта", notification.EmailFrom));
-                emailMessage.To.Add(new MailboxAddress("", notification.Email));
-                emailMessage.Subject = notification.Subject;
-                emailMessage.Body = new TextPart("Plain")
+                var emailMessage = new MailMessage
                 {
-                    Text = notification.Message
+                    From = new MailAddress(notification.EmailFrom),
+                    Subject = notification.Subject,
+                    Body = notification.Message,
+                    
                 };
+                emailMessage.To.Add(notification.Email);
 
-                using var client = new SmtpClient();
-                await client.ConnectAsync("smtp.yandex.ru", 25, false);
-                await client.AuthenticateAsync("team1.publicsale@yandex.com", "chvG9#LgBpDywm3");
-                await client.SendAsync(emailMessage);
+                var client = new System.Net.Mail.SmtpClient("mysmtphost")
+                {
+                    DeliveryMethod = SmtpDeliveryMethod.SpecifiedPickupDirectory,
+                    PickupDirectoryLocation = @"C:\Emails"
+                };
+                client.Send(emailMessage);
 
-                await client.DisconnectAsync(true);
+                notification.IsSend = true;
+
             }
             catch (Exception ex)
             {
                 _logger.Error($"Error in SendEmailAsync: {ex}");
+                notification.ErrorsСount++;
             }
+
+            await _notificationRepository.UpdateAsync(notification);
         }
     }
 }

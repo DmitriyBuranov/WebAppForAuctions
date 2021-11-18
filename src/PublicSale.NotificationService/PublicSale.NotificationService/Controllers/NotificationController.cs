@@ -40,22 +40,11 @@ namespace PublicSale.NotificationService.WebHost.Controllers
         [HttpGet]
         public async Task<List<Notification>> GetNotificationAsync()
         {
-            var employees = await _notificationRepository.GetAllAsync();
+            var notifications = await _notificationRepository.GetAllAsync();
 
-            var employeesModelList = employees.Select(x =>
-                new Notification()
-                {
-                    Email = x.Email,
-                    Message = x.Message,
-                    Subject = x.Subject,
-                    EmailFrom = x.EmailFrom,
-                    Status = x.Status,
-                    Quick = x.Quick,
-                    ErrorsСount = x.ErrorsСount,
-                    IsSend = x.IsSend
-                }).ToList();
+            var notificationsList = notifications.ToList();
 
-            return employeesModelList;
+            return notificationsList;
         }
 
         [HttpDelete]

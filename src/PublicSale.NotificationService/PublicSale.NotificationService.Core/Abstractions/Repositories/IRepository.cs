@@ -13,7 +13,7 @@ namespace PublicSale.NotificationService.Core.Abstractions.Repositories
     {
         Task<IEnumerable<T>> GetAllAsync();
 
-        Task<T> GetByIdAsync(Guid id);
+        Task<T> GetByIdAsync(string id);
 
         Task AddAsync(T entity);
 

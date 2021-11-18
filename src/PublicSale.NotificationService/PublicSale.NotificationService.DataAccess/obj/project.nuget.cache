@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9Qrj3rNHEMBxXWo5tBbBpmn6GPuWO7hMhymVlY3ErLzaEza4nWZSmSHknNhrWV+VovzCLx5kM1GYz9f4eE2bgA==",
+  "dgSpecHash": "ujYGmKxp72UqcmXqKugGrkr25fJgT/phpzcM6ExSW2QlxYT9h3XjzDtu3P8v+eLgkhID5WPYUgCj3c7O/PM67g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Drown\\source\\repos\\mega-project\\src\\PublicSale.NotificationService\\PublicSale.NotificationService.DataAccess\\PublicSale.NotificationService.DataAccess.csproj",
+  "projectFilePath": "C:\\Users\\Drown\\Source\\Repos\\mega-project\\src\\PublicSale.NotificationService\\PublicSale.NotificationService.DataAccess\\PublicSale.NotificationService.DataAccess.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Drown\\.nuget\\packages\\dnsclient\\1.4.0\\dnsclient.1.4.0.nupkg.sha512",
     "C:\\Users\\Drown\\.nuget\\packages\\mailkit\\2.15.0\\mailkit.2.15.0.nupkg.sha512",
@@ -23,7 +23,7 @@
     "C:\\Users\\Drown\\.nuget\\packages\\microsoft.net.http.headers\\2.2.0\\microsoft.net.http.headers.2.2.0.nupkg.sha512",
     "C:\\Users\\Drown\\.nuget\\packages\\microsoft.netcore.platforms\\2.1.2\\microsoft.netcore.platforms.2.1.2.nupkg.sha512",
     "C:\\Users\\Drown\\.nuget\\packages\\mimekit\\2.15.0\\mimekit.2.15.0.nupkg.sha512",
-    "C:\\Users\\Drown\\.nuget\\packages\\mongodb.bson\\2.13.1\\mongodb.bson.2.13.1.nupkg.sha512",
+    "C:\\Users\\Drown\\.nuget\\packages\\mongodb.bson\\2.13.2\\mongodb.bson.2.13.2.nupkg.sha512",
     "C:\\Users\\Drown\\.nuget\\packages\\mongodb.driver\\2.13.1\\mongodb.driver.2.13.1.nupkg.sha512",
     "C:\\Users\\Drown\\.nuget\\packages\\mongodb.driver.core\\2.13.1\\mongodb.driver.core.2.13.1.nupkg.sha512",
     "C:\\Users\\Drown\\.nuget\\packages\\mongodb.libmongocrypt\\1.2.2\\mongodb.libmongocrypt.1.2.2.nupkg.sha512",

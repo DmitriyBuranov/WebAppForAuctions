@@ -120,6 +120,19 @@
     },
 
     {
+      "DownstreamPathTemplate": "/api/Notification/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5001
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Notification/{id}",
+      "UpstreamHttpMethod": [ "Put" ]
+    },
+
+    {
       "DownstreamPathTemplate": "/api/v1/Auctions",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
@@ -137,7 +150,7 @@
     },
 
     {
-      "DownstreamPathTemplate": "/hubs/bet",      
+      "DownstreamPathTemplate": "/hubs/bet",
       "DownstreamScheme": "wss",
       "DownstreamHostAndPorts": [
         {

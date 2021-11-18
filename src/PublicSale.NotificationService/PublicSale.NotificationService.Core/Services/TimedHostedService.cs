@@ -24,7 +24,7 @@ namespace PublicSale.NotificationService.Core.Services
 
             TimeSpan startForEveryDayTimer = TimeSpan.Zero;
 
-            _timer = new Timer(DoEveryDayWork, null, startForEveryDayTimer, TimeSpan.FromMinutes(5));
+            _timer = new Timer(DoEveryDayWork, null, startForEveryDayTimer, TimeSpan.FromMinutes(1));
 
             return Task.CompletedTask;
         }
@@ -39,11 +39,13 @@ namespace PublicSale.NotificationService.Core.Services
                 try
                 {
                     _logger.Info("Start sending notification");
+                    Console.WriteLine("Start sending notification");
                     sendNotificationService.SendMessageAsync();
                 }
                 catch (Exception ex)
                 {
                     _logger.Error($"Error: {ex}");
+                    Console.WriteLine($"Error: {ex}");
                 }
             }
         }

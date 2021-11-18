@@ -585,14 +585,14 @@
           "lib/net50/MimeKit.dll": {}
         }
       },
-      "MongoDB.Bson/2.13.1": {
+      "MongoDB.Bson/2.13.2": {
         "dependencies": {
           "System.Runtime.CompilerServices.Unsafe": "5.0.0"
         },
         "runtime": {
           "lib/netstandard2.1/MongoDB.Bson.dll": {
-            "assemblyVersion": "2.13.1.0",
-            "fileVersion": "2.13.1.0"
+            "assemblyVersion": "2.13.2.0",
+            "fileVersion": "2.13.2.0"
           }
         },
         "compile": {
@@ -601,7 +601,7 @@
       },
       "MongoDB.Driver/2.13.1": {
         "dependencies": {
-          "MongoDB.Bson": "2.13.1",
+          "MongoDB.Bson": "2.13.2",
           "MongoDB.Driver.Core": "2.13.1",
           "MongoDB.Libmongocrypt": "1.2.2"
         },
@@ -618,7 +618,7 @@
       "MongoDB.Driver.Core/2.13.1": {
         "dependencies": {
           "DnsClient": "1.4.0",
-          "MongoDB.Bson": "2.13.1",
+          "MongoDB.Bson": "2.13.2",
           "MongoDB.Libmongocrypt": "1.2.2",
           "SharpCompress": "0.23.0",
           "System.Buffers": "4.5.1"
@@ -1187,11 +1187,7 @@
           "Microsoft.NETCore.Targets": "1.1.0"
         }
       },
-      "System.Runtime.CompilerServices.Unsafe/5.0.0": {
-        "compile": {
-          "ref/netstandard2.1/System.Runtime.CompilerServices.Unsafe.dll": {}
-        }
-      },
+      "System.Runtime.CompilerServices.Unsafe/5.0.0": {},
       "System.Runtime.Extensions/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "2.1.2",
@@ -1463,6 +1459,7 @@
           "Microsoft.AspNetCore.Mvc.Abstractions": "2.2.0",
           "Microsoft.Extensions.Hosting.Abstractions": "5.0.0",
           "Microsoft.Extensions.Logging.Abstractions": "5.0.0",
+          "MongoDB.Bson": "2.13.2",
           "NLog": "4.7.11"
         },
         "runtime": {
@@ -3415,12 +3412,12 @@
       "path": "mimekit/2.15.0",
       "hashPath": "mimekit.2.15.0.nupkg.sha512"
     },
-    "MongoDB.Bson/2.13.1": {
+    "MongoDB.Bson/2.13.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-B/AI2we7YwfFuNcXr4jlCnVI5dJp+g8vkyj3Shi/bOpGhZQaxW4jK/NiiTwYvqxaMOe4MtVR+6Zlk4D2zalC7A==",
-      "path": "mongodb.bson/2.13.1",
-      "hashPath": "mongodb.bson.2.13.1.nupkg.sha512"
+      "sha512": "sha512-qY9271GFCYLA8OB3MdQC8clJh9wnh65gcxUa5Skwh2xYryv21YAHx/VOvv4ILpkb1NhIVgy3LBQhVBldwLaqNg==",
+      "path": "mongodb.bson/2.13.2",
+      "hashPath": "mongodb.bson.2.13.2.nupkg.sha512"
     },
     "MongoDB.Driver/2.13.1": {
       "type": "package",

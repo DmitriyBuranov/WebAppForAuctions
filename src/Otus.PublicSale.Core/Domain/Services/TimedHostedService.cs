@@ -25,12 +25,12 @@ namespace Otus.PublicSale.Core.Domain.Services
 
             TimeSpan startForEveryDayTimer = TimeSpan.Zero;
 
-            _timer = new Timer(DoEveryDayWork, null, startForEveryDayTimer, TimeSpan.FromSeconds(1));
+            _timer = new Timer(DoEveryDayWork, null, startForEveryDayTimer, TimeSpan.FromSeconds(60 * 5));
 
             return Task.CompletedTask;
         }
 
-        private void DoEveryDayWork(object state)
+        private async void DoEveryDayWork(object state)
         {
             using (var scope = _services.CreateScope())
             {
@@ -40,7 +40,7 @@ namespace Otus.PublicSale.Core.Domain.Services
                 try
                 {
                     _logger.Info("Start searchig winners");
-                    sendNotificationService.SetWinnerAsync(DateTime.UtcNow);
+                    await sendNotificationService.SetWinnerAsync(DateTime.UtcNow);
                 }
                 catch (Exception ex)
                 {

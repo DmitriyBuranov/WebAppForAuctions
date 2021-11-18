@@ -25,7 +25,7 @@ namespace PublicSale.NotificationService.DataAccess.Repositories
             return await (await _collection.FindAsync(x => true)).ToListAsync();
         }
 
-        public async Task<T> GetByIdAsync(Guid id)
+        public async Task<T> GetByIdAsync(string id)
         {
             return await _collection.Find(x => x.Id == id).SingleOrDefaultAsync();
 

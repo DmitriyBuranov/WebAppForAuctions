@@ -1,9 +1,9 @@
 ﻿using MassTransit;
 using NLog;
 using Otus.PublicSale.Core.Abstractions.Repositories;
-using Otus.PublicSale.Core.Abstractions.Services;
 using Otus.PublicSale.Core.Domain.Administration;
 using Otus.PublicSale.Core.Domain.AuctionManagement;
+using Core.Domain.NotificationManagement;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -21,13 +21,14 @@ namespace Otus.PublicSale.Core.Domain.Services
         private readonly IServiceProvider _serviceProvider;
         readonly IPublishEndpoint _publishEndpoint;
 
-        public AuctionWorker(IAuctionRepository<Auction> auctionSpecialRepository, IServiceProvider serviceProvider, IAuctionBetRepository<AuctionBet> auctionBetRepository, IRepository<User> repositoryUsers, IRepository<Auction> auctionRepository)
+        public AuctionWorker(IAuctionRepository<Auction> auctionSpecialRepository, IServiceProvider serviceProvider, IAuctionBetRepository<AuctionBet> auctionBetRepository, IRepository<User> repositoryUsers, IRepository<Auction> auctionRepository, IPublishEndpoint publishEndpoint)
         {
             _auctionSpecialRepository = auctionSpecialRepository;
             _serviceProvider = serviceProvider;
             _auctionBetRepository = auctionBetRepository;
             _repositoryUsers = repositoryUsers;
             _auctionRepository = auctionRepository;
+            _publishEndpoint = publishEndpoint;
         }
 
         public async Task SetWinnerAsync(DateTime endTime)
@@ -41,7 +42,7 @@ namespace Otus.PublicSale.Core.Domain.Services
             {
                 endingAuction.Status = 3;
 
-                _auctionRepository.UpdateAsync(endingAuction);
+                await _auctionRepository.UpdateAsync(endingAuction);
 
                 var lastBet = await _auctionBetRepository.GetLastBetAsync(endingAuction.Id);
 
@@ -49,17 +50,17 @@ namespace Otus.PublicSale.Core.Domain.Services
                     continue;
 
 
-                //sent notification to notification service
+                //notification to notification service
 
                 var user = await _repositoryUsers.GetByIdAsync(lastBet.UserId);
 
-                await _publishEndpoint.Publish<ISendNotification>(
+                await _publishEndpoint.Publish<INotificationMaket>(
                     new
                     {
-                        EmailFrom = "",
+                        EmailFrom = "administration@sbidu.com",
                         EmailTo = user.Email,
-                        Subject = "",
-                        Message = "",
+                        Subject = "You win auction",
+                        Message = "You win auction: " + endingAuction.Name,
                         Quick = true
 
                     });
