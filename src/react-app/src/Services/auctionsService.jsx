@@ -48,7 +48,7 @@ async function postCreateAuction( data = {}, token) {
         startDate: new Date(data.startDate).toISOString()
     }
 
-    const response = await fetch("/api/v1/Auctions", {
+    const response = await fetch("/api/Auctions", {
       method: 'POST', 
       mode: 'cors', 
       cache: 'no-cache', 

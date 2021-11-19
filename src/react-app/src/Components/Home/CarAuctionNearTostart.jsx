@@ -10,7 +10,7 @@ function CarAuctionNearToStart() {
     const num = 3;
 
     useEffect(() => {
-        fetch('api/v1/Auctions/NearToStart' + num)
+        fetch('api/Auctions/NearToStart' + num)
             .then(response => response.json())
             .then((data) => {
                 console.log(data);

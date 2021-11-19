@@ -8,7 +8,7 @@ function Product() {
     const num = 3;
 
     useEffect(() => {
-        fetch('api/v1/Auctions/NearToStart' + num)
+        fetch('api/Auctions/NearToStart' + num)
             .then(response => response.json())
             .then((data) => {
                 console.log(data);
@@ -33,7 +33,7 @@ function Product() {
 
     useEffect(() => {
         console.log("using effect"); 
-        fetch('api/v1/Auctions/WithBetsOrderedBy'+ parameters.sortBy + parameters.numberOfAuction)
+        fetch('api/Auctions/WithBetsOrderedBy'+ parameters.sortBy + parameters.numberOfAuction)
             .then(response => response.json())
             .then((data) => {
                 console.log(data);

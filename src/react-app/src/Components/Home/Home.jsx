@@ -29,7 +29,7 @@ function Home() {
                         </div>
                         <div className="col-lg-5 col-xl-4">
                             <div className="banner-thumb-4">
-                                <a href="#0" className="bid-now"><i className="flaticon-auction"></i><span>Bid Now</span></a>
+                                <a href="/product" className="bid-now"><i className="flaticon-auction"></i><span>Bid Now</span></a>
                                 <img src="assets/images/banner/banner-4.png" alt="banner"></img>
                             </div>
                         </div>

@@ -9,7 +9,7 @@ function CarAuctionNearToEnd() {
     const num = 6;
 
     useEffect(() => {
-    fetch('api/v1/Auctions/NearToEnd' + num)
+    fetch('api/Auctions/NearToEnd' + num)
     .then(response => response.json())
     .then((data) => {
         console.log(data);
