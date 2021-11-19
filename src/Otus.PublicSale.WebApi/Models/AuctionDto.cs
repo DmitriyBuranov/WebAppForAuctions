@@ -15,9 +15,9 @@ namespace Otus.PublicSale.WebApi.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Descition
+        /// Description
         /// </summary>
-        public string Descition { get; set; }
+        public string Description { get; set; }
 
         /// <summary>
         /// Create Date
@@ -49,8 +49,10 @@ namespace Otus.PublicSale.WebApi.Models
         /// </summary>
         public decimal PriceStep { get; set; }
 
+        /// <summary>
+        /// Sell Price
+        /// </summary>
         public decimal SellPrice {  get; set;}
-
 
         /// <summary>
         /// Constuctor
@@ -68,7 +70,7 @@ namespace Otus.PublicSale.WebApi.Models
         {
             Id = auction.Id;
             Name = auction.Name;
-            Descition = auction.Descition;
+            Description = auction.Description;
             CreateDate = auction.CreateDate;
             Status = auction.Status;
             StartDate = auction.StartDate;
@@ -99,7 +101,7 @@ namespace Otus.PublicSale.WebApi.Models
 
             var data = obj as AuctionDto;
 
-            return this.Id == data.Id && this.Name == data.Name && this.Duration == data.Duration && this.Descition == data.Descition && this.CreateDate == data.CreateDate && this.PriceStart == data.PriceStart && this.PriceStep == data.PriceStep && this.StartDate == data.StartDate && this.Status == data.Status && this.SellPrice == data.SellPrice;
+            return this.Id == data.Id && this.Name == data.Name && this.Duration == data.Duration && this.Description == data.Description && this.CreateDate == data.CreateDate && this.PriceStart == data.PriceStart && this.PriceStep == data.PriceStep && this.StartDate == data.StartDate && this.Status == data.Status && this.SellPrice == data.SellPrice;
         }
     }
 }

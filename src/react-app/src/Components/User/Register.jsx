@@ -40,14 +40,14 @@ function Register() {
     }
 
     if (logged === true)
-        return <Redirect to="/dashboard" />
+        return <Redirect to="/profile" />
 
     return (
         <div>
             {loading ? <Loader /> : ""}
 
             <div className="hero-section">
-                <div className="bg_img hero-bg bottom_center" style={ { backgroundImage: "url('assets/images/banner/hero-bg.png')" } } ></div>
+                <div className="bg_img hero-bg bottom_center" style={ { backgroundImage: "url('/assets/images/banner/hero-bg.png')" } } ></div>
             </div>
 
             <section className="account-section padding-bottom">

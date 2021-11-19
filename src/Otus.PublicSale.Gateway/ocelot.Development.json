@@ -150,7 +150,7 @@
     },
 
     {
-      "DownstreamPathTemplate": "/hubs/bet",
+      "DownstreamPathTemplate": "/hubs/{everything}",
       "DownstreamScheme": "wss",
       "DownstreamHostAndPorts": [
         {
@@ -158,8 +158,38 @@
           "Port": 5001
         }
       ],
-      "UpstreamPathTemplate": "/api/bets/new",
+      "UpstreamPathTemplate": "/api/hubs/{everything}",
       "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE", "OPTIONS" ]
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/v1/Auctions/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5001
+        }
+      ],
+      "UpstreamPathTemplate": "/api/auctions/{id}",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/v1/AuctionBets",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5001
+        }
+      ],
+      "UpstreamPathTemplate": "/api/bets",
+      "UpstreamHttpMethod": [ "Post" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
     }
 
   ],

@@ -24,9 +24,9 @@ namespace Otus.PublicSale.Core.Domain.AuctionManagement
         public string Name { get; set; }
 
         /// <summary>
-        /// Descition
+        /// Description 
         /// </summary>
-        public string Descition { get; set; }
+        public string Description { get; set; }
 
         /// <summary>
         /// Create Date

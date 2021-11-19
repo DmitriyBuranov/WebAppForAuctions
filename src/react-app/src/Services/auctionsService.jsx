@@ -10,7 +10,7 @@ function GetNearToSart(num) {
 
     const [auctions, setAuctions] = useState([]);
 
-    fetch('api/v1/Auctions/NearToStart' + num)
+    fetch('api/Auctions/NearToStart' + num)
         .then(response => response.json())
         .then((data) => {
             console.log(data);
@@ -25,7 +25,7 @@ function GetNearToEnd(num) {
 
     const [auctions, setAuctions] = useState([]);
 
-    fetch('api/v1/Auctions/NearToEnd' + num)
+    fetch('api/Auctions/NearToEnd' + num)
         .then(response => response.json())
         .then((data) => {
             console.log(data);
@@ -48,7 +48,7 @@ async function postCreateAuction( data = {}, token) {
         startDate: new Date(data.startDate).toISOString()
     }
 
-    const response = await fetch("/api/v1/Auctions", {
+    const response = await fetch("/api/Auctions", {
       method: 'POST', 
       mode: 'cors', 
       cache: 'no-cache', 

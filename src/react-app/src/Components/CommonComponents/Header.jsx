@@ -18,7 +18,7 @@ function Header() {
                             </ul>
                             <ul className="cart-button-area">
                                 <li>
-                                    <Link to="/dashboard" className="user-button"><i className="flaticon-user"></i></Link>
+                                    <Link to="/profile" className="user-button"><i className="flaticon-user"></i></Link>
                                 </li>
                             </ul>
                         </div>
@@ -28,18 +28,18 @@ function Header() {
                     <div className="container">
                         <div className="header-wrapper">
                             <div className="logo">
-                                <a href="index.html">
-                                    <img src="assets/images/logo/logo.png" alt="logo"></img>
-                                </a>
+                                <Link to="/home">
+                                    <img src="/assets/images/logo/logo.png" alt="logo"></img>
+                                </Link>
                             </div>
                             <ul className="menu ml-auto">
                                 <li>
                                     <Link to="/home">Home</Link>
                                 </li>
                                 <li>
-                                    <Link to="/product">Auction</Link>
+                                    <Link to="/products">Auctions</Link>
                                 </li>
-                                <li>
+                                {/* <li>
                                     <a href="#0">Pages</a>
                                     <ul className="submenu">
                                         <li>
@@ -89,7 +89,7 @@ function Header() {
                                         <Link to="/404">404 page</Link>
                                         </li>
                                     </ul>
-                                </li>
+                                </li> */}
                                 <li>
                                     <a href="contact.html">Contact</a>
                                 </li>

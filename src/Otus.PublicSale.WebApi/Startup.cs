@@ -50,8 +50,6 @@ namespace Otus.PublicSale.WebApi
                 options.AddPolicy("AllowAllCors", builder =>
                 {
                     builder
-
-                    .WithOrigins("https://localhost:3000")
                     .AllowAnyHeader()
                     .AllowAnyMethod()
                     .AllowCredentials()

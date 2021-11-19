@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { Redirect, Link } from "react-router-dom";
 import { updateAsync, selectErrors } from '../../features/userSlice';
 import { Alert } from 'react-bootstrap';
 

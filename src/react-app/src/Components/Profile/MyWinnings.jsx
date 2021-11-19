@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
-import { Redirect, Link } from "react-router-dom";
-import { registerAsync, selectErrors, selectLogged, selectLoading } from '../../features/userSlice';
-import { Alert } from 'react-bootstrap';
+import { Redirect } from "react-router-dom";
+import { selectLogged, selectLoading } from '../../features/userSlice';
 import Loader from '../CommonComponents/Loader';
 import ProfileLeftMenu from '../CommonComponents/ProfileLeftMenu';
 import ProfileTopMenu from '../CommonComponents/ProfileTopMenu';
@@ -53,7 +52,7 @@ function WinningBids() {
                                 <div className="col-sm-10 col-md-6">
                                     <div className="auction-item-2">
                                         <div className="auction-thumb">
-                                            <a href="product-details.html"><img src="assets/images/auction/car/auction-3.jpg" alt="car" /></a>
+                                            <a href="product-details.html"><img src="/assets/images/auction/car/auction-3.jpg" alt="car" /></a>
                                             <a href="#0" className="rating"><i className="far fa-star"></i></a>
                                             <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                                         </div>
@@ -96,7 +95,7 @@ function WinningBids() {
                                 <div className="col-sm-10 col-md-6">
                                     <div className="auction-item-2">
                                         <div className="auction-thumb">
-                                            <a href="product-details.html"><img src="assets/images/auction/product/08.png" alt="car" /></a>
+                                            <a href="product-details.html"><img src="/assets/images/auction/product/08.png" alt="car" /></a>
                                             <a href="#0" className="rating"><i className="far fa-star"></i></a>
                                             <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                                         </div>
@@ -139,7 +138,7 @@ function WinningBids() {
                                 <div className="col-sm-10 col-md-6">
                                     <div className="auction-item-2">
                                         <div className="auction-thumb">
-                                            <a href="product-details.html"><img src="assets/images/auction/product/04.png" alt="product" /></a>
+                                            <a href="product-details.html"><img src="/assets/images/auction/product/04.png" alt="product" /></a>
                                             <a href="#0" className="rating"><i className="far fa-star"></i></a>
                                             <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                                         </div>
@@ -182,7 +181,7 @@ function WinningBids() {
                                 <div className="col-sm-10 col-md-6">
                                     <div className="auction-item-2">
                                         <div className="auction-thumb">
-                                            <a href="product-details.html"><img src="assets/images/auction/product/07.png" alt="product" /></a>
+                                            <a href="product-details.html"><img src="/assets/images/auction/product/07.png" alt="product" /></a>
                                             <a href="#0" className="rating"><i className="far fa-star"></i></a>
                                             <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                                         </div>

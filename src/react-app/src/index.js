@@ -7,10 +7,9 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { store } from './features/appStore';
 
-
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
+    <Provider store={store}>      
       <App />
     </Provider>
   </React.StrictMode>,

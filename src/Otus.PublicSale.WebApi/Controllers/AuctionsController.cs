@@ -177,7 +177,7 @@ namespace Otus.PublicSale.WebApi.Controllers
         [HttpPost]
         public async Task<ActionResult<Guid>> CreatetAuctionAsync(AuctionDto request)
         {
-            var entity = AuctionMapper.MapFromModel(request);            
+            var entity = AuctionMapper.MapFromModel(request);
             await _repositoryAuctions.AddAsync(entity);
 
             ClearCacheRecord(entity.Id);

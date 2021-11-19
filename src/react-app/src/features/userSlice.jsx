@@ -4,7 +4,7 @@ import {
   doRegister,
   doUpdate,
   cookieName
-} from '../Components/User/userAPI';
+} from './userAPI';
 import Cookies from 'js-cookie'
 
 const initialState = loadInitialState();

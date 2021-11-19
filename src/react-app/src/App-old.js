@@ -49,7 +49,7 @@ function App() {
                     <div className="header-wrapper">
                         <div className="logo">
                             <a href="index.html">
-                                <img src="assets/images/logo/logo.png" alt="logo"></img>
+                                <img src="/assets/images/logo/logo.png" alt="logo"></img>
                             </a>
                         </div>
                         <ul className="menu ml-auto">
@@ -167,7 +167,7 @@ function App() {
         <div className="cart-sidebar-area">
             <div className="top-content">
                 <a href="index.html" className="logo">
-                    <img src="assets/images/logo/logo2.png" alt="logo"></img>
+                    <img src="/assets/images/logo/logo2.png" alt="logo"></img>
                 </a>
                 <span className="side-sidebar-close-btn"><i className="fas fa-times"></i></span>
             </div>
@@ -176,7 +176,7 @@ function App() {
                     <h4 className="title">Shopping cart</h4>
                     <div className="single-product-item">
                         <div className="thumb">
-                            <a href="#0"><img src="assets/images/shop/shop01.jpg" alt="shop"></img></a>
+                            <a href="#0"><img src="/assets/images/shop/shop01.jpg" alt="shop"></img></a>
                         </div>
                         <div className="content">
                             <h4 className="title"><a href="#0">Color Pencil</a></h4>
@@ -186,7 +186,7 @@ function App() {
                     </div>
                     <div className="single-product-item">
                         <div className="thumb">
-                            <a href="#0"><img src="assets/images/shop/shop02.jpg" alt="shop"></img></a>
+                            <a href="#0"><img src="/assets/images/shop/shop02.jpg" alt="shop"></img></a>
                         </div>
                         <div className="content">
                             <h4 className="title"><a href="#0">Water Pot</a></h4>
@@ -196,7 +196,7 @@ function App() {
                     </div>
                     <div className="single-product-item">
                         <div className="thumb">
-                            <a href="#0"><img src="assets/images/shop/shop03.jpg" alt="shop"></img></a>
+                            <a href="#0"><img src="/assets/images/shop/shop03.jpg" alt="shop"></img></a>
                         </div>
                         <div className="content">
                             <h4 className="title"><a href="#0">Art Paper</a></h4>
@@ -206,7 +206,7 @@ function App() {
                     </div>
                     <div className="single-product-item">
                         <div className="thumb">
-                            <a href="#0"><img src="assets/images/shop/shop04.jpg" alt="shop"></img></a>
+                            <a href="#0"><img src="/assets/images/shop/shop04.jpg" alt="shop"></img></a>
                         </div>
                         <div className="content">
                             <h4 className="title"><a href="#0">Stop Watch</a></h4>
@@ -216,7 +216,7 @@ function App() {
                     </div>
                     <div className="single-product-item">
                         <div className="thumb">
-                            <a href="#0"><img src="assets/images/shop/shop05.jpg" alt="shop"></img></a>
+                            <a href="#0"><img src="/assets/images/shop/shop05.jpg" alt="shop"></img></a>
                         </div>
                         <div className="content">
                             <h4 className="title"><a href="#0">Comics Book</a></h4>
@@ -249,13 +249,13 @@ function App() {
                     </div>
                     <div className="d-none d-lg-block col-lg-6">
                         <div className="banner-thumb-2">
-                            <img src="assets/images/banner/banner-1.png" alt="banner"></img>
+                            <img src="/assets/images/banner/banner-1.png" alt="banner"></img>
                         </div>
                     </div>
                 </div>
             </div>
             <div className="banner-shape d-none d-lg-block">
-                <img src="assets/css/img/banner-shape.png" alt="css"></img>
+                <img src="/assets/css/img/banner-shape.png" alt="css"></img>
             </div>
         </section>
         {/*============= Banner Section Ends Here =============*/}
@@ -277,27 +277,27 @@ function App() {
                     <div className="m--15">
                         <div className="browse-slider owl-theme owl-carousel">
                             <a href="#0" className="browse-item">
-                                <img src="assets/images/auction/01.png" alt="auction"></img>
+                                <img src="/assets/images/auction/01.png" alt="auction"></img>
                                 <span className="info">Vehicles</span>
                             </a>
                             <a href="#0" className="browse-item">
-                                <img src="assets/images/auction/02.png" alt="auction"></img>
+                                <img src="/assets/images/auction/02.png" alt="auction"></img>
                                 <span className="info">Jewelry</span>
                             </a>
                             <a href="#0" className="browse-item">
-                                <img src="assets/images/auction/03.png" alt="auction"></img>
+                                <img src="/assets/images/auction/03.png" alt="auction"></img>
                                 <span className="info">Watches</span>
                             </a>
                             <a href="#0" className="browse-item">
-                                <img src="assets/images/auction/04.png" alt="auction"></img>
+                                <img src="/assets/images/auction/04.png" alt="auction"></img>
                                 <span className="info">Electronics</span>
                             </a>
                             <a href="#0" className="browse-item">
-                                <img src="assets/images/auction/05.png" alt="auction"></img>
+                                <img src="/assets/images/auction/05.png" alt="auction"></img>
                                 <span className="info">Sports</span>
                             </a>
                             <a href="#0" className="browse-item">
-                                <img src="assets/images/auction/06.png" alt="auction"></img>
+                                <img src="/assets/images/auction/06.png" alt="auction"></img>
                                 <span className="info">Real Estate</span>
                             </a>
                         </div>
@@ -308,12 +308,12 @@ function App() {
             
             {/*============= Car Auction Section Starts Here =============*/}
             <section className="car-auction-section padding-bottom padding-top pos-rel oh">
-                <div className="car-bg"><img src="assets/images/auction/car/car-bg.png" alt="car"></img></div>
+                <div className="car-bg"><img src="/assets/images/auction/car/car-bg.png" alt="car"></img></div>
                 <div className="container">
                     <div className="section-header-3">
                         <div className="left">
                             <div className="thumb">
-                                <img src="assets/images/header-icons/car-1.png" alt="header-icons"></img>
+                                <img src="/assets/images/header-icons/car-1.png" alt="header-icons"></img>
                             </div>
                             <div className="title-area">
                                 <h2 className="title">Vehicles</h2>
@@ -326,7 +326,7 @@ function App() {
                         <div className="col-sm-10 col-md-6 col-lg-4">
                             <div className="auction-item-2">
                                 <div className="auction-thumb">
-                                    <a href="product-details.html"><img src="assets/images/auction/car/auction-1.jpg" alt="car"></img></a>
+                                    <a href="product-details.html"><img src="/assets/images/auction/car/auction-1.jpg" alt="car"></img></a>
                                     <a href="#0" className="rating"><i className="far fa-star"></i></a>
                                     <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                                 </div>
@@ -369,7 +369,7 @@ function App() {
                         <div className="col-sm-10 col-md-6 col-lg-4">
                             <div className="auction-item-2">
                                 <div className="auction-thumb">
-                                    <a href="product-details.html"><img src="assets/images/auction/car/auction-2.jpg" alt="car"></img></a>
+                                    <a href="product-details.html"><img src="/assets/images/auction/car/auction-2.jpg" alt="car"></img></a>
                                     <a href="#0" className="rating"><i className="far fa-star"></i></a>
                                     <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                                 </div>
@@ -412,7 +412,7 @@ function App() {
                         <div className="col-sm-10 col-md-6 col-lg-4">
                             <div className="auction-item-2">
                                 <div className="auction-thumb">
-                                    <a href="product-details.html"><img src="assets/images/auction/car/auction-3.jpg" alt="car"></img></a>
+                                    <a href="product-details.html"><img src="/assets/images/auction/car/auction-3.jpg" alt="car"></img></a>
                                     <a href="#0" className="rating"><i className="far fa-star"></i></a>
                                     <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                                 </div>
@@ -461,12 +461,12 @@ function App() {
     
         {/*============= Jewelry Auction Section Starts Here =============*/}
         <section className="jewelry-auction-section padding-bottom padding-top pos-rel">
-            <div className="jewelry-bg d-none d-xl-block"><img src="assets/images/auction/jewelry/jwelry-bg.png" alt="jewelry"></img></div>
+            <div className="jewelry-bg d-none d-xl-block"><img src="/assets/images/auction/jewelry/jwelry-bg.png" alt="jewelry"></img></div>
             <div className="container">
                 <div className="section-header-3">
                     <div className="left">
                         <div className="thumb">
-                            <img src="assets/images/header-icons/coin-1.png" alt="header-icons"></img>
+                            <img src="/assets/images/header-icons/coin-1.png" alt="header-icons"></img>
                         </div>
                         <div className="title-area">
                             <h2 className="title">Jewelry</h2>
@@ -479,7 +479,7 @@ function App() {
                     <div className="col-sm-10 col-md-6 col-lg-4">
                         <div className="auction-item-2">
                             <div className="auction-thumb">
-                                <a href="product-details.html"><img src="assets/images/auction/jewelry/auction-1.jpg" alt="jewelry"></img></a>
+                                <a href="product-details.html"><img src="/assets/images/auction/jewelry/auction-1.jpg" alt="jewelry"></img></a>
                                 <a href="#0" className="rating"><i className="far fa-star"></i></a>
                                 <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                             </div>
@@ -522,7 +522,7 @@ function App() {
                     <div className="col-sm-10 col-md-6 col-lg-4">
                         <div className="auction-item-2">
                             <div className="auction-thumb">
-                                <a href="product-details.html"><img src="assets/images/auction/jewelry/auction-2.jpg" alt="jewelry"></img></a>
+                                <a href="product-details.html"><img src="/assets/images/auction/jewelry/auction-2.jpg" alt="jewelry"></img></a>
                                 <a href="#0" className="rating"><i className="far fa-star"></i></a>
                                 <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                             </div>
@@ -565,7 +565,7 @@ function App() {
                     <div className="col-sm-10 col-md-6 col-lg-4">
                         <div className="auction-item-2">
                             <div className="auction-thumb">
-                                <a href="product-details.html"><img src="assets/images/auction/jewelry/auction-3.jpg" alt="jewelry"></img></a>
+                                <a href="product-details.html"><img src="/assets/images/auction/jewelry/auction-3.jpg" alt="jewelry"></img></a>
                                 <a href="#0" className="rating"><i className="far fa-star"></i></a>
                                 <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                             </div>
@@ -632,7 +632,7 @@ function App() {
                 <div className="section-header-3">
                     <div className="left">
                         <div className="thumb">
-                            <img src="assets/images/header-icons/coin-1.png" alt="header-icons"></img>
+                            <img src="/assets/images/header-icons/coin-1.png" alt="header-icons"></img>
                         </div>
                         <div className="title-area">
                             <h2 className="title">Watches</h2>
@@ -645,7 +645,7 @@ function App() {
                     <div className="col-sm-10 col-md-6 col-lg-4">
                         <div className="auction-item-2">
                             <div className="auction-thumb">
-                                <a href="product-details.html"><img src="assets/images/auction/watches/auction-1.jpg" alt="watches"></img></a>
+                                <a href="product-details.html"><img src="/assets/images/auction/watches/auction-1.jpg" alt="watches"></img></a>
                                 <a href="#0" className="rating"><i className="far fa-star"></i></a>
                                 <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                             </div>
@@ -688,7 +688,7 @@ function App() {
                     <div className="col-sm-10 col-md-6 col-lg-4">
                         <div className="auction-item-2">
                             <div className="auction-thumb">
-                                <a href="product-details.html"><img src="assets/images/auction/watches/auction-2.jpg" alt="watches"></img></a>
+                                <a href="product-details.html"><img src="/assets/images/auction/watches/auction-2.jpg" alt="watches"></img></a>
                                 <a href="#0" className="rating"><i className="far fa-star"></i></a>
                                 <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                             </div>
@@ -731,7 +731,7 @@ function App() {
                     <div className="col-sm-10 col-md-6 col-lg-4">
                         <div className="auction-item-2">
                             <div className="auction-thumb">
-                                <a href="product-details.html"><img src="assets/images/auction/watches/auction-3.jpg" alt="watches"></img></a>
+                                <a href="product-details.html"><img src="/assets/images/auction/watches/auction-3.jpg" alt="watches"></img></a>
                                 <a href="#0" className="rating"><i className="far fa-star"></i></a>
                                 <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                             </div>
@@ -791,7 +791,7 @@ function App() {
                         <div className="col-lg-6">
                             <div className="auction-item-3">
                                 <div className="auction-thumb">
-                                    <a href="product-details.html"><img src="assets/images/auction/popular/auction-1.jpg" alt="popular"></img></a>
+                                    <a href="product-details.html"><img src="/assets/images/auction/popular/auction-1.jpg" alt="popular"></img></a>
                                     <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                                 </div>
                                 <div className="auction-content">
@@ -816,7 +816,7 @@ function App() {
                         <div className="col-lg-6">
                             <div className="auction-item-3">
                                 <div className="auction-thumb">
-                                    <a href="product-details.html"><img src="assets/images/auction/popular/auction-2.jpg" alt="popular"></img></a>
+                                    <a href="product-details.html"><img src="/assets/images/auction/popular/auction-2.jpg" alt="popular"></img></a>
                                     <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                                 </div>
                                 <div className="auction-content">
@@ -842,7 +842,7 @@ function App() {
                         <div className="col-lg-6">
                             <div className="auction-item-3">
                                 <div className="auction-thumb">
-                                    <a href="product-details.html"><img src="assets/images/auction/popular/auction-3.jpg" alt="popular"></img></a>
+                                    <a href="product-details.html"><img src="/assets/images/auction/popular/auction-3.jpg" alt="popular"></img></a>
                                     <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                                 </div>
                                 <div className="auction-content">
@@ -868,7 +868,7 @@ function App() {
                         <div className="col-lg-6">
                             <div className="auction-item-3">
                                 <div className="auction-thumb">
-                                    <a href="product-details.html"><img src="assets/images/auction/popular/auction-4.jpg" alt="popular"></img></a>
+                                    <a href="product-details.html"><img src="/assets/images/auction/popular/auction-4.jpg" alt="popular"></img></a>
                                     <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                                 </div>
                                 <div className="auction-content">
@@ -894,7 +894,7 @@ function App() {
                         <div className="col-lg-6">
                             <div className="auction-item-3">
                                 <div className="auction-thumb">
-                                    <a href="product-details.html"><img src="assets/images/auction/popular/auction-5.jpg" alt="popular"></img></a>
+                                    <a href="product-details.html"><img src="/assets/images/auction/popular/auction-5.jpg" alt="popular"></img></a>
                                     <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                                 </div>
                                 <div className="auction-content">
@@ -920,7 +920,7 @@ function App() {
                         <div className="col-lg-6">
                             <div className="auction-item-3">
                                 <div className="auction-thumb">
-                                    <a href="product-details.html"><img src="assets/images/auction/popular/auction-6.jpg" alt="popular"></img></a>
+                                    <a href="product-details.html"><img src="/assets/images/auction/popular/auction-6.jpg" alt="popular"></img></a>
                                     <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                                 </div>
                                 <div className="auction-content">
@@ -952,12 +952,12 @@ function App() {
     
         {/*============= Coins and Bullion Auction Section Starts Here =============*/}
         <section className="coins-and-bullion-auction-section padding-bottom padding-top pos-rel pb-max-xl-0">
-            <div className="jewelry-bg d-none d-xl-block"><img src="assets/images/auction/coins/coin-bg.png" alt="coin"></img></div>
+            <div className="jewelry-bg d-none d-xl-block"><img src="/assets/images/auction/coins/coin-bg.png" alt="coin"></img></div>
             <div className="container">
                 <div className="section-header-3">
                     <div className="left">
                         <div className="thumb">
-                            <img src="assets/images/header-icons/coin-1.png" alt="header-icons"></img>
+                            <img src="/assets/images/header-icons/coin-1.png" alt="header-icons"></img>
                         </div>
                         <div className="title-area">
                             <h2 className="title">Coins & Bullion</h2>
@@ -970,7 +970,7 @@ function App() {
                     <div className="col-sm-10 col-md-6 col-lg-4">
                         <div className="auction-item-2">
                             <div className="auction-thumb">
-                                <a href="product-details.html"><img src="assets/images/auction/coins/auction-1.jpg" alt="coins"></img></a>
+                                <a href="product-details.html"><img src="/assets/images/auction/coins/auction-1.jpg" alt="coins"></img></a>
                                 <a href="#0" className="rating"><i className="far fa-star"></i></a>
                                 <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                             </div>
@@ -1013,7 +1013,7 @@ function App() {
                     <div className="col-sm-10 col-md-6 col-lg-4">
                         <div className="auction-item-2">
                             <div className="auction-thumb">
-                                <a href="product-details.html"><img src="assets/images/auction/coins/auction-2.jpg" alt="coins"></img></a>
+                                <a href="product-details.html"><img src="/assets/images/auction/coins/auction-2.jpg" alt="coins"></img></a>
                                 <a href="#0" className="rating"><i className="far fa-star"></i></a>
                                 <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                             </div>
@@ -1056,7 +1056,7 @@ function App() {
                     <div className="col-sm-10 col-md-6 col-lg-4">
                         <div className="auction-item-2">
                             <div className="auction-thumb">
-                                <a href="product-details.html"><img src="assets/images/auction/coins/auction-3.jpg" alt="coins"></img></a>
+                                <a href="product-details.html"><img src="/assets/images/auction/coins/auction-3.jpg" alt="coins"></img></a>
                                 <a href="#0" className="rating"><i className="far fa-star"></i></a>
                                 <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                             </div>
@@ -1104,12 +1104,12 @@ function App() {
     
         {/*============= Real Estate Section Starts Here =============*/}
         <section className="real-estate-auction padding-top padding-bottom pos-rel oh">
-            <div className="car-bg"><img src="assets/images/auction/realstate/real-bg.png" alt="realstate"></img></div>
+            <div className="car-bg"><img src="/assets/images/auction/realstate/real-bg.png" alt="realstate"></img></div>
             <div className="container">
                 <div className="section-header-3">
                     <div className="left">
                         <div className="thumb">
-                            <img src="assets/images/header-icons/coin-1.png" alt="header-icons"></img>
+                            <img src="/assets/images/header-icons/coin-1.png" alt="header-icons"></img>
                         </div>
                         <div className="title-area">
                             <h2 className="title">Real Estate</h2>
@@ -1121,7 +1121,7 @@ function App() {
                 <div className="auction-slider-4 owl-theme owl-carousel">
                     <div className="auction-item-4">
                         <div className="auction-thumb">
-                            <a href="product-details.html"><img src="assets/images/auction/realstate/auction-1.png" alt="realstate"></img></a>
+                            <a href="product-details.html"><img src="/assets/images/auction/realstate/auction-1.png" alt="realstate"></img></a>
                             <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                         </div>
                         <div className="auction-content">
@@ -1161,7 +1161,7 @@ function App() {
                     </div>
                     <div className="auction-item-4">
                         <div className="auction-thumb">
-                            <a href="product-details.html"><img src="assets/images/auction/realstate/auction-1.png" alt="realstate"></img></a>
+                            <a href="product-details.html"><img src="/assets/images/auction/realstate/auction-1.png" alt="realstate"></img></a>
                             <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                         </div>
                         <div className="auction-content">
@@ -1201,7 +1201,7 @@ function App() {
                     </div>
                     <div className="auction-item-4">
                         <div className="auction-thumb">
-                            <a href="product-details.html"><img src="assets/images/auction/realstate/auction-1.png" alt="realstate"></img></a>
+                            <a href="product-details.html"><img src="/assets/images/auction/realstate/auction-1.png" alt="realstate"></img></a>
                             <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                         </div>
                         <div className="auction-content">
@@ -1241,7 +1241,7 @@ function App() {
                     </div>
                     <div className="auction-item-4">
                         <div className="auction-thumb">
-                            <a href="product-details.html"><img src="assets/images/auction/realstate/auction-1.png" alt="realstate"></img></a>
+                            <a href="product-details.html"><img src="/assets/images/auction/realstate/auction-1.png" alt="realstate"></img></a>
                             <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                         </div>
                         <div className="auction-content">
@@ -1281,7 +1281,7 @@ function App() {
                     </div>
                     <div className="auction-item-4">
                         <div className="auction-thumb">
-                            <a href="product-details.html"><img src="assets/images/auction/realstate/auction-1.png" alt="realstate"></img></a>
+                            <a href="product-details.html"><img src="/assets/images/auction/realstate/auction-1.png" alt="realstate"></img></a>
                             <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                         </div>
                         <div className="auction-content">
@@ -1338,7 +1338,7 @@ function App() {
                         <div className="section-header-2">
                             <div className="left">
                                 <div className="thumb">
-                                    <img src="assets/images/header-icons/camera-1.png" alt="header-icons"></img>
+                                    <img src="/assets/images/header-icons/camera-1.png" alt="header-icons"></img>
                                 </div>
                                 <h2 className="title">Electronics</h2>
                             </div>
@@ -1351,7 +1351,7 @@ function App() {
                             <div className="slide-item">
                                 <div className="auction-item-1">
                                     <div className="auction-thumb">
-                                        <a href="product-details.html"><img src="assets/images/auction/electronics/auction-1.jpg" alt="electronics"></img></a>
+                                        <a href="product-details.html"><img src="/assets/images/auction/electronics/auction-1.jpg" alt="electronics"></img></a>
                                         <a href="#0" className="rating"><i className="far fa-star"></i></a>
                                         <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                                     </div>
@@ -1378,7 +1378,7 @@ function App() {
                                 </div>
                                 <div className="auction-item-1">
                                     <div className="auction-thumb">
-                                        <a href="product-details.html"><img src="assets/images/auction/electronics/auction-2.jpg" alt="electronics"></img></a>
+                                        <a href="product-details.html"><img src="/assets/images/auction/electronics/auction-2.jpg" alt="electronics"></img></a>
                                         <a href="#0" className="rating"><i className="far fa-star"></i></a>
                                         <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                                     </div>
@@ -1405,7 +1405,7 @@ function App() {
                                 </div>
                                 <div className="auction-item-1">
                                     <div className="auction-thumb">
-                                        <a href="product-details.html"><img src="assets/images/auction/electronics/auction-3.jpg" alt="electronics"></img></a>
+                                        <a href="product-details.html"><img src="/assets/images/auction/electronics/auction-3.jpg" alt="electronics"></img></a>
                                         <a href="#0" className="rating"><i className="far fa-star"></i></a>
                                         <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                                     </div>
@@ -1432,7 +1432,7 @@ function App() {
                                 </div>
                                 <div className="auction-item-1">
                                     <div className="auction-thumb">
-                                        <a href="product-details.html"><img src="assets/images/auction/electronics/auction-4.jpg" alt="electronics"></img></a>
+                                        <a href="product-details.html"><img src="/assets/images/auction/electronics/auction-4.jpg" alt="electronics"></img></a>
                                         <a href="#0" className="rating"><i className="far fa-star"></i></a>
                                         <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                                     </div>
@@ -1461,7 +1461,7 @@ function App() {
                             <div className="slide-item">
                                 <div className="auction-item-1">
                                     <div className="auction-thumb">
-                                        <a href="product-details.html"><img src="assets/images/auction/electronics/auction-1.jpg" alt="electronics"></img></a>
+                                        <a href="product-details.html"><img src="/assets/images/auction/electronics/auction-1.jpg" alt="electronics"></img></a>
                                         <a href="#0" className="rating"><i className="far fa-star"></i></a>
                                         <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                                     </div>
@@ -1488,7 +1488,7 @@ function App() {
                                 </div>
                                 <div className="auction-item-1">
                                     <div className="auction-thumb">
-                                        <a href="product-details.html"><img src="assets/images/auction/electronics/auction-2.jpg" alt="electronics"></img></a>
+                                        <a href="product-details.html"><img src="/assets/images/auction/electronics/auction-2.jpg" alt="electronics"></img></a>
                                         <a href="#0" className="rating"><i className="far fa-star"></i></a>
                                         <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                                     </div>
@@ -1515,7 +1515,7 @@ function App() {
                                 </div>
                                 <div className="auction-item-1">
                                     <div className="auction-thumb">
-                                        <a href="product-details.html"><img src="assets/images/auction/electronics/auction-3.jpg" alt="electronics"></img></a>
+                                        <a href="product-details.html"><img src="/assets/images/auction/electronics/auction-3.jpg" alt="electronics"></img></a>
                                         <a href="#0" className="rating"><i className="far fa-star"></i></a>
                                         <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                                     </div>
@@ -1542,7 +1542,7 @@ function App() {
                                 </div>
                                 <div className="auction-item-1">
                                     <div className="auction-thumb">
-                                        <a href="product-details.html"><img src="assets/images/auction/electronics/auction-4.jpg" alt="electronics"></img></a>
+                                        <a href="product-details.html"><img src="/assets/images/auction/electronics/auction-4.jpg" alt="electronics"></img></a>
                                         <a href="#0" className="rating"><i className="far fa-star"></i></a>
                                         <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                                     </div>
@@ -1574,7 +1574,7 @@ function App() {
                         <div className="section-header-2">
                             <div className="left">
                                 <div className="thumb">
-                                    <img src="assets/images/header-icons/art-1.png" alt="header-icons"></img>
+                                    <img src="/assets/images/header-icons/art-1.png" alt="header-icons"></img>
                                 </div>
                                 <h2 className="title">Art</h2>
                             </div>
@@ -1587,7 +1587,7 @@ function App() {
                             <div className="slide-item">
                                 <div className="auction-item-1">
                                     <div className="auction-thumb">
-                                        <a href="product-details.html"><img src="assets/images/auction/art/auction-1.jpg" alt="art"></img></a>
+                                        <a href="product-details.html"><img src="/assets/images/auction/art/auction-1.jpg" alt="art"></img></a>
                                         <a href="#0" className="rating"><i className="far fa-star"></i></a>
                                         <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                                     </div>
@@ -1614,7 +1614,7 @@ function App() {
                                 </div>
                                 <div className="auction-item-1">
                                     <div className="auction-thumb">
-                                        <a href="product-details.html"><img src="assets/images/auction/art/auction-2.jpg" alt="art"></img></a>
+                                        <a href="product-details.html"><img src="/assets/images/auction/art/auction-2.jpg" alt="art"></img></a>
                                         <a href="#0" className="rating"><i className="far fa-star"></i></a>
                                         <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                                     </div>
@@ -1641,7 +1641,7 @@ function App() {
                                 </div>
                                 <div className="auction-item-1">
                                     <div className="auction-thumb">
-                                        <a href="product-details.html"><img src="assets/images/auction/art/auction-3.jpg" alt="art"></img></a>
+                                        <a href="product-details.html"><img src="/assets/images/auction/art/auction-3.jpg" alt="art"></img></a>
                                         <a href="#0" className="rating"><i className="far fa-star"></i></a>
                                         <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                                     </div>
@@ -1668,7 +1668,7 @@ function App() {
                                 </div>
                                 <div className="auction-item-1">
                                     <div className="auction-thumb">
-                                        <a href="product-details.html"><img src="assets/images/auction/art/auction-4.jpg" alt="art"></img></a>
+                                        <a href="product-details.html"><img src="/assets/images/auction/art/auction-4.jpg" alt="art"></img></a>
                                         <a href="#0" className="rating"><i className="far fa-star"></i></a>
                                         <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                                     </div>
@@ -1697,7 +1697,7 @@ function App() {
                             <div className="slide-item">
                                 <div className="auction-item-1">
                                     <div className="auction-thumb">
-                                        <a href="product-details.html"><img src="assets/images/auction/art/auction-1.jpg" alt="art"></img></a>
+                                        <a href="product-details.html"><img src="/assets/images/auction/art/auction-1.jpg" alt="art"></img></a>
                                         <a href="#0" className="rating"><i className="far fa-star"></i></a>
                                         <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                                     </div>
@@ -1724,7 +1724,7 @@ function App() {
                                 </div>
                                 <div className="auction-item-1">
                                     <div className="auction-thumb">
-                                        <a href="product-details.html"><img src="assets/images/auction/art/auction-2.jpg" alt="art"></img></a>
+                                        <a href="product-details.html"><img src="/assets/images/auction/art/auction-2.jpg" alt="art"></img></a>
                                         <a href="#0" className="rating"><i className="far fa-star"></i></a>
                                         <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                                     </div>
@@ -1751,7 +1751,7 @@ function App() {
                                 </div>
                                 <div className="auction-item-1">
                                     <div className="auction-thumb">
-                                        <a href="product-details.html"><img src="assets/images/auction/art/auction-3.jpg" alt="art"></img></a>
+                                        <a href="product-details.html"><img src="/assets/images/auction/art/auction-3.jpg" alt="art"></img></a>
                                         <a href="#0" className="rating"><i className="far fa-star"></i></a>
                                         <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                                     </div>
@@ -1778,7 +1778,7 @@ function App() {
                                 </div>
                                 <div className="auction-item-1">
                                     <div className="auction-thumb">
-                                        <a href="product-details.html"><img src="assets/images/auction/art/auction-4.jpg" alt="art"></img></a>
+                                        <a href="product-details.html"><img src="/assets/images/auction/art/auction-4.jpg" alt="art"></img></a>
                                         <a href="#0" className="rating"><i className="far fa-star"></i></a>
                                         <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
                                     </div>
@@ -1824,7 +1824,7 @@ function App() {
                         <div className="col-md-6 col-lg-4">
                             <div className="how-item">
                                 <div className="how-thumb">
-                                    <img src="assets/images/how/how1.png" alt="how"></img>
+                                    <img src="/assets/images/how/how1.png" alt="how"></img>
                                 </div>
                                 <div className="how-content">
                                     <h4 className="title">Sign Up</h4>
@@ -1835,7 +1835,7 @@ function App() {
                         <div className="col-md-6 col-lg-4">
                             <div className="how-item">
                                 <div className="how-thumb">
-                                    <img src="assets/images/how/how2.png" alt="how"></img>
+                                    <img src="/assets/images/how/how2.png" alt="how"></img>
                                 </div>
                                 <div className="how-content">
                                     <h4 className="title">Bid</h4>
@@ -1846,7 +1846,7 @@ function App() {
                         <div className="col-md-6 col-lg-4">
                             <div className="how-item">
                                 <div className="how-thumb">
-                                    <img src="assets/images/how/how3.png" alt="how"></img>
+                                    <img src="/assets/images/how/how3.png" alt="how"></img>
                                 </div>
                                 <div className="how-content">
                                     <h4 className="title">Win</h4>
@@ -1877,7 +1877,7 @@ function App() {
                             <div className="client-author">
                                 <div className="thumb">
                                     <a href="#0">
-                                        <img src="assets/images/client/client01.png" alt="client"></img>
+                                        <img src="/assets/images/client/client01.png" alt="client"></img>
                                     </a>
                                 </div>
                                 <div className="content">
@@ -1899,7 +1899,7 @@ function App() {
                             <div className="client-author">
                                 <div className="thumb">
                                     <a href="#0">
-                                        <img src="assets/images/client/client02.png" alt="client"></img>
+                                        <img src="/assets/images/client/client02.png" alt="client"></img>
                                     </a>
                                 </div>
                                 <div className="content">
@@ -1921,7 +1921,7 @@ function App() {
                             <div className="client-author">
                                 <div className="thumb">
                                     <a href="#0">
-                                        <img src="assets/images/client/client03.png" alt="client"></img>
+                                        <img src="/assets/images/client/client03.png" alt="client"></img>
                                     </a>
                                 </div>
                                 <div className="content">
@@ -1946,33 +1946,33 @@ function App() {
         {/*============= Footer Section Starts Here =============*/}
         <footer className="bg_img padding-top oh" data-background="assets/images/footer/footer-bg.jpg">
             <div className="footer-top-shape">
-                <img src="assets/css/img/footer-top-shape.png" alt="css"></img>
+                <img src="/assets/css/img/footer-top-shape.png" alt="css"></img>
             </div>
             <div className="anime-wrapper">
                 <div className="anime-1 plus-anime">
-                    <img src="assets/images/footer/p1.png" alt="footer"></img>
+                    <img src="/assets/images/footer/p1.png" alt="footer"></img>
                 </div>
                 <div className="anime-2 plus-anime">
-                    <img src="assets/images/footer/p2.png" alt="footer"></img>
+                    <img src="/assets/images/footer/p2.png" alt="footer"></img>
                 </div>
                 <div className="anime-3 plus-anime">
-                    <img src="assets/images/footer/p3.png" alt="footer"></img>
+                    <img src="/assets/images/footer/p3.png" alt="footer"></img>
                 </div>
                 <div className="anime-5 zigzag">
-                    <img src="assets/images/footer/c2.png" alt="footer"></img>
+                    <img src="/assets/images/footer/c2.png" alt="footer"></img>
                 </div>
                 <div className="anime-6 zigzag">
-                    <img src="assets/images/footer/c3.png" alt="footer"></img>
+                    <img src="/assets/images/footer/c3.png" alt="footer"></img>
                 </div>
                 <div className="anime-7 zigzag">
-                    <img src="assets/images/footer/c4.png" alt="footer"></img>
+                    <img src="/assets/images/footer/c4.png" alt="footer"></img>
                 </div>
             </div>
             <div className="newslater-wrapper">
                 <div className="container">
                     <div className="newslater-area">
                         <div className="newslater-thumb">
-                            <img src="assets/images/footer/newslater.png" alt="footer"></img>
+                            <img src="/assets/images/footer/newslater.png" alt="footer"></img>
                         </div>
                         <div className="newslater-content">
                             <div className="section-header left-style mb-low">
@@ -2112,20 +2112,20 @@ function App() {
                     <div className="copyright-area">
                         <div className="footer-bottom-wrapper">
                             <div className="logo">
-                                <a href="index.html"><img src="assets/images/logo/footer-logo.png" alt="logo"></img></a>
+                                <a href="index.html"><img src="/assets/images/logo/footer-logo.png" alt="logo"></img></a>
                             </div>
                             <ul className="gateway-area">
                                 <li>
-                                    <a href="#0"><img src="assets/images/footer/paypal.png" alt="footer"></img></a>
+                                    <a href="#0"><img src="/assets/images/footer/paypal.png" alt="footer"></img></a>
                                 </li>
                                 <li>
-                                    <a href="#0"><img src="assets/images/footer/visa.png" alt="footer"></img></a>
+                                    <a href="#0"><img src="/assets/images/footer/visa.png" alt="footer"></img></a>
                                 </li>
                                 <li>
-                                    <a href="#0"><img src="assets/images/footer/discover.png" alt="footer"></img></a>
+                                    <a href="#0"><img src="/assets/images/footer/discover.png" alt="footer"></img></a>
                                 </li>
                                 <li>
-                                    <a href="#0"><img src="assets/images/footer/mastercard.png" alt="footer"></img></a>
+                                    <a href="#0"><img src="/assets/images/footer/mastercard.png" alt="footer"></img></a>
                                 </li>
                             </ul>
                             <div className="copyright"><p>&copy; Copyright 2021 | <a href="#0">Sbidu</a> By <a href="#0">Uiaxis</a></p></div>

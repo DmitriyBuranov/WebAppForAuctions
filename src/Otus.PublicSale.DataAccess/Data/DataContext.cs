@@ -68,7 +68,7 @@ namespace Otus.PublicSale.DataAccess.Data
             {
                 entity.Property(e => e.CreateDate).HasColumnType("datetime");
 
-                entity.Property(e => e.Descition).IsRequired();
+                entity.Property(e => e.Description).IsRequired();
 
                 entity.Property(e => e.Name)
                     .IsRequired()
