@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Otus.PublicSale.Core.Domain;
@@ -51,5 +52,12 @@ namespace Otus.PublicSale.Core.Abstractions.Repositories
         /// </summary>
         /// <returns></returns>
         Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> predicate);
+
+        /// <summary>
+        /// Gets query of Entities
+        /// </summary>
+        /// <param name="predicate">Cndition</param>        
+        /// <returns></returns>
+        IQueryable<T> GetQuery(Expression<Func<T, bool>> predicate);
     }
 }

@@ -1,6 +1,8 @@
 import React from 'react';
+import BidHistoryItem from './BidHistoryItem';
 
-function BidHistory(props) {    
+function BidHistory(props) {
+    console.log(props)
     return (
         <div className="tab-pane fade show" id="history">
             <div className="history-wrapper">
@@ -17,86 +19,23 @@ function BidHistory(props) {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td data-history="bidder">
-                                        <div className="user-info">
-                                            <div className="thumb">
-                                                <img src="/assets/images/history/01.png" alt="history" />
-                                            </div>
-                                            <div className="content">
-                                                Moses Watts
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td data-history="date">06/16/2021</td>
-                                    <td data-history="time">02:45:25 PM</td>
-                                    <td data-history="unit price">$900.00</td>
-                                </tr>
-                                <tr>
-                                    <td data-history="bidder">
-                                        <div className="user-info">
-                                            <div className="thumb">
-                                                <img src="/assets/images/history/02.png" alt="history" />
-                                            </div>
-                                            <div className="content">
-                                                Pat Powell
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td data-history="date">06/16/2021</td>
-                                    <td data-history="time">02:45:25 PM</td>
-                                    <td data-history="unit price">$900.00</td>
-                                </tr>
-                                <tr>
-                                    <td data-history="bidder">
-                                        <div className="user-info">
-                                            <div className="thumb">
-                                                <img src="/assets/images/history/03.png" alt="history" />
-                                            </div>
-                                            <div className="content">
-                                                Jack Rodgers
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td data-history="date">06/16/2021</td>
-                                    <td data-history="time">02:45:25 PM</td>
-                                    <td data-history="unit price">$900.00</td>
-                                </tr>
-                                <tr>
-                                    <td data-history="bidder">
-                                        <div className="user-info">
-                                            <div className="thumb">
-                                                <img src="/assets/images/history/04.png" alt="history" />
-                                            </div>
-                                            <div className="content">
-                                                Arlene Paul
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td data-history="date">06/16/2021</td>
-                                    <td data-history="time">02:45:25 PM</td>
-                                    <td data-history="unit price">$900.00</td>
-                                </tr>
-                                <tr>
-                                    <td data-history="bidder">
-                                        <div className="user-info">
-                                            <div className="thumb">
-                                                <img src="/assets/images/history/05.png" alt="history" />
-                                            </div>
-                                            <div className="content">
-                                                Marcia Clarke
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td data-history="date">06/16/2021</td>
-                                    <td data-history="time">02:45:25 PM</td>
-                                    <td data-history="unit price">$900.00</td>
-                                </tr>
+                                {
+                                    props.items.map((item) => (
+                                        <BidHistoryItem key={item.id} item={item} ></BidHistoryItem>
+                                    ))
+                                }
                             </tbody>
                         </table>
-                        <div className="text-center mb-3 mt-4">
-                            <a href="#0" className="button-3">Load More</a>
-                        </div>
+                        {/* {
+                            props.totalBids !== props.items.length ?
+                                (
+                                    <div className="text-center mb-3 mt-4">
+                                        <a href="#0" className="button-3" onClick={(e) => props.onClick(props.page + 1)}>Load More</a>
+                                    </div>
+                                )
+                                :
+                                ""
+                        } */}
                     </div>
                 </div>
             </div>

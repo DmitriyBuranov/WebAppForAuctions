@@ -52,11 +52,11 @@ namespace Otus.PublicSale.WebApi.Models
             Email = user.Email;
             LastName = user.LastName;
             Password = "*****************";
-            Role = new RoleDto()
-            {
-                Id = user.Role?.Id ?? user.RoleId,
-                Name = user.Role?.Name
-            };
+            //Role = new RoleDto()
+            //{
+            //    Id = user.Role?.Id ?? user.RoleId,
+            //    Name = user.Role?.Name
+            //};
         }
 
     }

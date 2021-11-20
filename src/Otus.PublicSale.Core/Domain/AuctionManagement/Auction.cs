@@ -88,7 +88,6 @@ namespace Otus.PublicSale.Core.Domain.AuctionManagement
         /// </summary>
         public decimal LowestPrice { get; set; }
 
-
         /// <summary>
         /// Category
         /// </summary>

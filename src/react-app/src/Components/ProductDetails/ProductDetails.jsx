@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { selectJWT, selectLogged } from '../../features/userSlice';
 import parse from 'html-react-parser';
 import FAQs from './FAQs';
@@ -10,23 +10,28 @@ import BidArea from './BidArea';
 import { HubConnectionBuilder } from '@microsoft/signalr';
 import axios from 'axios';
 import Loader from '../CommonComponents/Loader';
+import { Alert } from 'react-bootstrap';
 
 function ProductDetails(props) {
+    const id = Number(props.match.params.id);
     const logged = useSelector(selectLogged);
-
     const [auction, setAuction] = useState([]);
     const [description, setDescription] = useState("");
     const [bidPrice, setBidPrice] = useState(0);
     const [auctionPrice, setAuctionPrice] = useState(0);
-    const [loading, setLoading] = useState(false); 
-    
-    const id = Number(props.match.params.id);
+    const [loading, setLoading] = useState(false);
+    const [betStats, setBetStats] = useState([]);
+    const [errorBet, setErrorBet] = useState("");
+
+    const [historyPage, setHistoryPage] = useState(1);
+    const [history, setHistory] = useState([]);
+
     const jwt = useSelector(selectJWT);
 
     const onAddBid = (e) => {
         e.preventDefault();
-    
-        setLoading(true);        
+
+        setLoading(true);
 
         const data = {
             auctionId: Number(id),
@@ -38,29 +43,44 @@ function ProductDetails(props) {
         };
         axios.post('/api/bets', data, config)
             .then((result) => {
-                //setLoading(false);                
-            })            
+                setErrorBet("");
+            })
             .catch((error) => {
-                console.log(error);                
+                console.log(error);
+                setLoading(false);
+                if (error.response.data) {
+                    setAuctionPrice(error.response.data.currentPrice);
+                    setBidPrice(error.response.data.currentPrice + error.response.data.priceStep);
+                    setBetStats(error.response.data.stats);
+                    setErrorBet(error.response.data.error);
+                }
+                else {
+                    setErrorBet(error.message);
+                }
             });
-        
+
         return false;
     }
 
     useEffect(() => {
-        setLoading(true);   
+        setLoading(true);
         axios.get(`/api/auctions/${id}`)
             .then((result) => {
                 console.log(result.data);
                 setAuction(result.data);
-                setAuctionPrice(result.data.priceStart);
+                setAuctionPrice(result.data.currentPrice);
                 setDescription(parse(result.data.description))
-                setBidPrice(result.data.priceStart + result.data.priceStep)
-                setLoading(false); 
+                setBidPrice(result.data.currentPrice + result.data.priceStep)
+                setLoading(false);
             });
-    }, [id]);
 
-    useEffect(() => {
+        axios.get(`/api/bets/stats/${id}`)
+            .then((result) => {
+                console.log(result.data);
+                setBetStats(result.data);
+            })
+            .catch((error) => { console.log(error); });
+
         const connection = new HubConnectionBuilder()
             .withUrl("https://localhost:5001/hubs/bet")
             //.withUrl("/api/hubs/bet/")
@@ -75,19 +95,34 @@ function ProductDetails(props) {
 
                 connection.on('NewBet', data => {
                     debugger;
-                    setLoading(false); 
-                    setAuctionPrice(data.priceStart);                    
-                    setBidPrice(data.priceStart + data.priceStep);
+                    setErrorBet("");
+                    setLoading(false);
+                    setAuctionPrice(data.currentPrice);
+                    setBidPrice(data.currentPrice + data.priceStep);
+                    setBetStats(data.stats);
                 });
             })
             .catch(e => console.log('Connection failed: ', e));
     }, [id]);
 
+    useEffect(() => {
+        axios.get(`/api/bets/history/${id}/${historyPage}`)
+            .then((result) => {
+                console.log(result.data);
+                if (result.data.length > 0) {
+                    setHistory(result.data);
+                }
+            })
+            .catch((error) => { console.log(error); });
+
+    }, [id, historyPage, betStats.totalBids]);
+
+    if (isNaN(id))
+        return <Redirect to="/products" />
+
     return (
         <div>
-
             {loading ? <Loader /> : ""}
-
 
             <div className="hero-section style-2">
                 <div className="container">
@@ -137,11 +172,12 @@ function ProductDetails(props) {
                                     </li>
                                 </ul>
 
+                                {errorBet !== "" ? <Alert variant="danger">{errorBet}</Alert> : ''}
                                 <BidArea loading={loading} logged={logged} bidPrice={bidPrice} onEdit={(e) => setBidPrice(e)} onSubmit={(e) => onAddBid(e)} />
 
-                                {/* <div className="buy-now-area">
-                                    <a href="#0" className="custom-button">Buy Now: ${auction.sellPrice}</a>                                    
-                                </div> */}
+                                <div className="buy-now-area">
+                                    <a href="#0" className="custom-button">Buy Now: ${auction.sellPrice}</a>
+                                </div>
                             </div>
                         </div>
                         <div className="col-lg-4">
@@ -157,7 +193,7 @@ function ProductDetails(props) {
                                                 <img src="/assets/images/product/icon1.png" alt="product" />
                                             </div>
                                             <div className="content">
-                                                <h3 className="count-title"><span className="counter">61</span></h3>
+                                                <h3 className="count-title"><span className="counter">{betStats.activeBidders}</span></h3>
                                                 <p>Active Bidders</p>
                                             </div>
                                         </div>
@@ -166,7 +202,7 @@ function ProductDetails(props) {
                                                 <img src="/assets/images/product/icon2.png" alt="product" />
                                             </div>
                                             <div className="content">
-                                                <h3 className="count-title"><span className="counter">203</span></h3>
+                                                <h3 className="count-title"><span className="counter">{betStats.watching}</span></h3>
                                                 <p>Watching</p>
                                             </div>
                                         </div>
@@ -175,7 +211,7 @@ function ProductDetails(props) {
                                                 <img src="/assets/images/product/icon3.png" alt="product" />
                                             </div>
                                             <div className="content">
-                                                <h3 className="count-title"><span className="counter">82</span></h3>
+                                                <h3 className="count-title"><span className="counter">{betStats.totalBids}</span></h3>
                                                 <p>Total Bids</p>
                                             </div>
                                         </div>
@@ -210,7 +246,7 @@ function ProductDetails(props) {
                                     <div className="thumb">
                                         <img src="/assets/images/product/tab3.png" alt="product" />
                                     </div>
-                                    <div className="content">Bid History (36)</div>
+                                    <div className="content">Bid History ({betStats.totalBids})</div>
                                 </a>
                             </li>
                             <li>
@@ -231,8 +267,8 @@ function ProductDetails(props) {
                                 {description}
                             </div>
                         </div>
-                        <DeliveryOptions />
-                        <BidHistory />
+                        <DeliveryOptions />                        
+                        <BidHistory items={history} page={historyPage} totalBids={betStats.totalBids} onClick={(e) => setHistoryPage(e)} />
                         <FAQs />
                     </div>
                 </div>

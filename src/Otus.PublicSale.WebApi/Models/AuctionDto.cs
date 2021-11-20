@@ -55,6 +55,16 @@ namespace Otus.PublicSale.WebApi.Models
         public decimal SellPrice {  get; set;}
 
         /// <summary>
+        /// CurrentPrice
+        /// </summary>
+        public decimal CurrentPrice { get; set; }
+
+        /// <summary>
+        /// LowestPrice
+        /// </summary>
+        public decimal LowestPrice { get; set; }
+
+        /// <summary>
         /// Constuctor
         /// </summary>
         public AuctionDto()
@@ -78,6 +88,11 @@ namespace Otus.PublicSale.WebApi.Models
             PriceStart = auction.PriceStart;
             PriceStep = auction.PriceStep;
             SellPrice = auction.SellPrice;
+            CurrentPrice = auction.CurrentPrice;
+            LowestPrice = auction.LowestPrice;
+
+            if (CurrentPrice < PriceStart)
+                CurrentPrice = PriceStart;
         }
 
         public override bool Equals(object obj)

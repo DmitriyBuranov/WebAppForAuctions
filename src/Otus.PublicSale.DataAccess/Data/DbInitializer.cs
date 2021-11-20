@@ -15,8 +15,8 @@ namespace Otus.PublicSale.DataAccess.Data
 
         public void InitializeDb()
         {
-            //context.Database.EnsureDeleted();
-            //context.Database.EnsureCreated();
+            context.Database.EnsureDeleted();
+            context.Database.EnsureCreated();
 
             if (context.Auctions.Any())
             {
@@ -229,6 +229,29 @@ namespace Otus.PublicSale.DataAccess.Data
             context.SaveChanges();
 
 
+            context.Users.Add(new Core.Domain.Administration.User()
+            {
+                FirstName = "BO",
+                LastName = "Admin",
+                Email = "admin@admin.com"
+            });
+
+            context.Users.Add(new Core.Domain.Administration.User()
+            {
+                FirstName = "Alice",
+                LastName = "Smith",
+                Email = "alice@alice.com"
+            });
+
+            context.Users.Add(new Core.Domain.Administration.User()
+            {
+                FirstName = "Bob",
+                LastName = "Smith",
+                Email = "bob@bob.com"
+            });
+
+            context.SaveChanges();
+
             int userId = 1;
 
             var AuctionBets = new AuctionBet[]
@@ -288,9 +311,8 @@ namespace Otus.PublicSale.DataAccess.Data
             {
                 context.AuctionBets.Add(s);
             }
+
             context.SaveChanges();
-
-
         }
     }
 }
