@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { Redirect, Link } from "react-router-dom";
-import { loginAsync, selectErrors, selectLogged, selectLoading } from '../../features/userSlice';
+import { loginAsync, selectErrors, selectLogged, selectLoading, selectCurrent } from '../../features/userSlice';
 import { Alert } from 'react-bootstrap';
 import Loader from '../CommonComponents/Loader';
 
@@ -10,6 +10,7 @@ function Login() {
     const logged = useSelector(selectLogged);
     const errors = useSelector(selectErrors);
     const loading = useSelector(selectLoading);
+    const user = useSelector(selectCurrent);
     const dispatch = useDispatch();
 
     const [email, setEmail] = useState('');
@@ -31,7 +32,10 @@ function Login() {
     }
 
     if (logged === true)
-        return <Redirect to="/profile" />
+        if (user.admin === true) 
+            return <Redirect to="/createAuction"/>
+        else 
+            return <Redirect to="/profile" />  
 
     return (
         <div>
@@ -39,7 +43,7 @@ function Login() {
             {loading ? <Loader /> : ""}
 
             <div className="hero-section">
-                <div className="bg_img hero-bg bottom_center" style={{ backgroundImage: "url('/assets/images/banner/hero-bg.png')" }} ></div>
+                <div className="bg_img hero-bg bottom_center" style={{ backgroundImage: "url('assets/images/banner/hero-bg.png')" }} ></div>
             </div>
 
             <section className="account-section padding-bottom">

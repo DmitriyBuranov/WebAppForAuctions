@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { Button, Form, Container, Row, Col } from 'react-bootstrap';
 import { auctionService } from '../../Services/auctionsService';
-
+import { selectLogged,  selectJWT } from '../../features/userSlice'
+import { useSelector } from 'react-redux';
+import { Redirect } from "react-router-dom";
 
 function CreateAuction() {
 
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjMiLCJVc2VySWQiOiIzIiwibmJmIjoxNjM3MDc0OTA2LCJleHAiOjE2Mzc2Nzk3MDYsImlhdCI6MTYzNzA3NDkwNn0.btqvbC7z13tB2AB90iV4X57PcdzDscwrYVFyHbDxmPY"
+    const logged = useSelector(selectLogged);
+    const token = useSelector(selectJWT);
 
     const [auctionParameters, setParameters] = useState({
         name: "",
@@ -14,15 +17,17 @@ function CreateAuction() {
         sellPrice: 0,
         priceStep: 0,
         startDate: ""
-
     });
 
+    if (logged !== true)
+        return <Redirect to="/login" />
+
     function handleChanges(e) {
-        console.log("changes"); 
+        console.log("changes");
         const { name, value } = e.target;
         setParameters(auctionParameters => ({ ...auctionParameters, [name]: value }));
         e.preventDefault();
-        console.log(auctionParameters); 
+        console.log(auctionParameters);
     };
 
     function createAuction(e) {
@@ -31,7 +36,7 @@ function CreateAuction() {
 
         auctionService.postCreateAuction(auctionParameters, token)
             .then(data => {
-               console.log(data); 
+                console.log(data);
             });
     };
 
@@ -51,7 +56,7 @@ function CreateAuction() {
                     </ul>
                 </div>
                 <Container >
-                    <Form className="mt-3" onSubmit={createAuction} onChange = {handleChanges}>
+                    <Form className="mt-3" onSubmit={createAuction} onChange={handleChanges}>
                         <Row>
                             <Form.Group as={Col}>
                                 <Form.Label className="cl-white mt-3">Name</Form.Label>
