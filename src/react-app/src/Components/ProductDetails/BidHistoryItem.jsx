@@ -1,6 +1,6 @@
 import React from 'react';
 
-function BidHistoryItem(props) {
+function BidHistoryItem(props) {    
     return (
         <tr>
             <td data-history="bidder">

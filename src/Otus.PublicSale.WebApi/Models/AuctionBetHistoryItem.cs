@@ -17,7 +17,7 @@ namespace Otus.PublicSale.WebApi.Models
         /// <summary>
         /// Date
         /// </summary>
-        public DateTime Date { get; set; }
+        public double Date { get; set; }
 
         /// <summary>
         /// Amount
@@ -44,7 +44,7 @@ namespace Otus.PublicSale.WebApi.Models
         {
             Id = auctionBet.Id;
             Amount = auctionBet.Amount;            
-            Date = auctionBet.Date;
+            Date = auctionBet.Date.Subtract(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalMilliseconds;
             FullName = $"{auctionBet.User.FirstName} {auctionBet.User.LastName}";
             UserId = auctionBet.UserId;
         }

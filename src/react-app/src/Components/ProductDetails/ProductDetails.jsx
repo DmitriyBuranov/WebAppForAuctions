@@ -11,31 +11,38 @@ import { HubConnectionBuilder } from '@microsoft/signalr';
 import axios from 'axios';
 import Loader from '../CommonComponents/Loader';
 import { Alert } from 'react-bootstrap';
+import BidStats from './BidStats';
 
 function ProductDetails(props) {
     const id = Number(props.match.params.id);
     const logged = useSelector(selectLogged);
-    const [auction, setAuction] = useState([]);
-    const [description, setDescription] = useState("");
-    const [bidPrice, setBidPrice] = useState(0);
-    const [auctionPrice, setAuctionPrice] = useState(0);
     const [loading, setLoading] = useState(false);
-    const [betStats, setBetStats] = useState([]);
-    const [errorBet, setErrorBet] = useState("");
 
-    const [historyPage, setHistoryPage] = useState(1);
+    const [auction, setAuction] = useState([]);
+
+    const [betPrice, setBetPrice] = useState(0);
+    const [betStats, setBetStats] = useState([]);
+    const [betError, setBetError] = useState("");
+
     const [history, setHistory] = useState([]);
 
     const jwt = useSelector(selectJWT);
 
-    const onAddBid = (e) => {
-        e.preventDefault();
+    const loadAuction = React.useCallback(() => {
+        axios.get(`/api/auctions/${id}`)
+            .then((result) => {
+                console.log(result.data);
+                result.data.description = parse(result.data.description);
+                setAuction(result.data);
+                setBetPrice(result.data.currentPrice + result.data.priceStep)
+                setLoading(false);
+            });
+    }, [id]);
 
-        setLoading(true);
-
+    const createBet = (amount) => {
         const data = {
             auctionId: Number(id),
-            amount: Number(bidPrice)
+            amount: Number(amount)
         }
 
         const config = {
@@ -43,36 +50,45 @@ function ProductDetails(props) {
         };
         axios.post('/api/bets', data, config)
             .then((result) => {
-                setErrorBet("");
+                setBetError("");
             })
             .catch((error) => {
                 console.log(error);
                 setLoading(false);
                 if (error.response.data) {
-                    setAuctionPrice(error.response.data.currentPrice);
-                    setBidPrice(error.response.data.currentPrice + error.response.data.priceStep);
+                    setAuction(obj => {
+                        obj.currentPrice = error.response.data.currentPrice;
+                        return obj;
+                    });
+                    setBetPrice(error.response.data.currentPrice + error.response.data.priceStep);
                     setBetStats(error.response.data.stats);
-                    setErrorBet(error.response.data.error);
+                    setBetError(error.response.data.error);
                 }
                 else {
-                    setErrorBet(error.message);
+                    setBetError(error.message);
                 }
             });
+    }
 
+    const addBid = (e) => {
+        debugger;
+        e.preventDefault();
+        setLoading(true);
+        createBet(betPrice);
+        return false;
+    }
+
+    const buyNow = (e) => {
+        e.preventDefault();
+        setLoading(true);
+        createBet(auction.sellPrice);
         return false;
     }
 
     useEffect(() => {
         setLoading(true);
-        axios.get(`/api/auctions/${id}`)
-            .then((result) => {
-                console.log(result.data);
-                setAuction(result.data);
-                setAuctionPrice(result.data.currentPrice);
-                setDescription(parse(result.data.description))
-                setBidPrice(result.data.currentPrice + result.data.priceStep)
-                setLoading(false);
-            });
+
+        loadAuction();
 
         axios.get(`/api/bets/stats/${id}`)
             .then((result) => {
@@ -94,19 +110,24 @@ function ProductDetails(props) {
                 connection.invoke("JoinGroup", `Auction_${id}`);
 
                 connection.on('NewBet', data => {
-                    debugger;
-                    setErrorBet("");
+                    setBetError("");
                     setLoading(false);
-                    setAuctionPrice(data.currentPrice);
-                    setBidPrice(data.currentPrice + data.priceStep);
+                    setAuction(obj => {
+                        obj.currentPrice = data.currentPrice;
+                        obj.priceStep = data.priceStep;
+                        obj.status = data.status;
+                        obj.winner = data.winner;
+                        return obj;
+                    })
+                    setBetPrice(data.currentPrice + data.priceStep);
                     setBetStats(data.stats);
                 });
             })
             .catch(e => console.log('Connection failed: ', e));
-    }, [id]);
+    }, [id, loadAuction]);
 
     useEffect(() => {
-        axios.get(`/api/bets/history/${id}/${historyPage}`)
+        axios.get(`/api/bets/history/${id}`)
             .then((result) => {
                 console.log(result.data);
                 if (result.data.length > 0) {
@@ -115,7 +136,7 @@ function ProductDetails(props) {
             })
             .catch((error) => { console.log(error); });
 
-    }, [id, historyPage, betStats.totalBids]);
+    }, [id, betStats.totalBids]);
 
     if (isNaN(id))
         return <Redirect to="/products" />
@@ -152,6 +173,7 @@ function ProductDetails(props) {
                             </div>
                         </div>
                     </div>
+
                     <div className="row mt-40-60-80">
                         <div className="col-lg-8">
                             <div className="product-details-content">
@@ -161,67 +183,63 @@ function ProductDetails(props) {
                                         <li>Item #: {auction.id}</li>
                                     </ul>
                                 </div>
-                                <ul className="price-table mb-30">
-                                    <li className="header">
-                                        <h5 className="current">Current Price</h5>
-                                        <h3 className="price">US ${auctionPrice}</h3>
-                                    </li>
-                                    <li>
-                                        <span className="details">Bid Increment (US)</span>
-                                        <h5 className="info">${auction.priceStep}</h5>
-                                    </li>
-                                </ul>
 
-                                {errorBet !== "" ? <Alert variant="danger">{errorBet}</Alert> : ''}
-                                <BidArea loading={loading} logged={logged} bidPrice={bidPrice} onEdit={(e) => setBidPrice(e)} onSubmit={(e) => onAddBid(e)} />
+                                {
+                                    (auction.status === 3) ?
+                                        (
+                                            <ul className="price-table mb-30">
+                                                <li className="header">
+                                                    <h5 className="current">Status</h5>
+                                                    <h3 className="price">Finished</h3>
+                                                </li>
+                                                {
+                                                    auction.winner !== "" ?
+                                                        (
+                                                            <>
+                                                                <li>
+                                                                    <h5 className="current">Winner</h5>
+                                                                    <h5 className="price">{auction.winner}</h5>
+                                                                </li>
+                                                                <li>
+                                                                    <h5 className="current">Win Price</h5>
+                                                                    <h5 className="price">${auction.currentPrice}</h5>
+                                                                </li>
+                                                            </>
+                                                        )
+                                                        :
+                                                        ""
+                                                }
+                                            </ul>
+                                        )
+                                        :
+                                        (
+                                            <>
+                                                <ul className="price-table mb-30">
+                                                    <li className="header">
+                                                        <h5 className="current">Current Price</h5>
+                                                        <h3 className="price">US ${auction.currentPrice}</h3>
+                                                    </li>
+                                                    <li>
+                                                        <span className="details">Bid Increment</span>
+                                                        <h5 className="info">${auction.priceStep}</h5>
+                                                    </li>
+                                                </ul>
 
-                                <div className="buy-now-area">
-                                    <a href="#0" className="custom-button">Buy Now: ${auction.sellPrice}</a>
-                                </div>
+                                                {betError !== "" ? <Alert variant="danger">{betError}</Alert> : ''}
+                                                <BidArea loading={loading} logged={logged} betPrice={betPrice} onEdit={(e) => setBetPrice(e)} onSubmit={(e) => addBid(e)} />
+
+                                                <div className="buy-now-area">
+                                                    <a href="#0" className="custom-button" onClick={(e) => buyNow(e)}>Buy Now: ${auction.sellPrice}</a>
+                                                </div>
+                                            </>
+                                        )
+                                }
                             </div>
                         </div>
-                        <div className="col-lg-4">
-                            <div className="product-sidebar-area">
-                                <div className="product-single-sidebar mb-3">
-                                    <h6 className="title">This Auction Ends in:</h6>
-                                    <div className="countdown">
-                                        <div id="bid_counter1"></div>
-                                    </div>
-                                    <div className="side-counter-area">
-                                        <div className="side-counter-item">
-                                            <div className="thumb">
-                                                <img src="/assets/images/product/icon1.png" alt="product" />
-                                            </div>
-                                            <div className="content">
-                                                <h3 className="count-title"><span className="counter">{betStats.activeBidders}</span></h3>
-                                                <p>Active Bidders</p>
-                                            </div>
-                                        </div>
-                                        <div className="side-counter-item">
-                                            <div className="thumb">
-                                                <img src="/assets/images/product/icon2.png" alt="product" />
-                                            </div>
-                                            <div className="content">
-                                                <h3 className="count-title"><span className="counter">{betStats.watching}</span></h3>
-                                                <p>Watching</p>
-                                            </div>
-                                        </div>
-                                        <div className="side-counter-item">
-                                            <div className="thumb">
-                                                <img src="/assets/images/product/icon3.png" alt="product" />
-                                            </div>
-                                            <div className="content">
-                                                <h3 className="count-title"><span className="counter">{betStats.totalBids}</span></h3>
-                                                <p>Total Bids</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                        <BidStats betStats={betStats} auction={auction} loadAuction={() => loadAuction()} />
+                    </div >
+                </div >
                 <div className="product-tab-menu-area mb-40-60 mt-70-100">
                     <div className="container">
                         <ul className="product-tab-menu nav nav-tabs">
@@ -264,16 +282,16 @@ function ProductDetails(props) {
                     <div className="tab-content">
                         <div className="tab-pane fade show active" id="details">
                             <div className="tab-details-content">
-                                {description}
+                                {auction.description}
                             </div>
                         </div>
-                        <DeliveryOptions />                        
-                        <BidHistory items={history} page={historyPage} totalBids={betStats.totalBids} onClick={(e) => setHistoryPage(e)} />
+                        <DeliveryOptions />
+                        <BidHistory items={history} totalBids={betStats.totalBids} />
                         <FAQs />
                     </div>
                 </div>
-            </section>
-        </div>
+            </section >
+        </div >
     );
 }
 

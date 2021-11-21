@@ -10,7 +10,7 @@ function BidArea(props) {
                     <div className="search-icon">
                         <img src="/assets/images/product/search-icon.png" alt="product" />
                     </div>
-                    {props.logged ? <ButtonBid bidPrice={props.bidPrice} onEdit={(e) => props.onEdit(e)} /> : <ButtonLogin />}
+                    {props.logged ? <ButtonBid betPrice={props.betPrice} onEdit={(e) => props.onEdit(e)} /> : <ButtonLogin />}
                 </form>
             </div>
         </>

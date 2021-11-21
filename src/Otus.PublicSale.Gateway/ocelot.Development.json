@@ -204,7 +204,7 @@
       "UpstreamHttpMethod": [ "Get" ]
     },
     {
-      "DownstreamPathTemplate": "/api/v1/AuctionBets/GetHistory/{id}/{page}",
+      "DownstreamPathTemplate": "/api/v1/AuctionBets/GetHistory/{id}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
@@ -212,7 +212,7 @@
           "Port": 5001
         }
       ],
-      "UpstreamPathTemplate": "/api/bets/history/{id}/{page}",
+      "UpstreamPathTemplate": "/api/bets/history/{id}",
       "UpstreamHttpMethod": [ "Get" ]
     }
   ],

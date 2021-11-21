@@ -26,16 +26,6 @@ function BidHistory(props) {
                                 }
                             </tbody>
                         </table>
-                        {/* {
-                            props.totalBids !== props.items.length ?
-                                (
-                                    <div className="text-center mb-3 mt-4">
-                                        <a href="#0" className="button-3" onClick={(e) => props.onClick(props.page + 1)}>Load More</a>
-                                    </div>
-                                )
-                                :
-                                ""
-                        } */}
                     </div>
                 </div>
             </div>

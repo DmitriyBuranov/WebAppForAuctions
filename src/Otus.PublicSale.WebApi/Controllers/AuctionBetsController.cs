@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.SignalR;
 using Otus.PublicSale.WebApi.Hubs;
 using Newtonsoft.Json;
 using Microsoft.EntityFrameworkCore;
+using Otus.PublicSale.Core.Enums;
 
 namespace Otus.PublicSale.WebApi.Controllers
 {
@@ -129,7 +130,7 @@ namespace Otus.PublicSale.WebApi.Controllers
         public async Task<ActionResult<Guid>> CreateAsync(AuctionBetDto request)
         {
             var userId = int.Parse(this.User.Identity.Name);
-            var userFullName = this.User.Claims.FirstOrDefault(x => x.Type == "FullName")?.Value ?? string.Empty;            
+            var userFullName = this.User.Claims.FirstOrDefault(x => x.Type == "FullName")?.Value ?? string.Empty;
 
             var auction = await _repositoryAuctions.GetByIdAsync(request.AuctionId);
 
@@ -143,6 +144,7 @@ namespace Otus.PublicSale.WebApi.Controllers
                     auction.CurrentPrice,
                     auction.PriceStep,
                     auction.Status,
+                    Winner = $"{auction.Winner?.FirstName} {auction.Winner?.LastName}".Trim(),
                     Stats = GetStats(auction.Id)
                 });
 
@@ -152,33 +154,32 @@ namespace Otus.PublicSale.WebApi.Controllers
 
             await _repositoryAuctionBets.AddAsync(entity);
 
-            ClearCacheRecord(entity.Id, auction.Id);
-
             if (auction.LowestPrice <= 0)
                 auction.LowestPrice = request.Amount;
 
             auction.CurrentPrice = request.Amount;
+            auction.WinnerId = userId;
+
+            if (auction.CurrentPrice >= auction.SellPrice)
+            {
+                auction.Status = (int)AuctionStatus.Finished;
+                auction.WinnerId = userId;
+            }
 
             await _repositoryAuctions.UpdateAsync(auction);
 
             var groupName = $"Auction_{auction.Id}";
-
             await _hubContext.Clients.Group(groupName)
                 .SendAsync("NewBet", new
                 {
                     auction.CurrentPrice,
                     auction.PriceStep,
                     auction.Status,
-                    Stats = GetStats(auction.Id),
-                    HistoryItem = new AuctionBetHistoryItem()
-                    { 
-                        Amount = entity.Amount,
-                        Date = entity.Date,
-                        FullName = userFullName,
-                        Id = entity.Id,
-                        UserId = entity.UserId
-                    }
+                    Winner = userFullName,
+                    Stats = GetStats(auction.Id)
                 });
+
+            ClearCacheRecord(entity.Id, auction.Id);
 
             return Ok(entity.Id);
         }
@@ -235,6 +236,9 @@ namespace Otus.PublicSale.WebApi.Controllers
         {
             _cache.RemoveRecordAsync(string.Format(_cacheOneKey, id));
             _cache.RemoveRecordAsync(string.Format(_cacheAllKey, auctionId));
+            _cache.RemoveRecordAsync($"Action_{auctionId}");            
+            _cache.RemoveRecordAsync("Actions");
+            _cache.RemoveRecordAsync($"History_{auctionId}");
         }
 
         /// <summary>
@@ -271,32 +275,26 @@ namespace Otus.PublicSale.WebApi.Controllers
         /// <summary>
         /// Gets Auction Bets History
         /// </summary>
-        /// <param name="auctionId">Auction Id</param>
-        /// <param name="page">Page</param>
+        /// <param name="auctionId">Auction Id</param>        
         /// <returns></returns>
-        [HttpGet("GetHistory/{auctionId}/{page}")]
+        [HttpGet("GetHistory/{auctionId}")]
         [AllowAnonymous]
-        public async Task<ActionResult<List<AuctionBetHistoryItem>>> GetHistory(int auctionId, int page)
+        public async Task<ActionResult<List<AuctionBetHistoryItem>>> GetHistory(int auctionId)
         {
-            var list = new List<AuctionBetHistoryItem>();
-
             if (auctionId <= 0)
                 return BadRequest();
 
-            page--;
-            if (page < 0)
-                page = 0;
+            var list = await _cache.GetRecordAsync<List<AuctionBetHistoryItem>>(string.Format(_cacheAllKey, auctionId));
+            if (list is null)
+            {
+                var entities = await _repositoryAuctionBets.GetQuery(x => x.AuctionId == auctionId)
+                    .Include(x => x.User)
+                    .OrderByDescending(x => x.Date)
+                    .ToListAsync();
 
-            var pageSize = 10;
-
-            var entities = await _repositoryAuctionBets.GetQuery(x => x.AuctionId == auctionId)
-                .Include(x => x.User)
-                .OrderByDescending(x => x.Date)
-                .Take(pageSize)
-                .Skip(pageSize * page)
-                .ToListAsync();
-
-            list = entities.Select(entity => new AuctionBetHistoryItem(entity)).ToList();
+                list = entities.Select(entity => new AuctionBetHistoryItem(entity)).ToList();
+                await _cache.SetRecordAsync(string.Format(_cacheAllKey, auctionId), list);
+            }
 
             return Ok(list);
         }

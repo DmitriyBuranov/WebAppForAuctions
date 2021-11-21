@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Caching.Distributed;
 using Otus.PublicSale.WebApi.Extensions;
 using System.Collections.Generic;
+using Otus.PublicSale.Core.Enums;
 
 namespace Otus.PublicSale.WebApi.Controllers
 {
@@ -153,17 +154,25 @@ namespace Otus.PublicSale.WebApi.Controllers
             if (id <= 0)
                 return BadRequest();
 
-            var model = await _cache.GetRecordAsync<AuctionDto>(string.Format(_cacheOneKey, id));
-            if (model is null)
-            {
+            //var model = await _cache.GetRecordAsync<AuctionDto>(string.Format(_cacheOneKey, id));
+            //if (model is null)
+            //{
                 var entity = await _repositoryAuctions.GetByIdAsync(id);
 
                 if (entity == null)
                     return NotFound();
 
-                model = new AuctionDto(entity);
+                if (entity.StartDate.AddSeconds(entity.Duration) <= DateTime.UtcNow && 
+                    entity.Status != (int)(AuctionStatus.Finished))
+                {
+                    entity.Status = (int)(AuctionStatus.Finished);
+                    await _repositoryAuctions.UpdateAsync(entity);
+                    ClearCacheRecord(id);
+                }
+
+                var model = new AuctionDto(entity);
                 await _cache.SetRecordAsync(string.Format(_cacheOneKey, id), model);
-            }
+            //}
 
             return Ok(model);
         }
@@ -178,6 +187,8 @@ namespace Otus.PublicSale.WebApi.Controllers
         public async Task<ActionResult<Guid>> CreatetAuctionAsync(AuctionDto request)
         {
             var entity = AuctionMapper.MapFromModel(request);
+            entity.Status = (int)AuctionStatus.Created;
+
             await _repositoryAuctions.AddAsync(entity);
 
             ClearCacheRecord(entity.Id);

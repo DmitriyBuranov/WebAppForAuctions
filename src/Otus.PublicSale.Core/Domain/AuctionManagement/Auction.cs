@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Otus.PublicSale.Core.Domain.Administration;
+using System;
 using System.Collections.Generic;
 
 namespace Otus.PublicSale.Core.Domain.AuctionManagement
@@ -92,5 +93,15 @@ namespace Otus.PublicSale.Core.Domain.AuctionManagement
         /// Category
         /// </summary>
         public virtual Category Category { get; set; }
+
+        /// <summary>
+        /// Winner Id
+        /// </summary>
+        public int? WinnerId { get; set; }
+
+        /// <summary>
+        /// Winner 
+        /// </summary>
+        public virtual User Winner { get; set; }
     }
 }
