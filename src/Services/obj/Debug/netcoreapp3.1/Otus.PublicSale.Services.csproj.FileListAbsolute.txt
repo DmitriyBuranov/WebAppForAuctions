@@ -1,0 +1,13 @@
+C:\Users\Drown\Source\Repos\mega-project\src\Services\bin\Debug\netcoreapp3.1\Otus.PublicSale.Services.deps.json
+C:\Users\Drown\Source\Repos\mega-project\src\Services\bin\Debug\netcoreapp3.1\Otus.PublicSale.Services.dll
+C:\Users\Drown\Source\Repos\mega-project\src\Services\bin\Debug\netcoreapp3.1\Otus.PublicSale.Services.pdb
+C:\Users\Drown\Source\Repos\mega-project\src\Services\bin\Debug\netcoreapp3.1\Otus.PublicSale.Core.dll
+C:\Users\Drown\Source\Repos\mega-project\src\Services\bin\Debug\netcoreapp3.1\Otus.PublicSale.Core.pdb
+C:\Users\Drown\Source\Repos\mega-project\src\Services\obj\Debug\netcoreapp3.1\Otus.PublicSale.Services.csproj.AssemblyReference.cache
+C:\Users\Drown\Source\Repos\mega-project\src\Services\obj\Debug\netcoreapp3.1\Otus.PublicSale.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Drown\Source\Repos\mega-project\src\Services\obj\Debug\netcoreapp3.1\Otus.PublicSale.Services.AssemblyInfoInputs.cache
+C:\Users\Drown\Source\Repos\mega-project\src\Services\obj\Debug\netcoreapp3.1\Otus.PublicSale.Services.AssemblyInfo.cs
+C:\Users\Drown\Source\Repos\mega-project\src\Services\obj\Debug\netcoreapp3.1\Otus.PublicSale.Services.csproj.CoreCompileInputs.cache
+C:\Users\Drown\Source\Repos\mega-project\src\Services\obj\Debug\netcoreapp3.1\Otus.PublicSale.Services.csproj.CopyComplete
+C:\Users\Drown\Source\Repos\mega-project\src\Services\obj\Debug\netcoreapp3.1\Otus.PublicSale.Services.dll
+C:\Users\Drown\Source\Repos\mega-project\src\Services\obj\Debug\netcoreapp3.1\Otus.PublicSale.Services.pdb

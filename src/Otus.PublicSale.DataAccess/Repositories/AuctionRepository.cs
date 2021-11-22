@@ -38,6 +38,7 @@ namespace Otus.PublicSale.DataAccess.Repositories
                     Name = x.Name,
                     Id = x.Id,
                     Count = x.AuctionBets.Count(),
+                    PriceStart = x.PriceStart,
                     CurrentMaxBet = x.AuctionBets.Max(x => x.Amount),
                     Image = x.Image
                 }).ToList();

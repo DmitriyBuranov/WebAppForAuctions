@@ -6,7 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Timer = System.Threading.Timer;
 
-namespace Otus.PublicSale.Core.Domain.Services
+namespace Otus.PublicSale.Core.Services
 {
     public class TimedHostedService : IHostedService, IDisposable
     {
@@ -25,7 +25,7 @@ namespace Otus.PublicSale.Core.Domain.Services
 
             TimeSpan startForEveryDayTimer = TimeSpan.Zero;
 
-            _timer = new Timer(DoEveryDayWork, null, startForEveryDayTimer, TimeSpan.FromSeconds(60 * 5));
+            _timer = new Timer(DoEveryDayWork, null, startForEveryDayTimer, TimeSpan.FromSeconds(1));
 
             return Task.CompletedTask;
         }

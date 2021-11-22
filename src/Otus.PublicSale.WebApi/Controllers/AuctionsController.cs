@@ -162,7 +162,7 @@ namespace Otus.PublicSale.WebApi.Controllers
                 if (entity == null)
                     return NotFound();
 
-                if (entity.StartDate.AddSeconds(entity.Duration) <= DateTime.UtcNow && 
+                if (entity.EndDate <= DateTime.UtcNow && 
                     entity.Status != (int)(AuctionStatus.Finished))
                 {
                     entity.Status = (int)(AuctionStatus.Finished);

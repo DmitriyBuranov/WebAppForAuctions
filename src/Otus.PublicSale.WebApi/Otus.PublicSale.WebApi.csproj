@@ -30,6 +30,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Otus.PublicSale.Core\Otus.PublicSale.Core.csproj" />
     <ProjectReference Include="..\Otus.PublicSale.DataAccess\Otus.PublicSale.DataAccess.csproj" />
+    <ProjectReference Include="..\Services\Otus.PublicSale.Services.csproj" />
   </ItemGroup>
 
 

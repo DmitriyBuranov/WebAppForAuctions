@@ -19,7 +19,7 @@ function AuctionWithBids(props) {
                     </div>
                     <div className="amount-content">
                         <div className="current">Current Bid</div>
-                        <div className="amount">{props.auctionItem.currentMaxBet}</div>
+                        <div className="amount">{(props.auctionItem.currentMaxBet === undefined)? props.auctionItem.priceStart : props.auctionItem.currentMaxBet}</div>
                     </div>
                 </div>
                 <div className="bids-area">

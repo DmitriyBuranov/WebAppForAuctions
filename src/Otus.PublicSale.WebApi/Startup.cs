@@ -19,8 +19,8 @@ using Otus.PublicSale.Core;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using Otus.PublicSale.WebApi.Hubs;
-using Otus.PublicSale.Core.Domain.Services;
 using Otus.PublicSale.WebApi.Services;
+using Otus.PublicSale.Core.Services;
 
 namespace Otus.PublicSale.WebApi
 {

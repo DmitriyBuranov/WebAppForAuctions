@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Otus.PublicSale.Core.Enums;
 
-namespace Otus.PublicSale.Core.Domain.Services
+namespace Otus.PublicSale.Core.Services
 {
     public class AuctionWorker
     {

@@ -29,6 +29,7 @@ namespace Otus.PublicSale.WebApi.Mappers
             auction.PriceStart = request.PriceStart;
             auction.PriceStep = request.PriceStep;
             auction.SellPrice = request.SellPrice;
+            auction.Image = request.Image;
 
             return auction;
         }

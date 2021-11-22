@@ -12,11 +12,12 @@ function CreateAuction() {
 
     const [auctionParameters, setParameters] = useState({
         name: "",
-        endDate: 0,
+        endDate: "",
         startPrice: 0,
         sellPrice: 0,
         priceStep: 0,
-        startDate: ""
+        startDate: "",
+        description: ""
     });
 
     if (logged !== true)
@@ -38,6 +39,8 @@ function CreateAuction() {
             .then(data => {
                 console.log(data);
             });
+        e.target.reset();
+
     };
 
 
@@ -63,6 +66,10 @@ function CreateAuction() {
                                 <Form.Control
                                     type="text"
                                     name="name" />
+                                <Form.Label className="cl-white mt-3">Description</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    name="description" />    
                                 <Form.Label className="cl-white mt-3">Start date</Form.Label>
                                 <Form.Control
                                     type="datetime-local"

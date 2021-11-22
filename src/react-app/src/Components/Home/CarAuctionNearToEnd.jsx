@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import AuctionWithBids from '../CommonComponents/AuctionWithBids';
+import { Link } from 'react-router-dom';
 
 function CarAuctionNearToEnd() {
 
@@ -33,7 +34,7 @@ function CarAuctionNearToEnd() {
                         ))}
                     </div>
                     <div className="load-wrapper">
-                        <a href="/products" className="normal-button">See All Auction</a>
+                        <Link to="/products" className="normal-button">See All Auction</Link>
                     </div>
                 </div>
             </div>

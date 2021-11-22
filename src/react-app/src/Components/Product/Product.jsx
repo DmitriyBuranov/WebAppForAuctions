@@ -98,33 +98,12 @@ function Product() {
                                 <option value="30">30</option>
                             </select>
                         </div>
-                        {/*<form className="product-search ml-auto">
-                            <input type="text" placeholder="Item Name"></input>
-                            <button type="submit"><i className="fas fa-search"></i></button>
-                        </form>*/}
                     </div>
                     <div className="row mb-30-none justify-content-center">
                         {auctions.map((auction, i) => (
                             <AuctionItem key={i} auctionItem={auction}></AuctionItem>
                         ))}
                     </div>
-                    {/*<ul className="pagination">
-                        <li>
-                            <a href="#0"><i className="flaticon-left-arrow"></i></a>
-                        </li>
-                        <li>
-                            <a href="#0">1</a>
-                        </li>
-                        <li>
-                            <a href="#0" className="active">2</a>
-                        </li>
-                        <li>
-                            <a href="#0">3</a>
-                        </li>
-                        <li>
-                            <a href="#0"><i className="flaticon-right-arrow"></i></a>
-                        </li>
-                    </ul>*/}
                 </div>
             </div>
             {/*============= Product Auction Section Ends Here =============*/}

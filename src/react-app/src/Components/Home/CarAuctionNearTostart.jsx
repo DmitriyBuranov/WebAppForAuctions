@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import AuctionItem from '../CommonComponents/AuctionItem';
+import { Link } from 'react-router-dom';
 
 function CarAuctionNearToStart() {
 
@@ -27,7 +28,7 @@ function CarAuctionNearToStart() {
                             <h2 className="title mb-3">Featured Items</h2>
                             <p>Start winning cars with comfort</p>
                         </div>
-                        <a href="/products" className="normal-button">View All</a>
+                        <Link to="/products" className="normal-button">View All</Link>
                     </div>
                     <div className="row justify-content-center mb-30-none">
                         {auctions.map((auction) => (
