@@ -130,7 +130,7 @@ namespace Otus.PublicSale.WebApi.Models
 
             var data = obj as AuctionDto;
 
-            return this.Id == data.Id && this.Name == data.Name && this.EndDate == data.EndDate && this.Description == data.Description && this.CreateDate == data.CreateDate && this.PriceStart == data.PriceStart && this.PriceStep == data.PriceStep && this.StartDate == data.StartDate && this.Status == data.Status && this.SellPrice == data.SellPrice;
+            return this.Id == data.Id && this.Name == data.Name && this.EndDate == data.EndDate && this.Description == data.Description && this.CreateDate == data.CreateDate && this.PriceStart == data.PriceStart && this.PriceStep == data.PriceStep && this.StartDate == data.StartDate && this.Status == data.Status && this.SellPrice == data.SellPrice && this.Winner == data.Winner && this.Image == data.Image;
         }
     }
 }
