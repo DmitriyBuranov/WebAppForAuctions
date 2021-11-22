@@ -25,7 +25,7 @@ namespace Otus.PublicSale.WebApi.Mappers
             auction.CreateDate = request.CreateDate;
             auction.Status = request.Status;
             auction.StartDate = request.StartDate;
-            auction.Duration = request.Duration;
+            auction.EndDate = request.EndDate;
             auction.PriceStart = request.PriceStart;
             auction.PriceStep = request.PriceStep;
             auction.SellPrice = request.SellPrice;

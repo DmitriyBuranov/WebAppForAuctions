@@ -11,7 +11,7 @@ namespace Otus.PublicSale.WebApi.Infostructure
     {
         public AuctionValidator()
         {
-            this.RuleFor(x => x.Duration).NotEmpty();
+            this.RuleFor(x => x.EndDate).NotEmpty();
             this.RuleFor(x => x.PriceStart).NotEmpty();
             this.RuleFor(x => x.PriceStep).NotEmpty();
         }

@@ -35,9 +35,9 @@ namespace Otus.PublicSale.WebApi.Models
         public DateTime StartDate { get; set; }
 
         /// <summary>
-        /// Duration
+        /// EndDate
         /// </summary>
-        public int Duration { get; set; }
+        public DateTime EndDate { get; set; }
 
         /// <summary>
         /// Price Start
@@ -72,7 +72,7 @@ namespace Otus.PublicSale.WebApi.Models
             CreateDate = auction.CreateDate;
             Status = auction.Status;
             StartDate = auction.StartDate;
-            Duration = auction.Duration;
+            EndDate = auction.EndDate;
             PriceStart = auction.PriceStart;
             PriceStep = auction.PriceStep;
             SellPrice = auction.SellPrice;
@@ -99,7 +99,7 @@ namespace Otus.PublicSale.WebApi.Models
 
             var data = obj as AuctionDto;
 
-            return this.Id == data.Id && this.Name == data.Name && this.Duration == data.Duration && this.Descition == data.Descition && this.CreateDate == data.CreateDate && this.PriceStart == data.PriceStart && this.PriceStep == data.PriceStep && this.StartDate == data.StartDate && this.Status == data.Status && this.SellPrice == data.SellPrice;
+            return this.Id == data.Id && this.Name == data.Name && this.EndDate == data.EndDate && this.Descition == data.Descition && this.CreateDate == data.CreateDate && this.PriceStart == data.PriceStart && this.PriceStep == data.PriceStep && this.StartDate == data.StartDate && this.Status == data.Status && this.SellPrice == data.SellPrice;
         }
     }
 }

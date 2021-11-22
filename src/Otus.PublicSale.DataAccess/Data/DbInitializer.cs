@@ -15,8 +15,8 @@ namespace Otus.PublicSale.DataAccess.Data
 
         public void InitializeDb()
         {
-            //context.Database.EnsureDeleted();
-            //context.Database.EnsureCreated();
+            context.Database.EnsureDeleted();
+            context.Database.EnsureCreated();
 
            
             if (context.Auctions.Any())
@@ -26,6 +26,7 @@ namespace Otus.PublicSale.DataAccess.Data
 
 
             DateTime createDate = DateTime.UtcNow;
+            DateTime endDate = createDate.AddDays(5);
 
             var Auctions = new Auction[]
             {
@@ -35,7 +36,7 @@ namespace Otus.PublicSale.DataAccess.Data
                 CreateDate= createDate,
                 Status = 0,
                 StartDate = createDate.AddDays(1) ,
-                Duration = 5,
+                EndDate = endDate,
                 PriceStart = 500,
                 PriceStep = 50,
                 SellPrice =  2500,
@@ -47,7 +48,7 @@ namespace Otus.PublicSale.DataAccess.Data
                 CreateDate= createDate,
                 Status = 0,
                 StartDate = createDate.AddDays(1) ,
-                Duration = 5,
+                EndDate = endDate,
                 PriceStart = 500,
                 PriceStep = 50,
                 SellPrice =  2500,
@@ -59,7 +60,7 @@ namespace Otus.PublicSale.DataAccess.Data
                 CreateDate= createDate,
                 Status = 0,
                 StartDate = createDate.AddDays(1) ,
-                Duration = 5,
+                EndDate = endDate,
                 PriceStart = 500,
                 PriceStep = 50,
                 SellPrice =  2500,
@@ -71,7 +72,7 @@ namespace Otus.PublicSale.DataAccess.Data
                 CreateDate= createDate.AddDays(-1),
                 Status = 0,
                 StartDate = createDate.AddDays(-1) ,
-                Duration = 5,
+                EndDate = endDate,
                 PriceStart = 500,
                 PriceStep = 50,
                 SellPrice =  2500,
@@ -83,7 +84,7 @@ namespace Otus.PublicSale.DataAccess.Data
                 CreateDate= createDate.AddDays(-1),
                 Status = 0,
                 StartDate = createDate.AddDays(-1) ,
-                Duration = 5,
+                EndDate = endDate,
                 PriceStart = 500,
                 PriceStep = 50,
                 SellPrice =  2500,
@@ -95,7 +96,7 @@ namespace Otus.PublicSale.DataAccess.Data
                 CreateDate= createDate,
                 Status = 0,
                 StartDate = createDate,
-                Duration = 5,
+                EndDate = endDate,
                 PriceStart = 500,
                 PriceStep = 50,
                 SellPrice =  2500,
@@ -107,7 +108,7 @@ namespace Otus.PublicSale.DataAccess.Data
                 CreateDate= createDate,
                 Status = 0,
                 StartDate = createDate.AddDays(2) ,
-                Duration = 5,
+                EndDate = endDate,
                 PriceStart = 500,
                 PriceStep = 50,
                 SellPrice =  2500,
@@ -119,7 +120,7 @@ namespace Otus.PublicSale.DataAccess.Data
                 CreateDate= createDate,
                 Status = 0,
                 StartDate = createDate.AddDays(2) ,
-                Duration = 5,
+                EndDate = endDate,
                 PriceStart = 500,
                 PriceStep = 50,
                 SellPrice =  2500,
@@ -131,7 +132,7 @@ namespace Otus.PublicSale.DataAccess.Data
                 CreateDate= createDate,
                 Status = 0,
                 StartDate = createDate.AddDays(2) ,
-                Duration = 5,
+                EndDate = endDate,
                 PriceStart = 500,
                 PriceStep = 50,
                 SellPrice =  2500,
@@ -143,7 +144,7 @@ namespace Otus.PublicSale.DataAccess.Data
                 CreateDate= createDate.AddDays(-1),
                 Status = 0,
                 StartDate = createDate.AddDays(-1) ,
-                Duration = 5,
+                EndDate = endDate,
                 PriceStart = 500,
                 PriceStep = 50,
                 SellPrice =  2400,
@@ -155,7 +156,7 @@ namespace Otus.PublicSale.DataAccess.Data
                 CreateDate= createDate.AddDays(-1),
                 Status = 0,
                 StartDate = createDate.AddDays(-1) ,
-                Duration = 5,
+                EndDate = endDate,
                 PriceStart = 500,
                 PriceStep = 50,
                 SellPrice =  2400,
@@ -167,7 +168,7 @@ namespace Otus.PublicSale.DataAccess.Data
                 CreateDate= createDate.AddDays(-1),
                 Status = 0,
                 StartDate = createDate.AddDays(-1) ,
-                Duration = 5,
+                EndDate = endDate,
                 PriceStart = 500,
                 PriceStep = 50,
                 SellPrice =  2300,
@@ -179,7 +180,7 @@ namespace Otus.PublicSale.DataAccess.Data
                 CreateDate= createDate.AddDays(-1),
                 Status = 0,
                 StartDate = createDate.AddDays(-1) ,
-                Duration = 5,
+                EndDate = endDate,
                 PriceStart = 500,
                 PriceStep = 50,
                 SellPrice =  2300,
@@ -191,7 +192,7 @@ namespace Otus.PublicSale.DataAccess.Data
                 CreateDate= createDate.AddDays(-1),
                 Status = 0,
                 StartDate = createDate.AddDays(-1) ,
-                Duration = 5,
+                EndDate = endDate,
                 PriceStart = 500,
                 PriceStep = 50,
                 SellPrice =  2200,
@@ -203,7 +204,7 @@ namespace Otus.PublicSale.DataAccess.Data
                 CreateDate= createDate.AddDays(-1),
                 Status = 0,
                 StartDate = createDate.AddDays(-1) ,
-                Duration = 5,
+                EndDate = endDate,
                 PriceStart = 500,
                 PriceStep = 50,
                 SellPrice =  2200,

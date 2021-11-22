@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src",
+    "\\src\\Otus.PublicSale.DataAccess",
+    "\\src\\Otus.PublicSale.DataAccess\\Data"
   ],
-  "SelectedNode": "\\PublicSale.NotificationService.sln",
+  "SelectedNode": "\\src\\Otus.PublicSale.DataAccess\\Data\\DbInitializer.cs",
   "PreviewInSolutionExplorer": false
 }

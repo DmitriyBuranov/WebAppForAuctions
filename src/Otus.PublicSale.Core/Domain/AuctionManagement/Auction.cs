@@ -44,9 +44,9 @@ namespace Otus.PublicSale.Core.Domain.AuctionManagement
         public DateTime StartDate { get; set; }
 
         /// <summary>
-        /// Duration
+        /// End Date
         /// </summary>
-        public int Duration { get; set; }
+        public DateTime EndDate { get; set; }
 
         /// <summary>
         /// Price Start

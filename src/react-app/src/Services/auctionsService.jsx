@@ -41,7 +41,7 @@ async function postCreateAuction( data = {}, token) {
 
     const dataForRequest = {
         name: data.name,
-        duration: Number(data.duration),
+        endDate: new Date(data.endtDate).toISOString(),
         priceStart: Number(data.startPrice),
         sellPrice: Number(data.sellPrice),
         priceStep: Number(data.priceStep),

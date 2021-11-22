@@ -12,7 +12,7 @@ function CreateAuction() {
 
     const [auctionParameters, setParameters] = useState({
         name: "",
-        duration: 0,
+        endDate: 0,
         startPrice: 0,
         sellPrice: 0,
         priceStep: 0,
@@ -67,10 +67,10 @@ function CreateAuction() {
                                 <Form.Control
                                     type="datetime-local"
                                     name="startDate" />
-                                <Form.Label className="cl-white mt-3">Duration</Form.Label>
+                                <Form.Label className="cl-white mt-3">End date</Form.Label>
                                 <Form.Control
-                                    type="number"
-                                    name="duration" />
+                                    type="datetime-local"
+                                    name="endDate" />
                             </Form.Group>
                             <Form.Group as={Col}>
                                 <Form.Label className="cl-white mt-3">Start Price</Form.Label>

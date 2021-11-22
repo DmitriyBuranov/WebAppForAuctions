@@ -32,7 +32,7 @@ namespace Otus.PublicSale.DataAccess.Repositories
         public IEnumerable<AuctionWithBets> GetAmountNearToEndWithBets(int num)
         {
             return _dbSet.Where(x => x.StartDate < DateTime.UtcNow)
-                .OrderBy(x => x.StartDate.AddDays(x.Duration)).Take(num)
+                .OrderBy(x => x.EndDate).Take(num)
                 .Select(x=> new AuctionWithBets
                 {
                     Name = x.Name,
@@ -90,7 +90,7 @@ namespace Otus.PublicSale.DataAccess.Repositories
 
         public async Task<List<T>> GetJustHaveFinnishedAsync(DateTime endTime)
         {
-            return await _dbSet.Where(x => x.StartDate.AddSeconds(x.Duration) == endTime).ToListAsync();
+            return await _dbSet.Where(x => x.EndDate == endTime).ToListAsync();
         }
     }
 }

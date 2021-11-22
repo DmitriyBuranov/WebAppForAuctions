@@ -78,7 +78,11 @@ namespace Otus.PublicSale.DataAccess.Data
 
                 entity.Property(e => e.PriceStep).HasColumnType("decimal(18, 2)");
 
+                entity.Property(e => e.SellPrice).HasColumnType("decimal(18, 2)");
+
                 entity.Property(e => e.StartDate).HasColumnType("datetime");
+
+               entity.Property(e => e.EndDate).HasColumnType("datetime");
 
             });
 
