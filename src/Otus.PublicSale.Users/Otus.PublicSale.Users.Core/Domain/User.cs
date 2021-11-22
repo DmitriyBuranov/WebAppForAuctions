@@ -1,4 +1,7 @@
-﻿namespace Otus.PublicSale.Users.Core.Domain
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Otus.PublicSale.Users.Core.Domain
 {
     /// <summary>
     /// User
@@ -8,6 +11,8 @@
         /// <summary>
         /// Id
         /// </summary>
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         
         /// <summary>

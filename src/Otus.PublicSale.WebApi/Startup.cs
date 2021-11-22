@@ -20,6 +20,7 @@ using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using Otus.PublicSale.WebApi.Hubs;
 using Otus.PublicSale.Core.Domain.Services;
+using Otus.PublicSale.WebApi.Services;
 
 namespace Otus.PublicSale.WebApi
 {
@@ -169,6 +170,7 @@ namespace Otus.PublicSale.WebApi
             });
 
             services.AddHostedService<TimedHostedService>();
+            services.AddHostedService<UserBackgroundService>();
 
             services.AddTransient<AuctionWorker>();
         }

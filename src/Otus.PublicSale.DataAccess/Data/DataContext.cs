@@ -2,6 +2,7 @@
 using Otus.PublicSale.Core.Domain.Administration;
 using Otus.PublicSale.Core.Domain.AuctionManagement;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Otus.PublicSale.DataAccess.Data
 {
@@ -143,7 +144,7 @@ namespace Otus.PublicSale.DataAccess.Data
             });
 
             modelBuilder.Entity<User>(entity =>
-            {
+            {                
                 entity.Property(e => e.Email)
                     .IsRequired()
                     .HasMaxLength(50);

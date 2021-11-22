@@ -50,14 +50,17 @@ namespace Otus.PublicSale.Core.Domain.Services
 
                 await _auctionRepository.UpdateAsync(endingAuction);
 
-                var lastBet = await _auctionBetRepository.GetLastBetAsync(endingAuction.Id);
-
-                if (lastBet == null)
+                if (!endingAuction.WinnerId.HasValue)
                     continue;
+
+                //var lastBet = await _auctionBetRepository.GetLastBetAsync(endingAuction.Id);
+
+                //if (lastBet == null)
+                //    continue;
 
                 //notification to notification service
 
-                var user = await _repositoryUsers.GetByIdAsync(lastBet.UserId);
+                var user = await _repositoryUsers.GetByIdAsync(endingAuction.WinnerId.Value);
 
                 await _publishEndpoint.Publish<INotificationMaket>(
                     new

@@ -1,6 +1,8 @@
 ﻿using Otus.PublicSale.Core.Domain.AuctionManagement;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Otus.PublicSale.Core.Domain.Administration
 {
@@ -9,6 +11,13 @@ namespace Otus.PublicSale.Core.Domain.Administration
     /// </summary>
     public partial class User : BaseEntity
     {
+        /// <summary>
+        /// Id
+        /// </summary>
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public new int Id { get; set; }
+
         /// <summary>
         /// Constructor
         /// </summary>

@@ -7,7 +7,7 @@ function AuctionItem(props) {
         <div className="col-sm-10 col-md-6 col-lg-4">
             <div className="auction-item-2">
                 <div className="auction-thumb">
-                    <Link to={{pathname: `/products/${props.auctionItem.id}`}}><img src="/assets/images/auction/car/auction-2.jpg" alt="car"></img></Link>                    
+                    <Link to={{pathname: `/products/${props.auctionItem.id}`}}><img src={props.auctionItem.image} alt="car" widt="330" height="247"></img></Link>                    
                     <Link to={{pathname: `/products/${props.auctionItem.id}`}} className="rating"><i className="far fa-star"></i></Link>  
                     <Link to={{pathname: `/products/${props.auctionItem.id}`}} className="bid"><i className="flaticon-auction"></i></Link>                      
                 </div>

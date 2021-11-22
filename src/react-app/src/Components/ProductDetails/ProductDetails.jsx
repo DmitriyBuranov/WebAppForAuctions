@@ -70,8 +70,7 @@ function ProductDetails(props) {
             });
     }
 
-    const addBid = (e) => {
-        debugger;
+    const addBid = (e) => {        
         e.preventDefault();
         setLoading(true);
         createBet(betPrice);
@@ -122,6 +121,10 @@ function ProductDetails(props) {
                     setBetPrice(data.currentPrice + data.priceStep);
                     setBetStats(data.stats);
                 });
+
+                connection.on('AuctionChanged', data => {
+                    loadAuction();
+                });
             })
             .catch(e => console.log('Connection failed: ', e));
     }, [id, loadAuction]);
@@ -168,7 +171,7 @@ function ProductDetails(props) {
                         <div className="product-details-slider owl-theme owl-carousel" style={{ display: 'block' }} id="sync1">
                             <div className="slide-top-item">
                                 <div className="slide-inner">
-                                    <img src="/assets/images/product/product1.png" alt="product" />
+                                    <img src={auction.image} alt="product" />
                                 </div>
                             </div>
                         </div>

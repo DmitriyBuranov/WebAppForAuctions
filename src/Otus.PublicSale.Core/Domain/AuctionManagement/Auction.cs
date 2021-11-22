@@ -103,5 +103,10 @@ namespace Otus.PublicSale.Core.Domain.AuctionManagement
         /// Winner 
         /// </summary>
         public virtual User Winner { get; set; }
+
+        /// <summary>
+        /// Image 
+        /// </summary>
+        public string Image { get; set; }
     }
 }

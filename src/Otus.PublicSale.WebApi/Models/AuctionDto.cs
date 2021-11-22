@@ -75,6 +75,11 @@ namespace Otus.PublicSale.WebApi.Models
         public double EndDate { get; set; }
 
         /// <summary>
+        /// End Date
+        /// </summary>
+        public string Image { get; set; }
+
+        /// <summary>
         /// Constuctor
         /// </summary>
         public AuctionDto()
@@ -102,6 +107,7 @@ namespace Otus.PublicSale.WebApi.Models
             LowestPrice = auction.LowestPrice;
             Winner = $"{auction.Winner?.FirstName} {auction.Winner?.LastName}".Trim();
             EndDate = auction.StartDate.AddSeconds(auction.Duration).Subtract(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalMilliseconds;
+            Image = auction.Image;
 
             if (CurrentPrice < PriceStart)
                 CurrentPrice = PriceStart;
