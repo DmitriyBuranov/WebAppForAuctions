@@ -1,17 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { Redirect, Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { error, selectCurrent, selectLogged, selectLoading } from '../../features/userSlice';
-import { Alert } from 'react-bootstrap';
 import Loader from '../CommonComponents/Loader';
 import ProfileLeftMenu from '../CommonComponents/ProfileLeftMenu';
 import ProfileTopMenu from '../CommonComponents/ProfileTopMenu';
 import PersonalDetailsView from './PersonalDetailsView';
 import PersonalDetailsEdit from './PersonalDetailsEdit';
-
-
-import { HubConnectionBuilder } from '@microsoft/signalr';
 
 function Profile() {
     const logged = useSelector(selectLogged);
@@ -19,34 +15,9 @@ function Profile() {
     const user = useSelector(selectCurrent);
     const dispatch = useDispatch();
 
-    const [ chat, setChat ] = useState([]);
-    const latestChat = useRef(null);
-    latestChat.current = chat;
-
-    useEffect(() => {
-        const connection = new HubConnectionBuilder()
-            .withUrl('https://localhost:5001/hubs/bet')            
-            //.withUrl('/api/bets/new')
-            .withAutomaticReconnect()
-            .build();   
-
-        connection.start()
-            .then(result => {
-                console.log('Connected!');
-                
-                connection.invoke("JoinGroup", "Auction_1");
-                
-                connection.on('NewBet', message => {
-                    console.log('NewBet! '  + message);
-                });
-            })
-            .catch(e => console.log('Connection failed: ', e));
-    }, []);
-
-
     useEffect(() => {    
         setEditPersonalDetails(false); 
-        dispatch(error(null));
+        error(null);
     }, [user]);
 
     const [editPersonalDetails, setEditPersonalDetails] = useState(false);

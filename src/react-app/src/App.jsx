@@ -1,12 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { Redirect } from 'react-router'
-import  PrivateRoute from './Services/PrivateRoute'
-import { history } from "./Services/history"
 
 import Home from "./Components/Home/Home"
 import Product from "./Components/Product/Product"
-import ProductDetails from "./Components/ProductDetails/ProductDetails"
 import Page404 from "./Components/404/404"
 import Footer from './Components/CommonComponents/Footer';
 import Header from './Components/CommonComponents/Header';
@@ -19,10 +16,13 @@ import Dashboard from "./Components/Profile/Dashboard"
 import MyBids from "./Components/Profile/MyBids"
 import MyWinnings from './Components/Profile/MyWinnings';
 import CreateAuction from './Components/AdminPanel/CreateAuction';
+import ScrollToTop from './Components/CommonComponents/ScrollToTop';
+import ProductDetails from './Components/ProductDetails/ProductDetails';
 
 const App=() => {
   return (
     <BrowserRouter>
+       <ScrollToTop />
     
         {/* <Loader /> */}
         <Header />
@@ -36,8 +36,17 @@ const App=() => {
             <Route path="/bids" component={MyBids} />
             <Route path="/winnings" component={MyWinnings} />
             <Route path="/home" component={Home} />
-            <Route path="/product" component={Product} />
-            <Route path="/productDetails" component={ProductDetails} />
+
+            <Route
+                path="/products"
+                render={({ match: { url } }) => (
+                  <>
+                    <Route path={`${url}/`} component={Product} exact />
+                    <Route path={`${url}/:id`} component={ProductDetails} exact/>
+                  </>
+                )}
+              />
+
             <Route path="/404" component={Page404} />
             <Route path="/createAuction" component={CreateAuction}/>
             <Redirect from="*" to="/home" />

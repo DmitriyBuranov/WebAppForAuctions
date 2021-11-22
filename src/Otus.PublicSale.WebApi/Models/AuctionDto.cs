@@ -15,9 +15,9 @@ namespace Otus.PublicSale.WebApi.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Descition
+        /// Description
         /// </summary>
-        public string Descition { get; set; }
+        public string Description { get; set; }
 
         /// <summary>
         /// Create Date
@@ -49,8 +49,35 @@ namespace Otus.PublicSale.WebApi.Models
         /// </summary>
         public decimal PriceStep { get; set; }
 
+        /// <summary>
+        /// Sell Price
+        /// </summary>
         public decimal SellPrice {  get; set;}
 
+        /// <summary>
+        /// CurrentPrice
+        /// </summary>
+        public decimal CurrentPrice { get; set; }
+
+        /// <summary>
+        /// LowestPrice
+        /// </summary>
+        public decimal LowestPrice { get; set; }
+
+        /// <summary>
+        /// Winner
+        /// </summary>
+        public string Winner { get; set; }
+
+        /// <summary>
+        /// End Date
+        /// </summary>
+        public double EndDate { get; set; }
+
+        /// <summary>
+        /// End Date
+        /// </summary>
+        public string Image { get; set; }
 
         /// <summary>
         /// Constuctor
@@ -68,7 +95,7 @@ namespace Otus.PublicSale.WebApi.Models
         {
             Id = auction.Id;
             Name = auction.Name;
-            Descition = auction.Descition;
+            Description = auction.Description;
             CreateDate = auction.CreateDate;
             Status = auction.Status;
             StartDate = auction.StartDate;
@@ -76,6 +103,14 @@ namespace Otus.PublicSale.WebApi.Models
             PriceStart = auction.PriceStart;
             PriceStep = auction.PriceStep;
             SellPrice = auction.SellPrice;
+            CurrentPrice = auction.CurrentPrice;
+            LowestPrice = auction.LowestPrice;
+            Winner = $"{auction.Winner?.FirstName} {auction.Winner?.LastName}".Trim();
+            EndDate = auction.StartDate.AddSeconds(auction.Duration).Subtract(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalMilliseconds;
+            Image = auction.Image;
+
+            if (CurrentPrice < PriceStart)
+                CurrentPrice = PriceStart;
         }
 
         public override bool Equals(object obj)
@@ -99,7 +134,7 @@ namespace Otus.PublicSale.WebApi.Models
 
             var data = obj as AuctionDto;
 
-            return this.Id == data.Id && this.Name == data.Name && this.EndDate == data.EndDate && this.Descition == data.Descition && this.CreateDate == data.CreateDate && this.PriceStart == data.PriceStart && this.PriceStep == data.PriceStep && this.StartDate == data.StartDate && this.Status == data.Status && this.SellPrice == data.SellPrice;
+            return this.Id == data.Id && this.Name == data.Name && this.EndDate == data.EndDate && this.Description == data.Description && this.CreateDate == data.CreateDate && this.PriceStart == data.PriceStart && this.PriceStep == data.PriceStep && this.StartDate == data.StartDate && this.Status == data.Status && this.SellPrice == data.SellPrice;
         }
     }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 function Footer() {
     const location = useLocation();
@@ -9,35 +9,35 @@ function Footer() {
 
     return (
         <div>
-            <footer className="bg_img padding-top oh" style={ { backgroundImage: "url('assets/images/footer/footer-bg.jpg')" } }>
+            <footer className="bg_img padding-top oh" style={ { backgroundImage: "url('/assets/images/footer/footer-bg.jpg')" } }>
                 <div className="footer-top-shape">
-                    <img src="assets/css/img/footer-top-shape.png" alt="css"></img>
+                    <img src="/assets/css/img/footer-top-shape.png" alt="css"></img>
                 </div>
                 <div className="anime-wrapper">
                     <div className="anime-1 plus-anime">
-                        <img src="assets/images/footer/p1.png" alt="footer"></img>
+                        <img src="/assets/images/footer/p1.png" alt="footer"></img>
                     </div>
                     <div className="anime-2 plus-anime">
-                        <img src="assets/images/footer/p2.png" alt="footer"></img>
+                        <img src="/assets/images/footer/p2.png" alt="footer"></img>
                     </div>
                     <div className="anime-3 plus-anime">
-                        <img src="assets/images/footer/p3.png" alt="footer"></img>
+                        <img src="/assets/images/footer/p3.png" alt="footer"></img>
                     </div>
                     <div className="anime-5 zigzag">
-                        <img src="assets/images/footer/c2.png" alt="footer"></img>
+                        <img src="/assets/images/footer/c2.png" alt="footer"></img>
                     </div>
                     <div className="anime-6 zigzag">
-                        <img src="assets/images/footer/c3.png" alt="footer"></img>
+                        <img src="/assets/images/footer/c3.png" alt="footer"></img>
                     </div>
                     <div className="anime-7 zigzag">
-                        <img src="assets/images/footer/c4.png" alt="footer"></img>
+                        <img src="/assets/images/footer/c4.png" alt="footer"></img>
                     </div>
                 </div>
                 <div className="newslater-wrapper">
                     <div className="container">
                         <div className="newslater-area">
                             <div className="newslater-thumb">
-                                <img src="assets/images/footer/newslater.png" alt="footer"></img>
+                                <img src="/assets/images/footer/newslater.png" alt="footer"></img>
                             </div>
                             <div className="newslater-content">
                                 <div className="section-header left-style mb-low">
@@ -177,20 +177,20 @@ function Footer() {
                         <div className="copyright-area">
                             <div className="footer-bottom-wrapper">
                                 <div className="logo">
-                                    <a href="index.html"><img src="assets/images/logo/footer-logo.png" alt="logo"></img></a>
+                                    <a href="index.html"><img src="/assets/images/logo/footer-logo.png" alt="logo"></img></a>
                                 </div>
                                 <ul className="gateway-area">
                                     <li>
-                                        <a href="#0"><img src="assets/images/footer/paypal.png" alt="footer"></img></a>
+                                        <a href="#0"><img src="/assets/images/footer/paypal.png" alt="footer"></img></a>
                                     </li>
                                     <li>
-                                        <a href="#0"><img src="assets/images/footer/visa.png" alt="footer"></img></a>
+                                        <a href="#0"><img src="/assets/images/footer/visa.png" alt="footer"></img></a>
                                     </li>
                                     <li>
-                                        <a href="#0"><img src="assets/images/footer/discover.png" alt="footer"></img></a>
+                                        <a href="#0"><img src="/assets/images/footer/discover.png" alt="footer"></img></a>
                                     </li>
                                     <li>
-                                        <a href="#0"><img src="assets/images/footer/mastercard.png" alt="footer"></img></a>
+                                        <a href="#0"><img src="/assets/images/footer/mastercard.png" alt="footer"></img></a>
                                     </li>
                                 </ul>
                                 <div className="copyright"><p>&copy; Copyright 2021 | <a href="#0">Sbidu</a> By <a href="#0">Uiaxis</a></p></div>

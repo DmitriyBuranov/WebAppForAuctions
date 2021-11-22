@@ -33,7 +33,7 @@ function ProfileTopMenu() {
                     </li>
                 </ul>
             </div>
-            <div className="bg_img hero-bg bottom_center" style={{ backgroundImage: "url('assets/images/banner/hero-bg.png')" }} ></div>
+            <div className="bg_img hero-bg bottom_center" style={{ backgroundImage: "url('/assets/images/banner/hero-bg.png')" }} ></div>
         </div>
     );
 }

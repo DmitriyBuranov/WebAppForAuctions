@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
-import { Redirect, Link } from "react-router-dom";
-import { registerAsync, selectErrors, selectLogged, selectLoading } from '../../features/userSlice';
-import { Alert } from 'react-bootstrap';
+import { Redirect } from "react-router-dom";
+import { selectLogged, selectLoading } from '../../features/userSlice';
+
 import Loader from '../CommonComponents/Loader';
 import ProfileLeftMenu from '../CommonComponents/ProfileLeftMenu';
 import ProfileTopMenu from '../CommonComponents/ProfileTopMenu';
@@ -36,7 +36,7 @@ function Dashboard() {
                                     <div className="col-md-4 col-sm-6">
                                         <div className="dashboard-item">
                                             <div className="thumb">
-                                                <img src="assets/images/dashboard/01.png" alt="dashboard" />
+                                                <img src="/assets/images/dashboard/01.png" alt="dashboard" />
                                             </div>
                                             <div className="content">
                                                 <h2 className="title"><span className="counter">80</span></h2>
@@ -47,7 +47,7 @@ function Dashboard() {
                                     <div className="col-md-4 col-sm-6">
                                         <div className="dashboard-item">
                                             <div className="thumb">
-                                                <img src="assets/images/dashboard/02.png" alt="dashboard" />
+                                                <img src="/assets/images/dashboard/02.png" alt="dashboard" />
                                             </div>
                                             <div className="content">
                                                 <h2 className="title"><span className="counter">15</span></h2>
@@ -58,7 +58,7 @@ function Dashboard() {
                                     <div className="col-md-4 col-sm-6">
                                         <div className="dashboard-item">
                                             <div className="thumb">
-                                                <img src="assets/images/dashboard/03.png" alt="dashboard" />
+                                                <img src="/assets/images/dashboard/03.png" alt="dashboard" />
                                             </div>
                                             <div className="content">
                                                 <h2 className="title"><span className="counter">115</span></h2>

@@ -1,9 +1,13 @@
-﻿using Otus.PublicSale.Users.Core.Abstractions.Services;
+﻿using Newtonsoft.Json;
+using Otus.PublicSale.Users.Core.Abstractions.Services;
 using Otus.PublicSale.Users.Core.Domain;
 using Otus.PublicSale.Users.DataAccess;
 using Otus.PublicSale.Users.WebApi.Models;
+using RabbitMQ.Client;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using IConfiguration = Microsoft.Extensions.Configuration.IConfiguration;
 
 namespace Otus.PublicSale.WebApi.Users.Services
 {
@@ -18,12 +22,20 @@ namespace Otus.PublicSale.WebApi.Users.Services
         private DataContext _context;
 
         /// <summary>
+        /// Configuration
+        /// </summary>
+        private IConfiguration _configuration;
+
+        /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="context">DB Context</param>
-        public UserService(DataContext context)
+        /// <param name="context">Configuration</param>
+        public UserService(DataContext context,
+            IConfiguration configuration)
         {
             _context = context;
+            _configuration = configuration;
         }
 
         /// <summary>
@@ -94,6 +106,8 @@ namespace Otus.PublicSale.WebApi.Users.Services
             _context.Users.Add(user);
             _context.SaveChanges();
 
+            SendUserDataToMessageBrokers(user);
+
             return user;
         }
 
@@ -138,6 +152,8 @@ namespace Otus.PublicSale.WebApi.Users.Services
 
             _context.Users.Update(user);
             _context.SaveChanges();
+
+            SendUserDataToMessageBrokers(user);
         }
 
         /// <summary>
@@ -152,6 +168,30 @@ namespace Otus.PublicSale.WebApi.Users.Services
                 _context.Users.Remove(user);
                 _context.SaveChanges();
             }
+        }
+
+        /// <summary>
+        /// Send user data to message brokers
+        /// </summary>
+        /// <param name="user">User</param>
+        private void SendUserDataToMessageBrokers(User user)
+        {
+            var connectionFactory = new ConnectionFactory() { 
+                HostName = _configuration["RabbitMQ:HostName"],
+                UserName = _configuration["RabbitMQ:Username"],
+                Password = _configuration["RabbitMQ:Password"]
+            };
+            using var connection = connectionFactory.CreateConnection();
+            using var channel = connection.CreateModel();
+            channel.QueueDeclare(queue: "RefreshUserData", durable: false, exclusive: false, autoDelete: false, arguments: null);
+            string message = JsonConvert.SerializeObject(new { 
+                user.Id,
+                user.FirstName,
+                user.LastName,
+                Email = user.Username
+            });            
+            var body = Encoding.UTF8.GetBytes(message);
+            channel.BasicPublish(exchange: "", routingKey: "RefreshUserData", basicProperties: null, body: body);
         }
     }
 }

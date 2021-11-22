@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import AuctionItem from '../CommonComponents/AuctionItem';
 
-function Product() {
-
+function Product() {    
     const [auctionsNearToStart, setAuctionsNearToStart] = useState([]);
 
     const num = 3;
@@ -49,14 +49,14 @@ function Product() {
                 <div className="container">
                     <ul className="breadcrumb">
                         <li>
-                            <a href="/home">Home</a>
+                            <Link to="/home" className="user-button">Home</Link>
                         </li>
                         <li>
-                            <span>Auction</span>
+                            <span>Auctions</span>
                         </li>
                     </ul>
                 </div>
-                <div className="bg_img hero-bg bottom_center" style={{ backgroundImage: "url('assets/images/banner/banner-bg-4.png')" }}></div>
+                <div className="bg_img hero-bg bottom_center" style={{ backgroundImage: "url('/assets/images/banner/banner-bg-4.png')" }}></div>
             </div>
             {/*============= Hero Section Ends Here =============*/}
 

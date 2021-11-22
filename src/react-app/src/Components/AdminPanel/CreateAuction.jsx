@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Button, Form, Container, Row, Col } from 'react-bootstrap';
 import { auctionService } from '../../Services/auctionsService';
-import { loginAsync, selectErrors, selectLogged, selectLoading, selectCurrent, selectJWT } from '../../features/userSlice'
-import { useSelector, useDispatch } from 'react-redux';
-import { Redirect, Link } from "react-router-dom";
+import { selectLogged,  selectJWT } from '../../features/userSlice'
+import { useSelector } from 'react-redux';
+import { Redirect } from "react-router-dom";
 
 function CreateAuction() {
 
@@ -93,7 +93,7 @@ function CreateAuction() {
                         <Button className="mt-3" type="submit" >Create</Button>
                     </Form>
                 </Container>
-                <div className="bg_img hero-bg bottom_center" style={{ backgroundImage: "url('assets/images/banner/banner-bg-4.png')" }}></div>
+                <div className="bg_img hero-bg bottom_center" style={{ backgroundImage: "url('/assets/images/banner/banner-bg-4.png')" }}></div>
             </div>
 
 

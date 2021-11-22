@@ -2,6 +2,7 @@
 using Otus.PublicSale.Core.Domain.Administration;
 using Otus.PublicSale.Core.Domain.AuctionManagement;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Otus.PublicSale.DataAccess.Data
 {
@@ -68,7 +69,7 @@ namespace Otus.PublicSale.DataAccess.Data
             {
                 entity.Property(e => e.CreateDate).HasColumnType("datetime");
 
-                entity.Property(e => e.Descition).IsRequired();
+                entity.Property(e => e.Description).IsRequired();
 
                 entity.Property(e => e.Name)
                     .IsRequired()
@@ -147,7 +148,7 @@ namespace Otus.PublicSale.DataAccess.Data
             });
 
             modelBuilder.Entity<User>(entity =>
-            {
+            {                
                 entity.Property(e => e.Email)
                     .IsRequired()
                     .HasMaxLength(50);
@@ -156,19 +157,19 @@ namespace Otus.PublicSale.DataAccess.Data
 
                 entity.Property(e => e.LastName).HasMaxLength(50);
 
-                entity.Property(e => e.Password).IsRequired();
+                //entity.Property(e => e.Password).IsRequired();
 
-                entity.Property(e => e.BirthDay).IsRequired();
+                //entity.Property(e => e.BirthDay).IsRequired();
 
-                entity.Property(e => e.Phone).HasMaxLength(12);
+                //entity.Property(e => e.Phone).HasMaxLength(12);
 
-                entity.Property(e => e.Address).HasMaxLength(100);
+                //entity.Property(e => e.Address).HasMaxLength(100);
 
-                entity.HasOne(d => d.Role)
-                    .WithMany(p => p.Users)
-                    .HasForeignKey(d => d.RoleId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Users_Roles");           
+                //entity.HasOne(d => d.Role)
+                //    .WithMany(p => p.Users)
+                //    .HasForeignKey(d => d.RoleId)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("FK_Users_Roles");           
             });
 
 
@@ -187,10 +188,10 @@ namespace Otus.PublicSale.DataAccess.Data
             });
 
             // Default DB values
-            modelBuilder.Entity<Role>().HasData(new Role { Id = Constants.AdminRoleId, Name = "Admin" });
-            modelBuilder.Entity<Role>().HasData(new Role { Id = Constants.UserRoleId, Name = "User" });
-            modelBuilder.Entity<User>().HasData(new User { Id = Constants.DefaultAdminUserId, RoleId = Constants.AdminRoleId, FirstName = "BO", LastName = "Admin", Email="admin@megaproject.com", Password =  "1qaz@WSX" });
-            
+            //modelBuilder.Entity<Role>().HasData(new Role { Id = Constants.AdminRoleId, Name = "Admin" });
+            //modelBuilder.Entity<Role>().HasData(new Role { Id = Constants.UserRoleId, Name = "User" });
+            //modelBuilder.Entity<User>().HasData(new User { Id = Constants.DefaultAdminUserId, RoleId = Constants.AdminRoleId, FirstName = "BO", LastName = "Admin", Email = "admin@megaproject.com", Password = "1qaz@WSX" });
+
             base.OnModelCreating(modelBuilder);
         }
     }

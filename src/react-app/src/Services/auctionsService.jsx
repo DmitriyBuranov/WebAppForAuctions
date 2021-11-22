@@ -10,7 +10,7 @@ function GetNearToSart(num) {
 
     const [auctions, setAuctions] = useState([]);
 
-    fetch('api/v1/Auctions/NearToStart' + num)
+    fetch('api/Auctions/NearToStart' + num)
         .then(response => response.json())
         .then((data) => {
             console.log(data);
@@ -25,7 +25,7 @@ function GetNearToEnd(num) {
 
     const [auctions, setAuctions] = useState([]);
 
-    fetch('api/v1/Auctions/NearToEnd' + num)
+    fetch('api/Auctions/NearToEnd' + num)
         .then(response => response.json())
         .then((data) => {
             console.log(data);

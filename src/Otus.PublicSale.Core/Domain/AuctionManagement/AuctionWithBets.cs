@@ -18,5 +18,7 @@ namespace Otus.PublicSale.Core.Domain.AuctionManagement
         public decimal? CurrentMaxBet {  get; set; }
 
         public decimal SellPrice { get; set; }
+
+        public string Image { get; set; }
     }
 }

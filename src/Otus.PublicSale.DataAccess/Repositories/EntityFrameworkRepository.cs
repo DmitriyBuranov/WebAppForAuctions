@@ -97,5 +97,15 @@ namespace Otus.PublicSale.DataAccess.Repositories
         {
             return await _dbSet.AsNoTracking().Where(predicate).ToListAsync();
         }
+
+        /// <summary>
+        /// Gets query of Entities
+        /// </summary>
+        /// <param name="predicate">Cndition</param>        
+        /// <returns></returns>
+        public IQueryable<T> GetQuery(Expression<Func<T, bool>> predicate)
+        {
+            return _dbSet.AsNoTracking().Where(predicate);
+        }
     }
 }

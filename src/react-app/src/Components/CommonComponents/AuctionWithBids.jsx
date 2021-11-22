@@ -6,12 +6,12 @@ function AuctionWithBids(props) {
         <div className="col-lg-6">
         <div className="auction-item-3">
             <div className="auction-thumb">
-                <a href="product-details.html"><img src="assets/images/auction/ending/auction01.png" alt="ending"></img></a>
-                <a href="#0" className="bid"><i className="flaticon-auction"></i></a>
+                <Link to={{pathname: `/products/${props.auctionItem.id}`}}><img src={props.auctionItem.image} alt="ending"></img></Link>
+                <Link to={{pathname: `/products/${props.auctionItem.id}`}} className="bid"><i className="flaticon-auction"></i></Link>
             </div>
             <div className="auction-content">
                 <h6 className="title">
-                    <a href="product-details.html">{props.auctionItem.name}g</a>
+                    <Link to={{pathname: `/products/${props.auctionItem.id}`}}>{props.auctionItem.name}</Link>                    
                 </h6>
                 <div className="bid-amount">
                     <div className="icon">

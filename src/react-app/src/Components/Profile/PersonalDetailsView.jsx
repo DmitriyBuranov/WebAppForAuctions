@@ -1,12 +1,4 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-
-import { Redirect, Link } from "react-router-dom";
-import { selectCurrent, selectLogged, selectLoading } from '../../features/userSlice';
-import { Alert } from 'react-bootstrap';
-import Loader from '../CommonComponents/Loader';
-import ProfileLeftMenu from '../CommonComponents/ProfileLeftMenu';
-import ProfileTopMenu from '../CommonComponents/ProfileTopMenu';
+import React from 'react';
 
 function PersonalDetailsView(props) {
 

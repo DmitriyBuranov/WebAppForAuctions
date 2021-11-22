@@ -38,7 +38,8 @@ namespace Otus.PublicSale.DataAccess.Repositories
                     Name = x.Name,
                     Id = x.Id,
                     Count = x.AuctionBets.Count(),
-                    CurrentMaxBet = x.AuctionBets.Max(x => x.Amount)
+                    CurrentMaxBet = x.AuctionBets.Max(x => x.Amount),
+                    Image = x.Image
                 }).ToList();
         }
 
@@ -54,7 +55,8 @@ namespace Otus.PublicSale.DataAccess.Repositories
                     SellPrice = x.SellPrice,
                     Count = x.AuctionBets.Count(),
                     CurrentMaxBet = x.AuctionBets.Max(x => x.Amount),
-                    PriceStart = x.PriceStart
+                    PriceStart = x.PriceStart,
+                    Image = x.Image
                 }).ToList();
         }
 
@@ -69,7 +71,8 @@ namespace Otus.PublicSale.DataAccess.Repositories
                     SellPrice = x.SellPrice,
                     Count = x.AuctionBets.Count(),
                     CurrentMaxBet = x.AuctionBets.Max(x => x.Amount),
-                    PriceStart = x.PriceStart
+                    PriceStart = x.PriceStart,
+                    Image = x.Image
                 }).ToList();
         }
 
@@ -84,7 +87,8 @@ namespace Otus.PublicSale.DataAccess.Repositories
                     SellPrice = x.SellPrice,
                     Count = x.AuctionBets.Count(),
                     CurrentMaxBet = x.AuctionBets.Max(x => x.Amount),
-                    PriceStart = x.PriceStart
+                    PriceStart = x.PriceStart,
+                    Image = x.Image
                 }).ToList();
         }
 

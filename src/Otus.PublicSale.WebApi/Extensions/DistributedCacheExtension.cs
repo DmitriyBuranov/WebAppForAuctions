@@ -56,7 +56,7 @@ namespace Otus.PublicSale.WebApi.Extensions
         /// <returns></returns>
         public static async void RemoveRecordAsync(this IDistributedCache cache, string cacheKey)
         {
-            await cache.RemoveAsync(cacheKey);            
+            await cache.RemoveAsync(cacheKey);
         }
     }
 }

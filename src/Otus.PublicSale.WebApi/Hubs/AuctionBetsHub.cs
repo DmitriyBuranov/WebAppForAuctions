@@ -27,7 +27,14 @@ namespace Otus.PublicSale.WebApi.Hubs
         /// <returns></returns>
         public Task JoinGroup(string groupName)
         {
+            HubHandler.ConnectedIds.Add(Context.ConnectionId, groupName);
             return Groups.AddToGroupAsync(Context.ConnectionId, groupName);
+        }
+
+        public override Task OnDisconnectedAsync(Exception exception)
+        {
+            HubHandler.ConnectedIds.Remove(Context.ConnectionId);
+            return base.OnDisconnectedAsync(exception);
         }
     }
 }

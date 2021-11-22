@@ -23,8 +23,8 @@ namespace Otus.PublicSale.WebApi.Mappers
             user.Email = request.Email;
             user.LastName = request.LastName;
 
-            if (!string.IsNullOrWhiteSpace(request.Password))
-                user.Password = request.Password;
+            //if (!string.IsNullOrWhiteSpace(request.Password))
+            //    user.Password = request.Password;
 
             return user;
         }

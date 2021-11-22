@@ -4,7 +4,7 @@ import {
   doRegister,
   doUpdate,
   cookieName
-} from '../Components/User/userAPI';
+} from './userAPI';
 import Cookies from 'js-cookie'
 
 const initialState = loadInitialState();
@@ -125,7 +125,7 @@ export const userSlice = createSlice({
   }
 });
 
-export const { login, logout, register, error } = userSlice.actions;
+export const { logout, error } = userSlice.actions;
 
 export const selectLogged = (state) => state.user.logged;
 export const selectJWT = (state) => state.user.current?.token;

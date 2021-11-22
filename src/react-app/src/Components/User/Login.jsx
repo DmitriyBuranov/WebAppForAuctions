@@ -35,7 +35,7 @@ function Login() {
         if (user.admin === true) 
             return <Redirect to="/createAuction"/>
         else 
-            return <Redirect to="/dashboard" />  
+            return <Redirect to="/profile" />  
 
     return (
         <div>

@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Otus.PublicSale.Core.Enums;
 
 namespace Otus.PublicSale.Core.Domain.Services
 {
@@ -21,7 +22,12 @@ namespace Otus.PublicSale.Core.Domain.Services
         private readonly IServiceProvider _serviceProvider;
         readonly IPublishEndpoint _publishEndpoint;
 
-        public AuctionWorker(IAuctionRepository<Auction> auctionSpecialRepository, IServiceProvider serviceProvider, IAuctionBetRepository<AuctionBet> auctionBetRepository, IRepository<User> repositoryUsers, IRepository<Auction> auctionRepository, IPublishEndpoint publishEndpoint)
+        public AuctionWorker(IAuctionRepository<Auction> auctionSpecialRepository, 
+            IServiceProvider serviceProvider, 
+            IAuctionBetRepository<AuctionBet> auctionBetRepository, 
+            IRepository<User> repositoryUsers, 
+            IRepository<Auction> auctionRepository, 
+            IPublishEndpoint publishEndpoint)
         {
             _auctionSpecialRepository = auctionSpecialRepository;
             _serviceProvider = serviceProvider;
@@ -40,19 +46,21 @@ namespace Otus.PublicSale.Core.Domain.Services
 
             foreach (var endingAuction in endingList)
             {
-                endingAuction.Status = 3;
+                endingAuction.Status = (int)AuctionStatus.Finished;
 
                 await _auctionRepository.UpdateAsync(endingAuction);
 
-                var lastBet = await _auctionBetRepository.GetLastBetAsync(endingAuction.Id);
-
-                if (lastBet == null)
+                if (!endingAuction.WinnerId.HasValue)
                     continue;
 
+                //var lastBet = await _auctionBetRepository.GetLastBetAsync(endingAuction.Id);
+
+                //if (lastBet == null)
+                //    continue;
 
                 //notification to notification service
 
-                var user = await _repositoryUsers.GetByIdAsync(lastBet.UserId);
+                var user = await _repositoryUsers.GetByIdAsync(endingAuction.WinnerId.Value);
 
                 await _publishEndpoint.Publish<INotificationMaket>(
                     new
