@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using PublicSale.NotificationService.Core.Services;
+using PublicSale.NotificationService.Core.Domain.NotificationManagement;
 
 namespace PublicSale.NotificationService.WebHost.EventConsumers
 {
@@ -16,13 +18,17 @@ namespace PublicSale.NotificationService.WebHost.EventConsumers
     {
         private readonly INotificationSaveService _notificationService;
         private readonly ILogger<NotifiactionEventConsumer> _logger;
+        private readonly ISendNotificationService _sendNotificationService;
+
 
         public NotifiactionEventConsumer(
             INotificationSaveService notificationService,
-            ILogger<NotifiactionEventConsumer> logger)
+            ILogger<NotifiactionEventConsumer> logger,
+            ISendNotificationService sendNotificationService)
         {
             _notificationService = notificationService;
             _logger = logger;
+            _sendNotificationService = sendNotificationService;
         }
 
         public async Task Consume(ConsumeContext<INotificationMaket> context)
@@ -36,7 +42,10 @@ namespace PublicSale.NotificationService.WebHost.EventConsumers
                 Quick = context.Message.Quick
             };
 
-            await _notificationService.AddNotificationAsync(notification);
+            if (notification.Quick == true)
+                await _sendNotificationService.SendEmailAsync(notification);
+            else
+                await _notificationService.AddNotificationOrUpdateAsync(notification);
         }
     }
 

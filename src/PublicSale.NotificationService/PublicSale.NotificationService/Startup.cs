@@ -9,6 +9,7 @@ using Microsoft.OpenApi.Models;
 using PublicSale.NotificationService.Core.Abstractions;
 using PublicSale.NotificationService.Core.Abstractions.Repositories;
 using PublicSale.NotificationService.Core.Abstractions.Services;
+using PublicSale.NotificationService.Core.Domain.NotificationManagement;
 using PublicSale.NotificationService.Core.Services;
 using PublicSale.NotificationService.DataAccess;
 using PublicSale.NotificationService.DataAccess.Data;
@@ -44,6 +45,7 @@ namespace PublicSale.NotificationService
             services.AddScoped<IDataContext, DataContext>();
             services.AddScoped<IDbInitializer, DbInitializer>();
             services.AddTransient<INotificationSaveService, NotificationSaveService>();
+            services.AddTransient<ISendNotificationService, SendNotificationService>();
 
             services.AddScoped(typeof(IRepository<>), typeof(MongoRepository<>));
 

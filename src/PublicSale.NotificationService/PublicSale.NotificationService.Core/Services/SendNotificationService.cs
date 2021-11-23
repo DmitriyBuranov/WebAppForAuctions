@@ -6,7 +6,9 @@ using Microsoft.AspNetCore.Routing;
 using MimeKit;
 using NLog;
 using PublicSale.NotificationService.Core.Abstractions.Repositories;
+using PublicSale.NotificationService.Core.Abstractions.Services;
 using PublicSale.NotificationService.Core.Domain;
+using PublicSale.NotificationService.Core.Domain.NotificationManagement;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,16 +19,19 @@ using System.Threading.Tasks;
 
 namespace PublicSale.NotificationService.Core.Services
 {
-    public class SendNotificationService
+    public class SendNotificationService : ISendNotificationService
     {
         private static Logger _logger = LogManager.GetCurrentClassLogger();
         private readonly IRepository<Notification> _notificationRepository;
         private readonly IServiceProvider _serviceProvider;
+        private readonly INotificationSaveService _notificationService;
 
-        public SendNotificationService(IRepository<Notification> notificationRepository, IServiceProvider serviceProvider)
+        public SendNotificationService(IRepository<Notification> notificationRepository,
+            IServiceProvider serviceProvider, INotificationSaveService notificationService)
         {
             _notificationRepository = notificationRepository;
             _serviceProvider = serviceProvider;
+            _notificationService = notificationService;
         }
 
         public async void SendMessageAsync()
@@ -38,9 +43,9 @@ namespace PublicSale.NotificationService.Core.Services
                 await SendEmailAsync(notification);
         }
 
-        private async Task SendEmailAsync(Notification notification)
+        public async Task SendEmailAsync(Notification notification)
         {
-            Console.WriteLine(" start Save notification");
+            Console.WriteLine("Start save notification");
             try
             {
                 var emailMessage = new MailMessage
@@ -68,7 +73,7 @@ namespace PublicSale.NotificationService.Core.Services
                 notification.ErrorsСount++;
             }
 
-            await _notificationRepository.UpdateAsync(notification);
+            await _notificationService.AddNotificationOrUpdateAsync(notification);
         }
     }
 }

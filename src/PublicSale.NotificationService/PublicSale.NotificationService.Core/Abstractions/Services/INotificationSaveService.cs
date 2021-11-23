@@ -9,7 +9,7 @@ namespace PublicSale.NotificationService.Core.Abstractions.Services
 {
     public interface INotificationSaveService
     {
-        Task<bool> AddNotificationAsync(Notification notification);
+        Task<bool> AddNotificationOrUpdateAsync(Notification notification);
     }
 
 }

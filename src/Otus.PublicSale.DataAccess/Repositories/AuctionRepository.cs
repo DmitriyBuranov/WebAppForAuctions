@@ -31,7 +31,7 @@ namespace Otus.PublicSale.DataAccess.Repositories
 
         public IEnumerable<AuctionWithBets> GetAmountNearToEndWithBets(int num)
         {
-            return _dbSet.Where(x => x.StartDate < DateTime.UtcNow)
+            return _dbSet.Where(x => x.StartDate < DateTime.UtcNow && x.EndDate > DateTime.UtcNow)
                 .OrderBy(x => x.EndDate).Take(num)
                 .Select(x=> new AuctionWithBets
                 {
