@@ -162,13 +162,13 @@ namespace Otus.PublicSale.WebApi.Controllers
                 if (entity == null)
                     return NotFound();
 
-                if (entity.EndDate <= DateTime.UtcNow && 
-                    entity.Status != (int)(AuctionStatus.Finished))
-                {
-                    entity.Status = (int)(AuctionStatus.Finished);
-                    await _repositoryAuctions.UpdateAsync(entity);
-                    ClearCacheRecord(id);
-                }
+                //if (entity.EndDate <= DateTime.UtcNow && 
+                //    entity.Status != (int)(AuctionStatus.Finished))
+                //{
+                //    entity.Status = (int)(AuctionStatus.Finished);
+                //    await _repositoryAuctions.UpdateAsync(entity);
+                //    ClearCacheRecord(id);
+                //}
 
                 var model = new AuctionDto(entity);
                 await _cache.SetRecordAsync(string.Format(_cacheOneKey, id), model);

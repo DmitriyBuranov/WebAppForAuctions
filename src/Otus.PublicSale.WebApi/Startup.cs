@@ -18,8 +18,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Otus.PublicSale.Core;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
-using Otus.PublicSale.WebApi.Hubs;
-using Otus.PublicSale.WebApi.Services;
+using Otus.PublicSale.Core.Services.Hubs;
 using Otus.PublicSale.Core.Services;
 
 namespace Otus.PublicSale.WebApi

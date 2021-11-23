@@ -36,7 +36,7 @@ namespace Otus.PublicSale.DataAccess.Data
                     CreateDate= createDate.AddDays(-1),
                     Status = (int)AuctionStatus.Created,
                     StartDate = createDate.AddHours(-10),
-                    EndDate = endDate,
+                    EndDate = createDate.AddMinutes(1),
                     PriceStart = 500,
                     PriceStep = 50,
                     SellPrice =  2500,

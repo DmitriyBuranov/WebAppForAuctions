@@ -2,7 +2,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace Otus.PublicSale.WebApi.Hubs
+namespace Otus.PublicSale.Core.Services.Hubs
 {
     /// <summary>
     /// Auction Bets Hub for SignalR

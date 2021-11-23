@@ -12,7 +12,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using IConfiguration = Microsoft.Extensions.Configuration.IConfiguration;
 
-namespace Otus.PublicSale.WebApi.Services
+namespace Otus.PublicSale.Core.Services
 {
     /// <summary>
     /// User Background Service

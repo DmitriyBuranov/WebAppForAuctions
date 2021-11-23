@@ -5,10 +5,10 @@ using Otus.PublicSale.Core.Domain.Administration;
 using Otus.PublicSale.Core.Domain.AuctionManagement;
 using Core.Domain.NotificationManagement;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Otus.PublicSale.Core.Enums;
+using Microsoft.AspNetCore.SignalR;
+using Otus.PublicSale.Core.Services.Hubs;
 
 namespace Otus.PublicSale.Core.Services
 {
@@ -21,13 +21,20 @@ namespace Otus.PublicSale.Core.Services
         private readonly IRepository<User> _repositoryUsers;
         private readonly IServiceProvider _serviceProvider;
         readonly IPublishEndpoint _publishEndpoint;
+        
+        /// <summary>
+        /// Auction Bets Hub
+        /// </summary>
+        private readonly IHubContext<AuctionBetsHub> _hubContext;
 
-        public AuctionWorker(IAuctionRepository<Auction> auctionSpecialRepository, 
+        public AuctionWorker(
+            IAuctionRepository<Auction> auctionSpecialRepository, 
             IServiceProvider serviceProvider, 
             IAuctionBetRepository<AuctionBet> auctionBetRepository, 
             IRepository<User> repositoryUsers, 
             IRepository<Auction> auctionRepository, 
-            IPublishEndpoint publishEndpoint)
+            IPublishEndpoint publishEndpoint,
+            IHubContext<AuctionBetsHub> hubContext)
         {
             _auctionSpecialRepository = auctionSpecialRepository;
             _serviceProvider = serviceProvider;
@@ -35,6 +42,7 @@ namespace Otus.PublicSale.Core.Services
             _repositoryUsers = repositoryUsers;
             _auctionRepository = auctionRepository;
             _publishEndpoint = publishEndpoint;
+            _hubContext = hubContext;
         }
 
         public async Task SetWinnerAsync(DateTime endTime)
@@ -72,11 +80,9 @@ namespace Otus.PublicSale.Core.Services
                         Quick = true
 
                     });
-
-                //to do use Signal R?
+                
+                await _hubContext.Clients.Group($"Auction_{endingAuction.Id}").SendAsync("AuctionFinished", null);
             }
-
         }
-
     }
 }

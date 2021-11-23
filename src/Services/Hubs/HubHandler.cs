@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Otus.PublicSale.WebApi.Hubs
+namespace Otus.PublicSale.Core.Services.Hubs
 {
     /// <summary>
     /// Hub Handler

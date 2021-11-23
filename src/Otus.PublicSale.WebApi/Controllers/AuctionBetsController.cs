@@ -11,10 +11,12 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Caching.Distributed;
 using Otus.PublicSale.WebApi.Extensions;
 using Microsoft.AspNetCore.SignalR;
-using Otus.PublicSale.WebApi.Hubs;
+using Otus.PublicSale.Core.Services.Hubs;
 using Newtonsoft.Json;
 using Microsoft.EntityFrameworkCore;
 using Otus.PublicSale.Core.Enums;
+using MassTransit;
+using Core.Domain.NotificationManagement;
 
 namespace Otus.PublicSale.WebApi.Controllers
 {
@@ -53,23 +55,32 @@ namespace Otus.PublicSale.WebApi.Controllers
         private readonly IHubContext<AuctionBetsHub> _hubContext;
 
         /// <summary>
+        /// Publish Endpoint
+        /// </summary>
+        private readonly IPublishEndpoint _publishEndpoint;
+
+        /// <summary>
         /// Constuctor
         /// </summary>
         /// <param name="repositoryAuctionBets">AuctionBets repository</param>        
         /// <param name="repositoryAuctions">Auctions repository</param>        
         /// <param name="cache">Cache</param>     
         /// <param name="hubContext">Hub Context</param>     
+        /// <param name="publishEndpoint">Publish Endpoint</param>     
         public AuctionBetsController(
             IRepository<AuctionBet> repositoryAuctionBets,
             IRepository<Auction> repositoryAuctions,
             IDistributedCache cache,
-            IHubContext<AuctionBetsHub> hubContext)
+            IHubContext<AuctionBetsHub> hubContext,
+            IPublishEndpoint publishEndpoint)
         {
             _repositoryAuctionBets = repositoryAuctionBets;
             _repositoryAuctions = repositoryAuctions;
 
             _cache = cache;
             _hubContext = hubContext;
+
+            _publishEndpoint = publishEndpoint;
         }
 
         /// <summary>
@@ -130,7 +141,7 @@ namespace Otus.PublicSale.WebApi.Controllers
         public async Task<ActionResult<Guid>> CreateAsync(AuctionBetDto request)
         {
             var userId = int.Parse(this.User.Identity.Name);
-            var userFullName = this.User.Claims.FirstOrDefault(x => x.Type == "FullName")?.Value ?? string.Empty;
+            var userFullName = this.User.Claims.FirstOrDefault(x => x.Type == "FullName")?.Value ?? string.Empty;            
 
             var auction = await _repositoryAuctions.GetByIdAsync(request.AuctionId);
 
@@ -160,10 +171,13 @@ namespace Otus.PublicSale.WebApi.Controllers
             auction.CurrentPrice = request.Amount;
             auction.WinnerId = userId;
 
+            var isFinished = false;
+
             if (auction.CurrentPrice >= auction.SellPrice)
             {
                 auction.Status = (int)AuctionStatus.Finished;
                 auction.WinnerId = userId;
+                isFinished = true;
             }
 
             await _repositoryAuctions.UpdateAsync(auction);
@@ -180,6 +194,22 @@ namespace Otus.PublicSale.WebApi.Controllers
                 });
 
             ClearCacheRecord(entity.Id, auction.Id);
+
+            if (isFinished)
+            {
+                var userEmail = this.User.Claims.FirstOrDefault(x => x.Type == "Email")?.Value ?? string.Empty;
+
+                await _publishEndpoint.Publish<INotificationMaket>(
+                    new
+                    {
+                        EmailFrom = "administration@sbidu.com",
+                        EmailTo = userEmail,
+                        Subject = "You win auction",
+                        Message = "You win auction: " + auction.Name,
+                        Quick = true
+
+                    });
+            }
 
             return Ok(entity.Id);
         }

@@ -8,7 +8,7 @@ function BidStats(props) {
     // Renderer callback with condition
     const renderer = ({ days, hours, minutes, seconds, completed }) => {
         if (completed) {
-            props.loadAuction();
+            // props.loadAuction();
             // Render a complete state
             return <Completionist />;
         } else {
@@ -29,7 +29,7 @@ function BidStats(props) {
                     <div className="countdown">
                         <div id="bid_counter1">
                             {
-                                props.auction.status === 3 ? <Completionist /> : <Countdown date={new Date(props.auction.endDate)} renderer={renderer} />
+                                props.auction.status === 3 ? <Completionist /> : <Countdown date={new Date(props.auction.finish)} renderer={renderer} />
                             }
                         </div>
                     </div>

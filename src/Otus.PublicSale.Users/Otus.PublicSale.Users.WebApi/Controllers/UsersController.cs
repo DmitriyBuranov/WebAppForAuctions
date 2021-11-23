@@ -64,6 +64,7 @@ namespace Otus.PublicSale.Users.WebApi.Controllers
                     new Claim("FirstName", user.FirstName),
                     new Claim("LastName", user.LastName),
                     new Claim("FullName", $"{user.FirstName} {user.LastName}"),
+                    new Claim("Email", user.Username),
                 }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)

@@ -5,7 +5,7 @@ using Moq;
 using Otus.PublicSale.Core.Abstractions.Repositories;
 using Otus.PublicSale.Core.Domain.AuctionManagement;
 using Otus.PublicSale.WebApi.Controllers;
-using Otus.PublicSale.WebApi.Hubs;
+using Otus.PublicSale.Core.Services.Hubs;
 using Otus.PublicSale.WebApi.Models;
 using System;
 using System.Collections.Generic;
@@ -13,6 +13,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Xunit;
+using MassTransit;
 
 namespace Otus.PublicSale.UnitTests
 {
@@ -32,7 +33,7 @@ namespace Otus.PublicSale.UnitTests
         private Mock<IRepository<AuctionBet>> _repositoryAuctionBetsMock = new Mock<IRepository<AuctionBet>>();
         private Mock<IDistributedCache> _cache = new Mock<IDistributedCache>();
         private Mock<IHubContext<AuctionBetsHub>> _hubContext = new Mock<IHubContext<AuctionBetsHub>>();
-         
+        private Mock<IPublishEndpoint> _publishEndpoint = new Mock<IPublishEndpoint>();
 
         /// <summary>
         /// Constructor
@@ -44,7 +45,7 @@ namespace Otus.PublicSale.UnitTests
 
             var repositoryAuctions = provider.GetService(typeof(IRepository<Auction>)) as IRepository<Auction>;
 
-            _auctionBetsController = new AuctionBetsController(_repositoryAuctionBetsMock.Object, repositoryAuctions, _cache.Object, _hubContext.Object);
+            _auctionBetsController = new AuctionBetsController(_repositoryAuctionBetsMock.Object, repositoryAuctions, _cache.Object, _hubContext.Object, _publishEndpoint.Object);
         }
 
         #region GetAllAsync

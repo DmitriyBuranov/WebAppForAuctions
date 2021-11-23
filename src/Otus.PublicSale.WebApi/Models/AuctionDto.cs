@@ -52,7 +52,7 @@ namespace Otus.PublicSale.WebApi.Models
         /// <summary>
         /// Sell Price
         /// </summary>
-        public decimal SellPrice {  get; set;}
+        public decimal SellPrice { get; set; }
 
         /// <summary>
         /// CurrentPrice
@@ -69,18 +69,22 @@ namespace Otus.PublicSale.WebApi.Models
         /// </summary>
         public string Winner { get; set; }
 
-
         /// <summary>
         /// Image
         /// </summary>
         public string Image { get; set; }
 
         /// <summary>
+        /// Finish
+        /// </summary>
+        public double Finish { get; set; }
+
+        /// <summary>
         /// Constuctor
         /// </summary>
         public AuctionDto()
         {
-            
+
         }
 
         /// <summary>
@@ -102,7 +106,7 @@ namespace Otus.PublicSale.WebApi.Models
             CurrentPrice = auction.CurrentPrice;
             LowestPrice = auction.LowestPrice;
             Winner = $"{auction.Winner?.FirstName} {auction.Winner?.LastName}".Trim();
-            //EndDate = auction.StartDate.AddSeconds(auction.Duration).Subtract(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalMilliseconds;
+            Finish = auction.EndDate.Subtract(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalMilliseconds;
             Image = auction.Image;
 
             if (CurrentPrice < PriceStart)
@@ -131,6 +135,15 @@ namespace Otus.PublicSale.WebApi.Models
             var data = obj as AuctionDto;
 
             return this.Id == data.Id && this.Name == data.Name && this.EndDate == data.EndDate && this.Description == data.Description && this.CreateDate == data.CreateDate && this.PriceStart == data.PriceStart && this.PriceStep == data.PriceStep && this.StartDate == data.StartDate && this.Status == data.Status && this.SellPrice == data.SellPrice && this.Winner == data.Winner && this.Image == data.Image;
+        }
+
+        /// <summary>
+        /// GetHashCode
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id, Name, Description, CreateDate, Status, StartDate, EndDate);
         }
     }
 }

@@ -70,7 +70,7 @@ function ProductDetails(props) {
             });
     }
 
-    const addBid = (e) => {        
+    const addBid = (e) => {
         e.preventDefault();
         setLoading(true);
         createBet(betPrice);
@@ -122,7 +122,8 @@ function ProductDetails(props) {
                     setBetStats(data.stats);
                 });
 
-                connection.on('AuctionChanged', data => {
+                connection.on('AuctionFinished', data => {
+                    console.log("auctionFinished")
                     loadAuction();
                 });
             })
@@ -230,10 +231,15 @@ function ProductDetails(props) {
 
                                                 {betError !== "" ? <Alert variant="danger">{betError}</Alert> : ''}
                                                 <BidArea loading={loading} logged={logged} betPrice={betPrice} onEdit={(e) => setBetPrice(e)} onSubmit={(e) => addBid(e)} />
+                                                {
+                                                    !logged ? "" :
+                                                        (
+                                                            <div className="buy-now-area">
+                                                                <a href="#0" className="custom-button" onClick={(e) => buyNow(e)}>Buy Now: ${auction.sellPrice}</a>
+                                                            </div>
+                                                        )
+                                                }
 
-                                                <div className="buy-now-area">
-                                                    <a href="#0" className="custom-button" onClick={(e) => buyNow(e)}>Buy Now: ${auction.sellPrice}</a>
-                                                </div>
                                             </>
                                         )
                                 }
