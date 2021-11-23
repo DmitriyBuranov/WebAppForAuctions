@@ -34,8 +34,9 @@ namespace Otus.PublicSale.Users.Core.Abstractions.Services
         /// </summary>
         /// <param name="user">User</param>
         /// <param name="password">Password</param>
+        /// <param name="repeatPassword">Repeat password</param>
         /// <returns></returns>
-        User Create(User user, string password);
+        User Create(User user, string password, string repeatPassword);
 
         /// <summary>
         /// Updates user

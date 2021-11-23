@@ -27,7 +27,7 @@ function ProfileLeftMenu() {
                 <div className="user">
                     <div className="thumb-area">
                         <div className="thumb">
-                            <img src="/assets/images/dashboard/user.png" alt="user" />
+                            <img src={`/assets/images/history/0${user.id}.png`} alt="user" />
                         </div>
                         <input type="file" id="profile-pic" className="d-none" />
                     </div>

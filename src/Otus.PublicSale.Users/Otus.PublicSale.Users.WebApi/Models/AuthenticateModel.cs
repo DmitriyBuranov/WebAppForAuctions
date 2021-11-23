@@ -10,13 +10,11 @@ namespace Otus.PublicSale.Users.WebApi.Models
         /// <summary>
         /// Username
         /// </summary>
-        [Required]
         public string Username { get; set; }
 
         /// <summary>
         /// Password
         /// </summary>
-        [Required]
         public string Password { get; set; }
     }
 }

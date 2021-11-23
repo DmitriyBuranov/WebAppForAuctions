@@ -26,7 +26,7 @@ namespace Otus.PublicSale.DataAccess.Repositories
 
         public  IEnumerable<T> GetAmountNearToStart(int num)
         {
-            return  _dbSet.Where(x => x.StartDate > DateTime.UtcNow).OrderBy(x => x.StartDate).Take(num);
+            return  _dbSet.Where(x => x.StartDate > DateTime.UtcNow).Include(x => x.Winner).OrderBy(x => x.StartDate).Take(num);
         }
 
         public IEnumerable<AuctionWithBets> GetAmountNearToEndWithBets(int num)

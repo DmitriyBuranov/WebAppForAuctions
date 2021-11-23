@@ -30,5 +30,11 @@ namespace Otus.PublicSale.Users.WebApi.Models
         /// </summary>
         [Required]
         public string Password { get; set; }
+
+        /// <summary>
+        /// Repeat Password
+        /// </summary>
+        [Required]
+        public string RepeatPassword { get; set; }
     }
 }

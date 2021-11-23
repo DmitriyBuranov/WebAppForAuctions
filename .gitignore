@@ -23,3 +23,5 @@
 /src/Otus.PublicSale.Users/.vs
 /src/PublicSale.NotificationService/PublicSale.NotificationService/bin
 /.vs
+/src/Services/bin
+/src/Services/obj

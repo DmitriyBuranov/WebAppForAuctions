@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { Redirect } from "react-router-dom";
-import { error, selectCurrent, selectLogged, selectLoading } from '../../features/userSlice';
+import { setError, selectCurrent, selectLogged, selectLoading } from '../../features/userSlice';
 import Loader from '../CommonComponents/Loader';
 import ProfileLeftMenu from '../CommonComponents/ProfileLeftMenu';
 import ProfileTopMenu from '../CommonComponents/ProfileTopMenu';
@@ -17,7 +17,7 @@ function Profile() {
 
     useEffect(() => {    
         setEditPersonalDetails(false); 
-        error(null);
+        setError(null);
     }, [user]);
 
     const [editPersonalDetails, setEditPersonalDetails] = useState(false);
@@ -38,8 +38,8 @@ function Profile() {
                             <div className="row">
                                 {
                                     editPersonalDetails ?
-                                        <PersonalDetailsEdit user={user} onHide={() => { setEditPersonalDetails(false); dispatch(error(null)); } } /> : 
-                                        <PersonalDetailsView user={user} onShow={() => { setEditPersonalDetails(true); dispatch(error(null)); }} />
+                                        <PersonalDetailsEdit user={user} onHide={() => { setEditPersonalDetails(false); dispatch(setError(null)); } } /> : 
+                                        <PersonalDetailsView user={user} onShow={() => { setEditPersonalDetails(true); dispatch(setError(null)); }} />
                                 }
                             </div>
                         </div>

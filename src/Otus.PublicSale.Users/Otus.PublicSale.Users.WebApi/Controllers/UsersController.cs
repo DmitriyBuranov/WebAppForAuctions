@@ -98,7 +98,7 @@ namespace Otus.PublicSale.Users.WebApi.Controllers
             try
             {
                 // create user
-                _userService.Create(user, model.Password);
+                _userService.Create(user, model.Password, model.RepeatPassword);
                 return Ok();
             }
             catch (AppException ex)

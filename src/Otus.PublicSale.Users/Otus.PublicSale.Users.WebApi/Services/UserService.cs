@@ -87,12 +87,21 @@ namespace Otus.PublicSale.WebApi.Users.Services
         /// </summary>
         /// <param name="user">User</param>
         /// <param name="password">Password</param>
+        /// <param name="repeatPassword">Repeat password</param>
         /// <returns></returns>
-        public User Create(User user, string password)
+        public User Create(User user, string password, string repeatPassword)
         {
             // validation
             if (string.IsNullOrWhiteSpace(password))
                 throw new AppException("Password is required");
+
+            // validation
+            if (string.IsNullOrWhiteSpace(repeatPassword))
+                throw new AppException("Repeat Password is required");
+
+            // validation
+            if (string.Compare(password, repeatPassword, false) != 0)
+                throw new AppException("Password and Repeat Password are different");
 
             if (_context.Users.Any(x => x.Username == user.Username))
                 throw new AppException("Username \"" + user.Username + "\" is already taken");

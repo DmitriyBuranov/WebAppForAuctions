@@ -25,7 +25,7 @@ namespace Otus.PublicSale.Users.DataAccess.Data
                         Id = 1,
                         FirstName = "BO",
                         LastName = "Admin",
-                        Username = "admin",
+                        Username = "admin@admin.com",
                         PasswordHash = passwordHash,
                         PasswordSalt = passwordSalt,
                         Admin = true
@@ -36,7 +36,7 @@ namespace Otus.PublicSale.Users.DataAccess.Data
                         Id = 2,
                         FirstName = "Alice",
                         LastName = "Smith",
-                        Username = "alice",
+                        Username = "alice@alice.com",
                         PasswordHash = passwordHash,
                         PasswordSalt = passwordSalt,
                         Admin = false
@@ -47,7 +47,7 @@ namespace Otus.PublicSale.Users.DataAccess.Data
                         Id = 3,
                         FirstName = "Bob",
                         LastName = "Smith",
-                        Username = "bob",
+                        Username = "bob@bob.com",
                         PasswordHash = passwordHash,
                         PasswordSalt = passwordSalt,
                         Admin = false

@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Otus.PublicSale.Core\Otus.PublicSale.Core.csproj" />
-    <ProjectReference Include="..\Otus.PublicSale.Users\Otus.PublicSale.Users.Core\Otus.PublicSale.Users.Core.csproj" />
   </ItemGroup>
 
 </Project>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { Redirect, Link } from "react-router-dom";
-import { loginAsync, selectErrors, selectLogged, selectLoading, selectCurrent } from '../../features/userSlice';
+import { loginAsync, selectErrors, selectLogged, selectLoading, selectCurrent, setError } from '../../features/userSlice';
 import { Alert } from 'react-bootstrap';
 import Loader from '../CommonComponents/Loader';
 
@@ -31,6 +31,8 @@ function Login() {
         return false;
     }
 
+  
+
     if (logged === true)
         if (user.admin === true) 
             return <Redirect to="/createAuction"/>
@@ -55,7 +57,7 @@ function Login() {
                                 <p>You can log in to your Sbidu account here.</p>
                             </div>
 
-                            {errors ? <Alert variant="danger">{errors.map(line => (<p key="{line}">{line}</p>))}</Alert> : ''}
+                            {errors ? <Alert variant="danger">{errors.map((line, index) => (<p key={index}>{line}</p>))}</Alert> : ''}
 
                             <form className="login-form" onSubmit={doLogin}>
                                 <div className="form-group mb-30">
@@ -75,7 +77,7 @@ function Login() {
                             <div className="section-header mb-0">
                                 <h3 className="title mt-0">NEW HERE?</h3>
                                 <p>Sign up and create your Account</p>
-                                <Link to="/register" className="custom-button transparent">Sign Up</Link>
+                                <Link to="/register" className="custom-button transparent" onClick={() => dispatch(setError(null))}>Sign Up</Link>
                             </div>
                         </div>
                     </div>

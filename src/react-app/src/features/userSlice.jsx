@@ -66,7 +66,8 @@ export const userSlice = createSlice({
       state.logged = false;
       state.errors = null;
     },
-    error: (state, action) => {
+    setError: (state, action) => {
+      debugger;
       state.errors = action.payload;
     },
   },
@@ -125,7 +126,7 @@ export const userSlice = createSlice({
   }
 });
 
-export const { logout, error } = userSlice.actions;
+export const { logout, setError } = userSlice.actions;
 
 export const selectLogged = (state) => state.user.logged;
 export const selectJWT = (state) => state.user.current?.token;

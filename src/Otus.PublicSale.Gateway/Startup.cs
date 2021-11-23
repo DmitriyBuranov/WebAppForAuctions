@@ -9,7 +9,6 @@ using Microsoft.IdentityModel.Tokens;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 using Otus.PublicSale.Core;
-using Otus.PublicSale.Users.Core.Domain;
 using System.Text;
 
 namespace Otus.PublicSale.Gateway

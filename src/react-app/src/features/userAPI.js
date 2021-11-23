@@ -12,13 +12,19 @@ export function doLogin(data) {
         resolve({ data: result.data, errors: null });
       })
       .catch((error) => {        
-        let errors = null;
-        Cookies.remove(cookieName)
+        let errors = [];
+        Cookies.remove(cookieName)       
 
         if (error.response.data.errors) {
-          errors = [];
-          for (const [value] of Object.entries(error.response.data.errors)) {
-            errors.push(value[0]);
+          // eslint-disable-next-line
+          for (const [key, value] of Object.entries(error.response.data.errors)) {            
+            if (Array.isArray(value)) {              
+              // eslint-disable-next-line
+              value.forEach(element => { errors.push(element); });
+            }
+            else {
+              errors.push(value);
+            }
           }
         }
         else if (error.response.data.message) {
@@ -41,13 +47,19 @@ export function doRegister(data) {
       })
       .catch((error) => {
         debugger;
-        let errors = null;
+        let errors =  [];
         Cookies.remove(cookieName)
 
         if (error.response.data.errors) {
-          errors = [];
-          for (const [value] of Object.entries(error.response.data.errors)) {
-            errors.push(value[0]);
+          // eslint-disable-next-line
+          for (const [key, value] of Object.entries(error.response.data.errors)) {
+            if (Array.isArray(value)) {
+              // eslint-disable-next-line
+              value.forEach(element => { errors.push(element); });
+            }
+            else {
+              errors.push(value);
+            }
           }
         }
         else if (error.response.data.message) {
@@ -74,11 +86,17 @@ export function doUpdate(data, jwt, id) {
       })
       .catch((error) => {
         debugger;
-        let errors = null;
+        let errors = [];
         if (error.response.data.errors) {
-          errors = [];
-          for (const [value] of Object.entries(error.response.data.errors)) {
-            errors.push(value[0]);
+          // eslint-disable-next-line
+          for (const [key, value] of Object.entries(error.response.data.errors)) {
+            if (Array.isArray(value)) {
+              // eslint-disable-next-line
+              value.forEach(element => { errors.push(element); });
+            }
+            else {
+              errors.push(value);
+            }
           }
         }
         else if (error.response.data.message) {

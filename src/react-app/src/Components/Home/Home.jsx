@@ -2,13 +2,16 @@ import React from 'react';
 import CarAuctionNearToStart from './CarAuctionNearTostart';
 import CarAuctionNearToEnd from './CarAuctionNearToEnd';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectLogged } from '../../features/userSlice';
 
-function Home() {    
+function Home() {
+    const logged = useSelector(selectLogged);
 
     return (
         <div>
             {/*============= Banner Section Starts Here =============*/}
-            <section className="banner-section-4 bg_img oh" style={ { backgroundImage: "url('/assets/images/banner/banner-bg-4.png')" } }>
+            <section className="banner-section-4 bg_img oh" style={{ backgroundImage: "url('/assets/images/banner/banner-bg-4.png')" }}>
                 <div className="container">
                     <div className="row align-items-center">
                         <div className="col-md-10 col-lg-7 col-xl-8">
@@ -83,23 +86,29 @@ function Home() {
             </section>
             {/*============= How Section Ends Here =============*/}
 
-            <CarAuctionNearToStart/>
-            <CarAuctionNearToEnd/>
+            <CarAuctionNearToStart />
+            <CarAuctionNearToEnd />
 
-            {/*============= Call In Section Starts Here =============*/}
-            <section className="call-in-section padding-top">
-                <div className="container">
-                    <div className="call-wrapper cl-white bg_img" style={ { backgroundImage: "url('/assets/images/call-in/call-bg.png')" } } >
-                        <div className="section-header">
-                            <h3 className="title">Register for Free & Start Bidding Now!</h3>
-                            <p>From cars to diamonds to iPhones, we have it all.</p>
-                        </div>
-                        <a href="sign-up.html" className="custom-button white">Register</a>
-                    </div>
-                </div>
-            </section>
-            {/*============= Call In Section Ends Here =============*/}
-        </div>
+            {logged ? "" :
+                (
+                    <>
+                        {/*============= Call In Section Starts Here =============*/}
+                        < section className="call-in-section padding-top">
+                            <div className="container">
+                                <div className="call-wrapper cl-white bg_img" style={{ backgroundImage: "url('/assets/images/call-in/call-bg.png')" }} >
+                                    <div className="section-header">
+                                        <h3 className="title">Register for Free & Start Bidding Now!</h3>
+                                        <p>From cars to diamonds to iPhones, we have it all.</p>
+                                    </div>
+                                    <Link to="/register" className="custom-button white" >Register</Link>
+                                </div>
+                            </div>
+                        </section>
+                        {/*============= Call In Section Ends Here =============*/}
+                    </>
+                )
+            }
+        </div >
 
     );
 }

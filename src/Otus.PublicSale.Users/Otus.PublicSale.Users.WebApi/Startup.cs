@@ -1,4 +1,6 @@
 using AutoMapper;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -8,8 +10,11 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Otus.PublicSale.Core;
 using Otus.PublicSale.Users.Core.Abstractions.Services;
+using Otus.PublicSale.Users.Core.Domain;
 using Otus.PublicSale.Users.DataAccess;
 using Otus.PublicSale.Users.DataAccess.Data;
+using Otus.PublicSale.Users.WebApi.Models;
+using Otus.PublicSale.Users.WebApi.Validators;
 using Otus.PublicSale.WebApi.Users.Services;
 using System;
 using System.Text;
@@ -101,6 +106,12 @@ namespace Otus.PublicSale.Users.WebApi
                 options.Title = "Otus.PublicSale.Users.WebApi";
                 options.Version = "1.0";
             });
+
+            services.AddFluentValidation();
+            services.AddTransient<IValidator<User>, UserValidator>();
+            services.AddTransient<IValidator<AuthenticateModel>, AuthenticateModelValidator>();
+            services.AddTransient<IValidator<RegisterModel>, RegisterModelValidator>();
+            services.AddTransient<IValidator<UpdateModel>, UpdateModelValidator>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
