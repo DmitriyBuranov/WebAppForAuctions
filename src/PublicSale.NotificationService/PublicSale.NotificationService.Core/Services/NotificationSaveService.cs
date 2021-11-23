@@ -23,9 +23,14 @@ namespace PublicSale.NotificationService.Core.Services
             _logger = logger;
         }
 
-        public async Task<bool> AddNotificationAsync(Notification notification)
+        public async Task<bool> AddNotificationOrUpdateAsync(Notification notification)
         {
+            var entity = await  _notificationRepository.GetByIdAsync(notification.Id);
+
+            if (entity == null)
             await _notificationRepository.AddAsync(notification);
+            else
+            await _notificationRepository.UpdateAsync(notification);
 
             return true;
         }
