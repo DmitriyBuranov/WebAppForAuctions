@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "3yER/MwA9WvXDcL0wJNSMLrmTYMg6CZlqf6yD4KbOl8lGfctxgulIUKif6UPg8qb1IfUQZpCD5C9U0PMVgZR8A==",
+  "dgSpecHash": "lwsZ/+RPC4DCAutJdieSs2RlYMlVNJ3ORwrtkHCs+eN79GzyNtWxwY6zB5JvO0RThyAYzMqJFK8e4z8sDC3iRQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Drown\\Source\\Repos\\mega-project\\src\\PublicSale.NotificationService\\PublicSale.NotificationService\\PublicSale.NotificationService.WebHost.csproj",
   "expectedPackageFiles": [
@@ -129,8 +129,7 @@
     "C:\\Users\\Drown\\.nuget\\packages\\system.threading.timer\\4.3.0\\system.threading.timer.4.3.0.nupkg.sha512",
     "C:\\Users\\Drown\\.nuget\\packages\\system.valuetuple\\4.5.0\\system.valuetuple.4.5.0.nupkg.sha512",
     "C:\\Users\\Drown\\.nuget\\packages\\system.xml.readerwriter\\4.3.1\\system.xml.readerwriter.4.3.1.nupkg.sha512",
-    "C:\\Users\\Drown\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\Drown\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.12\\microsoft.netcore.app.host.win-x64.5.0.12.nupkg.sha512"
+    "C:\\Users\\Drown\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }

@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    "net5.0": {
+    "net6.0": {
       "Automatonymous/5.1.2": {
         "type": "package",
         "dependencies": {
@@ -1839,7 +1839,7 @@
       },
       "PublicSale.NotificationService.Core/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
+        "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
           "MailKit": "2.15.0",
           "Microsoft.AspNetCore.Http": "2.2.2",
@@ -1858,7 +1858,7 @@
       },
       "PublicSale.NotificationService.DataAccess/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
+        "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
           "Microsoft.Extensions.Options": "5.0.0",
           "MongoDB.Driver": "2.13.1",
@@ -6423,7 +6423,7 @@
     }
   },
   "projectFileDependencyGroups": {
-    "net5.0": [
+    "net6.0": [
       "MassTransit >= 7.2.2",
       "MassTransit.AspNetCore >= 7.2.2",
       "MassTransit.RabbitMQ >= 7.2.2",
@@ -6448,15 +6448,15 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net5.0"
+        "net6.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
+        "net6.0": {
+          "targetAlias": "net6.0",
           "projectReferences": {
             "C:\\Users\\Drown\\Source\\Repos\\mega-project\\src\\PublicSale.NotificationService\\PublicSale.NotificationService.DataAccess\\PublicSale.NotificationService.DataAccess.csproj": {
               "projectPath": "C:\\Users\\Drown\\Source\\Repos\\mega-project\\src\\PublicSale.NotificationService\\PublicSale.NotificationService.DataAccess\\PublicSale.NotificationService.DataAccess.csproj"
@@ -6471,8 +6471,8 @@
       }
     },
     "frameworks": {
-      "net5.0": {
-        "targetAlias": "net5.0",
+      "net6.0": {
+        "targetAlias": "net6.0",
         "dependencies": {
           "MassTransit": {
             "target": "Package",
@@ -6501,12 +6501,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[5.0.12, 5.0.12]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"

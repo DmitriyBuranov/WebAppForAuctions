@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "EWyefWqjKAt7hv9DAHqiCw5PZ84eP8S5kFajeCZpf4k=",
+  "Source": "PublicSale.NotificationService.WebHost",
+  "BasePath": "_content/PublicSale.NotificationService.WebHost",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

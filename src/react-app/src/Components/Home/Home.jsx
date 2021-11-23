@@ -1,6 +1,7 @@
 import React from 'react';
 import CarAuctionNearToStart from './CarAuctionNearTostart';
 import CarAuctionNearToEnd from './CarAuctionNearToEnd';
+import { Link } from 'react-router-dom';
 
 function Home() {    
 
@@ -17,12 +18,12 @@ function Home() {
                                 <p className="mw-500">
                                     Thousands of Vehicles for Sale Every Day, We havejust the right one for you.
                                 </p>
-                                <a href="/products" className="custom-button yellow btn-large">Get Started</a>
+                                <Link to="/products" className="custom-button yellow btn-large">Get Started</Link>
                             </div>
                         </div>
                         <div className="col-lg-5 col-xl-4">
                             <div className="banner-thumb-4">
-                                <a href="#0" className="bid-now"><i className="flaticon-auction"></i><span>Bid Now</span></a>
+                                <Link to="/products" className="bid-now"><i className="flaticon-auction"></i><span>Bid Now</span></Link>
                                 <img src="/assets/images/banner/banner-4.png" alt="banner"></img>
                             </div>
                         </div>

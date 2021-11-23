@@ -22,7 +22,7 @@ function AuctionItem(props) {
                             </div>
                             <div className="amount-content">
                                 <div className="current">Current Bid</div>
-                                <div className="amount">{(props.auctionItem.currentMaxBet === undefined)? props.auctionItem.priceStart : props.auctionItem.currentMaxBet}</div>
+                                <div className="amount">{props.auctionItem.currentMaxBet == null ? props.auctionItem.priceStart : props.auctionItem.currentMaxBet}</div>
                             </div>
                         </div>
                         <div className="bid-amount">

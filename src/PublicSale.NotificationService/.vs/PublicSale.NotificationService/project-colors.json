@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "0ed97cb4-f1cb-4fde-8fb9-3e7bbf93f4e0": {
+      "ProjectGuid": "0ed97cb4-f1cb-4fde-8fb9-3e7bbf93f4e0",
+      "DisplayName": "PublicSale.NotificationService.Core",
+      "ColorIndex": 0
+    },
+    "b75c68b7-a741-4902-8d9e-1b6015b53abd": {
+      "ProjectGuid": "b75c68b7-a741-4902-8d9e-1b6015b53abd",
+      "DisplayName": "PublicSale.NotificationService.DataAccess",
+      "ColorIndex": 1
+    },
+    "816ca98b-373d-4323-bd52-0d706f6f4650": {
+      "ProjectGuid": "816ca98b-373d-4323-bd52-0d706f6f4650",
+      "DisplayName": "PublicSale.NotificationService.WebHost",
+      "ColorIndex": 2
+    }
+  },
+  "NextColorIndex": 3
+}

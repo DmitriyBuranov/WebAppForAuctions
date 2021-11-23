@@ -3,7 +3,7 @@ import { Button, Form, Container, Row, Col } from 'react-bootstrap';
 import { auctionService } from '../../Services/auctionsService';
 import { selectLogged,  selectJWT } from '../../features/userSlice'
 import { useSelector } from 'react-redux';
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 
 function CreateAuction() {
 
@@ -51,7 +51,7 @@ function CreateAuction() {
                 <div className="container">
                     <ul className="breadcrumb">
                         <li>
-                            <a href="/home">Home</a>
+                            <Link to="/products" href="/home">Home</Link>
                         </li>
                         <li>
                             <span>createAuction</span>

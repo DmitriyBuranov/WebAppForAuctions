@@ -40,6 +40,7 @@ namespace PublicSale.NotificationService.Core.Services
 
         private async Task SendEmailAsync(Notification notification)
         {
+            Console.WriteLine(" start Save notification");
             try
             {
                 var emailMessage = new MailMessage

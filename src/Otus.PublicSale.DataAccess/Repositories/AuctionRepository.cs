@@ -80,7 +80,7 @@ namespace Otus.PublicSale.DataAccess.Repositories
         public IEnumerable<AuctionWithBets> GetAmountWithBetsOrderedByDate(int num)
         {
             return _dbSet
-                .OrderBy(x => x.StartDate).Take(num)
+                .OrderBy(x => x.EndDate).Take(num)
                 .Select(x => new AuctionWithBets
                 {
                     Name = x.Name,
@@ -95,7 +95,8 @@ namespace Otus.PublicSale.DataAccess.Repositories
 
         public async Task<List<T>> GetJustHaveFinnishedAsync(DateTime endTime)
         {
-            return await _dbSet.Where(x => x.EndDate == endTime).ToListAsync();
+            return await _dbSet.Where(x => x.EndDate.Year == endTime.Year && x.EndDate.DayOfYear == endTime.DayOfYear && 
+            x.EndDate.Hour == endTime.Hour && x.EndDate.Minute == endTime.Minute && x.EndDate.Second == endTime.Second).ToListAsync();
         }
     }
 }
