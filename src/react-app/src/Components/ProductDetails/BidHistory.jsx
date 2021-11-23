@@ -2,7 +2,6 @@ import React from 'react';
 import BidHistoryItem from './BidHistoryItem';
 
 function BidHistory(props) {
-    console.log(props)
     return (
         <div className="tab-pane fade show" id="history">
             <div className="history-wrapper">

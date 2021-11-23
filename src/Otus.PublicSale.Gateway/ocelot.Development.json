@@ -151,7 +151,7 @@
 
     {
       "DownstreamPathTemplate": "/hubs/{everything}",
-      "DownstreamScheme": "ws",
+      "DownstreamScheme": "wss",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",

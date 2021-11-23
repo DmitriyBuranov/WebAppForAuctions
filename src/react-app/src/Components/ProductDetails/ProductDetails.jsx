@@ -30,8 +30,7 @@ function ProductDetails(props) {
 
     const loadAuction = React.useCallback(() => {
         axios.get(`/api/auctions/${id}`)
-            .then((result) => {
-                console.log(result.data);
+            .then((result) => {                
                 result.data.description = parse(result.data.description);
                 setAuction(result.data);
                 setBetPrice(result.data.currentPrice + result.data.priceStep)
@@ -53,7 +52,6 @@ function ProductDetails(props) {
                 setBetError("");
             })
             .catch((error) => {
-                console.log(error);
                 setLoading(false);
                 if (error.response.data) {
                     setAuction(obj => {
@@ -90,15 +88,14 @@ function ProductDetails(props) {
         loadAuction();
 
         axios.get(`/api/bets/stats/${id}`)
-            .then((result) => {
-                console.log(result.data);
+            .then((result) => {                
                 setBetStats(result.data);
             })
             .catch((error) => { console.log(error); });
 
         const connection = new HubConnectionBuilder()
             .withUrl("https://localhost:5001/hubs/bet")
-            //.withUrl("/api/hubs/bet/")
+            //.withUrl("/api/hubs/bet")
             .withAutomaticReconnect([0, 3000, 5000, 10000, 15000, 30000])
             .build();
 
@@ -122,8 +119,7 @@ function ProductDetails(props) {
                     setBetStats(data.stats);
                 });
 
-                connection.on('AuctionFinished', data => {
-                    console.log("auctionFinished")
+                connection.on('AuctionFinished', data => {                    
                     loadAuction();
                 });
             })
@@ -133,7 +129,6 @@ function ProductDetails(props) {
     useEffect(() => {
         axios.get(`/api/bets/history/${id}`)
             .then((result) => {
-                console.log(result.data);
                 if (result.data.length > 0) {
                     setHistory(result.data);
                 }
