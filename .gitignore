@@ -25,3 +25,8 @@
 /.vs
 /src/Services/bin
 /src/Services/obj
+/src/PublicSale.NotificationService/PublicSale.NotificationService.Core/bin
+/src/PublicSale.NotificationService/PublicSale.NotificationService.Core/obj
+/src/PublicSale.NotificationService/PublicSale.NotificationService.DataAccess/bin
+/src/PublicSale.NotificationService/PublicSale.NotificationService.DataAccess/obj
+/src/PublicSale.NotificationService/PublicSale.NotificationService/obj

@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Otus.PublicSale.Users.Core.Abstractions.Services;
 using Otus.PublicSale.Users.Core.Domain;
-using Otus.PublicSale.Users.DataAccess;
+using Otus.PublicSale.Users.DataAccess.DataContexts;
 using Otus.PublicSale.Users.WebApi.Models;
 using RabbitMQ.Client;
 using System.Collections.Generic;

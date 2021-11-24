@@ -64,6 +64,6 @@ async function postCreateAuction( data = {}, token) {
       referrerPolicy: 'no-referrer', 
       body: JSON.stringify(dataForRequest) 
     });
-    return response.statusText; 
+    return response.json(); 
   }
   

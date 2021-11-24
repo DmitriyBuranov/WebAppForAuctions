@@ -26,6 +26,7 @@ services:
     volumes:
       - rabbitmq-data:/var/lib/rabbitmq
 
+  #Redis
   publicsale-redis:  
     image: redis    
     container_name: 'publicsale-redis'
@@ -33,6 +34,18 @@ services:
     ports:
       - 6379:6379
 
+  #Postgres    
+  publicsale-users-db:
+    image: "postgres:9.6.17"
+    container_name: 'publicsale-users-db'
+    restart: always 
+    ports:
+      - 5433:5432
+    environment: 
+      - POSTGRES_PASSWORD=docker
+
 volumes:
   rabbitmq-data:
   publicsale-notification-db-data:
+  publicsale-redis-data:
+  publicsale-users-db-data:

@@ -1,4 +1,6 @@
-﻿namespace Otus.PublicSale.Users.DataAccess.Data
+﻿using Otus.PublicSale.Users.DataAccess.DataContexts;
+
+namespace Otus.PublicSale.Users.DataAccess.Data
 {
     /// <summary>
     /// Db Initializer

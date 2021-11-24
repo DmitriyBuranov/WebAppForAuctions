@@ -5,7 +5,7 @@ import { selectCurrent, logout } from '../../features/userSlice';
 import Cookies from 'js-cookie'
 import { cookieName } from '../../features/userAPI';
 
-function ProfileLeftMenu() {    
+function ProfileLeftMenu() {
     const user = useSelector(selectCurrent);
     const dispatch = useDispatch();
 
@@ -44,6 +44,16 @@ function ProfileLeftMenu() {
                     <li>
                         <NavLink exact activeClassName='active' to='/profile'><i className="flaticon-settings"></i>Personal Profile</NavLink>
                     </li>
+
+                    {
+                        !user.admin ? "" :
+                            (
+                                <li>
+                                    <NavLink exact activeClassName='active' to='/createAuction'><i className="flaticon-auction"></i>Create Auction</NavLink>
+                                </li>
+                            )
+                    }
+
                     {/* <li>
                         <NavLink exact activeClassName='active' to='/bids'><i className="flaticon-auction"></i>My Bids</NavLink>
                     </li>

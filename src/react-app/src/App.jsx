@@ -15,9 +15,9 @@ import Profile from "./Components/Profile/Profile"
 import Dashboard from "./Components/Profile/Dashboard"
 import MyBids from "./Components/Profile/MyBids"
 import MyWinnings from './Components/Profile/MyWinnings';
-import CreateAuction from './Components/AdminPanel/CreateAuction';
 import ScrollToTop from './Components/CommonComponents/ScrollToTop';
 import ProductDetails from './Components/ProductDetails/ProductDetails';
+import CreateNewAuction from './Components/Profile/CreateNewAuction';
 
 const App=() => {
   return (
@@ -48,7 +48,7 @@ const App=() => {
               />
 
             <Route path="/404" component={Page404} />
-            <Route path="/createAuction" component={CreateAuction}/>
+            <Route path="/createAuction" component={CreateNewAuction}/>
             <Redirect from="*" to="/home" />
         </Switch>
 

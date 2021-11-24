@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { Redirect, Link } from "react-router-dom";
-import { loginAsync, selectErrors, selectLogged, selectLoading, selectCurrent, setError } from '../../features/userSlice';
+import { loginAsync, selectErrors, selectLogged, selectLoading, setError } from '../../features/userSlice';
 import { Alert } from 'react-bootstrap';
 import Loader from '../CommonComponents/Loader';
 
@@ -10,7 +10,6 @@ function Login() {
     const logged = useSelector(selectLogged);
     const errors = useSelector(selectErrors);
     const loading = useSelector(selectLoading);
-    const user = useSelector(selectCurrent);
     const dispatch = useDispatch();
 
     const [email, setEmail] = useState('');
@@ -31,13 +30,10 @@ function Login() {
         return false;
     }
 
-  
+
 
     if (logged === true)
-        if (user.admin === true) 
-            return <Redirect to="/createAuction"/>
-        else 
-            return <Redirect to="/profile" />  
+        return <Redirect to="/profile" />
 
     return (
         <div>

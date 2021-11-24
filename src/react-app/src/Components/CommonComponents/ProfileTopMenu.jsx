@@ -17,6 +17,9 @@ function ProfileTopMenu() {
     else if (location.pathname === "/winnings") {
         pageName = "Winning Bids";
     }
+    else if (location.pathname === "/createAuction") {
+        pageName = "Create Auction";
+    }
 
     return (
         <div className="hero-section style-2">

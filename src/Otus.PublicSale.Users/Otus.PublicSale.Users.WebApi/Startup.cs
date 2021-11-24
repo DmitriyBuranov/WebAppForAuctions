@@ -13,6 +13,7 @@ using Otus.PublicSale.Users.Core.Abstractions.Services;
 using Otus.PublicSale.Users.Core.Domain;
 using Otus.PublicSale.Users.DataAccess;
 using Otus.PublicSale.Users.DataAccess.Data;
+using Otus.PublicSale.Users.DataAccess.DataContexts;
 using Otus.PublicSale.Users.WebApi.Models;
 using Otus.PublicSale.Users.WebApi.Validators;
 using Otus.PublicSale.WebApi.Users.Services;
@@ -47,11 +48,12 @@ namespace Otus.PublicSale.Users.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // use sql server db in production and sqlite db in development
-            if (_env.IsProduction())
-                services.AddDbContext<DataContext>();
-            else
-                services.AddDbContext<DataContext, SqliteDataContext>();
+            // MS SQL
+            //services.AddDbContext<DataContext>();            
+            // Sqlite
+            //services.AddDbContext<DataContext, SqliteDataContext>();
+            //Postgres
+            services.AddDbContext<DataContext, PostgresDataContext>();
 
             services.AddCors();
             services.AddControllers();
