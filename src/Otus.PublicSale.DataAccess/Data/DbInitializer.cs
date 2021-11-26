@@ -248,7 +248,7 @@ namespace Otus.PublicSale.DataAccess.Data
 
             context.Users.Add(new Core.Domain.Administration.User()
             {
-                FirstName = "BO",
+                FirstName = "Jon",
                 LastName = "Admin",
                 Email = "admin@admin.com",
                 Id = 1

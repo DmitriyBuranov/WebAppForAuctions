@@ -34,7 +34,7 @@ services:
     ports:
       - 6379:6379
 
-  #Postgres    
+  #Users DB    
   publicsale-users-db:
     image: "postgres:9.6.17"
     container_name: 'publicsale-users-db'

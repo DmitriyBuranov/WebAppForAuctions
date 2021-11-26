@@ -90,9 +90,9 @@ function Header() {
                                         </li>
                                     </ul>
                                 </li> */}
-                                <li>
+                                {/* <li>
                                     <a href="contact.html">Contact</a>
-                                </li>
+                                </li> */}
                             </ul>
                             <div className="header-bar d-lg-none">
                                 <span></span>

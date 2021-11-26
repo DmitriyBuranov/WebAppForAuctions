@@ -23,7 +23,7 @@ namespace Otus.PublicSale.Users.DataAccess.Data
                     new User()
                     {
                         Id = 1,
-                        FirstName = "BO",
+                        FirstName = "Jon",
                         LastName = "Admin",
                         Username = "admin@admin.com",
                         PasswordHash = passwordHash,
