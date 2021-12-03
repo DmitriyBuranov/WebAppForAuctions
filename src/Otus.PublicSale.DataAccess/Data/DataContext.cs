@@ -53,8 +53,7 @@ namespace Otus.PublicSale.DataAccess.Data
         public DataContext(DbContextOptions<DataContext> options)
             : base(options)
         {     
-            //Database.EnsureDeleted(); 
-            //Database.EnsureCreated();
+
         }        
 
         /// <summary>
@@ -156,20 +155,7 @@ namespace Otus.PublicSale.DataAccess.Data
                 entity.Property(e => e.FirstName).HasMaxLength(50);
 
                 entity.Property(e => e.LastName).HasMaxLength(50);
-
-                //entity.Property(e => e.Password).IsRequired();
-
-                //entity.Property(e => e.BirthDay).IsRequired();
-
-                //entity.Property(e => e.Phone).HasMaxLength(12);
-
-                //entity.Property(e => e.Address).HasMaxLength(100);
-
-                //entity.HasOne(d => d.Role)
-                //    .WithMany(p => p.Users)
-                //    .HasForeignKey(d => d.RoleId)
-                //    .OnDelete(DeleteBehavior.ClientSetNull)
-                //    .HasConstraintName("FK_Users_Roles");           
+      
             });
 
 
@@ -186,11 +172,6 @@ namespace Otus.PublicSale.DataAccess.Data
                     .IsRequired()
                     .HasMaxLength(50);
             });
-
-            // Default DB values
-            //modelBuilder.Entity<Role>().HasData(new Role { Id = Constants.AdminRoleId, Name = "Admin" });
-            //modelBuilder.Entity<Role>().HasData(new Role { Id = Constants.UserRoleId, Name = "User" });
-            //modelBuilder.Entity<User>().HasData(new User { Id = Constants.DefaultAdminUserId, RoleId = Constants.AdminRoleId, FirstName = "BO", LastName = "Admin", Email = "admin@megaproject.com", Password = "1qaz@WSX" });
 
             base.OnModelCreating(modelBuilder);
         }

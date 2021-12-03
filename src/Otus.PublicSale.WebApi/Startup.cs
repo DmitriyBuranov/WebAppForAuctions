@@ -100,15 +100,7 @@ namespace Otus.PublicSale.WebApi
                     ValidateIssuer = false,
                     ValidateAudience = false
                 };
-            });
-                     
-            // Identity server staff
-            //services.AddAuthentication("Bearer")
-            //    .AddIdentityServerAuthentication("Bearer", options =>
-            //    {
-            //        options.ApiName = "otus.publicsale.webapi";
-            //        options.Authority = "https://localhost:44337";
-            //    });
+            });                 
 
             services.AddScoped(typeof(IRepository<>), typeof(EntityFrameworkRepository<>));
             services.AddScoped(typeof(IAuctionRepository<>), typeof(AuctionRepository<>));
@@ -127,41 +119,14 @@ namespace Otus.PublicSale.WebApi
                 });
             });
             services.AddMassTransitHostedService();
+
             services.AddFluentValidation();
             services.AddTransient<IValidator<AuctionUserDto>, AuctionUserValidator>();
             services.AddTransient<IValidator<AuctionDto>, AuctionValidator>();
 
-            // Identity server staff
-            //services.AddSwaggerGen(options =>
-            //{
-            //    options.SwaggerDoc("v1", new OpenApiInfo { Title = "Protected API", Version = "v1" });
-
-            //    options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
-            //    {
-            //        Type = SecuritySchemeType.OAuth2,
-            //        Flows = new OpenApiOAuthFlows
-            //        {
-            //            AuthorizationCode = new OpenApiOAuthFlow
-            //            {
-            //                AuthorizationUrl = new Uri("https://localhost:44337/connect/authorize"),
-            //                TokenUrl = new Uri("https://localhost:44337/connect/token"),
-            //                Scopes = new Dictionary<string, string>
-            //                {
-            //                    {"otus.publicsale.webapi", "PublicSale WebApi - full access"}
-            //                }
-            //            }
-            //        }
-            //    });
-            //    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-            //    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-            //    options.IncludeXmlComments(xmlPath);
-
-            //    options.OperationFilter<AuthorizeCheckOperationFilter>();
-            //});
 
             services.AddSwaggerDocumentation();
 
-            // Redis
             services.AddStackExchangeRedisCache(options =>
             {
                 options.Configuration = Configuration.GetConnectionString("Redis");
@@ -185,18 +150,6 @@ namespace Otus.PublicSale.WebApi
             app.UseAuthentication();
             app.UseAuthorization();
 
-            // Identity server staff
-            //app.UseSwagger();
-            //app.UseSwaggerUI(options =>
-            //{
-            //    options.SwaggerEndpoint("/swagger/v1/swagger.json", "PublicSale WebApi V1");
-            //    options.OAuthClientId("Otus.PublicSale.WebApi");
-            //    options.OAuthClientSecret("secret");
-            //    options.OAuthAppName("PublicSale WebApi - Swagger");
-            //    options.OAuthScopes(new[] { "otus.publicsale.webapi" });
-            //    options.OAuthUsePkce();
-            //});
-
             app.UseSwaggerDocumentation();
 
             app.UseRequestResponseLogging();
@@ -212,29 +165,4 @@ namespace Otus.PublicSale.WebApi
 
         }
     }
-
-    // Identity server staff
-    //public class AuthorizeCheckOperationFilter : IOperationFilter
-    //{
-    //    public void Apply(OpenApiOperation operation, OperationFilterContext context)
-    //    {
-    //        var hasAuthorize = context.MethodInfo.DeclaringType.GetCustomAttributes(true).OfType<AuthorizeAttribute>().Any() ||
-    //                           context.MethodInfo.GetCustomAttributes(true).OfType<AuthorizeAttribute>().Any();
-
-    //        if (hasAuthorize)
-    //        {
-    //            operation.Responses.Add("401", new OpenApiResponse { Description = "Unauthorized" });
-    //            operation.Responses.Add("403", new OpenApiResponse { Description = "Forbidden" });
-
-    //            operation.Security = new List<OpenApiSecurityRequirement>
-    //            {
-    //                new OpenApiSecurityRequirement
-    //                {
-    //                    [new OpenApiSecurityScheme {Reference = new OpenApiReference {Type = ReferenceType.SecurityScheme, Id = "oauth2"}}]
-    //                        = new[] { "otus.publicsale.webapi" }
-    //                }
-    //            };
-    //        }
-    //    }
-    //}
 }
